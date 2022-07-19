@@ -130,7 +130,7 @@ const Header = () => {
 
 
                     <div class="navbar-center hidden lg:flex">
-                        <ul class="menu menu-horizontal mt-[1%] mx-28 pb-[.6%]">
+                        <ul class="menu menu-horizontal mt-[.9%] mx-28 pb-[.6%]">
                             {menuItems}
                         </ul>
                     </div>
