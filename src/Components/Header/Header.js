@@ -86,9 +86,10 @@ const Header = () => {
     const menuItems =
         <>
 
-            <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Home</CustomLink>
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/courses'>All Courses</CustomLink>
+            <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Contests</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore-more'>Explore More</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/compilier'>Compilier</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/premium'>Premium</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contact'>Contact Us</CustomLink>
@@ -117,10 +118,10 @@ const Header = () => {
                             <input type="checkbox" name="" id="menuToggler" />
 
 
-                            <ul tabindex="0" id="menuContent" class=" menu bg-[black] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow bg-base-100 rounded-box w-52">
+                            <ul tabindex="0" id="menuContent" class=" menu bg-[black] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
-                            <Link to='/' class="btn btn-ghost normal-case text-xl y">Islamicademy</Link>
+                            <Link to='/' class="btn btn-ghost normal-case text-xl y">coderAccess</Link>
 
                         </div>
                         {personalizeItems}
