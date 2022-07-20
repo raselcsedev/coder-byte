@@ -29,7 +29,7 @@ const Header = () => {
             </label>
             <input type="checkbox" name="" id="toggler2" />
 
-            <div tabindex="0" class="notification mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+            <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
                 <div class="card-body text-[white] ">
                     <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                     <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -52,7 +52,7 @@ const Header = () => {
                             src="https://i.stack.imgur.com/frlIf.png" />
                     </div>
                 </label>
-                <ul tabindex="0" class="profile space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                <ul tabindex="0" id='profile' class=" space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
 
                     <div className='space-y-2'>
                         <Link to="/profile">
@@ -100,14 +100,14 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contact'>Contact Us</CustomLink>
 
-            {/* {
+            {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
 
             }
             {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-in'>Sign In</CustomLink>
 
-            } */}
+            }
         </>
 
 
@@ -167,7 +167,7 @@ const Header = () => {
                                     </label>
                                     <input type="checkbox" name="" id="bigToggler2" />
 
-                                    <div tabindex="0" class="notification mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+                                    <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
                                         <div class="card-body text-[white] ">
                                             <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                                             <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -192,7 +192,7 @@ const Header = () => {
                                                 src="https://i.stack.imgur.com/frlIf.png" />
                                         </div>
                                     </label>
-                                    <ul tabindex="0" class="profile space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                                    <ul tabindex="0" id='profile' class="space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
 
 
 
