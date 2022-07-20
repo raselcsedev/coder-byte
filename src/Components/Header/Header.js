@@ -1,9 +1,19 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
 import CustomLink from './CustomLink';
 import './Header.css'
 
 const Header = () => {
+
+    const [user] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+    };
+
 
 
 
@@ -93,6 +103,15 @@ const Header = () => {
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contact'>Contact Us</CustomLink>
+
+            {
+                user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
+
+            }
+            {
+                user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-in'>Sign In</CustomLink>
+
+            }
         </>
 
 
@@ -100,11 +119,11 @@ const Header = () => {
         <div>
 
             <div id='' className='nav fixed text-[white] bg-[black] bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
-                <div class="lg:navbar lg:w-[82%] mx-auto ">
+                <div class="lg:navbar lg:w-[90%] mx-auto ">
                     <div class="lg:navbar-start hidden md:block">
 
 
-                        <Link to='/' class="btn btn-ghost normal-case text-xl ">coderAccess</Link>
+                        <Link to='/' class="btn btn-ghost normal-case text-2xl ">coderAccess</Link>
                     </div>
 
 
@@ -121,10 +140,10 @@ const Header = () => {
                             <ul tabindex="0" id="menuContent" class=" menu bg-[black] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
-                            <Link to='/' class="btn btn-ghost normal-case text-xl y">coderAccess</Link>
+                            <Link to='/' class="btn btn-ghost normal-case text-2xl y">coderAccess</Link>
 
                         </div>
-                        {personalizeItems}
+                        {user && personalizeItems}
                     </div>
 
 
@@ -141,7 +160,7 @@ const Header = () => {
 
 
                         <div className='flex items-center pb-2'>
-                            {
+                            {user &&
 
                                 <div class="dropdown dropdown-end">
                                     <label tabindex="0" htmlFor='bigToggler2' class="btn  btn-ghost btn-circle">
@@ -162,7 +181,7 @@ const Header = () => {
                                 </div>
                             }
 
-                            {
+                            {user &&
 
 
                                 <div class="dropdown dropdown-end ">
@@ -189,9 +208,10 @@ const Header = () => {
                                                 </li>
                                             </Link>
                                             <Link to="/profile">
-                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>displayName</li>
+                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{user.displayName}</li>
                                             </Link>
-                                            <li className='text-[white] text-sm  break-all'>email</li>
+                                            <li className='text-[white] text-sm  break-all'>{user.email}</li>
+
                                             <li>
 
                                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
