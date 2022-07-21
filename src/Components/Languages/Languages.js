@@ -26,17 +26,7 @@ const Languages = () => {
                 </div>
 
             </div>
-            <div className='flex justify-end'>
-                        <img title='Python' className='w-[7.2%] m-4 border-slate-700 border bg-[#171B26]  p-6 rounded' src="https://trunk.io/_next/static/image/_/common/assets/icon-language-python.48bf8276620dab23fa8f670c57fe1916.svg?w=64&q=75" alt="" />
-                        <img title='TypeScript' className='w-[7.2%] m-4 border-slate-700 border bg-[#171B26] p-6 rounded' src="https://trunk.io/_next/static/image/_/common/assets/icon-language-typescript.696d5f2f10af741aa3be0548c71a1f5e.svg?w=48&q=75" alt="" /><img src="" alt="" />
-                        <img title='Golang' className='w-[7.2%] m-4 border-slate-700 border bg-[#171B26] p-6 rounded' src="https://trunk.io/_next/static/image/_/common/assets/icon-language-go.cb42f64e4f738cf69da6053464dcbdb1.svg?w=64&q=75" alt="" /><img src="" alt="" />
-                        <img title='Kotlin' className='w-[7.2%] m-4 border-slate-700 border bg-[#171B26]  p-6 rounded'
-                            src="https://trunk.io/_next/static/image/_/common/assets/icon-language-kotlin.06830b4934a6cbf6039acefba44cc874.svg?w=48&q=75"
-                            alt="" /><img src="" alt="" />
-                        <img title='Ruby on rails' className='w-[7.2%] m-4 border-slate-700 border bg-[#171B26]  p-6 rounded'
-                            src="https://trunk.io/_next/static/image/_/common/assets/icon-language-ruby.1939787c538fc76ff88694e962148b9d.svg?w=64&q=75" alt="" /><img src="" alt="" />
-
-                    </div>
+            
           </div>
 
         </div>
