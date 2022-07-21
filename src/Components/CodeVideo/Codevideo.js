@@ -8,7 +8,11 @@ const Codevideo = () => {
                
                 <div>
                     <div >
-                        
+                        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+
+                            <p className='text-slate-400 my-4'> coderAccess is simplifing your DevDream...</p>
+ </h2>
+                       
                            <button className='btn btn-sm  glass  my-5'>Get Started</button>
                        
                         
