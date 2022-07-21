@@ -1,0 +1,23 @@
+.banner{
+    
+ /* background:url('./photo1.jpg'); */
+}
+.bannerbgphoto{
+    /* width: 99vw; */
+    height:93vh;
+
+
+   
+    background:url('./photo1.jpg');
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    /* object-fit: fill; */
+    
+
+}
+.about{
+    width: 90vw;
+    height: 100vh;
+
+
+}

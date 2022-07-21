@@ -92,9 +92,9 @@ const Header = () => {
     const menuItems =
         <>
 
-            <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Contests</CustomLink>
+            <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Home</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore-more'>Explore More</CustomLink>
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/compilier'>Compilier</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/compilier'>Contests</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/premium'>Premium</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>

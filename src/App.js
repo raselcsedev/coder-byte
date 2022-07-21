@@ -7,7 +7,9 @@ import FeaturedCompanies from './Components/FeaturedCompanies/FeaturedCompanies'
 // import logo from './logo.svg';
 // import { Counter } from './features/counter/Counter';
 import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
 import Languages from './Components/Languages/Languages';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -15,14 +17,11 @@ function App() {
       <Header></Header>
 
       <Routes>
-     
-        <Route path='/lan' element={<Languages></Languages>}></Route>
-        <Route path='/video' element={<Codevideo></Codevideo>}></Route>
-        <Route path='/com' element={<FeaturedCompanies></FeaturedCompanies>}></Route>
+        <Route path='/' element={<Home></Home>}></Route>
         <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
-
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
