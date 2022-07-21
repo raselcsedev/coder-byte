@@ -1,0 +1,10 @@
+.DashbordMainContainer{
+    /* margin-right:100px ;
+    margin-left:100px ; */
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.grds{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
