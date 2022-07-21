@@ -1,0 +1,11 @@
+.vdo video {
+    width: 80vw;
+    height: 60vh;
+    border: 0 solid;
+    object-fit: cover;
+    
+}
+
+.mainvdo {
+ 
+}
