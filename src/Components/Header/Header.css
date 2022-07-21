@@ -25,10 +25,10 @@
 
 
 
-.profile{
+#profile{
   display: none;
 }
-.notification{
+#notification{
   display: none;
 }
 #menuContent
@@ -37,22 +37,22 @@
 }
 
 
-#toggler:checked~.profile{
+#toggler:checked~#profile{
 
   display: block;
 
 }
-#bigToggler2:checked~.notification{
+#bigToggler2:checked~#notification{
 
   display: block;
 
 }
-#bigToggler:checked~.profile{
+#bigToggler:checked~#profile{
 
   display: block;
 
 }
-#toggler2:checked~.notification{
+#toggler2:checked~#notification{
 
   display: block;
 
