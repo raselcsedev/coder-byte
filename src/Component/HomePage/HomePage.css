@@ -8,7 +8,7 @@
 
 
    
-    background:url('./photo1.jpg');
+    background: linear-gradient(108deg, rgba(1,1,1,1) 5%, rgba(76,78,78,0.6152836134453781) 100%),url('./photo1.jpg');
     /* background-size: cover; */
     background-repeat: no-repeat;
     /* object-fit: fill; */

@@ -11,8 +11,8 @@ const Banner = () => {
         <div className='banner '>
 
             <div className='bannerbgphoto bg-cover  grid grid-cols-1 lg:grid-cols-2'>
-                <div className='flex justify-center items-center'>
-                    <h1 className='text-white font-serif font-bold text-5xl lg:text-7xl'>Best platform to <br /> solve competitive <br /> programming</h1>
+                <div className='flex justify-center items-center '>
+                    <h1 className='text-white font-serif md:font-bold font-semiblod text-4xl md:text-5xl lg:text-7xl '>Best platform to <br /> solve competitive <br /> programming</h1>
                 </div>
                 <div className='text-white text-2xl flex flex-col justify-around '>
                     <div className='flex justify-around'>
