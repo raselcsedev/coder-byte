@@ -8,6 +8,8 @@ const Codevideo = () => {
                
                 <div>
                     <div >
+                        
+                           <button className='btn btn-sm  glass  my-5'>Get Started</button>
                        
                         
                     </div>
