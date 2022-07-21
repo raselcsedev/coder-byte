@@ -19,7 +19,7 @@ const Course = () => {
                     {data.map(data => <>
 
 
-                        <div class="card w-96 bg-base-100 shadow-2xl">
+                        <div class="card w-[100%] md:w-96  bg-base-100 shadow-2xl">
                             <div class="card-body  ">
                                 <div className='flex'>
                                     <img width='50px' height='50px' src={data.img} alt="" />
