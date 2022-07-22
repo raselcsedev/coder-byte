@@ -114,8 +114,8 @@ const Header = () => {
     return (
         <div>
 
-            <div id='' className='nav fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
-                <div class="lg:navbar lg:w-[90%] mx-auto ">
+            <div id='' className='nav  fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
+                <div class="lg:navbar lg:w-[90vw]  mx-auto ">
                     <div class="lg:navbar-start hidden md:block">
 
 
