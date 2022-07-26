@@ -2,13 +2,15 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
+import CodeEditor from './Components/CodeEditor/CodeEditor';
+import Editor from './Components/CodeEditor/Editor';
 import Codevideo from './Components/CodeVideo/Codevideo';
 import FeaturedCompanies from './Components/FeaturedCompanies/FeaturedCompanies';
 // import logo from './logo.svg';
 // import { Counter } from './features/counter/Counter';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
-import Languages from './Components/Languages/Languages';
+import Profile from './Components/Profile/Profile';
 import Footer from './Footer/Footer';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route>
+        <Route path='/profile' element={<Profile></Profile>}></Route>
         <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
       </Routes>
