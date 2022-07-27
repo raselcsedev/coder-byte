@@ -4,6 +4,7 @@ import auth from '../../firebase.init';
 // import MobileProfileSide from '../MobileProfileSide';
 // import useCourses from '../Shared/useCourses';
 import ImageUploading from 'react-images-uploading';
+import EditProfile from './EditProfile';
 
 
 const Profile = () => {
@@ -13,11 +14,22 @@ const Profile = () => {
 
 
     const [coverPhoto, setCoverPhoto] = useState([]);
-    const onChange = (imageList) => {
+
+
+    const onChangeCover = (imageList) => {
         setCoverPhoto(imageList)
 
         console.log(imageList);
     }
+    const [profilePhoto, setProfilePhoto] = useState([]);
+
+
+    const onChangeProfile = (imageList) => {
+        setProfilePhoto(imageList)
+
+        console.log(imageList);
+    }
+
 
 
     const [more, setMore] = useState(false)
@@ -51,7 +63,12 @@ const Profile = () => {
     return (
         <div className=' bg-[#171B26] pt-20 '>
 
+
+
             <div className='md:grid md:grid-cols-12  md:w-[80%] md:mx-auto md:gap-6'>
+
+
+
                 <div className='col-span-9 drop-shadow-2xl mb-10 border-slate-600 rounded-lg relative'>
 
 
@@ -59,36 +76,28 @@ const Profile = () => {
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
 
-
-                            <h2 className='absolute top-[2%] right-[1%] text-center inline p-2 bg-black rounded font-bold text-3xl m-32 text-slate-200'>
-                                Welcome to {user?.displayName}'s profile
-                            </h2>
                         </div>
                     </div>
 
                     {
                         <ImageUploading
-                            // multiple
                             value={coverPhoto}
-                            onChange={onChange}
-                            // maxNumber={maxNumber}
+                            onChange={onChangeCover}
                             dataURLKey="data_url"
                         >
                             {({
                                 imageList,
-                                onImageUpload,
-                                onImageRemoveAll,
-                                onImageUpdate,
-                                onImageRemove,
-                                isDragging,
-                                dragProps,
+                                onImageUpload
                             }) => (
 
                                 <div className="upload__image-wrapper">
 
 
 
-                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:right-[1%] btn btn-xs my-3 border-[white]'>Change Cover</p>
+                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg></p>
 
 
                                     {
@@ -98,11 +107,11 @@ const Profile = () => {
                                                 class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto absolute top-[0%] right-[0%]  shadow overflow-hidden sm:rounded-t-lg' >
 
                                                 <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
-                                                    <h2 className='absolute top-[2%] right-[1%] text-center inline p-2 bg-black rounded font-bold text-3xl m-32 text-slate-200'>
-                                                        Welcome to {user?.displayName}'s profile
-                                                    </h2>
 
-                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:right-[1%] btn btn-xs my-3 border-[white]'>Change Cover</p>
+                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%]  btn btn-xs my-3  border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    </svg></p>
 
                                                 </div>
                                             </div>))
@@ -116,65 +125,57 @@ const Profile = () => {
 
                     <div style={{ zIndex: '20' }} className='relative bg-slate-800 pt-20 border-slate-600 border rounded-b-lg border-t-0 mx-auto '>
 
-                        <img class="md:w-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  "
+                        <img style={{ zIndex: '2' }} class="md:w-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  "
                             src="https://i.stack.imgur.com/frlIf.png" alt='' />
 
-{
-                        <ImageUploading
-                            // multiple
-                            value={coverPhoto}
-                            onChange={onChange}
-                            // maxNumber={maxNumber}
-                            dataURLKey="data_url"
-                        >
-                            {({
-                                imageList,
-                                onImageUpload,
-                                onImageRemoveAll,
-                                onImageUpdate,
-                                onImageRemove,
-                                isDragging,
-                                dragProps,
-                            }) => (
 
-                                <div className="upload__image-wrapper">
+                        {
+
+                            <ImageUploading
+                                value={profilePhoto}
+                                onChange={onChangeProfile}
+                                dataURLKey="data_url"
+                            >
+                                {({
+                                    imageList,
+                                    onImageUpload
+                                }) => (
+
+                                    <div className="upload__image-wrapper">
 
 
 
-                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:right-[1%] btn btn-xs my-3 border-[white]'>Change Cover</p>
+                                        <p onClick={onImageUpload} style={{ zIndex: '3' }} className='absolute absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%] btn btn-xs rounded-full w-8 h-8 my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg></p>
 
 
-                                    {
-                                        imageList?.map((image, index) => (
+                                        {
+                                            imageList?.map((image, index) => (
 
-                                            <div style={{ zIndex: '1', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: `url(${image['data_url']})` }}
-                                                class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto absolute top-[0%] right-[0%]  shadow overflow-hidden sm:rounded-t-lg' >
+                                                <img style={{ zIndex: '2' }} class="md:w-36 h-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  " src={image['data_url']} alt="" />
 
-                                                <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
-                                                    <h2 className='absolute top-[2%] right-[1%] text-center inline p-2 bg-black rounded font-bold text-3xl m-32 text-slate-200'>
-                                                        Welcome to {user?.displayName}'s profile
-                                                    </h2>
+                                            ))
+                                        }
 
-                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:right-[1%] btn btn-xs my-3 border-[white]'>Change Cover</p>
+                                    </div>
+                                )}
+                            </ImageUploading>
+                        }
 
-                                                </div>
-                                            </div>))
-                                    }
 
-                                </div>
-                            )}
-                        </ImageUploading>
 
-                    }
 
-                        <label for="my-modal-5" className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 border-[white]'>Edit profile</label>
+                        <label for="my-modal-5" className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                        </svg> <span className='mx-1'>Edit Profile </span>
+                        </label>
 
 
                         <input type="checkbox" id="my-modal-5" class="modal-toggle" />
                         <div class="modal">
-                            <div class="modal-box bg-slate-600 w-11/12 max-w-5xl">
-                                <h3 class="font-bold text-white text-lg">Congratulations random Internet user!</h3>
-                                <p class="py-4 text-white">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                            <div class="modal-box bg-slate-600 w-12/12 max-w-6xl">
+                               <EditProfile></EditProfile>
                                 <div class="modal-action">
                                     <label for="my-modal-5" class="btn">Yay!</label>
                                 </div>
@@ -214,6 +215,7 @@ const Profile = () => {
                                         <dt class="text-sm font-medium text-gray-200">Profile status</dt>
                                         <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2">Instructor / Student / Admin</dd>
                                     </div>
+
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Email address</dt>
                                         <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2">{user?.email}</dd>
