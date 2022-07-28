@@ -94,7 +94,7 @@ const Header = () => {
 
             <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Home</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore-more'>Explore More</CustomLink>
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/compilier'>Contests</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/editor'>Contests</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/premium'>Premium</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
@@ -114,8 +114,8 @@ const Header = () => {
     return (
         <div>
 
-            <div id='' className='nav fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
-                <div class="lg:navbar lg:w-[90%] mx-auto ">
+            <div id='' className='nav  fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
+                <div class="lg:navbar lg:w-[90vw]  mx-auto ">
                     <div class="lg:navbar-start hidden md:block">
 
 

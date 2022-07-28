@@ -1,5 +1,4 @@
 import React from 'react';
-import HomeDashbord from '../RandomSection/HomeDashbord';
 import './DashbordMain.css'
 const DashbordMain = () => {
     return (
@@ -27,9 +26,9 @@ const DashbordMain = () => {
                 </div>
                 <section className='mt-20'>
                     <h1 className='mb-10 mt-36 font-bold text-5xl text-center '>Certification</h1>
-                    <section className='flex'>
+                    <section className='md:flex flex-row'>
                         <div>
-                            <div class="card w-96 bg-white border text-neutral-content shadow-2xl">
+                            <div class="card  w-[100%] md:w-96 bg-white border text-neutral-content shadow-2xl">
                                 <div class="card-body">
                                     <h2 class="card-title text-black text-2xl">Problem Solving (Basic)</h2>
                                     <h1 className='text-[#757979] '>Increase Your programing skill by contest</h1>
@@ -40,7 +39,7 @@ const DashbordMain = () => {
                             </div>
                         </div>
                         <div>
-                            <div class="card w-96 mx-4 bg-white border text-neutral-content shadow-2xl">
+                            <div class="card w-[100%] md:w-96  my-4 md:my-0 md:mx-4 bg-white border text-neutral-content shadow-2xl">
                                 <div class="card-body">
                                     <h2 class="card-title text-black text-2xl  ">Contest</h2>
                                     <h1 className='text-[#757979] '>Evaluate your programing skill</h1>
@@ -50,7 +49,7 @@ const DashbordMain = () => {
                             </div>
                         </div>
                         <div>
-                            <div class="card w-96 bg-white border text-neutral-content shadow-2xl">
+                            <div class="card w-[100%] md:w-96  bg-white border text-neutral-content shadow-2xl">
                                 <div class="card-body">
                                     <h2 class="card-title text-black text-2xl">Job (submit Your reusme)</h2>
                                     <h1 className='text-[#757979] '>Find the suitable dream job</h1>

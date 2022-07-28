@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import video from '../../code-video.mp4'
 
+
+import ImageUploading from 'react-images-uploading';
+
+
+
+
 const Codevideo = () => {
+
     return (
-        <div className='bg-[#171B26] h-[120vh] pt-[5%]'>
-            <div className='w-[60%] mx-auto'>
+        <div className='bg-[#171B26] md:h-[120vh] h-[80vh] py-[5%]'>
+            <div className='w-[80%] md:w-[60%] mx-auto'>
                
                 <div>
                     <div >
-                        <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+
+
+                 
+                        <h2 class="text-3xl font-bold md:font-extrabold tracking-tight text-gray-900 text-2xl md:text-4xl">
 
                             <p className='text-slate-400 my-4'> coderAccess is simplifing your DevDream...</p>
 
