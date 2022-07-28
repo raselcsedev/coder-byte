@@ -1,0 +1,22 @@
+[
+    {
+
+          
+        "title":"Sum of two integer (DS)",
+        "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
+        "example":"a=7 b=3 return 10",
+        "type":"EASY",
+        "star":false,
+        "id":1
+
+    },
+    {
+  
+        "title":"Multiply of two integer (DS)",
+        "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
+        "example":"a=7 b=3 return 10",
+        "type":"Hard",
+        "star":false,
+        "id":2
+    }
+]
