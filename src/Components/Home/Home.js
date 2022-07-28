@@ -10,18 +10,13 @@ import Course from '../Courses/Course'
 const Home = () => {
     return (
         <div className=''>
-            
-<Homepage></Homepage>
-<DashbordMain></DashbordMain>
+
+            <Homepage></Homepage>
             <Codevideo></Codevideo>
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Course></Course>
             <FeaturedCompanies></FeaturedCompanies>
-            <CodeEditor></CodeEditor>
-
-            {/* <Editor></Editor> */}
-            
         </div>
     );
 };
