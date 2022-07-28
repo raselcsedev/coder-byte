@@ -94,7 +94,7 @@ const Profile = () => {
 
 
 
-                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></p>
@@ -108,7 +108,7 @@ const Profile = () => {
 
                                                 <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
 
-                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%]  btn btn-xs my-3  border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%]  btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     </svg></p>
@@ -145,7 +145,7 @@ const Profile = () => {
 
 
 
-                                        <p onClick={onImageUpload} style={{ zIndex: '3' }} className='absolute absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%] btn btn-xs rounded-full w-8 h-8 my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <p onClick={onImageUpload} style={{ zIndex: '3' }} className='absolute absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%] btn btn-xs rounded-full w-8 h-8 my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg></p>
 
@@ -166,18 +166,18 @@ const Profile = () => {
 
 
 
-                        <label for="my-modal-5" className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 border-[white]'><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <label for="my-modal-3" className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg> <span className='mx-1'>Edit Profile </span>
                         </label>
 
 
-                        <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+                        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
                         <div class="modal">
                             <div class="modal-box bg-slate-600 w-12/12 max-w-6xl">
                                <EditProfile></EditProfile>
                                 <div class="modal-action">
-                                    <label for="my-modal-5" class="btn">Yay!</label>
+                                    <label for="my-modal-3" class="btn">Yay!</label>
                                 </div>
                             </div>
                         </div>
