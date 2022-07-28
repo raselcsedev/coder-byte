@@ -2,7 +2,6 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle} from 'react-firebas
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-;
 
 const SignIn = () => {
 

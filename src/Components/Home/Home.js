@@ -14,7 +14,7 @@ const Home = () => {
 <Homepage></Homepage>
 <DashbordMain></DashbordMain>
             <Codevideo></Codevideo>
-            <DashbordMain></DashbordMain>
+            {/* <DashbordMain></DashbordMain> */}
             <Languages></Languages>
             <Course></Course>
             <FeaturedCompanies></FeaturedCompanies>

@@ -12,7 +12,7 @@ const Course = () => {
   const data = datas.slice(0, 9);
   return (
     <div className="">
-      <h2 className="text-4xl font-smibold font-serif text-center py-12">Sharpen Your Skills With Our</h2>
+      <h2 className="text-4xl font-smibold font-serif text-center py-12">Sharpen Your Skills With Our courses</h2>
       <section className=" flex justify-center mb-36 ">
         <div className=" grid grid-cols-1 lg:grid-cols-3  gap-12">
           {data.map((data) => (

@@ -1,6 +1,13 @@
 import React from 'react';
 import './DashbordMain.css'
+import { Link } from 'react-router-dom';
 const DashbordMain = () => {
+
+//     const nevigate = useNavigate();
+
+//   const nevigateTogetcertified = () =>{
+//         nevigate('/getcertified');
+//   }
     return (
             <div className='DashbordMainContainer w-[80%] mx-auto pb-36'>
                 <h1 className='font-bold text-5xl mt-36 mb-20 text-center'>Your Preparation</h1>
@@ -32,9 +39,9 @@ const DashbordMain = () => {
                                 <div class="card-body">
                                     <h2 class="card-title text-black text-2xl">Problem Solving (Basic)</h2>
                                     <h1 className='text-[#757979] '>Increase Your programing skill by contest</h1>
-                                    <button class=" m bg-transparent w-2/5 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                        Learn more
-                                    </button>
+                                    <Link to="getcertified"><button class=" m bg-transparent w-2/5 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                        Get Certified
+                                    </button></Link>
                                 </div>
                             </div>
                         </div>
