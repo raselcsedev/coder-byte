@@ -17,7 +17,7 @@ const EditProfile = ({ updateHandler }) => {
 
         <div>
             <div className='text-[white]'>
-                <h1 className='text-2xl font-semibold py-4'>Edit Profile</h1>
+                <h1 className='text-2xl font-semibold py-4'>Update Profile</h1>
                 <div class="hidden sm:block" aria-hidden="true">
                     <div class="py-5">
                         <div class="border-t border-gray-200"></div>

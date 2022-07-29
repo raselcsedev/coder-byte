@@ -2,24 +2,33 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 // import MobileProfileSide from '../MobileProfileSide';
-// import useCourses from '../Shared/useCourses';
 import ImageUploading from 'react-images-uploading';
 import EditProfile from './EditProfile';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import './profile.css'
+import useCourses from '../Shared/useCourses';
+import { Link } from 'react-router-dom';
 
 
 
 const Profile = () => {
 
 
+    const [courses, setCourses] = useCourses()
 
 
     const [user] = useAuthState(auth);
 
 
     const [coverPhoto, setCoverPhoto] = useState([]);
+
+    const [connected, setConnected] = useState(false)
+
+    const handleConnected = () => {
+
+        setConnected(true)
+    }
 
 
     const onChangeCover = (imageList) => {
@@ -64,7 +73,7 @@ const Profile = () => {
     }
 
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
 
     const [updates, setUpdates] = useState()
@@ -294,7 +303,9 @@ const Profile = () => {
                             </div>
                             <div className="collapse-content">
                                 <p>
-                                    <a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 ' href="">Click here  </a> to participate the contest.
+                                    Amazon Last Mile Coding Challenge 2022. <br />
+
+                                    <Link className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg ' to="/contests">Click here  </Link> to participate the contest.
                                 </p>
                             </div>
                         </div>
@@ -322,65 +333,19 @@ const Profile = () => {
                     </div>
 
 
-                    <div className='card bg-slate-800 p-4 border-slate-600 border'>
-                        <h1 className='mb-3 text-white font-bold'>Suggested Courses For You </h1>
-
-                        <div className='divide divide-y divide-[black]'>
+                    <div className='card border-slate-600 border bg-slate-800 text-white p-4'>
+                        <h1 className='mb-3 font-bold'>Sharpen Your Skill-sets</h1>
+                        <div className='divide divide-y'>
                             {
-                                more
-                                    ?
-                                    //  courses.map(course => 
-                                    //<div className='flex py-3'>
-                                    //     <img className='w-24 h-16 mr-3 rounded' src={course.img} alt="" />
-                                    //     <a href={`/${course.id}`}><p className='font-semibold text-sm hover:text-[brown]'>{course.title}</p></a>
-                                    // </div>).slice(0, 3)
-                                    //     :
-                                    //     courses.map(course => <div className='flex py-3'>
-                                    //         <img className='w-24 h-16 mr-3 rounded' src={course.img} alt="" />
-                                    //         <a href={`/${course.id}`}> <p className='font-semibold text-sm hover:text-[brown]'>{course.title}</p></a>
-                                    //     </div>).slice(0, 5)
-
-                                    <div className='bg-slate-800 divide-y divide-gray-600'>
-
-
-                                        <div className=' flex py-3  '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-
-                                    </div>
+                                more ? courses.map(course => <div className='flex py-3'>
+                                    <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.course_img} alt="" />
+                                    <a href={`/${course.id}`}><p className='font-semibold text-sm hover:text-primary'>{course.title}</p></a>
+                                </div>).slice(0, 3)
                                     :
-                                    <div className='bg-slate-800 divide-y divide-gray-600 '>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-                                        <div className=' flex py-3 '>
-                                            <img className='w-24 h-16 mr-3 rounded' src='https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?t=st=1658758490~exp=1658759090~hmac=e96c4f0f9c3718d19c3ed0005a2f6cbb14caf1f57e4fbe08948510646a5f9fff&w=900' alt="" />
-                                            <a href=''><p className='text-white font-semibold text-sm hover:text-slate-400'>Basic DSA Course</p></a>
-                                        </div>
-
-                                    </div>
+                                    courses.map(course => <div className='flex py-3'>
+                                        <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.course_img} alt="" />
+                                        <a href={`/${course.id}`}> <p className='font-semibold text-sm hover:text-primary'>{course.title}</p></a>
+                                    </div>).slice(0, 5)
                             }
 
 
@@ -389,141 +354,48 @@ const Profile = () => {
 
                         {
                             !more &&
-                            <button onClick={seeMore} className='cursor-pointer btn border-[black] btn-sm  normal-case bg-slate-700 text-white'>See less </button>
+                            <button onClick={seeMore} className='bg-slate-600 hover:bg-slate-700 cursor-pointer btn border-[black] btn-sm btn-ghost normal-case'>See less </button>
 
                         }
                         {more &&
-                            <button onClick={seeLess} className='cursor-pointer btn border-[black] btn-sm  normal-case bg-slate-700 text-white'>See more </button>
+                            <button onClick={seeLess} className='bg-slate-600 hover:bg-slate-700 cursor-pointer btn border-[black] btn-sm btn-ghost normal-case'>See more </button>
 
 
                         }
                     </div>
 
-                    <div className='card bg-slate-800 p-4 my-4 border-slate-600 border' >
-                        <h1 className='mb-3 font-bold text-white'>Stay Connected With Other Coders </h1>
-                        {/* <div className='divide divide-y'>
+                    <div className='card text-white p-4 my-4 border-slate-600 border bg-slate-800' >
+                        <h1 className='mb-3 font-bold'>Stay Connected With Experts </h1>
+                        <div className='divide divide-y'>
                             {
-                                more2 ?
-                                
-                                courses.map(course => <div className='p-2'>
+                                more2 ? courses.map(course => <div className='p-2'>
                                     <div className='flex items-center mb-1'>
-                                        <img className='w-24 h-16 mr-3 rounded' src={course.img2} alt="" />
-                                        <a href="/about"><p className='font-semibold text-xs hover:text-[brown]'>{course.guided}</p></a>
+                                        <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.instructor_img} alt="" />
+                                        <a href="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></a>
                                     </div>
-                                    <button className='btn btn-xs bg-[white] border-[brown] btn-ghost text-[brown] ml-20'>Connect</button>
+                                    <button className='btn btn-xs bg-slate-200 border-black btn-ghost text-black hover:text-white hover:bg-primary ml-20'>Connect</button>
                                 </div>).slice(0, 3)
                                     :
                                     courses.map(course => <div className='p-2'>
                                         <div className='flex items-center mb-1'>
-                                            <img className='w-24 h-16 mr-3 rounded' src={course.img2} alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs hover:text-[brown]'>{course.guided}</p></a>
+                                            <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.instructor_img} alt="" />
+                                            <a href="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></a>
                                         </div>
-                                        <button className='btn btn-xs bg-[white] border-[brown] btn-ghost text-[brown] ml-20'>Connect</button>
+                                        <button className='btn btn-xs bg-slate-200 border-black btn-ghost text-black hover:text-white hover:bg-primary ml-20'>Connect</button>
                                     </div>).slice(0, 5)
-
                             }
 
 
 
-                        </div> */}
-
-                        {
-                            more2 ?
-                                <div className='divide-y divide-gray-600'>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                :
-                                <div className='divide-y divide-gray-600'>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                    <div className='p-2'>
-                                        <div className='flex bg-slate-800 items-center mb-1'>
-                                            <img className='w-16 mr-3 rounded-full' src='https://i.stack.imgur.com/frlIf.png' alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs text-white hover:text-slate-400'>name</p></a>
-                                            <button className='btn btn-xs  border-black text-[white] bg-black ml-20'>Connect</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                        }
+                        </div>
 
                         {
                             !more2 &&
-                            <button onClick={seeMore2} className='cursor-pointer btn border-[black] btn-sm  normal-case bg-slate-700 text-white '>See less </button>
+                            <button onClick={seeMore2} className='cursor-pointer btn border-[black] btn-sm btn-ghost bg-slate-600 hover:bg-slate-700 normal-case'>See less </button>
 
                         }
                         {more2 &&
-                            <button onClick={seeLess2} className='cursor-pointer btn border-[black] btn-sm  normal-case bg-slate-700 text-white'>See more </button>
+                            <button onClick={seeLess2} className='cursor-pointer btn border-[black] btn-sm btn-ghost bg-slate-600 hover:bg-slate-700 normal-case'>See more </button>
 
 
                         }
