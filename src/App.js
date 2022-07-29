@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 // import SignIn from './Components/Auth/SignIn';
 // import SignUp from './Components/Auth/SignUp';
 import CodeEditor from './Components/CodeEditor/CodeEditor';
+import Contests from './Components/GetCertificate/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
 /* import Editor from './Components/CodeEditor/Editor';
 import Codevideo from './Components/CodeVideo/Codevideo';
@@ -24,6 +25,7 @@ function App() {
         <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route>
         <Route path='/profile' element={<Profile></Profile>}></Route>
         <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
+        <Route path='/contests' element={<Contests></Contests>}></Route>
         {/* <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path='/sign-in' element={<SignIn></SignIn>}></Route> */}
       </Routes>

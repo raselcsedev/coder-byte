@@ -3,9 +3,9 @@ import problem from "../../Images/problem.jpg";
 import problem1 from "../../Images/problem2.jpg";
 const GetCertified = () => {
   return (
-    <div>
-      <h1 className="ml-32 mt-12 text-2xl font-bold">Problem Solving (Basic) Skills Certification Test</h1>
-      <div class="mx-32 divider"></div>
+    <div className="mx-32">
+      <h1 className="mt-12 text-2xl font-bold">Problem Solving (Basic) Skills Certification Test</h1>
+      <div class="divider"></div>
       <div class="hero  flex flex-col space-y-2">
         <div class="hero-content flex-col lg:flex-row-reverse">
           <img src={problem} class="max-w-sm rounded-lg shadow-2xl ml-8" alt="" />
