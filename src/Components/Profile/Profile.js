@@ -5,9 +5,15 @@ import auth from '../../firebase.init';
 // import useCourses from '../Shared/useCourses';
 import ImageUploading from 'react-images-uploading';
 import EditProfile from './EditProfile';
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+import './profile.css'
+
 
 
 const Profile = () => {
+
+
 
 
     const [user] = useAuthState(auth);
@@ -54,6 +60,19 @@ const Profile = () => {
     const seeLess2 = () => {
         setMore2(false)
 
+
+    }
+
+
+    const [open, setOpen] = React.useState(false);
+
+
+    const [updates, setUpdates] = useState()
+
+    const updateHandler = (data) => {
+
+        console.log(data);
+        setUpdates(data)
 
     }
 
@@ -163,25 +182,17 @@ const Profile = () => {
                             </ImageUploading>
                         }
 
-
-
-
-                        <label for="my-modal-3" className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <button onClick={() => setOpen(true)} className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg> <span className='mx-1'>Edit Profile </span>
-                        </label>
+                        </button>
 
-
-                        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-                        <div class="modal">
-                            <div class="modal-box bg-slate-600 w-12/12 max-w-6xl">
-                               <EditProfile></EditProfile>
-                                <div class="modal-action">
-                                    <label for="my-modal-3" class="btn">Yay!</label>
-                                </div>
-                            </div>
-                        </div>
-
+                        <Modal classNames={{
+                            overlay: 'customOverlay',
+                            modal: 'customModal',
+                        }} open={open} onClose={() => setOpen(false)}>
+                            <EditProfile></EditProfile>
+                        </Modal>
 
                         <div className='w-[98%]  mt-[-8%] md:mt-[-3%] overflow-x-auto'>
                             <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-[white] text-lg leading-6 font-medium  rounded ">{user?.displayName}</p>

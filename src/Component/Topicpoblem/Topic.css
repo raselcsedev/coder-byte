@@ -1,0 +1,7 @@
+.lists{
+    position: fixed;
+    left:  0px;
+    height: 50%;
+    background-color: aqua;
+    padding: 50px;
+}

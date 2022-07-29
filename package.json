@@ -20,9 +20,13 @@
     "react-firebase-hooks": "^5.0.3",
     "react-hook-form": "^7.33.1",
     "react-images-uploading": "^3.1.7",
+    "react-modal": "^3.15.1",
     "react-redux": "^8.0.2",
+    "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.3.0",
     "react-run-code": "^0.2.1",
+    "react-query": "^4.0.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
