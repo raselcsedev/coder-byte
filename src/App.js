@@ -12,6 +12,7 @@ import FeaturedCompanies from './Components/FeaturedCompanies/FeaturedCompanies'
 // import { Counter } from './features/counter/Counter';
 // import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
+import NotFound from './Components/NotFound/NotFound';
 import Profile from './Components/Profile/Profile';
 import Footer from './Footer/Footer';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path='/contests' element={<Contests></Contests>}></Route>
         {/* <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path='/sign-in' element={<SignIn></SignIn>}></Route> */}
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
