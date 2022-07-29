@@ -95,6 +95,7 @@ const Header = () => {
             <CustomLink class=" btn-ghost hover:rounded md:p-3 md:m-5" to='/'>Home</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contests'>Emulate</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/courses'>Courses</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
 

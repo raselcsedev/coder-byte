@@ -100,7 +100,7 @@ const Profile = () => {
                 <div className='col-span-9 drop-shadow-2xl mb-10 border-slate-600 rounded-lg relative'>
 
 
-                    <div style={{ zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: "url('https://img.freepik.com/free-photo/abstract-luxury-soft-red-background-christmas-valentines-layout-design-web-template-business-report-with-smooth-circle-gradient-color_1258-54733.jpg?t=st=1658818870~exp=1658819470~hmac=2d3f32995c72fd5b75c221a544c6e172108886b77aea4550ae4788e2a14c7022&w=1060')" }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
+                    <div style={{ zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: "url('https://img.freepik.com/free-vector/digital-binary-code-algorithm-stream-matrix-background_1017-25328.jpg?w=1060&t=st=1659104416~exp=1659105016~hmac=a8d1acd89321aacd3cb782d2ce81e72d2c9f6d5004aed0eeca4f5fd8f90b2248')" }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
 
@@ -246,11 +246,11 @@ const Profile = () => {
                                     </div>
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Problem-solving History</dt>
-                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 ' href="">Click to </a> See the history </dd>
+                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
                                     </div>
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Achievements / Certifications</dt>
-                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 ' href="">Upload </a> Documents </dd>
+                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Upload </a> Documents </dd>
                                     </div>
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Attachments</dt>
