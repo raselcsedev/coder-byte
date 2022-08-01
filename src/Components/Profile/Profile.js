@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-// import MobileProfileSide from '../MobileProfileSide';
 import ImageUploading from 'react-images-uploading';
 import EditProfile from './EditProfile';
 import { Modal } from 'react-responsive-modal';
@@ -9,6 +8,7 @@ import 'react-responsive-modal/styles.css';
 import './profile.css'
 import useCourses from '../Shared/useCourses';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 
 
@@ -20,32 +20,41 @@ const Profile = () => {
 
     const [user] = useAuthState(auth);
 
-
-    const [coverPhoto, setCoverPhoto] = useState([]);
-
-    const [connected, setConnected] = useState(false)
-
-    const handleConnected = () => {
-
-        setConnected(true)
-    }
-
-
-    const onChangeCover = (imageList) => {
-        setCoverPhoto(imageList)
-
-        console.log(imageList);
-    }
     const [profilePhoto, setProfilePhoto] = useState([]);
 
+    const onChangeProfile = (data) => {
+        setProfilePhoto(data)
 
-    const onChangeProfile = (imageList) => {
-        setProfilePhoto(imageList)
+        console.log(data[0].file);
 
-        console.log(imageList);
+        const imgAPIKey = '10cf9fb6967774dfe63805d01bba1ab7'
+        const image = data[0].file
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        fetch(url,
+            {
+                method: "POST",
+                body: formData
+
+            })
+            .then(res => res.json())
+            .then(async result => {
+                console.log('imgbbprofile', result)
+                console.log('imgbbprofilephoto', result.data.url)
+
+                const profilePhoto=result.data.url
+                const email = user?.email
+                await fetch(`http://localhost:5000/profiles/${email}`, 
+                {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({profilePhoto})
+                })
+            })
     }
-
-
 
     const [more, setMore] = useState(false)
     const [more2, setMore2] = useState(false)
@@ -72,37 +81,67 @@ const Profile = () => {
 
     }
 
-
     const [open, setOpen] = useState(false);
 
 
     const [updates, setUpdates] = useState()
 
-    
-    const updateProfile=(data)=>{
+
+    const updateProfile = (data) => {
 
         setUpdates(data)
 
-        console.log('updated data',data);
+        console.log('updated data', data);
 
     }
 
+    const [coverPhoto, setCoverPhoto] = useState([]);
 
+    const onChangeCover = (data) => {
 
+        setCoverPhoto(data)
+
+        console.log(data[0].file);
+
+        const imgAPIKey = '2cdd05bce545560e4148d963a8b857be'
+        const image = data[0].file
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        fetch(url,
+            {
+                method: "POST",
+                body: formData
+
+            })
+            .then(res => res.json())
+           .then(async result => {
+                console.log('imgbbCover', result)
+                console.log('imgbbCoverPhoto', result.data.url)
+
+                const coverPhoto=result.data.url
+                const email = user?.email
+                await fetch(`http://localhost:5000/profiles/${email}`, 
+                {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({coverPhoto})
+                })
+            })
+    }
 
     return (
         <div className=' bg-[#171B26] pt-20 '>
-
-
-
             <div className='md:grid md:grid-cols-12  md:w-[80%] md:mx-auto md:gap-6'>
-
-
 
                 <div className='col-span-9 drop-shadow-2xl mb-10 border-slate-600 rounded-lg relative'>
 
-
-                    <div style={{ zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: "url('https://img.freepik.com/free-vector/digital-binary-code-algorithm-stream-matrix-background_1017-25328.jpg?w=1060&t=st=1659104416~exp=1659105016~hmac=a8d1acd89321aacd3cb782d2ce81e72d2c9f6d5004aed0eeca4f5fd8f90b2248')" }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
+                    <div style={{
+                        zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "",
+                        backgroundImage: "url('https://img.freepik.com/free-vector/digital-binary-code-algorithm-stream-matrix-background_1017-25328.jpg?w=1060&t=st=1659104416~exp=1659105016~hmac=a8d1acd89321aacd3cb782d2ce81e72d2c9f6d5004aed0eeca4f5fd8f90b2248')"
+                    }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
 
@@ -121,19 +160,15 @@ const Profile = () => {
                             }) => (
 
                                 <div className="upload__image-wrapper">
-
-
-
                                     <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></p>
 
-
                                     {
                                         imageList?.map((image, index) => (
 
-                                            <div style={{ zIndex: '1', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: `url(${image['data_url']})` }}
+                                            <div style={{ zIndex: '1', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: `url(${image.data_url})` }}
                                                 class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto absolute top-[0%] right-[0%]  shadow overflow-hidden sm:rounded-t-lg' >
 
                                                 <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >

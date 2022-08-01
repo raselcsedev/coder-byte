@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { QueryClient, QueryClientProvider, useQuery, useMutation } from '@tanstack/react-query'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import toast,{ Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const EditProfile = ({ updateProfile }) => {
@@ -15,6 +15,8 @@ const EditProfile = ({ updateProfile }) => {
 
     const onSubmit = async (data) => {
 
+        updateProfile(data)
+
         const email = user?.email
         await fetch(`http://localhost:5000/profiles/${email}`, {
             method: 'PUT',
@@ -23,8 +25,6 @@ const EditProfile = ({ updateProfile }) => {
             },
             body: JSON.stringify(data)
         })
-
-        updateProfile(data)
 
         toast.success("Information Updated")
     }
@@ -36,7 +36,7 @@ const EditProfile = ({ updateProfile }) => {
 
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Toaster/>
+                <Toaster />
 
                 <div>
                     <div className='text-[white]'>
@@ -156,8 +156,8 @@ const EditProfile = ({ updateProfile }) => {
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                                <label for="postal-code" class="block text-sm font-medium ">ZIP / Postal code</label>
-                                                <input  {...register("postal-code")} style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class=" p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                                <label for="postalCcode" class="block text-sm font-medium ">ZIP / Postal code</label>
+                                                <input  {...register("postalCode")} style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="postalCode" id="postalCode" autocomplete="postal-code" class=" p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                             </div>
                                         </div>
                                     </div>
