@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import ImageUploading from 'react-images-uploading';
@@ -14,18 +14,42 @@ import { useForm } from 'react-hook-form';
 
 const Profile = () => {
 
+    const [user] = useAuthState(auth);
 
     const [courses, setCourses] = useCourses()
 
+    const [profileUpdates, setProfileUpdates] = useState()
 
-    const [user] = useAuthState(auth);
+
+    const updatedProfile = (data) => {
+
+        setProfileUpdates(data)
+
+        console.log('updated data', data);
+    }
+
+    const [profile, setProfile] = useState({})
+
+    const email = user?.email
+    const url = `http://localhost:5000/profiles?email=${email}`
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setProfile(data[0])
+                console.log('profileInfo', data[0])
+
+            })
+
+    }, [])
+
 
     const [profilePhoto, setProfilePhoto] = useState([]);
 
     const onChangeProfile = (data) => {
         setProfilePhoto(data)
 
-        console.log(data[0].file);
+        console.log('profilepic', data[0].file);
 
         const imgAPIKey = '10cf9fb6967774dfe63805d01bba1ab7'
         const image = data[0].file
@@ -40,20 +64,57 @@ const Profile = () => {
             })
             .then(res => res.json())
             .then(async result => {
-                console.log('imgbbprofile', result)
-                console.log('imgbbprofilephoto', result.data.url)
+                console.log('imgbbPjrofile', result)
+                console.log('imgbbProfilePhoto', result.data.url)
 
-                const profilePhoto=result.data.url
-                const email = user?.email
-                await fetch(`http://localhost:5000/profiles/${email}`, 
-                {
-                    method: 'PUT',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({profilePhoto})
-                })
+                const profilePhoto = result.data.url
+                await fetch(`http://localhost:5000/profiles/${email}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify({ profilePhoto })
+                    })
             })
+    }
+
+    const [coverPhoto, setCoverPhoto] = useState([]);
+
+    const onChangeCover = (data) => {
+
+        setCoverPhoto(data)
+
+        console.log('coverpic', data[0].file);
+
+        const imgAPIKey = '2cdd05bce545560e4148d963a8b857be'
+        const image = data[0].file
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        fetch(url,
+            {
+                method: "POST",
+                body: formData
+
+            })
+            .then(res => res.json())
+            .then(async result => {
+                console.log('imgbbCover', result)
+                console.log('imgbbCoverPhoto', result.data.url)
+
+                const coverPhoto = result.data.url
+
+                await fetch(`http://localhost:5000/profiles/${email}`,
+                    {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify({ coverPhoto })
+                    })
+            })
+
     }
 
     const [more, setMore] = useState(false)
@@ -72,75 +133,27 @@ const Profile = () => {
 
     const seeLess = () => {
         setMore(false)
-
-
     }
+
     const seeLess2 = () => {
         setMore2(false)
-
-
     }
 
     const [open, setOpen] = useState(false);
 
+    const { about, county, region, website, postalCode, city, } = profile
 
-    const [updates, setUpdates] = useState()
-
-
-    const updateProfile = (data) => {
-
-        setUpdates(data)
-
-        console.log('updated data', data);
-
-    }
-
-    const [coverPhoto, setCoverPhoto] = useState([]);
-
-    const onChangeCover = (data) => {
-
-        setCoverPhoto(data)
-
-        console.log(data[0].file);
-
-        const imgAPIKey = '2cdd05bce545560e4148d963a8b857be'
-        const image = data[0].file
-        const formData = new FormData()
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
-        fetch(url,
-            {
-                method: "POST",
-                body: formData
-
-            })
-            .then(res => res.json())
-           .then(async result => {
-                console.log('imgbbCover', result)
-                console.log('imgbbCoverPhoto', result.data.url)
-
-                const coverPhoto=result.data.url
-                const email = user?.email
-                await fetch(`http://localhost:5000/profiles/${email}`, 
-                {
-                    method: 'PUT',
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                    body: JSON.stringify({coverPhoto})
-                })
-            })
-    }
 
     return (
         <div className=' bg-[#171B26] pt-20 '>
+
             <div className='md:grid md:grid-cols-12  md:w-[80%] md:mx-auto md:gap-6'>
 
                 <div className='col-span-9 drop-shadow-2xl mb-10 border-slate-600 rounded-lg relative'>
 
                     <div style={{
                         zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "",
-                        backgroundImage: "url('https://img.freepik.com/free-vector/digital-binary-code-algorithm-stream-matrix-background_1017-25328.jpg?w=1060&t=st=1659104416~exp=1659105016~hmac=a8d1acd89321aacd3cb782d2ce81e72d2c9f6d5004aed0eeca4f5fd8f90b2248')"
+                        backgroundImage: `url(${profile?.coverPhoto ? profile?.coverPhoto :'https://amdmediccentar.rs/wp-content/plugins/uix-page-builder/includes/uixpbform/images/default-cover-4.jpg'})`
                     }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
@@ -160,7 +173,7 @@ const Profile = () => {
                             }) => (
 
                                 <div className="upload__image-wrapper">
-                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></p>
@@ -168,12 +181,15 @@ const Profile = () => {
                                     {
                                         imageList?.map((image, index) => (
 
-                                            <div style={{ zIndex: '1', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "", backgroundImage: `url(${image.data_url})` }}
+                                            <div style={{
+                                                zIndex: '1', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "",
+                                                backgroundImage: `url(${image?.data_url ? image?.data_url : profile?.coverPhoto})`
+                                            }}
                                                 class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto absolute top-[0%] right-[0%]  shadow overflow-hidden sm:rounded-t-lg' >
 
                                                 <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
 
-                                                    <p onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%]  btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%]  btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     </svg></p>
@@ -190,9 +206,10 @@ const Profile = () => {
 
                     <div style={{ zIndex: '20' }} className='relative bg-slate-800 pt-20 border-slate-600 border rounded-b-lg border-t-0 mx-auto '>
 
-                        <img style={{ zIndex: '2' }} class="md:w-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  "
-                            src="https://i.stack.imgur.com/frlIf.png" alt='' />
-
+                        <img style={{ zIndex: '2' }} class="md:w-36 h-36 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  "
+                            src={profile?.profilePhoto ? profile?.profilePhoto
+                                :
+                                'https://avatars.githubusercontent.com/u/4522103?v=4'} alt='' />
 
                         {
 
@@ -208,18 +225,16 @@ const Profile = () => {
 
                                     <div className="upload__image-wrapper">
 
-
-
-                                        <p onClick={onImageUpload} style={{ zIndex: '3' }} className='absolute absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%] btn btn-xs rounded-full w-8 h-8 my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg></p>
-
+                                        <p title='Change profile photo' onClick={onImageUpload} style={{ zIndex: '3' }} className='absolute absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%] btn btn-xs rounded-full w-8 h-8 my-3 '>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg></p>
 
                                         {
                                             imageList?.map((image, index) => (
 
-                                                <img style={{ zIndex: '2' }} class="md:w-36 h-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  " src={image['data_url']} alt="" />
-
+                                                <img style={{ zIndex: '2' }} class="md:w-36 h-36 w-32 border border-[white] border-4 absolute bottom-[97%] right-[61%]  md:bottom-[95%] md:right-[81%]  rounded-full  "
+                                                    src={image?.data_url ? image?.data_url : profile?.profilePhoto} alt="" />
                                             ))
                                         }
 
@@ -228,7 +243,7 @@ const Profile = () => {
                             </ImageUploading>
                         }
 
-                        <button onClick={() => setOpen(true)} className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <button title='Update profile' onClick={() => setOpen(true)} className='modal-button absolute bottom-[94.5%] right-[2%]  md:bottom-[92%] md:right-[1%] btn btn-xs my-3 '><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                         </svg> <span className='mx-1'>Edit Profile </span>
                         </button>
@@ -237,11 +252,13 @@ const Profile = () => {
                             overlay: 'customOverlay',
                             modal: 'customModal',
                         }} open={open} onClose={() => setOpen(false)}>
-                            <EditProfile updateProfile={updateProfile}></EditProfile>
+                            <EditProfile updatedProfile={updatedProfile}></EditProfile>
                         </Modal>
 
                         <div className='w-[98%]  mt-[-8%] md:mt-[-3%] overflow-x-auto'>
-                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-[white] text-lg leading-6 font-medium  rounded ">{user?.displayName}</p>
+                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-[white] text-lg leading-6 font-medium  rounded ">
+                                {profileUpdates?.displayName ? profileUpdates?.displayName : profile?.displayName}
+                            </p>
 
                         </div>
 
@@ -252,7 +269,8 @@ const Profile = () => {
 
                                     <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
-                                            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+                                            {profileUpdates?.about ? profileUpdates?.about : profile?.about}
+
                                         </dd>
                                     </div>
                                     <div className='px-4'>
@@ -264,29 +282,34 @@ const Profile = () => {
                                             <img className='w-14' src="https://raw.githubusercontent.com/Schweinepriester/github-profile-achievements/main/images/quickdraw-default.png" alt="" />
 
                                         </div>
-                                        <dd class="my-2 text-sm text-gray-300 "><a className='text-indigo-600 hover:text-indigo-500 font-semibold t mx-2 ' href="">Click to </a>know more about badges. </dd>
+                                        <dd class="my-2 text-gray-300 "><a className='text-indigo-600 hover:text-indigo-500 font-semibold t mx-2 ' href="">Click to </a>know more about badges. </dd>
 
                                     </div>
 
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-200">Profile status</dt>
-                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2">Instructor / Student / Admin</dd>
+                                        <dt class="text-sm font-medium text-gray-200">Website</dt>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
+                                            <a>
+                                                {profileUpdates?.website ? profileUpdates?.website : profile?.website}
+
+                                            </a>
+                                        </dd>
                                     </div>
 
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-200">Email address</dt>
-                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2">{user?.email}</dd>
+                                        <dt class="font-medium text-gray-200">Email address</dt>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">{user?.email}</dd>
                                     </div>
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-200">Enrolled Course</dt>
-                                        <dd class="mt-1 text-sm text-gray-200 sm:mt-0 sm:col-span-2"><a href="/courses"><button className='btn btn-xs'>My Courses</button></a></dd>
+                                        <dt class="font-medium text-gray-200">Enrolled Course</dt>
+                                        <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="/courses"><button className='btn btn-xs'>My Courses</button></a></dd>
                                     </div>
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-200">Problem-solving History</dt>
-                                        <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+                                        <dt class="font-medium text-gray-200">Problem-solving History</dt>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
                                     </div>
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dt class="text-sm font-medium text-gray-200">Achievements / Certifications</dt>
+                                        <dt class="font-medium text-gray-200">Achievements / Certifications</dt>
                                         <dd class="mt-1 text-sm text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Upload </a> Documents </dd>
                                     </div>
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -316,6 +339,15 @@ const Profile = () => {
                                                     </div>
                                                 </li>
                                             </ul>
+                                        </dd>
+                                    </div>
+                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="font-medium text-gray-200">Lives In </dt>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
+                                            {profileUpdates?.city ? profileUpdates?.city : profile?.city}, {' '}
+                                            {profileUpdates?.region ? profileUpdates?.region : profile?.region}{`-`}
+                                            {profileUpdates?.postalCode ? profileUpdates?.postalCode : profile?.postalCode},{' '}
+                                            {profileUpdates?.country ? profileUpdates?.country : profile?.country}
                                         </dd>
                                     </div>
                                 </dl>
