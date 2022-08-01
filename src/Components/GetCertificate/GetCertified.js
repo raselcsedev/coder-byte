@@ -28,7 +28,7 @@ const GetCertified = () => {
       </div>
 
       <div class="hero my-16">
-        <div class="hero-content flex-col lg:flex-row space-x-40">
+        <div class="hero-content flex-col lg:flex-row sm:flex-row space-x-40">
           <img src={problem1} class="max-w-sm rounded-lg shadow-2xl" alt=""/>
           <div>
             <h1 class="text-3xl font-bold leading-normal"><span className="ml-28 text-amber-400">Best</span><br />Tips to Solve any <br />Programming <span className="text-red-400">Problem</span></h1>
