@@ -22,6 +22,7 @@ import AllCourses from './Components/AllCourses/AllCourses';
 import CourseDetail from './Components/CourseDetail/CourseDetail'
 import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 import About from './Components/AboutUs/AboutUs';
+import AllUsers from './features/Profiles/AllUsers';
 const queryClient = new QueryClient()
 
 function App() {
@@ -57,7 +58,9 @@ function App() {
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
         </Routes>
         <Footer></Footer>
+        <AllUsers></AllUsers>
       </QueryClientProvider>
+
 
     </div>)
 }

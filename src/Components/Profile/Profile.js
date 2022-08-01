@@ -78,10 +78,12 @@ const Profile = () => {
 
     const [updates, setUpdates] = useState()
 
-    const updateHandler = (data) => {
+    
+    const updateProfile=(data)=>{
 
-        console.log(data);
         setUpdates(data)
+
+        console.log('updated data',data);
 
     }
 
@@ -200,7 +202,7 @@ const Profile = () => {
                             overlay: 'customOverlay',
                             modal: 'customModal',
                         }} open={open} onClose={() => setOpen(false)}>
-                            <EditProfile></EditProfile>
+                            <EditProfile updateProfile={updateProfile}></EditProfile>
                         </Modal>
 
                         <div className='w-[98%]  mt-[-8%] md:mt-[-3%] overflow-x-auto'>
@@ -288,7 +290,6 @@ const Profile = () => {
 
                     </div>
 
-
                 </div>
 
                 <div className='col-span-3  '>
@@ -371,7 +372,7 @@ const Profile = () => {
                                 more2 ? courses.map(course => <div className='p-2'>
                                     <div className='flex items-center mb-1'>
                                         <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.instructor_img} alt="" />
-                                        <a href="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></a>
+                                        <Link to="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></Link>
                                     </div>
                                     <button className='btn btn-xs bg-slate-200 border-black btn-ghost text-black hover:text-white hover:bg-primary ml-20'>Connect</button>
                                 </div>).slice(0, 3)
@@ -379,7 +380,7 @@ const Profile = () => {
                                     courses.map(course => <div className='p-2'>
                                         <div className='flex items-center mb-1'>
                                             <img className='w-24 h-16 mr-3 rounded border border-slate-400' src={course?.instructor_img} alt="" />
-                                            <a href="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></a>
+                                            <Link to="/about"><p className='font-semibold text-xs hover:text-primary'>{course?.instructor}</p></Link>
                                         </div>
                                         <button className='btn btn-xs bg-slate-200 border-black btn-ghost text-black hover:text-white hover:bg-primary ml-20'>Connect</button>
                                     </div>).slice(0, 5)
