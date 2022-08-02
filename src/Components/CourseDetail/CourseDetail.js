@@ -49,7 +49,7 @@ const Details = () => {
                     <div class="divider mt-4 col-span-7"></div>
                 </div>
 
-                <img loading='lazy' className='my-5' src={course?.course_img} alt="" />
+                <img loading='lazy' className='my-8 border-2 rounded w-[75%]' src={course?.course_img} alt="" />
 
                 <p className='my-4'>{course?.description}</p>
                 <p className='my-4 font-semibold'>{course?.description}</p>

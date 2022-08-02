@@ -94,17 +94,18 @@ function CodeEditor() {
                     <div className=" my-2 overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
                         <div style={{ zIndex: '4' }} class="absolute bottom-[92%] right-[69.5%] form-control w-full max-w-xs bg-slate-900">
 
-                            <select onChange={ (e)=>onChange(e)} class="select w-[130%] select-bordered bg-slate-600 text-white">
+                            <select onChange={(e) => onChange(e)} class="select w-[130%] select-bordered bg-slate-600 text-white">
                                 <option >Select Language</option>
                                 <option value='C'>C</option>
                                 <option value='C++' >C++</option>
-                                <option value='Java' >Java</option>
-                                <option value='Python'>Python</option>
-                                <option value='JavaScript'>JavaScript</option>
                                 <option value='Go'>Go</option>
-                                <option value='TypeScript'>TypeScript</option>
-                                <option value='Ruby'>Ruby on rails</option>
+                                <option value='Java' >Java</option>
+                                <option value='JavaScript'>JavaScript</option>
                                 <option value='Kotlin'>Kotlin</option>
+                                <option value='Php'>Php</option>
+                                <option value='Python'>Python</option>
+                                <option value='Ruby'>Ruby on rails</option>
+                                <option value='TypeScript'>TypeScript</option>
                             </select>
 
                         </div>
@@ -114,43 +115,47 @@ function CodeEditor() {
                         } */}
 
                         {
-                            lan == 'C' && <iframe data-theme="dark" width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/C?lite=true"></iframe> 
+                            lan == 'C' && <iframe data-theme="dark" width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/C?lite=true"></iframe>
 
                         }
                         {
-                            lan == '' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe> 
+                            lan == '' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'C++' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/OPP1-1?lite=true"></iframe> 
+                            lan == 'C++' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/OPP1-1?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Java' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Java?lite=true"></iframe> 
+                            lan == 'Java' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Java?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Python' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe> 
+                            lan == 'Php' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Php2?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'JavaScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/JavaScript?lite=true"></iframe> 
+                            lan == 'Python' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Go' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Go?lite=true"></iframe> 
+                            lan == 'JavaScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/JavaScript?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'TypeScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/TypeScript?lite=true"></iframe> 
+                            lan == 'Go' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Go?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Kotlin' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Kotlin-2?lite=true"></iframe> 
+                            lan == 'TypeScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/TypeScript?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Ruby' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Ruby?lite=true"></iframe> 
+                            lan == 'Kotlin' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Kotlin-2?lite=true"></iframe>
+
+                        }
+                        {
+                            lan == 'Ruby' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Ruby?lite=true"></iframe>
 
                         }
 

@@ -17,7 +17,7 @@ const PreparationKit = () => {
 
     return (
         <>
-            <div className='mx-5 lg:mx-36'>
+            <div className='mx-5 lg:mx-36 h-[70vh]'>
                 <h1 className='text-xl lg:text-5xl font-bold pt-20'>Preparation kit</h1>
                 <section className='mt-10 grid grid-cols-1 lg:grid-cols-2'>
                     <div className='border  p-5 lg:p-12'>

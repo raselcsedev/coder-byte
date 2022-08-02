@@ -37,7 +37,7 @@ const WeeklyPreparation = () => {
 
     return (
         <>
-            <section className='grid grid-cols-1 lg:grid-cols-3 pt-20'>
+            <section className='grid grid-cols-1 lg:grid-cols-3 pt-20 h-[70vh]'>
                 <div className='mx-5 lg:mx-36 col-span-2 lg:col-span-2'>
                     {
                         problem?.map(data => <>
