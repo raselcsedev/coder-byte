@@ -22,7 +22,7 @@ import AllCourses from './Components/AllCourses/AllCourses';
 import CourseDetail from './Components/CourseDetail/CourseDetail'
 import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 import About from './Components/AboutUs/AboutUs';
-import AllUsers from './features/Profiles/AllUsers';
+import IDELanding from './Components/IDE/IDEMain/IDELanding';
 const queryClient = new QueryClient()
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/contests' element={<Contests></Contests>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
-          <Route path='/explore' element={<CodeEditor></CodeEditor>}></Route>
+          <Route path='/explore' element={<IDELanding></IDELanding>}></Route>
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>

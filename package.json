@@ -16,6 +16,7 @@
     "axios": "^0.27.2",
     "daisyui": "^2.19.0",
     "firebase": "^9.9.0",
+    "monaco-themes": "^0.4.2",
     "react": "^18.2.0",
     "react-ace": "^10.1.0",
     "react-dom": "^18.2.0",
@@ -30,6 +31,7 @@
     "react-router-dom": "^6.3.0",
     "react-run-code": "^0.2.1",
     "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
