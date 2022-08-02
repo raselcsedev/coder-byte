@@ -5,7 +5,7 @@ import FeaturedCompanies from '../FeaturedCompanies/FeaturedCompanies';
 import Languages from '../Languages/Languages';
 import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
-import Course from '../Courses/Course'
+import Courses from '../Courses/Courses';
 
 const Home = () => {
     return (
@@ -13,9 +13,9 @@ const Home = () => {
 
             <Homepage></Homepage>
             <Codevideo></Codevideo>
-            {/* <DashbordMain></DashbordMain> */}
+            <DashbordMain></DashbordMain>
             <Languages></Languages>
-            <Course></Course>
+            <Courses></Courses>
             <FeaturedCompanies></FeaturedCompanies>
         </div>
     );
