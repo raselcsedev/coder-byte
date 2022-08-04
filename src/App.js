@@ -25,6 +25,7 @@ import About from './Components/AboutUs/AboutUs';
 import AllUsers from './features/Profiles/AllUsers';
 import ReviewProfile from './Components/GetCertificate/ReviewProfile';
 import TakeTest from './Components/GetCertificate/TakeTest';
+import CertificateConfirmPage from './Components/GetCertificate/CertificateConfirmPage';
 const queryClient = new QueryClient()
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path='/contests' element={<Contests></Contests>}></Route>
           <Route path='/reviewprofile' element={<ReviewProfile></ReviewProfile>}></Route>
           <Route path='/taketest' element={<TakeTest></TakeTest>}></Route>
+          <Route path='/testconfirmation' element={<CertificateConfirmPage></CertificateConfirmPage>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
           <Route path='/explore' element={<CodeEditor></CodeEditor>}></Route>
           <Route path='/profile' element={<Profile></Profile>}></Route>

@@ -45,7 +45,7 @@ const TakeTest = () => {
           <h1 className="text-xl font-bold">Problem Solving (Basic) Skills Certification Test</h1>
           <img src={laptop} class="h-44 w-44 ml-24" alt="" />
           </div>
-          <Link to="/"><input className='px-6 py-2 rounded bg-green-600 max-w-xs text-white mt-5 mb-4' type="submit" value="Take Test" /></Link>
+          <Link to="/testconfirmation"><input className='px-6 py-2 rounded bg-green-600 max-w-xs text-white mt-5 mb-4' type="submit" value="Take Test" /></Link>
         </div>
       </div>
     </div>

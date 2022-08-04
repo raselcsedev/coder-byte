@@ -21,7 +21,7 @@ const ReviewProfile = () => {
       .then((result) => {
         console.log(result);
       });
-            navigate("/taketest");
+    navigate("/taketest");
   };
 
   // const navigate = useNavigate();
@@ -267,13 +267,19 @@ const ReviewProfile = () => {
                   <div>
                     <label class="label cursor-pointer">
                       <span class="label-text mr-2">Yes</span>
-                      <input type="radio" name="radio-6" class="radio checked:bg-green-500" value="Yes" {...register("radio-6")}/>
+                      <input
+                        type="radio"
+                        name="radio-6"
+                        class="radio checked:bg-green-500"
+                        value="Yes"
+                        {...register("radio-6")}
+                      />
                     </label>
                   </div>
                   <div class="ml-2">
                     <label class="label cursor-pointer">
                       <span class="label-text mr-2">No</span>
-                      <input type="radio" name="radio-6" class="radio checked:bg-red-500" value="No" {...register("radio-6")}/>
+                      <input type="radio" name="radio-6" class="radio checked:bg-red-500" value="No" {...register("radio-6")} />
                     </label>
                   </div>
                 </div>
