@@ -1,27 +1,28 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
-import { useSelector } from 'react-redux/es/exports';
+import { useSelector,useDispatch} from 'react-redux';
+import Loading from '../../Components/Shared/Loading/Loading';
+import { fetchUsers } from './ProfileSlice';
 
 const AllUsers = () => {
 
-    const [profiles,setProfiles]=useState([])
+    const { isLoading, error, profiles } = useSelector(state =>state?.profiles)
 
-   
+const dispatch =useDispatch()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profiles`)
-            .then(res => res.json())
-            .then(data => setProfiles(data))
-              
-           
+        dispatch(fetchUsers())
+
+        console.log('profiles',profiles);
+        console.log('error',error);
     }, [])
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <div>
-
-            all users {profiles.length}
-
-
+            {profiles && <p>all users{profiles.length}</p>}
         </div>
     );
 };

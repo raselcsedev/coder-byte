@@ -1,14 +1,34 @@
+import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import CustomLink from './CustomLink';
+import { useQuery } from '@tanstack/react-query';
 import './Header.css'
 
 const Header = () => {
 
     const [user] = useAuthState(auth);
+
+
+    
+    const email = user?.email
+
+    const url = `http://localhost:5000/profiles/${email}`
+
+    const fetcher = async () => {
+        const data =  axios.get(url)
+        console.log('axios', (await data).data);
+
+        return (await data).data
+
+        //also could be used[axios retun without destructuring]
+        // return data
+    }
+
+    let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
 
     const logout = () => {
         signOut(auth);
@@ -187,8 +207,11 @@ const Header = () => {
 
                                     <label tabindex="0" htmlFor="bigToggler" name="toggle" class="btn ml-4 btn-ghost btn-circle avatar">
                                         <div class="w-9 border border-[brown] rounded-full" >
-                                            <img
-                                                src="https://i.stack.imgur.com/frlIf.png" />
+                                            {
+                                                profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
+                                                :
+                                                <img src="https://i.stack.imgur.com/frlIf.png" />
+                                            }
                                         </div>
                                     </label>
                                     <ul tabindex="0" id='profile' class="space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
@@ -198,12 +221,21 @@ const Header = () => {
                                         <div className='space-y-2'>
                                             <Link to="/profile">
                                                 <li>
+                                                   
+                                                   {
+                                                    profile?.profilePhoto ?  <img className='w-16 h-16 border border-[brown]  rounded-full'
+                                                    src={profile?.profilePhoto} />
+                                                    :
                                                     <img className='w-14 border border-[brown]  rounded-full'
-                                                        src="https://i.stack.imgur.com/frlIf.png" />
-                                                </li>
+                                                    src="https://i.stack.imgur.com/frlIf.png" />
+                                          
+                                          
+                                                   }
+
+                                                     </li>
                                             </Link>
                                             <Link to="/profile">
-                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{user.displayName}</li>
+                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{profile?.displayName ? profile?.displayName :user?.displayName }</li>
                                             </Link>
                                             <li className='text-[white] text-sm  break-all'>{user.email}</li>
 

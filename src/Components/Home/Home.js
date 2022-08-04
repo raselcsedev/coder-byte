@@ -5,6 +5,7 @@ import Languages from '../Languages/Languages';
 import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
 import Courses from '../Courses/Courses';
+import AllUsers from '../../features/Profiles/AllUsers';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <Languages></Languages>
             <Courses></Courses>
             <FeaturedCompanies></FeaturedCompanies>
+            {/* <AllUsers></AllUsers> */}
         </div>
     );
 };

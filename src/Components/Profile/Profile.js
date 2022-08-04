@@ -35,6 +35,9 @@ const Profile = () => {
 
 
     const url = `http://localhost:5000/profiles/${email}`
+
+
+    // fetch using usual useEffect-fetch
     // useEffect(() => {
     //     fetch(url)
     //         .then(res => res?.json())
@@ -42,8 +45,10 @@ const Profile = () => {
 
     // }, [email])
 
+
+    //using axios & react-query for get 
     const fetcher = async () => {
-        const data = axios.get(url)
+        const data =  axios.get(url)
         console.log('axios', (await data).data);
 
         return (await data).data
