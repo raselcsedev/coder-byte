@@ -1,14 +1,15 @@
 import { faCaretRight, faCircleExclamation, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import React from "react";
 
 const ReviewProfile = () => {
   return (
-    <div className="mx-32 pt-20 mb-12">
+    <div className="sm:mx-24 lg:mx-32 pt-20 mb-12">
       <h1 className="text-2xl font-bold">Problem Solving (Basic) Skills Certification Test</h1>
       <div class="divider"></div>
 
-      <div class="card mx-20 bg-base-100 shadow-xl">
+      <div class="card lg:mx-20 bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title text-3xl">Problem Solving (Basic) Skills Certification Test</h2>
           <p>
@@ -217,7 +218,7 @@ const ReviewProfile = () => {
               </div>
               </div>
             </div>
-            <input className='px-6 py-2 rounded bg-green-600 max-w-xs text-white mt-5 mb-4' type="submit" value="Proceed" />
+            <Link to="/taketest"><input className='px-6 py-2 rounded bg-green-600 max-w-xs text-white mt-5 mb-4' type="submit" value="Proceed" /></Link>
             </form>
 
           </div>
