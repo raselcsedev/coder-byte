@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
-import CodeEditor from './Components/CodeEditor/CodeEditor';
 import Header from './Components/Header/Header';
 import Contests from './Components/GetCertificate/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
@@ -13,7 +12,6 @@ import Profile from './Components/Profile/Profile';
 import Footer from './Footer/Footer';
 import PreparationKit from './Component/PreparationKit/PreparationKit';
 import WeeklyPreparation from './Component/PreparationKit/WeeklyPreparation';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import Topic from './Component/Topicpoblem/Topic';
 import DataStructure from './Component/Topicpoblem/DataStructure';
 import Database from './Component/Topicpoblem/Database';
@@ -23,6 +21,7 @@ import CourseDetail from './Components/CourseDetail/CourseDetail'
 import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 import About from './Components/AboutUs/AboutUs';
 import IDELanding from './Components/IDE/IDEMain/IDELanding';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient()
 
 function App() {
@@ -41,7 +40,7 @@ function App() {
 
           <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
           <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
-          <Route path='weeklypre/:id' element={<CodeEditor></CodeEditor>}></Route>
+          <Route path='weeklypre/:id' element={<IDELanding></IDELanding>}></Route>
 
           <Route path='/Topic' element={<Topic></Topic>}>
             <Route index element={<DataStructure></DataStructure>}></Route>

@@ -1,5 +1,4 @@
 import React from 'react';
-import CodeEditor from '../CodeEditor/CodeEditor';
 import Codevideo from '../CodeVideo/Codevideo';
 import FeaturedCompanies from '../FeaturedCompanies/FeaturedCompanies';
 import Languages from '../Languages/Languages';

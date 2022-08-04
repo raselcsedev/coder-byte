@@ -7,8 +7,13 @@
     border-radius:5px;
     width: 50%;
     padding: 30px;
-    color: #2d2c33
+  /* color: #000000 */
   }
 
+  @media only screen and (max-width: 600px) {
+    .customModal {
+      width: 80%;
 
+    }
+  }
   

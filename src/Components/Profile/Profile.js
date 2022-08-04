@@ -8,9 +8,9 @@ import 'react-responsive-modal/styles.css';
 import './profile.css'
 import useCourses from '../Shared/useCourses';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-
-
+import Loading from '../Shared/Loading/Loading';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 const Profile = () => {
 
@@ -28,21 +28,30 @@ const Profile = () => {
         console.log('updated data', data);
     }
 
-    const [profile, setProfile] = useState({})
+    // const [profile, setProfile] = useState({})
 
     const email = user?.email
-    const url = `http://localhost:5000/profiles?email=${email}`
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setProfile(data[0])
-                console.log('profileInfo', data[0])
+    console.log("promail",email);
 
-            })
 
-    }, [])
+    const url = `http://localhost:5000/profiles/${email}`
+    // useEffect(() => {
+    //     fetch(url)
+    //         .then(res => res?.json())
+    //         .then(data =>setProfile(data))
 
+    // }, [email])
+
+    const fetcher = async()=>{
+        const data = axios.get(url)
+        return data
+    }
+   
+    let {data:profile, isLoading}=useQuery(["profile",email],()=>fetcher())
+  
+    // console.log('proooo',profile.data);
+   
+    profile =profile?.data
 
     const [profilePhoto, setProfilePhoto] = useState([]);
 
@@ -141,8 +150,12 @@ const Profile = () => {
 
     const [open, setOpen] = useState(false);
 
-    const { about, county, region, website, postalCode, city, } = profile
+    console.log(email);
 
+    if(isLoading || !email || !profile){
+        return <Loading></Loading>
+
+    }
 
     return (
         <div className=' bg-[#171B26] pt-20 '>
@@ -153,7 +166,7 @@ const Profile = () => {
 
                     <div style={{
                         zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "",
-                        backgroundImage: `url(${profile?.coverPhoto ? profile?.coverPhoto :'https://amdmediccentar.rs/wp-content/plugins/uix-page-builder/includes/uixpbform/images/default-cover-4.jpg'})`
+                        backgroundImage: `url(${profile?.coverPhoto ? profile?.coverPhoto : 'https://amdmediccentar.rs/wp-content/plugins/uix-page-builder/includes/uixpbform/images/default-cover-4.jpg'})`
                     }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
