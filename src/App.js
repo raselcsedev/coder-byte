@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
@@ -18,11 +19,13 @@ import Algo from './Component/Topicpoblem/Algo';
 import AllCourses from './Components/AllCourses/AllCourses';
 import CourseDetail from './Components/CourseDetail/CourseDetail'
 import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
+import CreateProblem from './Component/CreateProblem/CreateProblem';
+import Footer2 from './Footer/Footer2';
 const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <QueryClientProvider client={queryClient}>
 
         <Header></Header>
@@ -46,10 +49,11 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+        <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route>
         </Routes>
         <Footer></Footer>
       </QueryClientProvider>
-
+{/* <Footer2></Footer2> */}
     </div>)
 }
 export default App;

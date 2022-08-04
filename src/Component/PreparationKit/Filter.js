@@ -14,20 +14,20 @@ const Filter = ({ filteEasyproblem }) => {
         <div>
             <h1 className='text-center text-5xl font-bold mb-10'>Select the type</h1>
             <div className=''>
-                <div><input type="radio" name="radio-1" class="radio" value='Hard' onClick={(e) => easysetdata(e.target.value)} /> Hard</div>
-                <div><input type="radio" name="radio-1" class="radio" value='Easy' onClick={(e) => easysetdata(e.target.value)} /> Easy</div>
-                <div><input type="radio" name="radio-1" class="radio" value='All' onClick={(e) => easysetdata(e.target.value)} /> All</div>
+                <div><input type="radio" name="radio-1" class="radio" value='Hard' onClick={(e) => easysetdata(e.target.value)} /> Hard problem</div>
+                <div><input type="radio" name="radio-1" class="radio" value='Easy' onClick={(e) => easysetdata(e.target.value)} /> Easy problem </div>
+            
             </div>
             <div onClick={allhandle} className="btn mt-12">Filter</div>
 
-            <section className='flex justify-center'>
+            {/* <section className='flex justify-center'>
                 <div class="btn-group">
                     <button class="btn">1</button>
                     <button class="btn btn-active">2</button>
                     <button class="btn">3</button>
                     <button class="btn">4</button>
                 </div>
-            </section>
+            </section> */}
         </div>
     );
 };

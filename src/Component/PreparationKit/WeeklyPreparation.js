@@ -4,11 +4,13 @@ import { faTerminal } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import ProblemHook from '../COUSTOMHOOK/ProblemHook';
 import Filter from './Filter';
+import DynamicGetValue from '../COUSTOMHOOK/DynamicGetValue';
 
 const WeeklyPreparation = () => {
-    // const [problem, setproblem] = useState([]);
-    let { data: problem, setdata } = ProblemHook();
+    const [All,setAll]=useState([]);
+    // let { data: problem, setdata } = ProblemHook();
     const navigate = useNavigate();
+    const{data: problem,FindHard,FindEasy}=DynamicGetValue()
 
 
 
@@ -20,18 +22,25 @@ const WeeklyPreparation = () => {
 
 
     const filteEasyproblem = (type) => {
-        if (type !== 'All') {
+        if (type ==='Hard') {
 
-            const data = problem.filter(data => data.type === type)
-            setdata(data)
-            console.log(data)
+            FindHard()
+            console.log(problem)
+            console.log("Hard")
         }
-        else {
-            fetch('DemoProblem.JSON')
-            .then(res => res.json())
-            .then(data => setdata(data))
+        
+        if(type ==='Easy')
+        {
+            FindEasy()
+            console.log("easy")
+        }
+        // else {
+        //     fetch('DemoProblem.JSON')
+        //     .then(res => res.json())
+        //     .then(data => setAll(data))
             
-        }
+        // }
+        // console.log(All);
 
     }
 

@@ -1,8 +1,10 @@
 import React from 'react';
+import "./footer.css"
+
 
 const Footer = () => {
     return (
-        <div>
+        <div className='footers'>
             <footer class="footer p-10 bg-neutral text-neutral-content p-36">
                 <div>
                     <span class="footer-title">Services</span>
