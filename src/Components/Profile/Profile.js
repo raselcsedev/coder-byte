@@ -31,7 +31,7 @@ const Profile = () => {
     // const [profile, setProfile] = useState({})
 
     const email = user?.email
-    console.log("promail",email);
+    console.log("promail", email);
 
 
     const url = `http://localhost:5000/profiles/${email}`
@@ -42,16 +42,21 @@ const Profile = () => {
 
     // }, [email])
 
-    const fetcher = async()=>{
+    const fetcher = async () => {
         const data = axios.get(url)
-        return data
+        console.log('axios', (await data).data);
+
+        return (await data).data
+
+        //also could be used[axios retun without destructuring]
+        // return data
     }
-   
-    let {data:profile, isLoading}=useQuery(["profile",email],()=>fetcher())
-  
+
+    let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
+
     // console.log('proooo',profile.data);
-   
-    profile =profile?.data
+    //also could be used with [axios retun without destructuring]
+    // profile =profile?.data
 
     const [profilePhoto, setProfilePhoto] = useState([]);
 
@@ -152,7 +157,7 @@ const Profile = () => {
 
     console.log(email);
 
-    if(isLoading || !email || !profile){
+    if (isLoading || !email || !profile) {
         return <Loading></Loading>
 
     }
