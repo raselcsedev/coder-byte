@@ -13,13 +13,13 @@ const Header = () => {
     const [user] = useAuthState(auth);
 
 
-    
+
     const email = user?.email
 
     const url = `http://localhost:5000/profiles/${email}`
 
     const fetcher = async () => {
-        const data =  axios.get(url)
+        const data = axios.get(url)
         console.log('axios', (await data).data);
 
         return (await data).data
@@ -118,6 +118,7 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/createproblem'>CreateProblem</CustomLink>
 
             {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
@@ -134,7 +135,7 @@ const Header = () => {
         <div>
 
             <div id='' className='nav  fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
-                <div class="lg:navbar lg:w-[90vw]  mx-auto ">
+                <div class="lg:navbar lg:w-[100vw]  mx-auto ">
                     <div class="lg:navbar-start hidden md:block">
 
 
@@ -209,8 +210,8 @@ const Header = () => {
                                         <div class="w-9 border border-[brown] rounded-full" >
                                             {
                                                 profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
-                                                :
-                                                <img src="https://i.stack.imgur.com/frlIf.png" />
+                                                    :
+                                                    <img src="https://i.stack.imgur.com/frlIf.png" />
                                             }
                                         </div>
                                     </label>
@@ -221,21 +222,21 @@ const Header = () => {
                                         <div className='space-y-2'>
                                             <Link to="/profile">
                                                 <li>
-                                                   
-                                                   {
-                                                    profile?.profilePhoto ?  <img className='w-16 h-16 border border-[brown]  rounded-full'
-                                                    src={profile?.profilePhoto} />
-                                                    :
-                                                    <img className='w-14 border border-[brown]  rounded-full'
-                                                    src="https://i.stack.imgur.com/frlIf.png" />
-                                          
-                                          
-                                                   }
 
-                                                     </li>
+                                                    {
+                                                        profile?.profilePhoto ? <img className='w-16 h-16 border border-[brown]  rounded-full'
+                                                            src={profile?.profilePhoto} />
+                                                            :
+                                                            <img className='w-14 border border-[brown]  rounded-full'
+                                                                src="https://i.stack.imgur.com/frlIf.png" />
+
+
+                                                    }
+
+                                                </li>
                                             </Link>
                                             <Link to="/profile">
-                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{profile?.displayName ? profile?.displayName :user?.displayName }</li>
+                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{profile?.displayName ? profile?.displayName : user?.displayName}</li>
                                             </Link>
                                             <li className='text-[white] text-sm  break-all'>{user.email}</li>
 

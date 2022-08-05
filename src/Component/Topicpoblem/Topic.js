@@ -47,7 +47,7 @@ const Topic = () => {
                                 <input onClick={handlealgo} type="radio" name="radio-1" class="radio mr-5" value='Algorithm' /> Algorithm
                             </div>
                             <div className='flex'>
-                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> BlockChine
+                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> BlockChain
                             </div>
                             <div className='flex'>
                                 <input type="radio" name="radio-1" class="radio mr-5" value='Frontend' /> Frontend

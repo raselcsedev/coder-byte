@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import DynamicTpicGetHook from '../COUSTOMHOOK/DynamicTpicGetHook';
 import Fram from './Fram';
 
 const Algo = () => {
-    const [sproblem,setproblem]=useState([])
+    // const [sproblem,setproblem]=useState([])
+    const {AlgorithimGet,data}=DynamicTpicGetHook()
     useEffect(()=>{
-        fetch('http://localhost:3000/ALgoproblem.JSON')
-        .then(res=>res.json())
-        .then(data=>setproblem(data))
+        AlgorithimGet()
     },[])
+    // useEffect(()=>{
+    //     fetch('http://localhost:3000/ALgoproblem.JSON')
+    //     .then(res=>res.json())
+    //     .then(data=>setproblem(data))
+    // },[])
+    console.log(data);
     return (
         <div className='pt-20'>
             {
-                 sproblem.map(data=><Fram data={data}></Fram>)
+                 data?.map(data=><Fram data={data}></Fram>)
             }
            
         </div>

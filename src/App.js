@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
@@ -22,11 +23,13 @@ import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 import About from './Components/AboutUs/AboutUs';
 import IDELanding from './Components/IDE/IDEMain/IDELanding';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import CreateProblem from './Component/CreateProblem/CreateProblem';
+
 const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <QueryClientProvider client={queryClient}>
 
         <Header></Header>
@@ -55,9 +58,9 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+        <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route>
         </Routes>
         <Footer></Footer>
-        {/* <AllUsers></AllUsers> */}
       </QueryClientProvider>
 
 
