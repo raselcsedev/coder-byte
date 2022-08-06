@@ -29,7 +29,7 @@ const Topic = () => {
 
     return (
         <>
-            <div class="drawer drawer-mobile pt-20">
+            <div class="drawer drawer-mobile pt-20 ">
                 <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content text-center">
                     <Outlet></Outlet>

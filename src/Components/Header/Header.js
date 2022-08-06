@@ -20,7 +20,7 @@ const Header = () => {
 
     const fetcher = async () => {
         const data = axios.get(url)
-        console.log('axios', (await data).data);
+        // console.log('axios', (await data).data);
 
         return (await data).data
 
@@ -207,7 +207,7 @@ const Header = () => {
                                     <input type="checkbox" name="toggle" id="bigToggler" />
 
                                     <label tabindex="0" htmlFor="bigToggler" name="toggle" class="btn ml-4 btn-ghost btn-circle avatar">
-                                        <div class="w-9 border border-[brown] rounded-full" >
+                                        <div class="w-9 border border-white rounded-full" >
                                             {
                                                 profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
                                                     :
@@ -224,10 +224,10 @@ const Header = () => {
                                                 <li>
 
                                                     {
-                                                        profile?.profilePhoto ? <img className='w-16 h-16 border border-[brown]  rounded-full'
+                                                        profile?.profilePhoto ? <img className='w-16 h-16 border border-white  rounded-full'
                                                             src={profile?.profilePhoto} />
                                                             :
-                                                            <img className='w-14 border border-[brown]  rounded-full'
+                                                            <img className='w-14 border border-white  rounded-full'
                                                                 src="https://i.stack.imgur.com/frlIf.png" />
 
 

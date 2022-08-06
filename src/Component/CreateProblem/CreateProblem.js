@@ -70,10 +70,10 @@ const CreateProblem = () => {
 
     return (
         <>
-            <section>
-                <section className='grid grid-cols-2'>
+            <section className='w-[80vw] mx-auto'>
+                <section className='grid grid-cols-2 md:gap-8' >
 
-                    <div className='mt-20 mx-36'>
+                    <div className='mt-20 md:mx-36 md:col-span-1 col-span-2 p-4'>
                         <div>
                             <h1>Problem title</h1>
                             <input onChange={(e) => setptitle(e.target.value)} id="title" type="text" placeholder="Type here" class=" mt-3 input input-bordered w-full max-w-xs" />
@@ -90,13 +90,13 @@ const CreateProblem = () => {
 
                     </div>
 
-                    <div className='mt-20'>
-                        <div className='flex justify-around'>
-                            <h1 className='text-xl font-bold'>Select the type of problem :  </h1>
+                    <div className='mt-20 md:col-span-1 col-span-2  '>
+                        <div className='flex flex-col space-y-4 p-4'>
+                            <h1 className='md:text-xl font-bold'>Select the type of problem :  </h1>
                             <CreateProblemTypeCombobox HandleType={HandleType}></CreateProblemTypeCombobox>
                         </div>
-                        <div className='flex justify-around mt-36'>
-                            <h1 className='text-xl font-bold'>Select the topic of problem :  </h1>
+                        <div className='flex  mt-36 flex-col space-y-4 p-4'>
+                            <h1 className='md:text-xl font-bold'>Select the topic of problem :  </h1>
                             <CreateProblemTopic HandleTopic={HandleTopic}></CreateProblemTopic>
                         </div>
 
@@ -104,7 +104,7 @@ const CreateProblem = () => {
                 </section>
 
                 <div className='text-center'>
-                    <div onClick={(e) => HandleUploadingProblem(e)} className="btn mb-10  ">submit</div>
+                    <div onClick={(e) => HandleUploadingProblem(e)} className="btn my-10  ">submit</div>
                 </div>
             </section>
         </>

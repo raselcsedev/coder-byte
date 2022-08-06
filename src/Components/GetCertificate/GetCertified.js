@@ -4,14 +4,14 @@ import problem from "../../Images/problem.jpg";
 import problem1 from "../../Images/problem2.jpg";
 const GetCertified = () => {
   return (
-    <div className="mx-32 pt-20">
-      <h1 className="text-2xl font-bold">Problem Solving (Basic) Skills Certification Test</h1>
+    <div className="md:mx-32 mx-8 pt-20">
+      <h1 className="md:text-2xl text-lg font-bold">Problem Solving (Basic) Skills Certification Test</h1>
       <div class="divider"></div>
       <div class="hero  flex flex-col space-y-2">
         <div class="hero-content flex-col lg:flex-row-reverse">
-          <img src={problem} class="max-w-sm rounded-lg shadow-2xl ml-8" alt="" />
-          <div className="mr-8">
-            <h1 class="text-4xl font-medium leading-normal">Verify your Problem Solving Skills. Accelerate your Job Search.</h1>
+          <img src={problem} class="max-w-sm rounded-lg shadow-2xl ml-8 w-[100%]" alt="" />
+          <div className="mr-8 md:w-[100%] w-[80%] mx-auto">
+            <h1 class="md:text-4xl text-lg font-medium leading-normal ">Verify your Problem Solving Skills. Accelerate your Job Search.</h1>
             <p class="py-6">
               Take the HackerRank Skills Certification Test and showcase your <br /> knowledge as a HackerRank verified developer.
             </p>

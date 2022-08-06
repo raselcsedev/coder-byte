@@ -25,13 +25,13 @@ const Profile = () => {
 
         setProfileUpdates(data)
 
-        console.log('updated data', data);
+        // console.log('updated data', data);
     }
 
     // const [profile, setProfile] = useState({})
 
     const email = user?.email
-    console.log("promail", email);
+    // console.log("promail", email);
 
 
     const url = `http://localhost:5000/profiles/${email}`
@@ -49,7 +49,7 @@ const Profile = () => {
     //using axios & react-query for get 
     const fetcher = async () => {
         const data =  axios.get(url)
-        console.log('axios', (await data).data);
+        // console.log('axios', (await data).data);
 
         return (await data).data
 
@@ -67,15 +67,15 @@ const Profile = () => {
 
     const onChangeProfile = (data) => {
         setProfilePhoto(data)
-
         console.log('profilepic', data[0].file);
 
-        const imgAPIKey = '10cf9fb6967774dfe63805d01bba1ab7'
         const image = data[0].file
         const formData = new FormData()
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
-        fetch(url,
+        formData.append("file", image)
+        formData.append("upload_preset", "ch77jcb5")
+        formData.append("cloud_name","pavel-genuine")
+        const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
+  fetch(url,
             {
                 method: "POST",
                 body: formData
@@ -84,9 +84,9 @@ const Profile = () => {
             .then(res => res.json())
             .then(async result => {
                 console.log('imgbbPjrofile', result)
-                console.log('imgbbProfilePhoto', result.data.url)
+                console.log('imgbbProfilePhoto', result.url)
 
-                const profilePhoto = result.data.url
+                const profilePhoto = result.url
                 await fetch(`http://localhost:5000/profiles/${email}`,
                     {
                         method: 'PUT',
@@ -101,16 +101,14 @@ const Profile = () => {
     const [coverPhoto, setCoverPhoto] = useState([]);
 
     const onChangeCover = (data) => {
-
         setCoverPhoto(data)
-
-        console.log('coverpic', data[0].file);
-
-        const imgAPIKey = '2cdd05bce545560e4148d963a8b857be'
         const image = data[0].file
+ 
         const formData = new FormData()
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        formData.append("file", image)
+        formData.append("upload_preset", "ch77jcb5")
+        formData.append("cloud_name","pavel-genuine")
+        const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
         fetch(url,
             {
                 method: "POST",
@@ -120,10 +118,7 @@ const Profile = () => {
             .then(res => res.json())
             .then(async result => {
                 console.log('imgbbCover', result)
-                console.log('imgbbCoverPhoto', result.data.url)
-
-                const coverPhoto = result.data.url
-
+                const coverPhoto = result.url
                 await fetch(`http://localhost:5000/profiles/${email}`,
                     {
                         method: 'PUT',
@@ -160,7 +155,7 @@ const Profile = () => {
 
     const [open, setOpen] = useState(false);
 
-    console.log(email);
+    // console.log(email);
 
     if (isLoading || !email || !profile) {
         return <Loading></Loading>
