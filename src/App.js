@@ -13,7 +13,7 @@ import Profile from './Components/Profile/Profile';
 import Footer from './Footer/Footer';
 import PreparationKit from './Component/PreparationKit/PreparationKit';
 import WeeklyPreparation from './Component/PreparationKit/WeeklyPreparation';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import Topic from './Component/Topicpoblem/Topic';
 import DataStructure from './Component/Topicpoblem/DataStructure';
 import Database from './Component/Topicpoblem/Database';
@@ -23,6 +23,7 @@ import CourseDetail from './Components/CourseDetail/CourseDetail'
 import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 import About from './Components/AboutUs/AboutUs';
 import AllUsers from './features/Profiles/AllUsers';
+// import { QueryClientProvider } from '@tanstack/react-query';
 const queryClient = new QueryClient()
 
 function App() {
