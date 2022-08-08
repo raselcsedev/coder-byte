@@ -1,7 +1,10 @@
 import React from "react";
 import { classnames } from "../utils/general";
 
-const CustomInput = ({ customInput, setCustomInput }) => {
+const CustomInput = ({ customInput, setCustomInput,input }) => {
+    const submit =true
+    
+
     return (
         <>
             <div className="flex border-slate-700 border-t-2 ">

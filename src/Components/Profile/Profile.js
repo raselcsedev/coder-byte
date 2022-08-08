@@ -157,7 +157,7 @@ const Profile = () => {
 
     // console.log(email);
 
-    if (isLoading || !email || !profile) {
+    if (isLoading || !email) {
         return <Loading></Loading>
 
     }

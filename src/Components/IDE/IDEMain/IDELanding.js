@@ -51,6 +51,9 @@ const IDELanding = () => {
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
 
+  const [success, setSucsess] = useState(false)
+
+
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
 
@@ -58,6 +61,9 @@ const IDELanding = () => {
     console.log("selected Option...", sl);
     setLanguage(sl);
   };
+
+ 
+
 
   useEffect(() => {
     if (enterPress && ctrlPress) {
@@ -77,13 +83,54 @@ const IDELanding = () => {
       }
     }
   };
-  const handleCompile = () => {
+
+// sample of test cases
+  const input=[[2,6,4, 4],[2,6,5, 5],[2,6,6, 6]]
+  const output=[[4,4],[5,5],[4,5]]
+
+  const handleSubmit = () => {
+    console.log('submit');
+    let count = 0
+    for (let i = 0; i < input.length; i++) {
+      console.log('compile');
+
+        handleCompile(input[i].join(" "))
+        console.log('compile-output',(outputDetails?.stdout));
+        console.log('stored-output', btoa(output[i].join(" ")));
+        console.log('compile-output',atob(outputDetails?.stdout));
+        console.log('stored-output', (output[i].join(" ")));
+        console.log('compile-output',atob(outputDetails?.stdout).length);
+        console.log('stored-output', (output[i].join(" ").length));
+
+        if (atob(outputDetails?.stdout) == (output[i].join(" "))+'') {
+
+            count++
+            console.log('count++');
+        }
+        else{
+          console.log('break');
+            break
+            
+        }
+      
+    }
+
+    if (count==input.length) {
+        console.log('full success');
+        setSucsess(true) 
+    }
+
+}
+
+
+
+  const handleCompile = (customInput) => {
     setProcessing(true);
     const formData = {
       language_id: language.id,
       // encode source code in base64
       source_code: btoa(code),
-      stdin: btoa(customInput),
+      stdin: btoa( customInput),
     };
     const options = {
       method: "POST",
@@ -171,6 +218,8 @@ const IDELanding = () => {
   }, []);
 
 
+ 
+
 
   return (
     <div className="pt-20 bg-slate-900">
@@ -237,7 +286,7 @@ const IDELanding = () => {
             </div>
             <div className="px-4 py-2">
               <button
-                onClick={handleCompile}
+                onClick={()=>handleCompile(customInput)}
                 disabled={!code}
                 className={classnames(
                   "border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)]  hover:shadow transition duration-200  ",
@@ -248,6 +297,8 @@ const IDELanding = () => {
                   <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                 </svg><p className="font-bold px-2">Run</p></div>}
               </button>
+
+              <button className="btn" onClick={()=>handleSubmit()}></button>
             </div>
           </div>
 
@@ -266,11 +317,12 @@ const IDELanding = () => {
                 <OutputWindow outputDetails={outputDetails} />
                 <div className="">
                   <CustomInput
+                  input={input}
                     customInput={customInput}
                     setCustomInput={setCustomInput}
                   />
-
                 </div>
+                
                 <div className="p-2">
                   {outputDetails && <OutputDetails outputDetails={outputDetails} />}
 

@@ -18,6 +18,7 @@ const Home = () => {
             <Courses></Courses>
             <FeaturedCompanies></FeaturedCompanies>
             {/* <AllUsers></AllUsers> */}
+            {/* <Func></Func> */}
         </div>
     );
 };
