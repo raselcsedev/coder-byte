@@ -169,7 +169,7 @@ const IDELanding = () => {
   };
 
 
-  let [letOutput, setLetOutput] = useState('')
+  let [currentOutput, setCurrentOutput] = useState('')
 
   const count = useRef(0)
   const success = useRef(false)
@@ -181,19 +181,16 @@ const IDELanding = () => {
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
   const handleSubmit = async () => {
-
-
+    
     console.log('submit');
 
     for (let i = 0; i < input.length; i++) {
-
 
       setOutputDetails(null);
 
       handleCompile(input[i].join(" "))
 
       console.log('compile', i);
-
 
       await timer(10000)
 
@@ -203,37 +200,30 @@ const IDELanding = () => {
       // console.log('compile-output', atob(outputDetails?.stdout))
       console.log('stored-output', (output[i].join(" ")));
 
-      setLetOutput(output[i].join(" ") + ' ')
-      console.log('letout', letOutput);
+      setCurrentOutput(output[i].join(" ") + ' ')
+      console.log('current output', currentOutput);
 
       // console.log('compile-output len', atob(outputDetails?.stdout).length);
       // console.log('stored-output len', (output[i].join(" ").length));
     }
-
-
-
   }
 
   if (outputDetails?.stdout) {
-    if (atob(outputDetails?.stdout) == letOutput) {
+
+    if (atob(outputDetails?.stdout) == currentOutput) {
 
       count.current++
 
       console.log('output detail', atob(outputDetails?.stdout));
-      console.log('letout', letOutput);
+      console.log('current output', currentOutput);
       console.log('count++');
       console.log('count', count);
     }
 
     if (count.current == input.length) {
-
       success.current = true
-
     }
-
-    console.log('compile-output outer', atob(outputDetails?.stdout))
-
-
+    console.log('compile-output out of loop', atob(outputDetails?.stdout))
   }
 
 
