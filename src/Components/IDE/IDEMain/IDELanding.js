@@ -13,34 +13,39 @@ import OutputDetails from "./OutputDetails";
 import { LoaderIcon } from "react-hot-toast";
 
 
-const javascriptDefault = `/**
-* Problem: Binary Search: Search a sorted array for a target value.
-*/
+const javascriptDefault = `#include<stdio.h>
 
-// Time: O(log n)
-const binarySearch = (arr, target) => {
- return binarySearchHelper(arr, target, 0, arr.length - 1);
-};
 
-const binarySearchHelper = (arr, target, start, end) => {
- if (start > end) {
-   return false;
- }
- let mid = Math.floor((start + end) / 2);
- if (arr[mid] === target) {
-   return mid;
- }
- if (arr[mid] < target) {
-   return binarySearchHelper(arr, target, mid + 1, end);
- }
- if (arr[mid] > target) {
-   return binarySearchHelper(arr, target, start, mid - 1);
- }
-};
+int main()
+{
+  int n,d;
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const target = 5;
-console.log(binarySearch(arr, target));
+  scanf("%d %d",&n,&d);
+
+  int num[n];
+
+  for (int i=0;i<n;i++)
+    {
+      scanf("%d",&num[i]);
+    }
+
+  for(int i=0;i<d;i++)
+    {
+      int j,temp = num[0];
+      for(j=0;j<n-1;j++)
+        {
+          num[j] = num[j+1];
+        }
+
+      num[j] = temp;
+    }
+  for (int i=0;i<n;i++)
+    {
+      printf("%d ",num[i]);
+    }
+  return 0;
+
+}
 `;
 
 const IDELanding = () => {
@@ -51,9 +56,6 @@ const IDELanding = () => {
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
 
-  const [success, setSucsess] = useState(false)
-
-
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
 
@@ -62,7 +64,7 @@ const IDELanding = () => {
     setLanguage(sl);
   };
 
- 
+
 
 
   useEffect(() => {
@@ -84,43 +86,6 @@ const IDELanding = () => {
     }
   };
 
-// sample of test cases
-  const input=[[2,6,4, 4],[2,6,5, 5],[2,6,6, 6]]
-  const output=[[4,4],[5,5],[4,5]]
-
-  const handleSubmit = () => {
-    console.log('submit');
-    let count = 0
-    for (let i = 0; i < input.length; i++) {
-      console.log('compile');
-
-        handleCompile(input[i].join(" "))
-        console.log('compile-output',(outputDetails?.stdout));
-        console.log('stored-output', btoa(output[i].join(" ")));
-        console.log('compile-output',atob(outputDetails?.stdout));
-        console.log('stored-output', (output[i].join(" ")));
-        console.log('compile-output',atob(outputDetails?.stdout).length);
-        console.log('stored-output', (output[i].join(" ").length));
-
-        if (atob(outputDetails?.stdout) == (output[i].join(" "))+'') {
-
-            count++
-            console.log('count++');
-        }
-        else{
-          console.log('break');
-            break
-            
-        }
-      
-    }
-
-    if (count==input.length) {
-        console.log('full success');
-        setSucsess(true) 
-    }
-
-}
 
 
 
@@ -130,7 +95,7 @@ const IDELanding = () => {
       language_id: language.id,
       // encode source code in base64
       source_code: btoa(code),
-      stdin: btoa( customInput),
+      stdin: btoa(customInput),
     };
     const options = {
       method: "POST",
@@ -201,6 +166,70 @@ const IDELanding = () => {
     }
   };
 
+
+  let [count, setCount] = useState(0)
+  let [letOutput, setLetOutput] = useState('')
+  const [success, setSucsess] = useState(true)
+
+
+  // sample of test cases
+  const input = [[2, 6, 4, 4], [2, 6, 5, 5], [2, 6, 6, 6]]
+  const output = [[4, 4], [5, 5], [4, 5]]
+
+  const timer = ms => new Promise(res => setTimeout(res, ms))
+
+  const handleSubmit = async () => {
+    console.log('submit');
+
+    for (let i = 0; i < input.length; i++) {
+
+      console.log('compile', i);
+
+      // setOutputDetails(null);
+
+      handleCompile(input[i].join(" "))
+
+
+      await timer(10000)
+
+      console.log('outputDetails', outputDetails);
+      // console.log('compile-output', (outputDetails?.stdout));
+      // console.log('stored-output', btoa(output[i].join(" ")+' '));
+      // console.log('compile-output', atob(outputDetails?.stdout))
+      console.log('stored-output', (output[i].join(" ")));
+
+      setLetOutput(output[i].join(" ") + ' ')
+      console.log('letout', letOutput);
+
+      // console.log('compile-output len', atob(outputDetails?.stdout).length);
+      // console.log('stored-output len', (output[i].join(" ").length));
+    }
+
+    if (count == input.length) {
+      console.log('full success');
+      setSucsess(true)
+    }
+
+  }
+
+  if (outputDetails?.stdout) {
+    if (atob(outputDetails?.stdout) == letOutput) {
+      setCount(count++)
+      console.log('output detail', atob(outputDetails?.stdout));
+      console.log('letout', letOutput);
+      console.log('count++');
+      console.log('count', count);
+    }
+    else {
+     
+    }
+
+    console.log('compile-output outer', atob(outputDetails?.stdout))
+
+
+  }
+
+
   function handleThemeChange(th) {
     const theme = th;
     console.log("theme...", theme);
@@ -218,7 +247,7 @@ const IDELanding = () => {
   }, []);
 
 
- 
+
 
 
   return (
@@ -286,7 +315,7 @@ const IDELanding = () => {
             </div>
             <div className="px-4 py-2">
               <button
-                onClick={()=>handleCompile(customInput)}
+                onClick={() => handleCompile(customInput)}
                 disabled={!code}
                 className={classnames(
                   "border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)]  hover:shadow transition duration-200  ",
@@ -298,7 +327,7 @@ const IDELanding = () => {
                 </svg><p className="font-bold px-2">Run</p></div>}
               </button>
 
-              <button className="btn" onClick={()=>handleSubmit()}></button>
+              <button className="btn btn-info mx-2 pt-2" onClick={() => handleSubmit()}>Submit</button>
             </div>
           </div>
 
@@ -317,12 +346,12 @@ const IDELanding = () => {
                 <OutputWindow outputDetails={outputDetails} />
                 <div className="">
                   <CustomInput
-                  input={input}
+                    input={input}
                     customInput={customInput}
                     setCustomInput={setCustomInput}
                   />
                 </div>
-                
+
                 <div className="p-2">
                   {outputDetails && <OutputDetails outputDetails={outputDetails} />}
 
