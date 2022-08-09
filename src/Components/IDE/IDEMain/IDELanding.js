@@ -11,6 +11,8 @@ import ThemeDropdown from "./ThemeDropdown";
 import { classnames } from "../utils/general";
 import OutputDetails from "./OutputDetails";
 import { LoaderIcon } from "react-hot-toast";
+import { useCallback } from "react";
+import { useRef } from "react";
 
 
 const javascriptDefault = `#include<stdio.h>
@@ -167,10 +169,10 @@ const IDELanding = () => {
   };
 
 
-  let [count, setCount] = useState(0)
   let [letOutput, setLetOutput] = useState('')
-  const [success, setSucsess] = useState(true)
 
+  const count = useRef(0)
+  const success = useRef(false)
 
   // sample of test cases
   const input = [[2, 6, 4, 4], [2, 6, 5, 5], [2, 6, 6, 6]]
@@ -179,15 +181,18 @@ const IDELanding = () => {
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
   const handleSubmit = async () => {
+
+
     console.log('submit');
 
     for (let i = 0; i < input.length; i++) {
 
-      console.log('compile', i);
 
-      // setOutputDetails(null);
+      setOutputDetails(null);
 
       handleCompile(input[i].join(" "))
+
+      console.log('compile', i);
 
 
       await timer(10000)
@@ -205,23 +210,25 @@ const IDELanding = () => {
       // console.log('stored-output len', (output[i].join(" ").length));
     }
 
-    if (count == input.length) {
-      console.log('full success');
-      setSucsess(true)
-    }
+
 
   }
 
   if (outputDetails?.stdout) {
     if (atob(outputDetails?.stdout) == letOutput) {
-      setCount(count++)
+
+      count.current++
+
       console.log('output detail', atob(outputDetails?.stdout));
       console.log('letout', letOutput);
       console.log('count++');
       console.log('count', count);
     }
-    else {
-     
+
+    if (count.current == input.length) {
+
+      success.current = true
+
     }
 
     console.log('compile-output outer', atob(outputDetails?.stdout))
