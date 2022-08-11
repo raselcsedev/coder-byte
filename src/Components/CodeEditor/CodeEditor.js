@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
@@ -6,10 +6,13 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Editor from "react-run-code";
 import ImageUploading from 'react-images-uploading';
+import { useParams } from "react-router-dom";
+import { PassingPrblm } from "../../App";
 
 
 
 function CodeEditor() {
+    const [ProblemData, SetProblem] = useContext(PassingPrblm)
 
     let [lan, setLan] = useState('')
 
@@ -37,27 +40,19 @@ function CodeEditor() {
                     </div>
 
                     <div className="text-white py-5">
-                        Given an array of integers, find the sum of its elements.
+                        {ProblemData?.title}
 
-                        For example, if the array arr=[1,2,3,4] ,1+2+3+4=10 , so return 10 .
+                        <p className="font-semibold text-xl my-4">Problem Description</p>
 
-                        <p className="font-semibold text-xl my-4">Function Description</p>
-
-                        Complete the simpleArraySum function in the editor below. It must return the sum of the array elements as an integer.
-
-                        simpleArraySum has the following parameter(s):
-
-                        ar: an array of integers
+                        {ProblemData?.Problem}
                         <p className="font-semibold text-xl my-4">Input Format</p>
-
-
-                        The first line contains an integer, , denoting the size of the array.
-                        The second line contains  space-separated integers representing the array's elements.
-
-
+                        {ProblemData?.example}
                         <p className="font-semibold text-xl my-4">Constraints</p>
 
                         <samp>0 {'<'} n, ar[i]{'<'}= 1000</samp>
+                      
+                      
+{/*                       
                         <p className="font-semibold text-xl my-4">Output Format</p>
 
                         Print the sum of the array's elements as a single integer.
@@ -75,7 +70,11 @@ function CodeEditor() {
                         <p className="font-semibold text-xl my-4">Explanation</p>
 
 
-                        We print the sum of the array's elements: 1+2+3+4+10+11=31
+                        We print the sum of the array's elements: 1+2+3+4+10+11=31 */}
+                        
+
+
+
                     </div>
 
 
@@ -94,7 +93,7 @@ function CodeEditor() {
                     <div className=" my-2 overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
                         <div style={{ zIndex: '4' }} class="absolute bottom-[92%] right-[69.5%] form-control w-full max-w-xs bg-slate-900">
 
-                            <select onChange={ (e)=>onChange(e)} class="select w-[130%] select-bordered bg-slate-600 text-white">
+                            <select onChange={(e) => onChange(e)} class="select w-[130%] select-bordered bg-slate-600 text-white">
                                 <option >Select Language</option>
                                 <option value='C'>C</option>
                                 <option value='C++' >C++</option>
@@ -114,43 +113,43 @@ function CodeEditor() {
                         } */}
 
                         {
-                            lan == 'C' && <iframe data-theme="dark" width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/C?lite=true"></iframe> 
+                            lan == 'C' && <iframe data-theme="dark" width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/C?lite=true"></iframe>
 
                         }
                         {
-                            lan == '' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe> 
+                            lan == '' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'C++' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/OPP1-1?lite=true"></iframe> 
+                            lan == 'C++' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/OPP1-1?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Java' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Java?lite=true"></iframe> 
+                            lan == 'Java' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Java?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Python' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe> 
+                            lan == 'Python' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Python?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'JavaScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/JavaScript?lite=true"></iframe> 
+                            lan == 'JavaScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/JavaScript?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Go' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Go?lite=true"></iframe> 
+                            lan == 'Go' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Go?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'TypeScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/TypeScript?lite=true"></iframe> 
+                            lan == 'TypeScript' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/TypeScript?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Kotlin' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Kotlin-2?lite=true"></iframe> 
+                            lan == 'Kotlin' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Kotlin-2?lite=true"></iframe>
 
                         }
                         {
-                            lan == 'Ruby' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Ruby?lite=true"></iframe> 
+                            lan == 'Ruby' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Ruby?lite=true"></iframe>
 
                         }
 

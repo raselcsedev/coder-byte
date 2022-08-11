@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
@@ -17,43 +17,56 @@ import DataStructure from './Component/Topicpoblem/DataStructure';
 import Database from './Component/Topicpoblem/Database';
 import Algo from './Component/Topicpoblem/Algo';
 import AllCourses from './Components/AllCourses/AllCourses';
-import CourseDetail from './Components/CourseDetail/CourseDetail'
-import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
-import CreateProblem from './Component/CreateProblem/CreateProblem';
-import Footer2 from './Footer/Footer2';
+// import CourseDetail from './Components/CourseDetail/CourseDetail'
+// import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
+// import CreateProblem from './Component/CreateProblem/CreateProblem';
+// import Footer2 from './Footer/Footer2';
 const queryClient = new QueryClient()
 
+export const PassingPrblm  = createContext("problem");
 function App() {
+  const [ProblemData, SetProblem] = useState([]);
+  // useEffect(()=>{
+  //   fetch('https://jsonplaceholder.typicode.com/posts')
+  //   .then(res=>res.json())
+  //   .then(data=>SetProblem(data))
+  // },[])
   return (
-    <div className="App">
-      <QueryClientProvider client={queryClient}>
+    <>
+      <PassingPrblm.Provider value={[ProblemData, SetProblem]}>
+        <div className="App">
 
-        <Header></Header>
+          <QueryClientProvider client={queryClient}>
 
-        <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/courses' element={<AllCourses></AllCourses>}></Route>
-          <Route path='/:id' element={<CourseDetail></CourseDetail>}></Route>
-          <Route path='enroll/:id' element={<EnrollCourse></EnrollCourse>}></Route>
+            <Header></Header>
 
-          <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
-          <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
-          <Route path='weeklypre/:id' element={<CodeEditor></CodeEditor>}></Route>
-          <Route path='/Topic' element={<Topic></Topic>}>
+            <Routes>
+              <Route path='/' element={<Home></Home>}></Route>
+              <Route path='/courses' element={<AllCourses></AllCourses>}></Route>
+              {/* <Route path='/:id' element={<CourseDetail></CourseDetail>}></Route> */}
+              {/* <Route path='enroll/:id' element={<EnrollCourse></EnrollCourse>}></Route> */}
 
-            <Route index element={<DataStructure></DataStructure>}></Route>
-            <Route path='Database' element={<Database></Database>}></Route>
-            <Route path='algo' element={<Algo></Algo>}></Route>
-          </Route>
-          <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route>
-          <Route path='/profile' element={<Profile></Profile>}></Route>
-          <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
-          <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
-        <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route>
-        </Routes>
-        <Footer></Footer>
-      </QueryClientProvider>
-{/* <Footer2></Footer2> */}
-    </div>)
+              <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
+              <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
+              <Route path='weeklypre/:id' element={<CodeEditor></CodeEditor>}></Route>
+              <Route path='/Topic' element={<Topic></Topic>}>
+
+                <Route index element={<DataStructure></DataStructure>}></Route>
+                <Route path='Database' element={<Database></Database>}></Route>
+                <Route path='algo' element={<Algo></Algo>}></Route>
+              </Route>
+              <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route>
+              <Route path='/profile' element={<Profile></Profile>}></Route>
+              <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
+              <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+              {/* <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route> */}
+            </Routes>
+            <Footer></Footer>
+          </QueryClientProvider>
+          {/* <Footer2></Footer2> */}
+        </div>
+      </PassingPrblm.Provider>
+    </>
+  )
 }
 export default App;
