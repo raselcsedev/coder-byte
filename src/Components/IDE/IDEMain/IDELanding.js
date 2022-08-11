@@ -13,9 +13,10 @@ import OutputDetails from "./OutputDetails";
 import { LoaderIcon } from "react-hot-toast";
 import { useCallback } from "react";
 import { useRef } from "react";
+import Loading from "../../Shared/Loading/Loading";
 
 
-const javascriptDefault = `#include<stdio.h>
+const codeDefault = `#include<stdio.h>
 
 
 int main()
@@ -51,12 +52,12 @@ int main()
 `;
 
 const IDELanding = () => {
-  const [code, setCode] = useState(javascriptDefault);
+  const [code, setCode] = useState(codeDefault);
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
-  const [language, setLanguage] = useState(languageOptions[0]);
+  const [language, setLanguage] = useState(languageOptions[4]);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
@@ -99,6 +100,10 @@ const IDELanding = () => {
       source_code: btoa(code),
       stdin: btoa(customInput),
     };
+
+    //post :  'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc'
+    // '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0'
+    // '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868'
     const options = {
       method: "POST",
       url: 'https://judge0-ce.p.rapidapi.com/submissions',
@@ -106,7 +111,7 @@ const IDELanding = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        'X-RapidAPI-Key': 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc',
+        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: formData,
@@ -133,13 +138,17 @@ const IDELanding = () => {
       });
   };
 
+
+  //get : 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc'
+  //'1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0'
+  // '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868'
   const checkStatus = async (token) => {
     const options = {
       method: "GET",
       url: 'https://judge0-ce.p.rapidapi.com/submissions' + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        'X-RapidAPI-Key': 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc',
+        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
     };
@@ -169,61 +178,74 @@ const IDELanding = () => {
   };
 
 
-  let [currentOutput, setCurrentOutput] = useState('')
-
-  const count = useRef(0)
+  const allCompilerOutputs = useRef([])
+  let count = 0
   const success = useRef(false)
+  let dbOutput = useRef('')
+  let compilerOutput = useRef('')
+  let loading = useRef(true)
+
 
   // sample of test cases
-  const input = [[2, 6, 4, 4], [2, 6, 5, 5], [2, 6, 6, 6]]
-  const output = [[4, 4], [5, 5], [4, 5]]
+  const input = ['2 6 4 4', '2 6 5 5', '2 6 6 6']
+  const output = ['4 4', '5 5', '6 6']
+
 
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
   const handleSubmit = async () => {
-    
+
     console.log('submit');
 
     for (let i = 0; i < input.length; i++) {
 
       setOutputDetails(null);
 
-      handleCompile(input[i].join(" "))
+      handleCompile(input[i])
 
       console.log('compile', i);
 
-      await timer(10000)
 
       console.log('outputDetails', outputDetails);
-      // console.log('compile-output', (outputDetails?.stdout));
-      // console.log('stored-output', btoa(output[i].join(" ")+' '));
-      // console.log('compile-output', atob(outputDetails?.stdout))
-      console.log('stored-output', (output[i].join(" ")));
 
-      setCurrentOutput(output[i].join(" ") + ' ')
-      console.log('current output', currentOutput);
+      console.log('current output inside', dbOutput);
 
-      // console.log('compile-output len', atob(outputDetails?.stdout).length);
-      // console.log('stored-output len', (output[i].join(" ").length));
     }
   }
 
   if (outputDetails?.stdout) {
 
-    if (atob(outputDetails?.stdout) == currentOutput) {
+    compilerOutput.current = (atob(outputDetails?.stdout).slice(0, -1))
+    allCompilerOutputs.current.push(compilerOutput.current)
+    const compilerAll = [...new Set(allCompilerOutputs.current)]
 
-      count.current++
+    console.log('arr unique compiler', compilerAll);
 
-      console.log('output detail', atob(outputDetails?.stdout));
-      console.log('current output', currentOutput);
-      console.log('count++');
-      console.log('count', count);
+    for (let i = 0; i < output.length; i++) {
+      for (let j = 0; j < output.length; j++) {
+
+        if (output[i] == compilerAll[j]) {
+          count++
+          console.log('count++');
+
+        }
+
+      }
     }
 
-    if (count.current == input.length) {
+    loading.current = false
+    console.log('load', loading.current);
+
+
+
+    console.log('count lastly', count);
+
+    if (count == output.length) {
       success.current = true
     }
-    console.log('compile-output out of loop', atob(outputDetails?.stdout))
+
+    console.log('success', success.current);
+
   }
 
 
@@ -244,11 +266,30 @@ const IDELanding = () => {
   }, []);
 
 
+  const svg =
 
+    <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 100 100">
+      <rect y="25" width="10" height="50" rx="4" ry="4" fill="#ffffff">
+        <animate attributeName="x" values="10;100" dur="1.2s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" from="0 10 70" to="-60 100 70" dur="1.2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" />
+      </rect>
+      <rect y="25" width="10" height="50" rx="4" ry="4" fill="#ffffff">
+        <animate attributeName="x" values="10;100" dur="1.2s" begin="0.4s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" from="0 10 70" to="-60 100 70" dur="1.2s" begin="0.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="0.4s" repeatCount="indefinite" />
+      </rect>
+      <rect y="25" width="10" height="50" rx="4" ry="4" fill="#ffffff">
+        <animate attributeName="x" values="10;100" dur="1.2s" begin="0.8s" repeatCount="indefinite" />
+        <animateTransform attributeName="transform" type="rotate" from="0 10 70" to="-60 100 70" dur="1.2s" begin="0.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0;1;0" dur="1.2s" begin="0.8s" repeatCount="indefinite" />
+      </rect>
+    </svg>
 
 
   return (
     <div className="pt-20 bg-slate-900">
+
 
       <div className="grid grid-cols-7 ">
         <div className="md:col-span-2 col-span-7 px-8 h-[95vh] overflow-y-scroll divide divide-y">
@@ -324,8 +365,47 @@ const IDELanding = () => {
                 </svg><p className="font-bold px-2">Run</p></div>}
               </button>
 
-              <button className="btn btn-info mx-2 pt-2" onClick={() => handleSubmit()}>Submit</button>
+              <label for="my-modal-4" className=" btn modal-button btn btn-info mx-2 pt-2" onClick={() => handleSubmit()}>Submit</label>
             </div>
+
+
+            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+            <label for="my-modal-4" class="modal cursor-pointer">
+
+              <div className="bg-slate-900 w-[90vw] md:w-[50vw] p-16 border border-slate-600">
+                <div>
+                  <p className=" text-info text-xl font-bold underline underline-offset-2">Test Cases Satisfied : {count}/{output.length}</p>
+                  <br />
+                </div>
+                <ul className="list-decimal">
+                  {loading.current ?
+
+                    <ul className="list-decimal pl-4">
+                      {
+                        [...Array(output.length)].map((e, i) => <li className="text-info text-lg font-semibold"> <li className="flex" key={i}> Test Case : processing {svg} <br /> <br /></li></li>)}
+                    </ul>
+                    :
+                    <div>
+                      <ul className="list-decimal pl-4">
+                        {
+                          [...Array(count)].map((e, i) => <li className="text-[#8ee112] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Passed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg><br /> <br /></li></li>)
+                        }
+                        {
+                          [...Array(output.length - count)].map((e, i) => <li className="text-[red] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Failed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg><br /> <br /></li></li>)}
+                      </ul>
+                      <p className=" text-success text-xl font-bold">{success.current ? "Congratulation !!! You've smashed It ." : "Wish You better try next time! "}</p>
+
+                    </div>
+                  }
+                </ul>
+              </div>
+            </label>
+
+
           </div>
 
           <div className="grid grid-cols-10">
