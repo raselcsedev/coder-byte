@@ -27,6 +27,9 @@ import ReviewProfile from './Components/GetCertificate/ReviewProfile';
 import TakeTest from './Components/GetCertificate/TakeTest';
 import CertificateConfirmPage from './Components/GetCertificate/CertificateConfirmPage';
 import AllCertificate from './Components/GetCertificate/AllCertificate';
+import Dashboard from './Components/Dashboard/Dashboard';
+import MyCourses from './Components/Dashboard/MyCourses';
+import AddCourse from './Components/Dashboard/AddCourse';
 const queryClient = new QueryClient()
 
 function App() {
@@ -51,6 +54,12 @@ function App() {
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
+          </Route>
+
+          <Route path='dashboard' element={<Dashboard></Dashboard>}>
+            <Route index element={<MyCourses></MyCourses>}></Route>
+            <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
+
           </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>

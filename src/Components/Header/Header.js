@@ -98,7 +98,7 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
-
+              
             {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
 
@@ -152,8 +152,6 @@ const Header = () => {
 
 
                     <div class="navbar-end ml-4    hidden lg:block mb-[-1%]">
-
-
                         <div className='flex items-center pb-2'>
                             {user &&
 
@@ -212,13 +210,20 @@ const Header = () => {
                                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
                                                     View Profile
                                                 </Link>
+                                                
                                             </li>
+                                            <li>
+                                            {
+                                                user && <Link to='/dashboard' class="btn bg-[green] border-none text-[white] btn-xs">Dashboard</Link>
+                                               }
+                                            </li>
+                                            
                                         </div>
 
 
 
                                         <div className='space-y-2 pt-4'>
-
+                                        
                                             <li><a className='btn btn-outline btn-xs text-[white]'>Settings</a></li>
                                             <li><button onClick={logout} className='btn btn-xs'>Logout</button></li>
 
@@ -227,9 +232,11 @@ const Header = () => {
 
                                     </ul>
                                 </div>
-
+                                   
                             }
+                            
                         </div>
+                        
 
                     </div>
 
