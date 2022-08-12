@@ -68,8 +68,11 @@ const Header = () => {
 
                     <label tabindex="0" htmlFor="toggler" name="toggle" class="btn btn-ghost btn-circle avatar">
                         <div class="w-9 border border-[brown] rounded-full" >
-                            <img
-                                src="https://i.stack.imgur.com/frlIf.png" />
+                            {
+                                profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
+                                    :
+                                    <img src="https://i.stack.imgur.com/frlIf.png" />
+                            }
                         </div>
                     </label>
                     <ul tabindex="0" id='profile' class=" space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
@@ -78,7 +81,7 @@ const Header = () => {
                             <Link to="/profile">
                                 <li>
                                     <img className='w-14 border border-[brown]  rounded-full'
-                                        src="https://i.stack.imgur.com/frlIf.png" />
+                                        src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
                                 </li>
                             </Link>
                             <Link to="/profile">
@@ -90,6 +93,10 @@ const Header = () => {
                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
                                     View Profile
                                 </Link>
+                            </li>
+                            <li>
+                                <Link to='/dashboard' class="btn bg-[green] border-none text-[white] btn-xs">Dashboard</Link>
+
                             </li>
                         </div>
 
@@ -118,7 +125,9 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
+
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/createproblem'>CreateProblem</CustomLink>
+
 
             {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
@@ -173,8 +182,6 @@ const Header = () => {
 
 
                     <div class="navbar-end ml-4    hidden lg:block mb-[-1%]">
-
-
                         <div className='flex items-center pb-2'>
                             {user &&
 
@@ -245,7 +252,14 @@ const Header = () => {
                                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
                                                     View Profile
                                                 </Link>
+
                                             </li>
+                                            <li>
+                                                {
+                                                    user && <Link to='/dashboard' class="btn bg-[green] border-none text-[white] btn-xs">Dashboard</Link>
+                                                }
+                                            </li>
+
                                         </div>
 
 
@@ -262,7 +276,9 @@ const Header = () => {
                                 </div>
 
                             }
+
                         </div>
+
 
                     </div>
 

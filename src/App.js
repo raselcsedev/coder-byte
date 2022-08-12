@@ -29,6 +29,14 @@ import AllUsers from './features/Profiles/AllUsers';
 import ReviewProfile from './Components/GetCertificate/ReviewProfile';
 import TakeTest from './Components/GetCertificate/TakeTest';
 import CertificateConfirmPage from './Components/GetCertificate/CertificateConfirmPage';
+import AllCertificate from './Components/GetCertificate/AllCertificate';
+import Dashboard from './Components/Dashboard/Dashboard';
+import MyCourses from './Components/Dashboard/MyCourses';
+import AddCourse from './Components/Dashboard/AddCourse';
+import SingleCertificate from './Components/GetCertificate/SingleCertificate/SingleCertificate';
+import ParticipantInfo from './Components/GetCertificate/SingleCertificate/ParticipantInfo';
+import StartTest from './Components/GetCertificate/SingleCertificate/StartTest';
+import ConfirmationPage from './Components/GetCertificate/SingleCertificate/ConfirmationPage';
 const queryClient = new QueryClient()
 
 function App() {
@@ -55,11 +63,25 @@ function App() {
             <Route path='algo' element={<Algo></Algo>}></Route>
           </Route>
 
+          <Route path='dashboard' element={<Dashboard></Dashboard>}>
+            <Route index element={<MyCourses></MyCourses>}></Route>
+            <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
+            <Route path='all-users' element={<AllUsers></AllUsers>}></Route>
+
+          </Route>
+
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
+          <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
+
+          <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
+          <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>
+          <Route path='/start-test/:id' element={<StartTest></StartTest>}></Route>
+          
           <Route path='/contests' element={<Contests></Contests>}></Route>
           <Route path='/reviewprofile' element={<ReviewProfile></ReviewProfile>}></Route>
           <Route path='/taketest' element={<TakeTest></TakeTest>}></Route>
           <Route path='/testconfirmation' element={<CertificateConfirmPage></CertificateConfirmPage>}></Route>
+          <Route path='/testconfirmation/:id' element={<ConfirmationPage></ConfirmationPage>}></Route>
           <Route path='*' element={<NotFound></NotFound>}></Route>
           <Route path='/explore' element={<IDELanding></IDELanding>}></Route>
           <Route path='/profile' element={<Profile></Profile>}></Route>

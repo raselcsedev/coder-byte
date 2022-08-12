@@ -83,7 +83,7 @@ const Contests = () => {
       <div>
         <h1 className="text-2xl mt-2 mb-2">Archived Contests</h1>
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2 mb-12">
+      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2 mb-12">
         {archived.map((challange) => (
           <ArchivedContest key={challange._id} challange={challange}></ArchivedContest>
         ))}

@@ -13,7 +13,7 @@ const GetCertified = () => {
           <div className="mr-8 md:w-[100%] w-[80%] mx-auto">
             <h1 class="md:text-4xl text-lg font-medium leading-normal ">Verify your Problem Solving Skills. Accelerate your Job Search.</h1>
             <p class="py-6">
-              Take the HackerRank Skills Certification Test and showcase your <br /> knowledge as a HackerRank verified developer.
+              Take the coderAccess Skills Certification Test and showcase your <br /> knowledge as a HackerRank verified developer.
             </p>
             <Link to="/reviewprofile">
               <button class="btn btn-accent">Take the coderAccess Skills Test</button>
