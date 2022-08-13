@@ -14,6 +14,7 @@ import { LoaderIcon } from "react-hot-toast";
 import { useCallback } from "react";
 import { useRef } from "react";
 import Loading from "../../Shared/Loading/Loading";
+import { Modal } from 'react-responsive-modal';
 
 
 const codeDefault = `#include<stdio.h>
@@ -58,6 +59,8 @@ const IDELanding = () => {
   const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[4]);
+
+  const [open, setOpen] = useState(false);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
@@ -111,7 +114,7 @@ const IDELanding = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        'X-RapidAPI-Key': '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0',
+        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: formData,
@@ -148,7 +151,7 @@ const IDELanding = () => {
       url: 'https://judge0-ce.p.rapidapi.com/submissions' + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        'X-RapidAPI-Key': '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0',
+        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
     };
@@ -180,16 +183,13 @@ const IDELanding = () => {
 
   const allCompilerOutputs = useRef([])
   let count = 0
-  const success = useRef(false)
-  let dbOutput = useRef('')
   let compilerOutput = useRef('')
   let loading = useRef(true)
 
 
   // sample of test cases
-  const input = ['2 6 4 4', '2 6 5 5', '2 6 6 6']
-  const output = ['4 4', '5 5', '6 6']
-
+  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6', '2 6 7 7', '2 6 8 8', '2 6 9 9', '2 6 10 10', '2 6 11 11', '2 6 12 12', '2 6 13 13', '2 6 14 14', '2 6 15 15', '2 6 16 16', '2 6 17 17', '2 6 18 18']
+  const testCaseOutput = ['4 4', '5 5', '6 6', '7 7', '8 8', '9 9', '10 10', '11 11', '12 12', '13 13', '14 14', '15 15', '16 16', '17 17', '18 18']
 
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
@@ -197,19 +197,15 @@ const IDELanding = () => {
 
     console.log('submit');
 
-    for (let i = 0; i < input.length; i++) {
+    for (let i = 0; i < testCaseInput.length; i++) {
 
       setOutputDetails(null);
-
-      handleCompile(input[i])
+      allCompilerOutputs.current = []
+      handleCompile(testCaseInput[i])
 
       console.log('compile', i);
 
-
       console.log('outputDetails', outputDetails);
-
-      console.log('current output inside', dbOutput);
-
     }
   }
 
@@ -221,33 +217,21 @@ const IDELanding = () => {
 
     console.log('arr unique compiler', compilerAll);
 
-    for (let i = 0; i < output.length; i++) {
-      for (let j = 0; j < output.length; j++) {
+    for (let i = 0; i < testCaseOutput.length; i++) {
+      for (let j = 0; j < testCaseOutput.length; j++) {
 
-        if (output[i] == compilerAll[j]) {
+        if (testCaseOutput[i] == compilerAll[j]) {
           count++
           console.log('count++');
-
         }
-
       }
     }
 
     loading.current = false
     console.log('load', loading.current);
-
-
-
     console.log('count lastly', count);
 
-    if (count == output.length) {
-      success.current = true
-    }
-
-    console.log('success', success.current);
-
   }
-
 
   function handleThemeChange(th) {
     const theme = th;
@@ -373,45 +357,52 @@ const IDELanding = () => {
                 </svg><p className="font-bold px-2">Run</p></div>}
               </button>
 
-              <label for="my-modal-4" className=" btn modal-button btn btn-info pt-1 mx-2" onClick={() => handleSubmit()}>Submit</label>
+              <button className=" btn modal-button btn btn-info pt-1 mx-2" onClick={() => {
+                setOpen(true)
+                handleSubmit()
+              }}>Submit</button>
             </div>
 
+            <Modal classNames={{
+              overlay: 'customOverlay',
+              modal: 'customModal',
+            }} open={open} onClose={() => setOpen(false)}>
 
-            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-            <label for="my-modal-4" class="modal cursor-pointer">
-
-              <div className="bg-slate-900 w-[90vw] md:w-[50vw] p-16 border border-slate-600">
+              <div className="  md:w-[40vw] md:px-10 md:py-3 ">
                 <div>
-                  <p className=" text-info text-xl font-bold underline underline-offset-2">Test Cases Satisfied : {count}/{output.length}</p>
+                  <p className=" text-info text-xl font-bold underline underline-offset-2">Test Cases Satisfied : {count}/{testCaseOutput.length}</p>
                   <br />
                 </div>
-                <ul className="list-decimal">
+                <ul className="list-decimal md:grid grid-cols-2">
                   {showElement ?
 
-                    <ul className="list-decimal pl-4">
+                    <ul className="list-decimal md:grid grid-cols-2 gap-2 w-[110%] md:w-[250%] mx-auto px-10">
                       {
-                        [...Array(output.length)].map((e, i) => <li className="text-info text-lg font-semibold"> <li className="flex" key={i}> Test Case : processing {svg} <br /> <br /></li></li>)}
+                        [...Array(testCaseOutput.length)].map((e, i) => <li className="text-info text-lg font-semibold"> <li className="flex" key={i}> Test Case : processing {svg} <br /> <br /></li></li>)}
                     </ul>
                     :
                     <div>
-                      <ul className="list-decimal pl-4">
+                      <ul className="list-decimal md:grid grid-cols-2 gap-2 w-[110%] md:w-[250%] mx-auto px-10">
                         {
                           [...Array(count)].map((e, i) => <li className="text-[#8ee112] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Passed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg><br /> <br /></li></li>)
                         }
                         {
-                          [...Array(output.length - count)].map((e, i) => <li className="text-[red] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Failed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          [...Array(testCaseOutput.length - count)].map((e, i) => <li className="text-[red] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Failed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg><br /> <br /></li></li>)}
                       </ul>
-                      <p className=" text-success text-xl font-bold">{success.current ? "Congratulation !!! You've smashed It ." : "Wish You better try next time! "}</p>
-
                     </div>
                   }
                 </ul>
+                {
+                  showElement ? <p className=" text-success text-xl font-bold">Please wait, We're working on your submission.</p> : <p className=" text-success text-xl font-bold">{testCaseOutput.length - count == 0 ? "Congratulation !!! You've smashed It ." : "Wish You better try next time! "}</p>
+
+                }
               </div>
-            </label>
+
+            </Modal>
 
 
           </div>
@@ -431,7 +422,7 @@ const IDELanding = () => {
                 <OutputWindow outputDetails={outputDetails} />
                 <div className="">
                   <CustomInput
-                    input={input}
+                    input={testCaseInput}
                     customInput={customInput}
                     setCustomInput={setCustomInput}
                   />
