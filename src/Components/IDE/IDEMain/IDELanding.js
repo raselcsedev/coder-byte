@@ -111,7 +111,7 @@ const IDELanding = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
+        'X-RapidAPI-Key': '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: formData,
@@ -148,7 +148,7 @@ const IDELanding = () => {
       url: 'https://judge0-ce.p.rapidapi.com/submissions' + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
+        'X-RapidAPI-Key': '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
     };
@@ -286,6 +286,14 @@ const IDELanding = () => {
       </rect>
     </svg>
 
+  const [showElement, setShowElement] = React.useState(true)
+  useEffect(() => {
+    setTimeout(function () {
+      setShowElement(false)
+    }, 7000);
+  },
+    [])
+
 
   return (
     <div className="pt-20 bg-slate-900">
@@ -365,7 +373,7 @@ const IDELanding = () => {
                 </svg><p className="font-bold px-2">Run</p></div>}
               </button>
 
-              <label for="my-modal-4" className=" btn modal-button btn btn-info mx-2 pt-2" onClick={() => handleSubmit()}>Submit</label>
+              <label for="my-modal-4" className=" btn modal-button btn btn-info pt-1 mx-2" onClick={() => handleSubmit()}>Submit</label>
             </div>
 
 
@@ -378,7 +386,7 @@ const IDELanding = () => {
                   <br />
                 </div>
                 <ul className="list-decimal">
-                  {loading.current ?
+                  {showElement ?
 
                     <ul className="list-decimal pl-4">
                       {

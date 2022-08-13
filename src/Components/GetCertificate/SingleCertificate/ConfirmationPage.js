@@ -93,7 +93,7 @@ const ConfirmationPage = () => {
                   You agree to coderAccess cookie policy. We use cookies to ensure you have the best browsing experience on our
                   website
                 </h2>
-                <Link to="/explore">
+                <Link to={`/skill-test-window/${id}`}>
                   <button class="py-2 px-5 border rounded border-green-600 text-white bg-green-600 font-bold mt-5 mb-5">
                     Agree & Start
                   </button>

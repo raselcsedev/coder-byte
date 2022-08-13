@@ -70,10 +70,10 @@ const CreateProblem = () => {
 
     return (
         <>
-            <section className='w-[80vw] mx-auto'>
+            <section className='w-[50vw] mx-auto'>
                 <section className='grid grid-cols-2 md:gap-8' >
 
-                    <div className='mt-20 md:mx-36 md:col-span-1 col-span-2 p-4'>
+                    <div className='mt-20 md:col-span-1 col-span-2 p-4'>
                         <div>
                             <h1>Problem title</h1>
                             <input onChange={(e) => setptitle(e.target.value)} id="title" type="text" placeholder="Type here" class=" mt-3 input input-bordered w-full max-w-xs" />

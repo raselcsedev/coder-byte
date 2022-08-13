@@ -60,8 +60,6 @@ const Header = () => {
         }
 
             {
-
-
                 user && <div class="dropdown dropdown-end ">
 
                     <input type="checkbox" name="toggle" id="toggler" />
@@ -126,7 +124,6 @@ const Header = () => {
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
 
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/createproblem'>CreateProblem</CustomLink>
 
 
             {
@@ -236,8 +233,6 @@ const Header = () => {
                                                             :
                                                             <img className='w-14 border border-white  rounded-full'
                                                                 src="https://i.stack.imgur.com/frlIf.png" />
-
-
                                                     }
 
                                                 </li>

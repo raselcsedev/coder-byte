@@ -6,6 +6,7 @@ import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
 import Courses from '../Courses/Courses';
 import AllUsers from '../../features/Profiles/AllUsers';
+import CountDown from '../GetCertificate/SingleCertificate/SkillTestWindow/CountDown';
 
 const Home = () => {
     return (
@@ -17,8 +18,7 @@ const Home = () => {
             <Languages></Languages>
             <Courses></Courses>
             <FeaturedCompanies></FeaturedCompanies>
-            {/* <AllUsers></AllUsers> */}
-            {/* <Func></Func> */}
+            
         </div>
     );
 };

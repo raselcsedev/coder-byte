@@ -38,7 +38,6 @@ const EditProfile = ({ updatedProfile }) => {
 
 
     return (
-
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Toaster />
@@ -182,9 +181,6 @@ const EditProfile = ({ updatedProfile }) => {
 
             </form>
         </div>
-
-
-
     );
 };
 

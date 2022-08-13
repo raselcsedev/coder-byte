@@ -46,6 +46,10 @@ export const certificatelist = [
       {
         _id: 12,
         name: "SQL(Advanced)",
+      },
+      {
+        _id: 13,
+        name: "Problem Solving (Basic)",
       }
    
   ];
