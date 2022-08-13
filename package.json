@@ -24,7 +24,6 @@
     "react-hot-toast": "^2.3.0",
     "react-images-uploading": "^3.1.7",
     "react-modal": "^3.15.1",
-    "react-query": "^4.0.0",
     "react-redux": "^8.0.2",
     "react-responsive-modal": "^6.2.0",
     "react-router-dom": "^6.3.0",
