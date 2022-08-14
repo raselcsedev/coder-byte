@@ -5,6 +5,7 @@ import useCourses from '../Shared/useCourses';
 const AllCourses = () => {
 
     const [courses,setCourses] =useCourses()
+    
     console.log(courses);
 
     return (

@@ -1,0 +1,7 @@
+select{
+    width: 300px;
+    /* background-color: aqua; */
+    padding: 5px;
+    border: 1 solid black;
+    border-radius: 3px;
+}

@@ -3,8 +3,8 @@ import React from 'react';
 const About = () => {
 
     return (
-        <div className='w-[80%] mx-auto py-10'>
-            <h1 className='text-4xl mb-8 font-semibold mt-20'>
+        <div    className='w-[80%] mx-auto py-10'>
+            <h1 data-testid='aboutUs-1' className='text-4xl mb-8 font-semibold mt-20'>
                 Welcome to coderAccess community
             </h1>
             <p>

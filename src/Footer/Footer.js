@@ -1,9 +1,11 @@
 import React from 'react';
+import "./footer.css"
+
 
 const Footer = () => {
     return (
-        <div>
-            <footer class="footer p-16 bg-neutral text-neutral-content">
+        <div className='footers'>
+            <footer class="footer p-10 bg-neutral text-neutral-content p-36">
                 <div>
                     <span class="footer-title">Services</span>
                     <a class="link link-hover">Branding</a>

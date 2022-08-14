@@ -3,10 +3,11 @@ import axios from "axios";
 
 export const fetchUsers =createAsyncThunk("/profiles/fetchUsers",
 async()=>{
-    const res = await axios.get("http://localhost:5000/profiles ")
+    const res =  await axios.get("http://localhost:5000/profiles")
     
-    return res.data
-    console.log(res.data);
+    console.log('thunk',res.data);
+
+    return  res.data
 })
 
 const profileSlice = createSlice({
