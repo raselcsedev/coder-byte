@@ -92,7 +92,20 @@ const IDELanding = () => {
     }
   };
 
+  const allCompilerOutputs = useRef([])
 
+  const uniqueComileOutput = useRef([])
+
+  let count = 0
+  let compilerOutput = useRef('')
+  let loading = useRef(true)
+
+
+
+
+  // sample of test cases
+  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6','2 6 7 7','2 6 8 8','2 6 9 9','2 6 10 10','2 6 11 11','2 6 12 12','2 6 13 13','2 6 14 14','2 6 15 15','2 6 16 16','2 6 17 17','2 6 18 18']
+  const testCaseOutput = ['4 4', '5 5', '6 6','7 7','8 8','9 9','10 10','11 11','12 12','13 13','14 14','15 15','16 16','17 17','18 18']
 
 
   const handleCompile = (customInput) => {
@@ -107,6 +120,7 @@ const IDELanding = () => {
     //post :  'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc'
     // '1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0'
     // '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868'
+    // '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee'
     const options = {
       method: "POST",
       url: 'https://judge0-ce.p.rapidapi.com/submissions',
@@ -114,7 +128,7 @@ const IDELanding = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
+        'X-RapidAPI-Key': '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: formData,
@@ -145,13 +159,14 @@ const IDELanding = () => {
   //get : 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc'
   //'1b3d880241msh73bf6100521d0fcp112fd9jsna2b44f7992f0'
   // '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868'
+  // '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee'
   const checkStatus = async (token) => {
     const options = {
       method: "GET",
       url: 'https://judge0-ce.p.rapidapi.com/submissions' + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        'X-RapidAPI-Key': '02275dcad0mshd52a0ab2f7c8fabp1483e1jsna9afe8cf1868',
+        'X-RapidAPI-Key': '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
     };
@@ -169,7 +184,21 @@ const IDELanding = () => {
       } else {
         setProcessing(false);
         setOutputDetails(response.data);
+
+        // console.log('res',outputDetails);
         // showSuccessToast(`Compiled Successfully!`);
+
+        if (response.data?.stdout) {
+          console.log('current compiled', atob(response.data?.stdout));
+          compilerOutput.current = (atob(response.data?.stdout).slice(0, -1))
+          allCompilerOutputs.current.push(compilerOutput.current)
+          const compilerAll = [...new Set(allCompilerOutputs.current)]
+
+          console.log('arr unique compiler', compilerAll);
+          uniqueComileOutput.current = compilerAll
+        }
+
+
         console.log("response.data", response.data);
         return;
       }
@@ -181,57 +210,50 @@ const IDELanding = () => {
   };
 
 
-  const allCompilerOutputs = useRef([])
-  let count = 0
-  let compilerOutput = useRef('')
-  let loading = useRef(true)
+  for (let i = 0; i < uniqueComileOutput.current.length; i++) {
+    // console.log('outer,', i);
+    for (let j = 0; j < uniqueComileOutput.current.length; j++) {
+      // console.log('inner', j);
+      // console.log('compilerAll[i]', uniqueComileOutput.current[i]);
+      // console.log('testCaseOutput[j]', testCaseOutput[j]);
 
+      if (uniqueComileOutput.current[i] == testCaseOutput[j]) {
+        count++
+        console.log('count++', count);
+      }
+    }
+  }
 
-  // sample of test cases
-  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6', '2 6 7 7', '2 6 8 8', '2 6 9 9', '2 6 10 10', '2 6 11 11', '2 6 12 12', '2 6 13 13', '2 6 14 14', '2 6 15 15', '2 6 16 16', '2 6 17 17', '2 6 18 18']
-  const testCaseOutput = ['4 4', '5 5', '6 6', '7 7', '8 8', '9 9', '10 10', '11 11', '12 12', '13 13', '14 14', '15 15', '16 16', '17 17', '18 18']
+  loading.current = false
+  console.log('load', loading.current);
+  console.log('count lastly', count);
 
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
 
     console.log('submit');
 
     for (let i = 0; i < testCaseInput.length; i++) {
 
-      setOutputDetails(null);
+      // setOutputDetails(null);
+
+      uniqueComileOutput.current=[]
       allCompilerOutputs.current = []
+
       handleCompile(testCaseInput[i])
 
+
+      timer(3000)
       console.log('compile', i);
 
-      console.log('outputDetails', outputDetails);
+      // console.log('outputDetails', outputDetails);
     }
   }
 
-  if (outputDetails?.stdout) {
 
-    compilerOutput.current = (atob(outputDetails?.stdout).slice(0, -1))
-    allCompilerOutputs.current.push(compilerOutput.current)
-    const compilerAll = [...new Set(allCompilerOutputs.current)]
 
-    console.log('arr unique compiler', compilerAll);
 
-    for (let i = 0; i < testCaseOutput.length; i++) {
-      for (let j = 0; j < testCaseOutput.length; j++) {
-
-        if (testCaseOutput[i] == compilerAll[j]) {
-          count++
-          console.log('count++');
-        }
-      }
-    }
-
-    loading.current = false
-    console.log('load', loading.current);
-    console.log('count lastly', count);
-
-  }
 
   function handleThemeChange(th) {
     const theme = th;
@@ -274,7 +296,7 @@ const IDELanding = () => {
   useEffect(() => {
     setTimeout(function () {
       setShowElement(false)
-    }, 7000);
+    }, 5000);
   },
     [])
 
