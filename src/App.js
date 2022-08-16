@@ -42,6 +42,7 @@ import AddSkillTest from './Components/Dashboard/AddSkillTest';
 import SkillTestWindow from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SkillTestWindow';
 import SecondaryTest from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SecondaryTest';
 import CongratulationWindow from './Components/GetCertificate/SingleCertificate/CongratulationWindow';
+import Testimonials from './Components/Testimonial/Testimonals';
 
 const queryClient = new QueryClient()
 
@@ -67,6 +68,7 @@ function App() {
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
+            
           </Route>
 
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
@@ -77,6 +79,7 @@ function App() {
             <Route path='all-skill-tests' element={<AllSkillTests></AllSkillTests>}></Route>
             <Route path='add-skill-test' element={<AddSkillTest></AddSkillTest>}></Route>
           </Route>
+          
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
@@ -100,6 +103,7 @@ function App() {
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
         </Routes>
+        
         <Footer></Footer>
       </QueryClientProvider>
 
