@@ -3,8 +3,11 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import axios from "axios";
+import { QueryClient, QueryClientProvider, useQuery, useMutation } from '@tanstack/react-query'
 
 const SignUp = () => {
+
     const [signInWithGoogle, googleUser, googleLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
@@ -33,10 +36,27 @@ const SignUp = () => {
         navigate('/');
     }
 
+
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        console.log('update done');
+        const user = {
+            email: data.email,
+            displayName: data.name,
+        }
+
+        fetch('http://localhost:5000/profiles', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+
+            })
     }
     return (
         <div className='flex bg-[#050535] h-screen justify-center items-center'>

@@ -1,0 +1,19 @@
+.customOverlay {
+    background: #100e20cb;
+  }
+  .customModal {
+    background:#1f2937;
+    max-width: 740px;
+    border-radius:5px;
+    width: 50%;
+    padding: 30px;
+  /* color: #000000 */
+  }
+
+  @media only screen and (max-width: 600px) {
+    .customModal {
+      width: 80%;
+
+    }
+  }
+  
