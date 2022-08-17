@@ -7,6 +7,7 @@ import DashbordMain from '../DashbordMain/DashbordMain'
 import Courses from '../Courses/Courses';
 import AllUsers from '../../features/Profiles/AllUsers';
 import CountDown from '../GetCertificate/SingleCertificate/SkillTestWindow/CountDown';
+import CreateBlog from '../../Footer/CreateBlog/CreateBlog';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Courses></Courses>
+            <CreateBlog></CreateBlog>
             <FeaturedCompanies></FeaturedCompanies>
             
         </div>
