@@ -17,13 +17,14 @@ import DataStructure from './Component/Topicpoblem/DataStructure';
 import Database from './Component/Topicpoblem/Database';
 import Algo from './Component/Topicpoblem/Algo';
 import AllCourses from './Components/AllCourses/AllCourses';
+import Discussion from './Component/Discussion/Discussion';
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 // import CreateProblem from './Component/CreateProblem/CreateProblem';
 // import Footer2 from './Footer/Footer2';
 const queryClient = new QueryClient()
 
-export const PassingPrblm  = createContext("problem");
+export const PassingPrblm = createContext("problem");
 function App() {
   const [ProblemData, SetProblem] = useState([]);
   // useEffect(()=>{
@@ -37,11 +38,10 @@ function App() {
         <div className="App">
 
           <QueryClientProvider client={queryClient}>
-
             <Header></Header>
-
             <Routes>
               <Route path='/' element={<Home></Home>}></Route>
+              <Route path='discussion' element={<Discussion></Discussion>}></Route>
               <Route path='/courses' element={<AllCourses></AllCourses>}></Route>
               {/* <Route path='/:id' element={<CourseDetail></CourseDetail>}></Route> */}
               {/* <Route path='enroll/:id' element={<EnrollCourse></EnrollCourse>}></Route> */}

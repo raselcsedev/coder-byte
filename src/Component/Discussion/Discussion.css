@@ -1,0 +1,12 @@
+.discontainer{
+
+    height: 90vh;
+    width: 60vw;
+    border: 1px solid;
+    /* display: flex;
+    justify-content: center; */
+    background-color: rgb(0, 21, 255);
+}
+.disinput{
+    width: 90vw;
+}

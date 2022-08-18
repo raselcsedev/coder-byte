@@ -6,7 +6,7 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Editor from "react-run-code";
 import ImageUploading from 'react-images-uploading';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PassingPrblm } from "../../App";
 
 
@@ -16,17 +16,15 @@ function CodeEditor() {
 
     let [lan, setLan] = useState('')
 
-
-
-
-
     function onChange(e) {
         const option = e.target.value.toString()
-
         console.log(option);
         setLan(option)
+    }
 
-
+    const navigator=useNavigate();
+    const HandleDiscussion =()=>{
+        navigator('/discussion')
     }
 
     console.log(lan);
@@ -37,6 +35,7 @@ function CodeEditor() {
                     <div className="mt-6 mb-1">
                         <button className="btn btn-xs btn-success mr-2">Easy</button>
                         <button className="btn btn-xs btn-primary">View Solution</button>
+                        <button onClick={HandleDiscussion} className="ml-3 btn btn-xs btn-primary">Discussion</button>
                     </div>
 
                     <div className="text-white py-5">
