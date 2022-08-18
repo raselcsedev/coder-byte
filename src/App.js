@@ -43,6 +43,12 @@ import SkillTestWindow from './Components/GetCertificate/SingleCertificate/Skill
 import SecondaryTest from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SecondaryTest';
 import CongratulationWindow from './Components/GetCertificate/SingleCertificate/CongratulationWindow';
 
+import Blogs from './Components/Blogs/Blogs';
+import Stories from './Components/Blogs/Stories';
+import WriteBlogs from './Components/Blogs/WriteBlogs';
+import Notifications from './Components/Blogs/Notifications';
+import HomeBlogs from './Components/Blogs/HomeBlogs';
+import HelpCenter from './Components/Blogs/HelpCenter';
 const queryClient = new QueryClient()
 
 function App() {
@@ -77,6 +83,14 @@ function App() {
             <Route path='all-skill-tests' element={<AllSkillTests></AllSkillTests>}></Route>
             <Route path='add-skill-test' element={<AddSkillTest></AddSkillTest>}></Route>
           </Route>
+
+            <Route path='blogs' element={<Blogs></Blogs>}>
+            <Route index path='homeblogs' element={<HomeBlogs></HomeBlogs>}></Route>
+            <Route path='stories' element={<Stories></Stories>}></Route>
+            <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
+            <Route path='notifications' element={<Notifications></Notifications>}></Route>
+            <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
+            </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
