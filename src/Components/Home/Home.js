@@ -8,6 +8,7 @@ import Courses from '../Courses/Courses';
 import AllUsers from '../../features/Profiles/AllUsers';
 import CountDown from '../GetCertificate/SingleCertificate/SkillTestWindow/CountDown';
 import CreateBlog from '../../Footer/CreateBlog/CreateBlog';
+import BlogEditor from '../../Footer/CreateBlog/BlogEditor';
 
 const Home = () => {
     return (
@@ -18,9 +19,10 @@ const Home = () => {
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Courses></Courses>
-            <CreateBlog></CreateBlog>
+            {/* <CreateBlog></CreateBlog> */}
+<BlogEditor></BlogEditor>
             <FeaturedCompanies></FeaturedCompanies>
-            
+
         </div>
     );
 };
