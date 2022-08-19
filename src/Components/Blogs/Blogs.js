@@ -8,10 +8,10 @@ const Blogs = () => {
     const [user] = useAuthState(auth);
 
   return (
-    <div className=" pt-20">
+    <div className=" pt-20 h-full overflow-visible">
       <div class="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content lg:mx-72">
+        <div class="drawer-content lg:mx-20 pl-5">
         {/* <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
                           Open drawer
                          </label> */}
@@ -22,7 +22,7 @@ const Blogs = () => {
           <Outlet></Outlet>
           
         </div>
-        <div class="drawer-side lg:fixed ">
+        <div class="drawer-side sticky top-0">
           <label for="my-drawer-2" class="drawer-overlay"></label>
           <div>
           <div className="ml-12 mt-8">
@@ -41,7 +41,7 @@ const Blogs = () => {
               <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/notifications"><FaIcons.FaRegBell></FaIcons.FaRegBell>Notifications</Link>
             </li>
             <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/writeblogs"><FaIcons.FaRegEdit></FaIcons.FaRegEdit>Write Blogs</Link>
+              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/create-blog"><FaIcons.FaRegEdit></FaIcons.FaRegEdit>Write Blogs</Link>
             </li>
             <li>
               <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/stories"><FaIcons.FaRegListAlt></FaIcons.FaRegListAlt>Stories</Link>
@@ -49,11 +49,7 @@ const Blogs = () => {
             <li>
               <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/helpcenter"><FaIcons.FaRegQuestionCircle></FaIcons.FaRegQuestionCircle>Help Center</Link>
             </li>
-            <Link to="/profile">
-              <li className="md:mx-10 pr-4 mx-auto mx-4 lg:mt-32">
-                <img className='md:w-24 w-24  mx-auto border border-[brown] rounded-full' src="https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg?w=2000" alt=""/>
-              </li>
-            </Link>
+           
           </ul>
         </div>
         </div>

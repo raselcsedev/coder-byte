@@ -49,6 +49,7 @@ import WriteBlogs from './Components/Blogs/WriteBlogs';
 import Notifications from './Components/Blogs/Notifications';
 import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
+import MediumDraft from './Footer/CreateBlog/MediumDraft';
 const queryClient = new QueryClient()
 
 function App() {
@@ -90,6 +91,8 @@ function App() {
             <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
+            <Route path='create-blog' element={<MediumDraft></MediumDraft>}></Route>
+
             </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
@@ -102,6 +105,7 @@ function App() {
           <Route path='/skill-test-window/:id' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/secondary-test/:id' element={<SecondaryTest></SecondaryTest>}></Route>
           
+
           <Route path='/contests' element={<Contests></Contests>}></Route>
           <Route path='/congratulation-window' element={<CongratulationWindow></CongratulationWindow>}></Route>
           <Route path='/reviewprofile' element={<ReviewProfile></ReviewProfile>}></Route>
