@@ -55,7 +55,7 @@ const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <QueryClientProvider client={queryClient}>
 
         <Header></Header>

@@ -1,25 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PassingPrblm } from '../../App';
 import DynamicTpicGetHook from '../COUSTOMHOOK/DynamicTpicGetHook';
 import Fram from './Fram';
 
 const Algo = () => {
-    // const [sproblem,setproblem]=useState([])
-    const {AlgorithimGet,data}=DynamicTpicGetHook()
-    useEffect(()=>{
+    
+    const [ProblemData, SetProblem] = useContext(PassingPrblm)
+    // console.log("prblem= ", ProblemData);
+
+
+
+    const { AlgorithimGet, data } = DynamicTpicGetHook()
+    useEffect(() => {
         AlgorithimGet()
-    },[])
-    // useEffect(()=>{
-    //     fetch('http://localhost:3000/ALgoproblem.JSON')
-    //     .then(res=>res.json())
-    //     .then(data=>setproblem(data))
-    // },[])
-    console.log(data);
+    }, [])
+
+
+
+    const navigate = useNavigate();
+    const NumberOfPrblemChick = (Data) => {
+        SetProblem(Data);
+        navigate('/editor');
+
+    }
+
+
+
+
+
     return (
         <div className='pt-20'>
             {
-                 data?.map(data=><Fram data={data}></Fram>)
+                data?.map(data => <Fram NumberOfPrblemChick={NumberOfPrblemChick} data={data}></Fram>)
             }
-           
+
         </div>
     );
 };
