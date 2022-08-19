@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { motion } from "framer-motion"
+import Testimonials from "../Testimonial/Testimonals";
 
 const Courses = () => {
-  const [datas, setdata] = useState([]);
+  const [data, setdata] = useState([]);
 
   useEffect(() => {
-    fetch("Data.json")
+    fetch("courses.json")
       .then((res) => res.json())
       .then((data) => setdata(data));
   }, []);
-  const data = datas.slice(0, 9);
+ 
   return (
     <div className="">
       <h2 className="text-4xl font-smibold font-serif text-center py-12">Sharpen Your Skills With Our courses</h2>
@@ -37,6 +37,7 @@ const Courses = () => {
           Explore the courses  {'>'}
         </Link>
       </div>
+      <Testimonials></Testimonials>
     </div>
   );
 };

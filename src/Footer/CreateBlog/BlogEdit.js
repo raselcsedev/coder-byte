@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Dante from "Dante2/src";
+// import Dante from "Dante2/src";
 
 
 console.log("wtf");
@@ -12,7 +12,10 @@ content = test;
 export default function BlogEdit() {
   return (
  
-      <Dante
+      <div>
+
+
+        {/* <Dante
         content={test}
         body_placeholder={"hello"}
         data_storage={{
@@ -24,7 +27,10 @@ export default function BlogEdit() {
           }
         }}
         read_only={false}
-      />
+      /> */}
+
+
+      </div>
  
   );
 }
