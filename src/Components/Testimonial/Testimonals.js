@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./testimonial.css";
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 
 export default class Testimonials extends Component {
   render() {
     return (
       <div className="py-20">
         <h1 className="text-3xl text-center font-bold">Testimonials</h1>
-        <Carousel
+        {/* <Carousel
         showArrows={true}
         infiniteLoop={true}
         showThumbs={false}
@@ -51,7 +51,7 @@ export default class Testimonials extends Component {
             </p>
           </div>
         </div>
-      </Carousel>
+      </Carousel> */}
       </div>
     );
   }

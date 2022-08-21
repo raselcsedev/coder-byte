@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PassingPrblm } from '../../App';
+// import { PassingPrblm } from '../../App';
 import Fram from './Fram';
 
 const DataStructure = () => {
-    const [ProblemData, SetProblem] = useContext(PassingPrblm)
+    // const [ProblemData, SetProblem] = useContext(PassingPrblm)
     const [sproblem, setproblems] = useState([])
     useEffect(() => {
         fetch('http://localhost:3000/DataS.JSON')
@@ -14,7 +14,7 @@ const DataStructure = () => {
 
     const navigate = useNavigate();
     const NumberOfPrblemChick = (Data) => {
-        SetProblem(Data);
+        // SetProblem(Data);
         navigate('/editor');
 
     }

@@ -17,7 +17,7 @@ const Home = () => {
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Courses></Courses>
-            {/* <BlogEdit></BlogEdit> */}
+            <BlogEdit></BlogEdit>
          
             <FeaturedCompanies></FeaturedCompanies>
            

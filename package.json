@@ -41,8 +41,7 @@
     "ace-code-editor": "^1.2.3",
     "axios": "^0.27.2",
     "daisyui": "^2.19.0",
-    "dante2": "^0.5.0-rc1",
-    "dante3": "^1.0.6-alpha.2",
+    "dante3": "^1.1.4",
     "draft-js": "^0.11.7",
     "draft-js-mention-plugin": "^3.1.5",
     "draft-js-prism": "^1.0.6",
@@ -106,5 +105,10 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.1.6"
-  }
+  },
+  "resolutions": {
+    "prosemirror-model": "^1.18.1",
+    "prosemirror-view": "^1.27.0",
+    "prosemirror-state": "^1.4.1"
+    }
 }

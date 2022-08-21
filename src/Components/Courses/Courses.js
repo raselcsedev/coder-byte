@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import Testimonials from "../Testimonial/Testimonals";
 
 const Courses = () => {
-  const [data, setdata] = useState([]);
+  const [datas, setdata] = useState([]);
 
   useEffect(() => {
-    fetch("courses.json")
+    fetch("Data.json")
       .then((res) => res.json())
       .then((data) => setdata(data));
   }, []);
- 
+  const data = datas.slice(0, 9);
   return (
     <div className="">
       <h2 className="text-4xl font-smibold font-serif text-center py-12">Sharpen Your Skills With Our courses</h2>
