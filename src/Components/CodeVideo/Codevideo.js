@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Codevideo = () => {
 
     return (
-        <div className='bg-[#171B26] md:h-[120vh] h-[80vh] py-[5%]'>
+        <div className='bg-[#171B26] md:h-[110vh] h-[80vh] py-[2%]'>
             <div className='w-[80%] md:w-[60%] mx-auto'>
 
                 <div>

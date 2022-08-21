@@ -1,14 +1,12 @@
 import React from 'react';
 import { set, useForm } from 'react-hook-form';
-import { FormField } from 'react-form-input-fields'
 import 'react-form-input-fields/dist/index.css'
 import { useState } from 'react';
 import './blog.css'
-import { useEffect } from 'react';
-
+import '@papyrs/stylo';
 const CreateBlog = () => {
 
-    const { register, formState: { errors }, handleSubmit, setValue } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = async (data) => {
 

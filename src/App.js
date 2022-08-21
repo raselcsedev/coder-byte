@@ -42,12 +42,20 @@ import AddSkillTest from './Components/Dashboard/AddSkillTest';
 import SkillTestWindow from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SkillTestWindow';
 import SecondaryTest from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SecondaryTest';
 import CongratulationWindow from './Components/GetCertificate/SingleCertificate/CongratulationWindow';
+import Testimonials from './Components/Testimonial/Testimonals';
 
+import Blogs from './Components/Blogs/Blogs';
+import Stories from './Components/Blogs/Stories';
+import WriteBlogs from './Components/Blogs/WriteBlogs';
+import Notifications from './Components/Blogs/Notifications';
+import HomeBlogs from './Components/Blogs/HomeBlogs';
+import HelpCenter from './Components/Blogs/HelpCenter';
+import MediumDraft from './Footer/CreateBlog/MediumDraft';
 const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <QueryClientProvider client={queryClient}>
 
         <Header></Header>
@@ -67,6 +75,7 @@ function App() {
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
+            
           </Route>
 
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
@@ -77,6 +86,17 @@ function App() {
             <Route path='all-skill-tests' element={<AllSkillTests></AllSkillTests>}></Route>
             <Route path='add-skill-test' element={<AddSkillTest></AddSkillTest>}></Route>
           </Route>
+          
+
+            <Route path='blogs' element={<Blogs></Blogs>}>
+            <Route index path='homeblogs' element={<HomeBlogs></HomeBlogs>}></Route>
+            <Route path='stories' element={<Stories></Stories>}></Route>
+            <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
+            <Route path='notifications' element={<Notifications></Notifications>}></Route>
+            <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
+            <Route path='create-blog' element={<MediumDraft></MediumDraft>}></Route>
+
+            </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
@@ -88,6 +108,7 @@ function App() {
           <Route path='/skill-test-window/:id' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/secondary-test/:id' element={<SecondaryTest></SecondaryTest>}></Route>
           
+
           <Route path='/contests' element={<Contests></Contests>}></Route>
           <Route path='/congratulation-window' element={<CongratulationWindow></CongratulationWindow>}></Route>
           <Route path='/reviewprofile' element={<ReviewProfile></ReviewProfile>}></Route>
@@ -100,6 +121,7 @@ function App() {
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
         </Routes>
+        
         <Footer></Footer>
       </QueryClientProvider>
 

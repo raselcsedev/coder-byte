@@ -4,11 +4,24 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const AddCourse = () => {
-  // const { id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
+   //const { id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
 
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-
+    console.log(data);
+    const url = `http://localhost:5000/courses`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+    // navigate("/taketest");
     toast.success("Course Added")
   }
 

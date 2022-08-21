@@ -1,22 +1,59 @@
 [
     {
-
-          
-        "title":"Sum of two integer (ALGO)",
-        "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
-        "example":"a=7 b=3 return 10",
-        "type":"EASY",
+  
+        "title":"Compare the Triplets",
+        "Problem":" Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty. The rating for Alice's challenge is the triplet a = (a[0], a[1], a[2]), and the rating for Bob's challenge is the triplet b = (b[0], b[1], b[2]). The task is to find their comparison points by comparing a[0] with b[0], a[1] with b[1], and a[2] with b[2]. If a[i] > b[i], then Alice is awarded 1 point. If a[i] < b[i], then Bob is awarded 1 point.If a[i] = b[i], then neither person receives a point.Comparison points is the total points a person earned.Given a and b, determine their respective comparison points.",
+        "example":"a = [1, 2, 3], b = [3, 2, 1], For elements *0*, Bob is awarded a point because a[0] . For the equal a[1] and b[1], no points are earned. Finally, for elements 2, a[2] > b[2] so Alice receives a point. The return array is [1, 1] with Alice's score first and Bob's second.",
+        "type":"Easy",
         "star":false,
-        "id":1
-
+        "id":2,
+        "TestCase":[[1,2,3],[1,2,3],[6,8,12],[7,9,15],[10,15,20],[5,6,7]],
+        "TestCaseOutPut":[[1,1],[0,3],[3,0]]
     },
     {
   
-        "title":"Multiply of two integer (ALGO)",
-        "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
-        "example":"a=7 b=3 return 10",
+        "title":"Mini-Max Sum",
+        "Problem":"Given five positive integers, find the minimum and maximum values that can be calculated by summing exactly four of the five integers. Then print the respective minimum and maximum values as a single line of two space-separated long integers.",
+        "type":"Hard",
+        "example":"Input->8 5  \n 10 9 8 7 7 7 5 5 6 output -> 6 ",
+        "star":false,
+        "id":2,
+        "TestCase":[[],[1,1,1],[],[8,10,2]],
+        "TestCaseOutPut":[[3],[20]]
+    },
+    {
+  
+        "title":"Next Round",
+        "Problem":"Contestant who earns a score equal to or greater than the k-th place finisher's score will advance to the next round, as long as the contestant earns a positive score... A total of n participants took part in the contest (n ≥ k), and you already know their scores. Calculate how many participants will advance to the next round.",
         "type":"Hard",
         "star":false,
-        "id":2
+        "id":2,
+        "example":"Input -> The first line of the input contains two integers n and k (1 ≤ k ≤ n ≤ 50) separated by a single space. The second line contains n space-separated integers a1, a2, ..., an (0 ≤ ai ≤ 100), where ai is the score earned by the participant who got the i-th place. The given sequence is non-increasing (that is, for all i from 1 to n - 1 the following condition is fulfilled: ai ≥ ai + 1).-> Output the number of participants who advance to the next round. ",
+        "TestCase":[[8,5],[10,9,8,7,7,7,5,5],[4,2],[0,0,0,0]],
+        "TestCaseOutPut":[[6],[0]]
+    },
+    {
+  
+        "title":"A. Bit++",
+        "Problem":"You are given a rectangular board of M × N squares. Also you are given an unlimited number of standard domino pieces of 2 × 1 squares. You are allowed to rotate the pieces. You are asked to place as many dominoes as possible on the board so as to meet the following conditions: 1. Each domino completely covers two squares. 2. No two dominoes overlap. 3.Each domino lies entirely inside the board. It is allowed to touch the edges of the board. Find the maximum number of dominoes, which can be placed under these restrictions.",
+        "example":"Input -> The first line contains a single integer n (1 ≤ n ≤ 150) — the number of statements in the programme. Next n lines contain a statement each. Each statement contains exactly one operation (++ or --) and exactly one variable x (denoted as letter «X»). Thus, there are no empty statements. The operation and the variable can be written in any order.Output -> Print a single integer — the final value of x.",
+        "type":"Easy",
+        "star":false,
+        "id":2,
+        "TestCase":[[2],[4],[3],[3]],
+        "TestCaseOutPut":[[4],[4]]
+    },
+    {
+  
+        "title":"A. Domino piling",
+        "Problem":"The classic programming language of Bitland is Bit++. This language is so peculiar and complicated. The language is that peculiar as it has exactly one variable, called x. Also, there are two operations: Operation ++ increases the value of variable x by 1. Operation -- decreases the value of variable x by 1. A statement in language Bit++ is a sequence, consisting of exactly one operation and one variable x. The statement is written without spaces, that is, it can only contain characters '+', '-1', 'X'. Executing a statement means applying the operation it contains. A programme in Bit++ is a sequence of statements, each of them needs to be executed. Executing a programme means executing all the statements it contains. You're given a programme in language Bit++. The initial value of x is 0. Execute the programme and find its final value (the value of the variable when this programme is executed). ->Input The first line contains a single integer n (1 ≤ n ≤ 150) — the number of statements in the programme.Next n lines contain a statement each. Each statement contains exactly one operation (++ or --) and exactly one variable x (denoted as letter «X»). Thus, there are no empty statements. The operation and the variable can be written in any order.",
+        "type":"Easy",
+        "star":false,
+        "id":2,
+        "example":"Input -> In a single line you are given two integers M and N — board sizes in squares (1 ≤ M ≤ N ≤ 16). Output -> Output one number — the maximal number of dominoes, which can be placed.",
+        "TestCase":[[2],[4],[3],[3]],
+        "TestCaseOutPut":[[4],[4]]
     }
+
+   
 ]

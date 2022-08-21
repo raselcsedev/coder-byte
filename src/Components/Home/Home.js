@@ -5,9 +5,8 @@ import Languages from '../Languages/Languages';
 import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
 import Courses from '../Courses/Courses';
-import AllUsers from '../../features/Profiles/AllUsers';
-import CountDown from '../GetCertificate/SingleCertificate/SkillTestWindow/CountDown';
-import CreateBlog from '../../Footer/CreateBlog/CreateBlog';
+import BlogEdit from '../../Footer/CreateBlog/BlogEdit';
+
 
 const Home = () => {
     return (
@@ -18,9 +17,11 @@ const Home = () => {
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Courses></Courses>
-            <CreateBlog></CreateBlog>
+            <BlogEdit></BlogEdit>
+         
             <FeaturedCompanies></FeaturedCompanies>
-            
+           
+
         </div>
     );
 };
