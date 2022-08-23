@@ -8,7 +8,7 @@ const Blogs = () => {
     const [user] = useAuthState(auth);
 
   return (
-    <div className=" pt-20 h-full overflow-visible">
+    <div className=" pt-20  overflow-x-auto">
       <div class="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content lg:mx-20 pl-5">
@@ -35,7 +35,7 @@ const Blogs = () => {
           <ul class="menu md:mx-12  overflow-y-auto  w-40 bg-base-100 text-base-content space-y-2">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/homeblogs"><FaIcons.FaHome></FaIcons.FaHome>Home</Link>
+              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs"><FaIcons.FaHome></FaIcons.FaHome>Home</Link>
             </li>
             <li>
               <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/notifications"><FaIcons.FaRegBell></FaIcons.FaRegBell>Notifications</Link>

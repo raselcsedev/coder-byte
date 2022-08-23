@@ -52,6 +52,7 @@ import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
 import MediumDraft from './Footer/CreateBlog/MediumDraft';
 import AllTestimonials from './Components/Testimonial/AllTestimonials';
+import BlogDetail from './Components/Blogs/BlogDetail';
 const queryClient = new QueryClient()
 
 function App() {
@@ -91,12 +92,13 @@ function App() {
           
 
             <Route path='blogs' element={<Blogs></Blogs>}>
-            <Route index path='homeblogs' element={<HomeBlogs></HomeBlogs>}></Route>
+            <Route index  element={<HomeBlogs></HomeBlogs>}></Route>
             <Route path='stories' element={<Stories></Stories>}></Route>
             <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
             <Route path='create-blog' element={<MediumDraft></MediumDraft>}></Route>
+            <Route path='blog-detail' element={<BlogDetail></BlogDetail>}></Route>
 
             </Route>
 
