@@ -1,0 +1,152 @@
+import React from "react";
+import { useState } from "react";
+import { useLocation } from 'react-router-dom'
+import { useBeforeunload } from 'react-beforeunload';
+import { Beforeunload } from 'react-beforeunload';
+
+
+const ORIGINAL_TEXT =
+  `In some package.json files, you might see a few lines like this:
+
+  {
+    //...
+    "peerDependencies": {
+      "libraryName": "1.x"
+    }
+  }
+  You might have already seen dependencies and devDependencies, but not peerDependencies.
+  
+  dependencies are the packages your project depends on.
+  
+  devDependencies are the packages that are needed during the development phase. Say a testing framework like Jest or other utilities like Babel or ESLint.
+  
+  In both cases, when you install a package, its dependencies and devDependencies are automatically installed by npm.
+  
+  peerDependencies are different. They are not automatically installed.
+  
+  When a dependency is listed in a package as a peerDependency, it is not automatically installed. Instead, the code that includes the package must include it as its dependency.
+  
+  npm will warn you if you run npm install and it does not find this dependency.
+  
+  Example: let’s say package a includes dependency b:
+  
+  a/package.json
+  
+  {
+    //...
+    "dependencies": {
+      "b": "1.x"
+    }
+  }
+  Package b in turn wants package c as a peerDependency:
+  
+  b/package.json
+  
+  {
+    //...
+    "peerDependencies": {
+      "c": "1.x"
+    }
+  }
+  In package A, we must therefore add c as a dependency, otherwise when you install package b, npm will give you a warning (and the code will likely fail at runtime):
+  
+  a/package.json
+  
+  {
+    //...
+    "dependencies": {
+      "b": "1.x",
+      "c": "1.x"
+    }
+  }
+  The versions must be compatible, so if a peerDependency is listed as 2.x, you can’t install 1.x or another version. It all follows semantic versioning.`
+
+
+const splitText = (text, from, to) => [
+  text.slice(0, from),
+  text.slice(from, to),
+  text.slice(to)
+];
+
+const HighlightedText = ({ text, from, to }) => {
+
+  const [start, highlight, finish] = splitText(text, from, to);
+  return (
+    <p>
+      {start}
+      <span style={{ backgroundColor: "skyblue" }}>{highlight}</span>
+      {finish}
+    </p>
+  );
+};
+
+const SingleBlog = () => {
+
+  const [disabled, setDisabled] = useState(false);
+  const [highlightSection, setHighlightSection] = useState({
+    from: 0,
+    to: 0
+  });
+
+  const [pause, setPause] = useState(false)
+
+  const [duration, setDuration] = useState(0)
+
+  const synth = window.speechSynthesis;
+  let utterance = new SpeechSynthesisUtterance(ORIGINAL_TEXT);
+  utterance.addEventListener("start", () => setDisabled(true));
+  utterance.addEventListener("end", () => setDisabled(false));
+  utterance.addEventListener("boundary", ({ charIndex, charLength }) => {
+    setHighlightSection({ from: charIndex, to: charIndex + charLength });
+  });
+
+
+  const handlePlay = () => {
+
+    if (!synth) {
+      console.error("no tts");
+      return;
+    }
+
+    synth.speak(utterance);
+    synth.resume();
+  };
+
+  const handlePause = () => {
+
+    synth.pause()
+
+  }
+
+  const location = useLocation();
+  const blogLocation = location.pathname
+  console.log(blogLocation);
+  console.log(blogLocation);
+  console.log(location);
+
+  if (location.pathname == '/blogs/homeblogs') {
+    
+  }
+
+
+  return (
+    <div>
+      <div className="my-4">
+
+        <button className="btn btn-xs btn-success pb-7" onClick={handlePlay}>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+        <button className="btn mx-2 btn-xs btn-success pb-7" onClick={handlePause}> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg></button>
+      </div>
+      <HighlightedText text={ORIGINAL_TEXT} {...highlightSection} />
+
+    </div>
+  );
+}
+
+export default SingleBlog

@@ -40,7 +40,7 @@ const Header = () => {
     const personalizeItems =
         <> {
             user &&
-            <div class="dropdown dropdown-end">
+            <div class="dropdown dropdown-end ">
                 <label tabindex="0" htmlFor='toggler2' class="btn  btn-ghost btn-circle">
                     <div class="indicator">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
@@ -49,7 +49,7 @@ const Header = () => {
                 </label>
                 <input type="checkbox" name="" id="toggler2" />
 
-                <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+                <div tabindex="0" id='notification' class="bg-[#000000] border border-slate-600 mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
                     <div class="card-body text-[white] ">
                         <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                         <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -60,7 +60,8 @@ const Header = () => {
         }
 
             {
-                user && <div class="dropdown dropdown-end ">
+                user &&
+                <div class="dropdown dropdown-end ">
 
                     <input type="checkbox" name="toggle" id="toggler" />
 
@@ -73,7 +74,7 @@ const Header = () => {
                             }
                         </div>
                     </label>
-                    <ul tabindex="0" id='profile' class=" space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                    <ul tabindex="0" id='profile' class=" bg-[#000000] border border-slate-600 space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
 
                         <div className='space-y-2'>
                             <Link to="/profile">
@@ -160,7 +161,7 @@ const Header = () => {
                             <input type="checkbox" name="" id="menuToggler" />
 
 
-                            <ul tabindex="0" id="menuContent" class=" menu bg-[black] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
+                            <ul tabindex="0" id="menuContent" class=" menu border border-slate-600 bg-[#000000] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
                             <Link to='/' class="btn btn-ghost normal-case text-2xl y">coderAccess</Link>
@@ -192,7 +193,7 @@ const Header = () => {
                                     </label>
                                     <input type="checkbox" name="" id="bigToggler2" />
 
-                                    <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+                                    <div tabindex="0" id='notification' class="bg-[#000000] border border-slate-600 mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
                                         <div class="card-body text-[white] ">
                                             <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                                             <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -220,11 +221,11 @@ const Header = () => {
                                             }
                                         </div>
                                     </label>
-                                    <ul tabindex="0" id='profile' class="space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                                    <ul tabindex="0" id='profile' class=" bg-[#000000] border border-slate-600 space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
 
 
 
-                                        <div className='space-y-2'>
+                                        <div className='space-y-2 '>
                                             <Link to="/profile">
                                                 <li>
 

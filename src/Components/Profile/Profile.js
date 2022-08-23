@@ -274,7 +274,7 @@ const Profile = () => {
                         </Modal>
 
                         <div className='w-[98%]  mt-[-8%] md:mt-[-3%] overflow-x-auto'>
-                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-[white] text-lg leading-6 font-medium  rounded ">
+                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-slate-200 text-lg leading-6 font-medium  rounded ">
                                 {profileUpdates?.displayName ? profileUpdates?.displayName : profile?.displayName}
                             </p>
 

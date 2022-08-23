@@ -43,7 +43,7 @@ const EditProfile = ({ updatedProfile }) => {
                 <Toaster />
 
                 <div>
-                    <div className='text-[white]'>
+                    <div className='text-white'>
                         <h1 className='text-2xl font-semibold py-4'>Update Profile</h1>
                         <div class="hidden sm:block" aria-hidden="true">
                             <div class="py-5">
@@ -131,6 +131,7 @@ const EditProfile = ({ updatedProfile }) => {
                                                 <label for="first-name" class="block text-sm font-medium ">Name</label>
                                                 <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="first-name" id="first-name"
                                                     autocomplete="given-name"
+                                                    value={user?.displayName} readOnly
                                                     class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                     {...register("displayName")} />
                                             </div>
