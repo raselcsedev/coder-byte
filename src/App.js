@@ -51,6 +51,7 @@ import Notifications from './Components/Blogs/Notifications';
 import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
 import MediumDraft from './Footer/CreateBlog/MediumDraft';
+import AllTestimonials from './Components/Testimonial/AllTestimonials';
 const queryClient = new QueryClient()
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
           <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
           <Route path='weeklypre/:id' element={<IDELanding></IDELanding>}></Route>
+          <Route path='all-testimonials' element={<AllTestimonials></AllTestimonials>}></Route>
 
           <Route path='/Topic' element={<Topic></Topic>}>
             <Route index element={<DataStructure></DataStructure>}></Route>

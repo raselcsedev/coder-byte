@@ -8,9 +8,6 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const EditProfile = ({ updatedProfile }) => {
     const [user] = useAuthState(auth);
-
-
-
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 

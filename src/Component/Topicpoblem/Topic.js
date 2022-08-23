@@ -47,16 +47,16 @@ const Topic = () => {
                                 <input onClick={handlealgo} type="radio" name="radio-1" class="radio mr-5" value='Algorithm' /> Algorithm
                             </div>
                             <div className='flex'>
-                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> BlockChain
+                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> Blockchain
                             </div>
                             <div className='flex'>
                                 <input type="radio" name="radio-1" class="radio mr-5" value='Frontend' /> Frontend
                             </div>
                             <div className='flex'>
-                                <input type="radio" name="radio-1" class="radio mr-5" value='backend' /> Backed
+                                <input type="radio" name="radio-1" class="radio mr-5" value='backend' /> Backend
                             </div>
                             <div className='flex'>
-                                <input onClick={handleDatabase} type="radio" name="radio-1" class="radio mr-5" value='backend' /> DataBase
+                                <input onClick={handleDatabase} type="radio" name="radio-1" class="radio mr-5" value='backend' /> Database
                             </div>
                         </div>
                     </ul>

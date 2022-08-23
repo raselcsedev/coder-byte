@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./testimonial.css";
+import "./testimonials.css";
 import { Carousel } from "react-responsive-carousel";
+import { Link } from "react-router-dom";
 
 export default class Testimonials extends Component {
   render() {
@@ -128,6 +129,11 @@ export default class Testimonials extends Component {
         </div>
        </div>
       </Carousel>
+      <div className="w-60 mx-auto my-14">
+        <Link to='/all-testimonials' className="cursor-pointer text-blue-500 hover:text-[brown] font-semibold text-xl">
+          Read more testimonials  {'>'}
+        </Link>
+      </div>
       </div>
     );
   }

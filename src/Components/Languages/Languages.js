@@ -8,7 +8,7 @@ const Languages = () => {
                 <div className='w-[85%]'>
                     <div className='flex '>
                         <div className='md:flex justify-end'>
-                            <h1 className='mt-10 ml-60 text-[white] text-6xl font-semibold'>
+                            <h1 className='mt-10 ml-60 text-white text-6xl font-semibold'>
                                 All Your Favorite
                                 Stacks Under One Hood
                             </h1>

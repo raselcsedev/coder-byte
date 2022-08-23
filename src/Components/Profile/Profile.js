@@ -25,43 +25,21 @@ const Profile = () => {
 
         setProfileUpdates(data)
 
-        // console.log('updated data', data);
     }
 
-    // const [profile, setProfile] = useState({})
+
 
     const email = user?.email
-    // console.log("promail", email);
-
-
+ 
     const url = `http://localhost:5000/profiles/${email}`
 
 
-    // fetch using usual useEffect-fetch
-    // useEffect(() => {
-    //     fetch(url)
-    //         .then(res => res?.json())
-    //         .then(data =>setProfile(data))
-
-    // }, [email])
-
-
-    //using axios & react-query for get 
     const fetcher = async () => {
         const data =  axios.get(url)
-        // console.log('axios', (await data).data);
-
         return (await data).data
-
-        //also could be used[axios retun without destructuring]
-        // return data
     }
 
     let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
-
-    // console.log('proooo',profile.data);
-    //also could be used with [axios retun without destructuring]
-    // profile =profile?.data
 
     const [profilePhoto, setProfilePhoto] = useState([]);
 
