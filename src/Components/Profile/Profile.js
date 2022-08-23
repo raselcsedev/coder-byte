@@ -268,6 +268,10 @@ const Profile = () => {
                                             {profileUpdates?.about ? profileUpdates?.about : profile?.about}
 
                                         </dd>
+                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                            {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
+
+                                        </dd>
                                     </div>
                                     <div className='px-4'>
                                         <p className='text-white my-2'>Badges :</p>

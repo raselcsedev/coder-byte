@@ -132,6 +132,13 @@ const EditProfile = ({ updatedProfile }) => {
                                                     class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                     {...register("displayName")} />
                                             </div>
+                                            <div class="col-span-6 sm:col-span-5">
+                                                <label for="profession" class="block text-sm font-medium ">Profession</label>
+                                                <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="first-name" id="first-name"
+                                                  
+                                                    class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                                    {...register("profession")} />
+                                            </div>
 
                                             <div class="col-span-6 sm:col-span-3">
                                                 <label for="country" class="block text-sm font-medium ">Country</label>

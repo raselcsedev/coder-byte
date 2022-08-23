@@ -136,7 +136,7 @@ const AllTestimonials = () => {
                             <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
                             <div className="myCarousel">
                                 <h3>{profile?.displayName}</h3>
-                                <h4>React Dev</h4>
+                                <h4>{profile?.profession}</h4>
                                 <p className="">
                                     {profile?.review}
                                 </p>
