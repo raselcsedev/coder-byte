@@ -18,6 +18,7 @@ import Database from './Component/Topicpoblem/Database';
 import Algo from './Component/Topicpoblem/Algo';
 import AllCourses from './Components/AllCourses/AllCourses';
 import Discussion from './Component/Discussion/Discussion';
+import Temp from './Component/TempRout/Temp';
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 // import CreateProblem from './Component/CreateProblem/CreateProblem';
@@ -59,6 +60,8 @@ function App() {
               <Route path='/profile' element={<Profile></Profile>}></Route>
               <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
               <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+              {/* <Route path='/temp' element={<Temp></Temp>}></Route> */}
+
               {/* <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route> */}
             </Routes>
             <Footer></Footer>

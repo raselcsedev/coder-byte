@@ -6,6 +6,7 @@ import java from "./java-logo-svgrepo-com.svg"
 import c1 from './c-logo-svgrepo-com.svg'
 import c2 from './c-sharp-svgrepo-com (1).svg'
 import './HomePage.css'
+import Discussion from '../../Component/Discussion/Discussion';
 const Banner = () => {
     return (
         <div className='banner '>
@@ -14,7 +15,7 @@ const Banner = () => {
                 <div className='flex justify-center items-center '>
                     <h1 className='text-white font-serif md:font-bold font-semiblod text-4xl md:text-5xl lg:text-7xl '>Best platform to <br /> solve competitive <br /> programming</h1>
                 </div>
-                <div className='text-white text-2xl flex flex-col justify-around '>
+                {/* <div className='text-white text-2xl flex flex-col justify-around '>
                     <div className='flex justify-around'>
                         <div className='flex items-center'>
                             <img className='w-10 h-10 mr-3' src={c1} alt="" /><h1> C++</h1>
@@ -39,7 +40,8 @@ const Banner = () => {
                             <img className='w-10 h-10 mr-3' src={py} alt="" /><h1> Python</h1>
                         </div>
                     </div>
-                </div>
+                </div> */}
+                <Discussion></Discussion>
             </div>
         </div>
     );
