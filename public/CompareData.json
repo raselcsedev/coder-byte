@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "feature":"100+ Practice Problem",
+        "DC1": "✔",
+        "DC2": "✔",
+        "DC3": "✔",
+        "DC4": "✔",
+        "DC5": "✔"
+    },
+    {
+        "id": 2,
+        "feature":"Data Structure",
+        "DC1": "❌",
+        "DC2": "❌",
+        "DC3": "❌",
+        "DC4": "✔",
+        "DC5": "✔"
+    },
+    {
+        "id": 3,
+        "feature":"Course Enrollment",
+        "DC1": "❌",
+        "DC2": "❌",
+        "DC3": "❌",
+        "DC4": "❌",
+        "DC5": "✔"
+    },
+    {
+        "id": 4,
+        "feature":"Write Blogs",
+        "DC1": "❌",
+        "DC2": "❌",
+        "DC3": "❌",
+        "DC4": "❌",
+        "DC5": "✔"
+    },
+    {
+        "id": 5,
+        "feature":"Certificate",
+        "DC1": "✔",
+        "DC2": "❌",
+        "DC3": "❌",
+        "DC4": "✔",
+        "DC5": "✔"
+    }
+]
