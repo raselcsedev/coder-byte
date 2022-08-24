@@ -5,17 +5,18 @@ const BlogSingle = () => {
         <div>
             <div>
                 <div className='flex items-center text-center mr-16 md:mr-0 my-2 md:my-0 '>
+                <p className='mb-1 '>
+                        <p className='text-[gray]'>Published by </p>
+                    </p>
                     <img loading='lazy' className='w-8 h-8 border rounded-full mr-2'
                         src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220509120600/Learn-Data-Structures-and-Algorithms-Easily.gif'
                         alt="" />
-                    <p className='mb-1 '>
-                        <p className='text-[gray]'>Published by </p>
-                    </p>
+                   
 
 
                 </div>
                 <article className="flex my-3 flex-col md:flex-row md:items-start space-x-6 ml-10 md:ml-0">
-                    <img loading='lazy' src='https://miro.medium.com/max/875/1*fCtiD4qEZXcB5jiYPmH8YQ.png' alt="" className="flex-none w-60 border-2  rounded-md bg-slate-100" />
+                    <img loading='lazy' src='https://i.ibb.co/dj2xGyT/Earth-Hour-Banner-Landscape.png' alt="" className="flex-none w-60 border-2  rounded-md bg-slate-100" />
                     <div className="min-w-0 relative flex-auto">
 
                         <h2 className="font-semibold text-slate-900 truncate"> Peer dependencies in a Node module</h2>
@@ -31,7 +32,7 @@ const BlogSingle = () => {
 }
 You might have already seen dependencies and devDependencies, but not peerDependencies.
 
-dependencies are the packages your project depends on.s</p>
+dependencies are the packages your project depends on...</p>
 
                         <dl className="mt-2 flex flex-wrap text-sm leading-6 font-medium">
 

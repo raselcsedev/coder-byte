@@ -35,20 +35,16 @@ const Blogs = () => {
           <ul class="menu md:mx-12  overflow-y-auto  w-40 bg-base-100 text-base-content space-y-2">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs"><FaIcons.FaHome></FaIcons.FaHome>Home</Link>
+              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs"><FaIcons.FaHome></FaIcons.FaHome>Surroundings</Link>
             </li>
-            <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/notifications"><FaIcons.FaRegBell></FaIcons.FaRegBell>Notifications</Link>
-            </li>
+          
             <li>
               <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/create-blog"><FaIcons.FaRegEdit></FaIcons.FaRegEdit>Write Blogs</Link>
             </li>
             <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/stories"><FaIcons.FaRegListAlt></FaIcons.FaRegListAlt>Stories</Link>
+              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/stories"><FaIcons.FaRegListAlt></FaIcons.FaRegListAlt>Your Stories</Link>
             </li>
-            <li>
-              <Link className="bg-[teal] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold rounded-lg" to="/blogs/helpcenter"><FaIcons.FaRegQuestionCircle></FaIcons.FaRegQuestionCircle>Help Center</Link>
-            </li>
+           
            
           </ul>
         </div>

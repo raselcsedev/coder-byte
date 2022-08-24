@@ -153,7 +153,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
                     <h1 className='text-xl md:text-4xl mb-8 font-semibold'>
                         Peer dependencies in a Node module
                     </h1>
-                    <img loading='lazy' className='my-8 border-2 rounded w-[70%]' src="https://miro.medium.com/max/875/1*fCtiD4qEZXcB5jiYPmH8YQ.png" alt="" />
+                    <img loading='lazy' className='my-8 border-2 rounded w-[70%]' src="https://i.ibb.co/dj2xGyT/Earth-Hour-Banner-Landscape.png" alt="" />
 
                 </div>
                 <div className="my-4 ">

@@ -1,11 +1,13 @@
+import React from 'react';
 // import Dante from "dante3";
 
-export default function BlogEdit() {
-
+const BlogEdit = () => {
   return (
-
+    
     <div style={{ padding: '50px' }}>
       {/* < Dante></Dante> */}
     </div>
   );
-}
+};
+
+export default BlogEdit;
