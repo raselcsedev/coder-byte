@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BlogDetail = () => {
 
 
     const ORIGINAL_TEXT =
-        `In some package.json files, you might see a few lines like this:
+        `
+        In some package.json files, you might see a few lines like this:
 
 {
   //...
@@ -72,7 +75,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
         return (
             <p>
                 {start}
-                <span style={{ backgroundColor: "skyblue" }}>{highlight}</span>
+                <span style={{ backgroundColor: "#00ff51ab" }}>{highlight}</span>
                 {finish}
             </p>
         );
@@ -85,7 +88,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
         to: 0
     });
 
- 
+
 
     const synth = window.speechSynthesis;
     let utterance = new SpeechSynthesisUtterance(ORIGINAL_TEXT);
@@ -124,21 +127,31 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
         setPause(true)
         setListen(false)
     }
+    const [user] = useAuthState(auth);
 
     return (
         <div className=''>
 
-            <div className='mx-auto py-10 w-[90%] '>
+            <div className='mx-auto  w-[90%] '>
 
                 <div>
 
                     <div className='md:flex items-center'>
 
-                        <p className='mb-3 mr-20'>
+                        <div className='mr-20'>
                             <p className='text-[gray]'>Published by </p>
 
-                            {/* <p className='text-[brown]'>{course?.instructor}</p> */}
-                        </p>
+                            <div className='flex mr-16 md:mr-0 mb-5 '>
+                                <img loading='lazy' className='w-8 h-8 border rounded-full mr-2'
+                                    src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220509120600/Learn-Data-Structures-and-Algorithms-Easily.gif'
+                                    alt="" />
+                                <div className='space-x-1 '>
+                                    <span className='font-semibold'>{user?.displayName}</span>
+                                    <span className='text-xs'>{'>'}Today </span>
+                                </div>
+
+                            </div>
+                        </div>
 
                         <p className='mb-3 md:ml-5'>
                             <p className='text-[gray]'>Tags</p>
@@ -159,16 +172,16 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
                 <div className="my-4 ">
 
                     {
-                    listen && <button className="btn btn-xs bg-[green] hover:bg-[brown]  pb-7 flex  text-white" onClick={()=>{handlePause(); pauseHandler()}} >Pause <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg></button> }
+                        listen && <button className="btn btn-xs bg-[green] hover:bg-[brown]  pb-7 flex  text-white" onClick={() => { handlePause(); pauseHandler() }} >Pause <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg></button>}
                     {
-                    pause && <button onClick={()=>{handleListen(); handlePlay()}}  className="btn btn-xs bg-[green] hover:bg-[brown] pb-7 flex text-white">
-                        Listen<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </button>
+                        pause && <button onClick={() => { handleListen(); handlePlay() }} className="btn btn-xs bg-[green] hover:bg-[brown] pb-7 flex text-white">
+                            Listen<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
                     }
 
 

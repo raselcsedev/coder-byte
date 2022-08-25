@@ -8,6 +8,7 @@ import { blogData } from "./blogData";
 
 class BlogEditor extends Component {
   async onSave() {
+    
     const outputData = await this.editorInstance.save();
     console.log("outputData", outputData);
   }
@@ -22,6 +23,7 @@ class BlogEditor extends Component {
         <EditorJs
           editorInstance={instance => (this.editorInstance = instance)}
           tools={EDITOR_JS_TOOLS}
+          placeholder='dsfsdfs'
           // data={blogData}
         />
       </>

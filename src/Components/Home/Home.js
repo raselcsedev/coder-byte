@@ -5,7 +5,8 @@ import Languages from '../Languages/Languages';
 import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
 import Courses from '../Courses/Courses';
-import BlogEdit from '../../Footer/CreateBlog/BlogEdit';
+import BlogEditor from '../../Footer/CreateBlog/BlogEditor';
+
 
 
 const Home = () => {
@@ -17,8 +18,8 @@ const Home = () => {
             <DashbordMain></DashbordMain>
             <Languages></Languages>
             <Courses></Courses>
-            <BlogEdit></BlogEdit>
-         
+           
+         <BlogEditor></BlogEditor>
             <FeaturedCompanies></FeaturedCompanies>
            
 

@@ -53,6 +53,11 @@ import HelpCenter from './Components/Blogs/HelpCenter';
 import MediumDraft from './Footer/CreateBlog/MediumDraft';
 import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
+
+// import CourseDetail from './Components/CourseDetail/CourseDetail'
+// import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
+// import CreateProblem from './Component/CreateProblem/CreateProblem';
+// import Footer2 from './Footer/Footer2';
 const queryClient = new QueryClient()
 
 function App() {

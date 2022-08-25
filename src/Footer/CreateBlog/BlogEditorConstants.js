@@ -13,6 +13,7 @@ import CheckList from '@editorjs/checklist'
 import Delimiter from '@editorjs/delimiter'
 import InlineCode from '@editorjs/inline-code'
 import SimpleImage from '@editorjs/simple-image'
+import editorjsCodeflask from '@calumk/editorjs-codeflask';
 
 export const EDITOR_JS_TOOLS = {
   embed: Embed,
@@ -20,7 +21,7 @@ export const EDITOR_JS_TOOLS = {
   marker: Marker,
   list: List,
   warning: Warning,
-  code: Code,
+  code : editorjsCodeflask,
   linkTool: LinkTool,
   image: Image,
   raw: Raw,

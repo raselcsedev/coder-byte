@@ -128,7 +128,7 @@ const IDELanding = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        'X-RapidAPI-Key': '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee',
+        'X-RapidAPI-Key': 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
       data: formData,
@@ -166,7 +166,7 @@ const IDELanding = () => {
       url: 'https://judge0-ce.p.rapidapi.com/submissions' + "/" + token,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
-        'X-RapidAPI-Key': '90893d417fmshb93419358c1d91cp1e4ceejsnea97587d77ee',
+        'X-RapidAPI-Key': 'e6a80cb052mshb33f1c854a489c4p188390jsn7ad1bddf2cdc',
         'X-RapidAPI-Host': 'judge0-ce.p.rapidapi.com'
       },
     };

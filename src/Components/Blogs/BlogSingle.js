@@ -1,18 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const BlogSingle = () => {
+    const [user] = useAuthState(auth);
+
     return (
         <div>
             <div>
-                <div className='flex items-center text-center mr-16 md:mr-0 my-2 md:my-0 '>
-                <p className='mb-1 '>
-                        <p className='text-[gray]'>Published by </p>
-                    </p>
+                <div className='flex mr-16 md:mr-0 mb-5 '>
                     <img loading='lazy' className='w-8 h-8 border rounded-full mr-2'
                         src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220509120600/Learn-Data-Structures-and-Algorithms-Easily.gif'
                         alt="" />
-                   
-
+                    <div className='space-x-1 '>
+                        <span className='font-semibold'>{user?.displayName}</span>
+                        <span className='text-xs'>{'>'}Today </span>
+                    </div>
 
                 </div>
                 <article className="flex my-3 flex-col md:flex-row md:items-start space-x-6 ml-10 md:ml-0">

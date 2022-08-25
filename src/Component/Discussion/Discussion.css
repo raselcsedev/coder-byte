@@ -1,12 +1,30 @@
 .discontainer{
-
-    height: 90vh;
-    width: 60vw;
+  
+    position: relative;
+    left: 0;
+    height: 40vh;
+    width: 20vw;
     border: 1px solid;
     /* display: flex;
     justify-content: center; */
     background-color: rgb(0, 21, 255);
+    backface-visibility: hidden;
+
 }
-.disinput{
-    width: 90vw;
+.inputbtncontainer{
+    width:20vw;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.inputbtncontainer input{
+    width: 100%;
+   
+}
+.sectioncontainer{
+    position: absolute;
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+   
 }
