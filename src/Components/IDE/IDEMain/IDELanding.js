@@ -431,7 +431,7 @@ const IDELanding = () => {
 
           <div className="grid grid-cols-10">
             <div className="md:col-span-7 col-span-10">
-              <CodeEditorWindow
+              <CodeEditorWindow 
                 code={code}
                 onChange={onChange}
                 language={language?.value}
@@ -439,7 +439,7 @@ const IDELanding = () => {
               />
             </div>
 
-            <div className="md:col-span-3 col-span-10">
+            <div className="md:col-span-3 col-span-10 z-10">
               <div className="">
                 <OutputWindow outputDetails={outputDetails} />
                 <div className="">
@@ -448,12 +448,13 @@ const IDELanding = () => {
                     customInput={customInput}
                     setCustomInput={setCustomInput}
                   />
-                </div>
-
-                <div className="p-2">
+                  <div className="p-2">
                   {outputDetails && <OutputDetails outputDetails={outputDetails} />}
 
                 </div>
+                </div>
+
+                
 
               </div>
             </div>

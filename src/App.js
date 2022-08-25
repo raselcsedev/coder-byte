@@ -7,10 +7,21 @@ import Header from './Components/Header/Header';
 import Contests from './Components/GetCertificate/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
 
-import Home from './Components/Home/Home';
+// new home page import
+import Navbar from './NewComponents/components/Navbar/Navbar';
+import Home from './NewComponents/components/Home/Home';
+import Banner from './NewComponents/components/Banner/Banner';
+import Explore from './NewComponents/components/Exploring/Explore';
+import Preparation from './NewComponents/components/Preparation/Preparation';
+import Certification from './NewComponents/components/Certification/Certification';
+import Testimonials from './NewComponents/components/Testimonials/Testimonials';
+import Environment from './NewComponents/components/Environment/Environment';
+import ReadyMessage from './NewComponents/components/ReadyMessage/ReadyMessage';
+import Footer from './NewComponents/components/Footer/Footer';
+// end
+
 import NotFound from './Components/NotFound/NotFound';
 import Profile from './Components/Profile/Profile';
-import Footer from './Footer/Footer';
 import PreparationKit from './Component/PreparationKit/PreparationKit';
 import WeeklyPreparation from './Component/PreparationKit/WeeklyPreparation';
 import Topic from './Component/Topicpoblem/Topic';
@@ -42,7 +53,7 @@ import AddSkillTest from './Components/Dashboard/AddSkillTest';
 import SkillTestWindow from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SkillTestWindow';
 import SecondaryTest from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SecondaryTest';
 import CongratulationWindow from './Components/GetCertificate/SingleCertificate/CongratulationWindow';
-import Testimonials from './Components/Testimonial/Testimonals';
+
 
 import Blogs from './Components/Blogs/Blogs';
 import Stories from './Components/Blogs/Stories';
@@ -66,6 +77,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
 
         <Header></Header>
+        {/* <Navbar></Navbar> */}
 
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
@@ -129,6 +141,19 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+
+
+
+
+
+          <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/banner" element={<Banner></Banner>}></Route>
+        <Route path="/explores" element={<Explore></Explore>}></Route>
+        <Route path="/preparations" element={<Preparation></Preparation>}></Route>
+        <Route path="/certification" element={<Certification></Certification>}></Route>
+        <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
+        <Route path="/environment" element={<Environment></Environment>}></Route>
+        <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
         </Routes>
         
         <Footer></Footer>
