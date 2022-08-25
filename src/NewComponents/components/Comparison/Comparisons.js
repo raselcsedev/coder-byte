@@ -81,7 +81,7 @@ const url = "http://localhost:3000/compareData.json" || 'https://coder-access.we
                 </div>
                 <div>
                     {
-                        data.map(data=>(
+                        comparisionData.map(data=>(
                             <>
                             <div className='grid grid-cols-6 lg:mx-48 lg:gap-4 content-center'>
                                 <h2 className='font-bold text-gray-500 text-center grid content-center'>{data.feature}</h2>
