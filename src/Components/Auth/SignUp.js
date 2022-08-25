@@ -45,7 +45,7 @@ const SignUp = () => {
             displayName: data.name,
         }
 
-        fetch('http://localhost:5000/profiles', {
+        fetch('https://coder-access.herokuapp.com/profiles', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

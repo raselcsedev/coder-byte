@@ -31,7 +31,7 @@ const Profile = () => {
 
     const email = user?.email
  
-    const url = `http://localhost:5000/profiles/${email}`
+    const url = `https://coder-access.herokuapp.com/profiles/${email}`
 
 
     const fetcher = async () => {
@@ -65,7 +65,7 @@ const Profile = () => {
                 console.log('imgbbProfilePhoto', result.url)
 
                 const profilePhoto = result.url
-                await fetch(`http://localhost:5000/profiles/${email}`,
+                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
                     {
                         method: 'PUT',
                         headers: {
@@ -97,7 +97,7 @@ const Profile = () => {
             .then(async result => {
                 console.log('imgbbCover', result)
                 const coverPhoto = result.url
-                await fetch(`http://localhost:5000/profiles/${email}`,
+                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
                     {
                         method: 'PUT',
                         headers: {
@@ -289,7 +289,7 @@ const Profile = () => {
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Website</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
-                                            <a>
+                                            <a target="_blank" href={profileUpdates?.website ? profileUpdates?.website : profile?.website} className="underline underline-offset-1  ">
                                                 {profileUpdates?.website ? profileUpdates?.website : profile?.website}
 
                                             </a>

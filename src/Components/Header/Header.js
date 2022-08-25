@@ -16,7 +16,7 @@ const Header = () => {
 
     const email = user?.email
 
-    const url = `http://localhost:5000/profiles/${email}`
+    const url = `https://coder-access.herokuapp.com/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -70,7 +70,7 @@ const Header = () => {
                             {
                                 profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
                                     :
-                                    <img src="https://i.stack.imgur.com/frlIf.png" />
+                                    <img src="http/i.stacs:/k.imgur.com/frlIf.png" />
                             }
                         </div>
                     </label>

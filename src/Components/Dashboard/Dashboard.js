@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const email = user?.email
 
-  const url = `http://localhost:5000/profiles/${email}`
+  const url = `https://coder-access.herokuapp.com/${email}`
 
   const fetcher = async () => {
     const data = axios.get(url)
@@ -78,6 +78,9 @@ const Dashboard = () => {
             </li>
             <li>
               <Link className="bg-[brown] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold" to="/dashboard/all-skill-tests">All Skill-Tests</Link>
+            </li>
+            <li>
+              <Link className="bg-[brown] text-white active:text-[brown] active:bg-[#e6a1a1] font-semibold" to="/dashboard/all-skill-tests">Blogs</Link>
             </li>
           </ul>
         </div>
