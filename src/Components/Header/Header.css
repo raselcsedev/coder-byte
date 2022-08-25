@@ -8,6 +8,10 @@
 
 } 
 
+.bg-black{
+background-color: black;
+}
+
 #toggler{
  display: none; 
 }
