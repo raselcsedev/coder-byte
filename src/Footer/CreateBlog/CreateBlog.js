@@ -4,6 +4,7 @@ import 'react-form-input-fields/dist/index.css'
 import { useState } from 'react';
 import './blog.css'
 import '@papyrs/stylo';
+
 const CreateBlog = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();

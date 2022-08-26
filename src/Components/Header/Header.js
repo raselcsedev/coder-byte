@@ -70,7 +70,7 @@ const Header = () => {
                             {
                                 profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
                                     :
-                                    <img src="http/i.stacs:/k.imgur.com/frlIf.png" />
+                                    <img src="https://i.stack.imgur.com/frlIf.png" />
                             }
                         </div>
                     </label>
@@ -164,7 +164,7 @@ const Header = () => {
                             <ul tabindex="0" id="menuContent" class=" menu border border-slate-600 bg-black text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
-                            <Link to='/' class="btn btn-ghost normal-case text-2xl y">coderAccess</Link>
+                            <Link to='/' class="btn btn-ghost normal-case text-2xl "> coder<span className="text-lime-500">A</span>ccess</Link>
 
                         </div>
                         {user && personalizeItems}

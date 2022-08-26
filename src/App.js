@@ -64,6 +64,7 @@ import HelpCenter from './Components/Blogs/HelpCenter';
 import MediumDraft from './Footer/CreateBlog/MediumDraft';
 import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
+import BlogEdior from './Footer/CreateBlog/BlogEditor';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -116,6 +117,7 @@ function App() {
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
             <Route path='create-blog' element={<MediumDraft></MediumDraft>}></Route>
             <Route path='blog-detail' element={<BlogDetail></BlogDetail>}></Route>
+            <Route path='blog-editor' element={<BlogEdior></BlogEdior>}></Route>
 
             </Route>
 
