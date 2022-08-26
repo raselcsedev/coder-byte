@@ -14,12 +14,18 @@ const Contest = ({ contest }) => {
           <h2 class="card-title">{name}</h2>
           <p>{date}</p>
           <div class="card-actions flex justify-center mt-2">
-            <button onClick={() => setOpen(true)} class="btn btn-accent">Sign Up</button>
+            <button onClick={() => setOpen(true)} class="btn btn-accent">
+              Sign Up
+            </button>
 
-            <Modal classNames={{
-              overlay: 'customOverlay',
-              modal: 'customModal',
-            }} open={open} onClose={() => setOpen(false)}>
+            <Modal
+              classNames={{
+                overlay: "customOverlay",
+                modal: "customModal",
+              }}
+              open={open}
+              onClose={() => setOpen(false)}
+            >
               <EditProfile></EditProfile>
             </Modal>
           </div>

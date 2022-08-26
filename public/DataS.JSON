@@ -1,7 +1,5 @@
 [
     {
-
-          
         "title":"Sum of two integer (DS)",
         "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
         "example":"a=7 b=3 return 10",
@@ -16,6 +14,8 @@
         "Problem":"Complete the function solveMeFirst to compute the sum of two integers",
         "example":"a=7 b=3 return 10",
         "type":"Hard",
+        "Topic":"DS",
+    
         "star":false,
         "id":2
     }

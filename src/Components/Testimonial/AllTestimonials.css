@@ -1,0 +1,72 @@
+
+  .review img {
+    width: 70px !important;
+    height: 70px !important;
+    border-radius: 50%;
+    margin: auto;
+    
+  }
+  
+  .myCarousel {
+    background: #fafafa;
+    margin-top: -10%;
+    /* width: 300px; */
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 6%;
+    padding-bottom: 8%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-top: 4px solid indigo;
+    /* border: 1px solid #ddd; */
+    height: 286px;
+    box-shadow: 0 25px 25px rgb(0 0 0 / 0.15);
+    
+  }
+  
+  .myCarousel h3 {
+    color: #222;
+    font-weight: 100;
+    letter-spacing: 0.2px;
+    margin: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 17px;
+  }
+  
+  .myCarousel h4 {
+    text-transform: uppercase;
+    margin: 10px;
+    padding-top: 0;
+    font-weight: 500;
+    color: #787878;
+    font-size: 14px;
+  }
+  
+  .myCarousel p {
+    font-weight: 100 !important;
+    line-height: 29px !important;
+    color: #222;
+    font-size: 15px;
+    font-family: sans-serif;
+    max-height: 70px;
+    /* overflow: auto; */
+  }
+  
+  .myCarousel p:before {
+    content: "“";
+    color: #aaa;
+    font-size: 26px;
+    font-family: monospace;
+    font-weight: 100;
+  }
+  
+  .myCarousel p:after {
+    content: "”";
+    color: #aaa;
+    font-size: 26px;
+    font-family: monospace;
+    font-weight: 100;
+    line-height: 0;
+  }
+  

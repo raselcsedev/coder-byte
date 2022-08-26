@@ -29,7 +29,7 @@ const Topic = () => {
 
     return (
         <>
-            <div class="drawer drawer-mobile pt-20">
+            <div class="drawer drawer-mobile pt-20 ">
                 <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content text-center">
                     <Outlet></Outlet>
@@ -47,16 +47,16 @@ const Topic = () => {
                                 <input onClick={handlealgo} type="radio" name="radio-1" class="radio mr-5" value='Algorithm' /> Algorithm
                             </div>
                             <div className='flex'>
-                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> BlockChine
+                                <input type="radio" name="radio-1" class="radio mr-5" value='BlockChine' /> Blockchain
                             </div>
                             <div className='flex'>
                                 <input type="radio" name="radio-1" class="radio mr-5" value='Frontend' /> Frontend
                             </div>
                             <div className='flex'>
-                                <input type="radio" name="radio-1" class="radio mr-5" value='backend' /> Backed
+                                <input type="radio" name="radio-1" class="radio mr-5" value='backend' /> Backend
                             </div>
                             <div className='flex'>
-                                <input onClick={handleDatabase} type="radio" name="radio-1" class="radio mr-5" value='backend' /> DataBase
+                                <input onClick={handleDatabase} type="radio" name="radio-1" class="radio mr-5" value='backend' /> Database
                             </div>
                         </div>
                     </ul>

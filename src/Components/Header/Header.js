@@ -1,14 +1,34 @@
+import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import CustomLink from './CustomLink';
+import { useQuery } from '@tanstack/react-query';
 import './Header.css'
 
 const Header = () => {
 
     const [user] = useAuthState(auth);
+
+
+
+    const email = user?.email
+
+    const url = `https://coder-access.herokuapp.com/profiles/${email}`
+
+    const fetcher = async () => {
+        const data = axios.get(url)
+        // console.log('axios', (await data).data);
+
+        return (await data).data
+
+        //also could be used[axios retun without destructuring]
+        // return data
+    }
+
+    let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
 
     const logout = () => {
         signOut(auth);
@@ -20,7 +40,7 @@ const Header = () => {
     const personalizeItems =
         <> {
             user &&
-            <div class="dropdown dropdown-end">
+            <div class="dropdown dropdown-end ">
                 <label tabindex="0" htmlFor='toggler2' class="btn  btn-ghost btn-circle">
                     <div class="indicator">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
@@ -29,7 +49,7 @@ const Header = () => {
                 </label>
                 <input type="checkbox" name="" id="toggler2" />
 
-                <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+                <div tabindex="0" id='notification' class="bg-black border border-slate-600 mt-3 card card-compact dropdown-content w-52">
                     <div class="card-body text-[white] ">
                         <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                         <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -40,25 +60,27 @@ const Header = () => {
         }
 
             {
-
-
-                user && <div class="dropdown dropdown-end ">
+                user &&
+                <div class="dropdown dropdown-end ">
 
                     <input type="checkbox" name="toggle" id="toggler" />
 
                     <label tabindex="0" htmlFor="toggler" name="toggle" class="btn btn-ghost btn-circle avatar">
                         <div class="w-9 border border-[brown] rounded-full" >
-                            <img
-                                src="https://i.stack.imgur.com/frlIf.png" />
+                            {
+                                profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
+                                    :
+                                    <img src="http/i.stacs:/k.imgur.com/frlIf.png" />
+                            }
                         </div>
                     </label>
-                    <ul tabindex="0" id='profile' class=" space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                    <ul tabindex="0" id='profile' class="bg-black border border-slate-600 space-y-4 divide divide-y mt-2  w-[450%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl  bg-opacity-60 rounded-box w-52">
 
                         <div className='space-y-2'>
                             <Link to="/profile">
                                 <li>
                                     <img className='w-14 border border-[brown]  rounded-full'
-                                        src="https://i.stack.imgur.com/frlIf.png" />
+                                        src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
                                 </li>
                             </Link>
                             <Link to="/profile">
@@ -70,6 +92,10 @@ const Header = () => {
                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
                                     View Profile
                                 </Link>
+                            </li>
+                            <li>
+                                <Link to='/dashboard' class="btn bg-[green] border-none text-[white] btn-xs">Dashboard</Link>
+
                             </li>
                         </div>
 
@@ -96,8 +122,11 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contests'>Emulate</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/courses'>Courses</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/blogs'>Blogs</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
+
+
 
             {
                 user ? "" : <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/sign-up'>Sign Up</CustomLink>
@@ -114,11 +143,11 @@ const Header = () => {
         <div>
 
             <div id='' className='nav  fixed text-white bg-black bg-opacity-60  backdrop-filter-none backdrop-blur-sm shadow'>
-                <div class="lg:navbar lg:w-[90vw]  mx-auto ">
+                <div class="lg:navbar lg:w-[100vw]  mx-auto ">
                     <div class="lg:navbar-start hidden md:block">
 
 
-                        <Link to='/' class="btn btn-ghost normal-case text-2xl ">coderAccess</Link>
+                        <Link to='/' class="btn btn-ghost normal-case text-2xl "> coder<span className="text-lime-500">A</span>ccess</Link>
                     </div>
 
 
@@ -132,7 +161,7 @@ const Header = () => {
                             <input type="checkbox" name="" id="menuToggler" />
 
 
-                            <ul tabindex="0" id="menuContent" class=" menu bg-[black] text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
+                            <ul tabindex="0" id="menuContent" class=" menu border border-slate-600 bg-black text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
                             <Link to='/' class="btn btn-ghost normal-case text-2xl y">coderAccess</Link>
@@ -152,8 +181,6 @@ const Header = () => {
 
 
                     <div class="navbar-end ml-4    hidden lg:block mb-[-1%]">
-
-
                         <div className='flex items-center pb-2'>
                             {user &&
 
@@ -166,7 +193,7 @@ const Header = () => {
                                     </label>
                                     <input type="checkbox" name="" id="bigToggler2" />
 
-                                    <div tabindex="0" id='notification' class=" mt-3 card card-compact dropdown-content w-52 bg-[black] bg-opacity-60 shadow">
+                                    <div tabindex="0" id='notification' class="bg-black border border-slate-600 mt-3 card card-compact dropdown-content w-52  bg-opacity-60 shadow">
                                         <div class="card-body text-[white] ">
                                             <p> <span class="font-bold">1 Items  </span>  <span class="text-info">Awesome</span>   </p>
                                             <p>  <span class="font-bold">2 Items  </span>  <span class="text-info">Outstanding</span>   </p>
@@ -186,24 +213,34 @@ const Header = () => {
                                     <input type="checkbox" name="toggle" id="bigToggler" />
 
                                     <label tabindex="0" htmlFor="bigToggler" name="toggle" class="btn ml-4 btn-ghost btn-circle avatar">
-                                        <div class="w-9 border border-[brown] rounded-full" >
-                                            <img
-                                                src="https://i.stack.imgur.com/frlIf.png" />
+                                        <div class="w-9 border border-white rounded-full" >
+                                            {
+                                                profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
+                                                    :
+                                                    <img src="https://i.stack.imgur.com/frlIf.png" />
+                                            }
                                         </div>
                                     </label>
-                                    <ul tabindex="0" id='profile' class="space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-[black] bg-opacity-60 rounded-box w-52">
+                                    <ul tabindex="0" id='profile' class=" bg-black border border-slate-600 space-y-4 divide divide-y mt-2  w-[350%] card card-compact  dropdown-content pl-4 pr-1 pt-4 pb-4 shadow-xl bg-opacity-60 rounded-box w-52">
 
 
 
-                                        <div className='space-y-2'>
+                                        <div className='space-y-2 '>
                                             <Link to="/profile">
                                                 <li>
-                                                    <img className='w-14 border border-[brown]  rounded-full'
-                                                        src="https://i.stack.imgur.com/frlIf.png" />
+
+                                                    {
+                                                        profile?.profilePhoto ? <img className='w-16 h-16 border border-white  rounded-full'
+                                                            src={profile?.profilePhoto} />
+                                                            :
+                                                            <img className='w-14 border border-white  rounded-full'
+                                                                src="https://i.stack.imgur.com/frlIf.png" />
+                                                    }
+
                                                 </li>
                                             </Link>
                                             <Link to="/profile">
-                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{user.displayName}</li>
+                                                <li className='font-semibold text-[white]  text-lg hover:text-[brown]  word-break'>{profile?.displayName ? profile?.displayName : user?.displayName}</li>
                                             </Link>
                                             <li className='text-[white] text-sm  break-all'>{user.email}</li>
 
@@ -212,7 +249,14 @@ const Header = () => {
                                                 <Link to='/profile' class="  btn bg-[brown] border-none text-[white] btn-xs mx-auto">
                                                     View Profile
                                                 </Link>
+
                                             </li>
+                                            <li>
+                                                {
+                                                    user && <Link to='/dashboard' class="btn bg-[green] border-none text-[white] btn-xs">Dashboard</Link>
+                                                }
+                                            </li>
+
                                         </div>
 
 
@@ -229,7 +273,9 @@ const Header = () => {
                                 </div>
 
                             }
+
                         </div>
+
 
                     </div>
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
@@ -6,24 +6,25 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import Editor from "react-run-code";
 import ImageUploading from 'react-images-uploading';
+import { useNavigate, useParams } from "react-router-dom";
+import { PassingPrblm } from "../../App";
 
 
 
 function CodeEditor() {
+    const [ProblemData, SetProblem] = useContext(PassingPrblm)
 
     let [lan, setLan] = useState('')
 
-
-
-
-
     function onChange(e) {
         const option = e.target.value.toString()
-
         console.log(option);
         setLan(option)
+    }
 
-
+    const navigator=useNavigate();
+    const HandleDiscussion =()=>{
+        navigator('/discussion')
     }
 
     console.log(lan);
@@ -34,30 +35,23 @@ function CodeEditor() {
                     <div className="mt-6 mb-1">
                         <button className="btn btn-xs btn-success mr-2">Easy</button>
                         <button className="btn btn-xs btn-primary">View Solution</button>
+                        <button onClick={HandleDiscussion} className="ml-3 btn btn-xs btn-primary">Discussion</button>
                     </div>
 
                     <div className="text-white py-5">
-                        Given an array of integers, find the sum of its elements.
+                        {ProblemData?.title}
 
-                        For example, if the array arr=[1,2,3,4] ,1+2+3+4=10 , so return 10 .
+                        <p className="font-semibold text-xl my-4">Problem Description</p>
 
-                        <p className="font-semibold text-xl my-4">Function Description</p>
-
-                        Complete the simpleArraySum function in the editor below. It must return the sum of the array elements as an integer.
-
-                        simpleArraySum has the following parameter(s):
-
-                        ar: an array of integers
+                        {ProblemData?.Problem}
                         <p className="font-semibold text-xl my-4">Input Format</p>
-
-
-                        The first line contains an integer, , denoting the size of the array.
-                        The second line contains  space-separated integers representing the array's elements.
-
-
+                        {ProblemData?.example}
                         <p className="font-semibold text-xl my-4">Constraints</p>
 
                         <samp>0 {'<'} n, ar[i]{'<'}= 1000</samp>
+                      
+                      
+{/*                       
                         <p className="font-semibold text-xl my-4">Output Format</p>
 
                         Print the sum of the array's elements as a single integer.
@@ -75,7 +69,11 @@ function CodeEditor() {
                         <p className="font-semibold text-xl my-4">Explanation</p>
 
 
-                        We print the sum of the array's elements: 1+2+3+4+10+11=31
+                        We print the sum of the array's elements: 1+2+3+4+10+11=31 */}
+                        
+
+
+
                     </div>
 
 
@@ -98,14 +96,13 @@ function CodeEditor() {
                                 <option >Select Language</option>
                                 <option value='C'>C</option>
                                 <option value='C++' >C++</option>
-                                <option value='Go'>Go</option>
                                 <option value='Java' >Java</option>
-                                <option value='JavaScript'>JavaScript</option>
-                                <option value='Kotlin'>Kotlin</option>
-                                <option value='Php'>Php</option>
                                 <option value='Python'>Python</option>
-                                <option value='Ruby'>Ruby on rails</option>
+                                <option value='JavaScript'>JavaScript</option>
+                                <option value='Go'>Go</option>
                                 <option value='TypeScript'>TypeScript</option>
+                                <option value='Ruby'>Ruby on rails</option>
+                                <option value='Kotlin'>Kotlin</option>
                             </select>
 
                         </div>
@@ -128,10 +125,6 @@ function CodeEditor() {
                         }
                         {
                             lan == 'Java' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Java?lite=true"></iframe>
-
-                        }
-                        {
-                            lan == 'Php' && <iframe width="100%" className="h-[95vh]" src="https://replit.com/@pavel-genuine/Php2?lite=true"></iframe>
 
                         }
                         {

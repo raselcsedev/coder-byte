@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Testimonials from "../Testimonial/Testimonals";
 
 const Courses = () => {
   const [datas, setdata] = useState([]);
@@ -15,7 +15,8 @@ const Courses = () => {
     <div className="">
       <h2 className="text-4xl font-smibold font-serif text-center py-12">Sharpen Your Skills With Our courses</h2>
       <section className=" flex justify-center ">
-        <div className=" grid grid-cols-1 lg:grid-cols-3  gap-12">
+        <div
+         className=" grid grid-cols-1 lg:grid-cols-3  gap-12">
           {data.map((data) => (
             <>
               <div class="card w-[100%] md:w-96  bg-base-100 shadow-2xl">
@@ -36,6 +37,7 @@ const Courses = () => {
           Explore the courses  {'>'}
         </Link>
       </div>
+      <Testimonials></Testimonials>
     </div>
   );
 };
