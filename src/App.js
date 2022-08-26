@@ -54,17 +54,15 @@ import SkillTestWindow from './Components/GetCertificate/SingleCertificate/Skill
 import SecondaryTest from './Components/GetCertificate/SingleCertificate/SkillTestWindow/SecondaryTest';
 import CongratulationWindow from './Components/GetCertificate/SingleCertificate/CongratulationWindow';
 
-
 import Blogs from './Components/Blogs/Blogs';
 import Stories from './Components/Blogs/Stories';
 import WriteBlogs from './Components/Blogs/WriteBlogs';
 import Notifications from './Components/Blogs/Notifications';
 import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
-import MediumDraft from './Footer/CreateBlog/MediumDraft';
 import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
-import BlogEdior from './Footer/CreateBlog/BlogEditor';
+import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -115,9 +113,9 @@ function App() {
             <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
-            <Route path='create-blog' element={<MediumDraft></MediumDraft>}></Route>
-            <Route path='blog-detail' element={<BlogDetail></BlogDetail>}></Route>
-            <Route path='blog-editor' element={<BlogEdior></BlogEdior>}></Route>
+           
+            <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
+            <Route path='blog-editor' element={<BlogEditor></BlogEditor>}></Route>
 
             </Route>
 

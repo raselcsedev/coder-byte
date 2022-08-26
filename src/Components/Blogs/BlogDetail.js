@@ -1,86 +1,31 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const BlogDetail = () => {
 
+    const { id } = useParams()
+    const [user] = useAuthState(auth);
 
-    const ORIGINAL_TEXT =
-        `
-        In some package.json files, you might see a few lines like this:
+    const url = `https://coder-access.herokuapp.com/blogs/${id}`
+    const fetcher = async () => {
+        const data =  axios.get(url)
+        return (await data).data
+    }
 
-{
-  //...
-  "peerDependencies": {
-    "libraryName": "1.x"
-  }
-}
-You might have already seen dependencies and devDependencies, but not peerDependencies.
+    let { data: blog, isLoading } = useQuery(['blogs',id], () => fetcher())
 
-dependencies are the packages your project depends on.
-
-devDependencies are the packages that are needed during the development phase. Say a testing framework like Jest or other utilities like Babel or ESLint.
-
-In both cases, when you install a package, its dependencies and devDependencies are automatically installed by npm.
-
-peerDependencies are different. They are not automatically installed.
-
-When a dependency is listed in a package as a peerDependency, it is not automatically installed. Instead, the code that includes the package must include it as its dependency.
-
-npm will warn you if you run npm install and it does not find this dependency.
-
-Example: let’s say package a includes dependency b:
-
-a/package.json
-
-{
-  //...
-  "dependencies": {
-    "b": "1.x"
-  }
-}
-Package b in turn wants package c as a peerDependency:
-
-b/package.json
-
-{
-  //...
-  "peerDependencies": {
-    "c": "1.x"
-  }
-}
-In package A, we must therefore add c as a dependency, otherwise when you install package b, npm will give you a warning (and the code will likely fail at runtime):
-
-a/package.json
-
-{
-  //...
-  "dependencies": {
-    "b": "1.x",
-    "c": "1.x"
-  }
-}
-The versions must be compatible, so if a peerDependency is listed as 2.x, you can’t install 1.x or another version. It all follows semantic versioning.`
-
-
+  
     const splitText = (text, from, to) => [
         text.slice(0, from),
         text.slice(from, to),
         text.slice(to)
     ];
 
-    const HighlightedText = ({ text, from, to }) => {
-
-        const [start, highlight, finish] = splitText(text, from, to);
-        return (
-            <p>
-                {start}
-                <span style={{ backgroundColor: "#00ff51ab" }}>{highlight}</span>
-                {finish}
-            </p>
-        );
-    };
-
+    
 
     const [disabled, setDisabled] = useState(false);
     const [highlightSection, setHighlightSection] = useState({
@@ -91,7 +36,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
 
 
     const synth = window.speechSynthesis;
-    let utterance = new SpeechSynthesisUtterance(ORIGINAL_TEXT);
+    let utterance = new SpeechSynthesisUtterance(blog?.body);
     utterance.addEventListener("start", () => setDisabled(true));
     utterance.addEventListener("end", () => setDisabled(false));
     utterance.addEventListener("boundary", ({ charIndex, charLength }) => {
@@ -127,10 +72,26 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
         setPause(true)
         setListen(false)
     }
-    const [user] = useAuthState(auth);
+
+
+    const HighlightedText = ({ text, from, to }) => {
+
+        const [start, highlight, finish] = splitText(text, from, to);
+        
+        return (
+            <p>
+                {start}
+                <span style={{ backgroundColor: "#00ff51ab" }}>{highlight}</span>
+                {finish}
+            </p>
+        );
+    };
+    if(isLoading){
+        return <p>loading...</p>
+    }
 
     return (
-        <div className=''>
+        <div className='pb-40'>
 
             <div className='mx-auto  w-[90%] '>
 
@@ -146,7 +107,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
                                     src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220509120600/Learn-Data-Structures-and-Algorithms-Easily.gif'
                                     alt="" />
                                 <div className='space-x-1 '>
-                                    <span className='font-semibold'>{user?.displayName}</span>
+                                    <span className='font-semibold'>{blog?.blogger}</span>
                                     <span className='text-xs'>{'>'}Today </span>
                                 </div>
 
@@ -164,9 +125,9 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
                         <div class="divider mt-4 col-span-7"></div>
                     </div>
                     <h1 className='text-xl md:text-4xl mb-8 font-semibold'>
-                        Peer dependencies in a Node module
+                       {blog?.title}
                     </h1>
-                    <img loading='lazy' className='my-8 border-2 rounded w-[70%]' src="https://i.ibb.co/dj2xGyT/Earth-Hour-Banner-Landscape.png" alt="" />
+                    <img loading='lazy' className='my-8 border-2 rounded w-[70%]' src={blog?.banner} alt="" />
 
                 </div>
                 <div className="my-4 ">
@@ -189,7 +150,7 @@ The versions must be compatible, so if a peerDependency is listed as 2.x, you ca
 
                 </div>
 
-                <HighlightedText text={ORIGINAL_TEXT} {...highlightSection} />
+                <HighlightedText text={blog?.body} {...highlightSection} />
 
             </div>
 

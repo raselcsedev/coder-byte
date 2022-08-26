@@ -5,8 +5,14 @@ import { useState } from 'react';
 import './blog.css'
 import '@papyrs/stylo';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 import ImageUploading from 'react-images-uploading';
+import HookDraft from './HookDraftjs';
+import Draftjs from './Draftjs';
+import { EDITOR_JS_TOOLS } from './BlogEditorConstants';
+import Editorjs from './Editorjs';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const BlogEditor = () => {
 
@@ -51,7 +57,7 @@ const BlogEditor = () => {
 
   const onSubmit = async (data) => {
 
-    const image = coverPhoto[0].file
+    const image = coverPhoto[0]?.file
 
     console.log('img', image);
 
@@ -73,19 +79,27 @@ const BlogEditor = () => {
       .then(async result => {
         console.log('imgbbCover', result)
         const banner = result.url
-
-
-        const sendData ={banner,title:data.title,body:data.body}
+        const sendData ={blogger:user?.displayName,banner,title:data.title,body:data.body}
         console.log('sendData',sendData);
+
+        await fetch(`https://coder-access.herokuapp.com/blogs`,
+        {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(sendData)
+        })
 
       })
 
-
+      toast.success("Information Updated")
   }
 
 
   return (
     <div className='w-[70vw]  mx-auto relative'>
+      <Toaster></Toaster>
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -155,7 +169,6 @@ const BlogEditor = () => {
               name="" id="" cols="30" rows="2"
               {...register("title")}>
             </textarea>
-
             <textarea onKeyDown={(e) => { showOptions(e) }}
 
               placeholder="Write Your Blog..."
