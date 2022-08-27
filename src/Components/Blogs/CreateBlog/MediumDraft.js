@@ -30,7 +30,7 @@ import EmbedSideButton from './EmbedSideButton'
 
 import "medium-draft/lib/index.css";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase.init";
+import auth from "../../../firebase.init";
 // Draft-JS-Mentions plugin configuration
 const mentionPlugin = createMentionPlugin({
     mentionTrigger: ">"

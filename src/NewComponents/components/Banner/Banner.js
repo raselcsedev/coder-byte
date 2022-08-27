@@ -20,14 +20,14 @@ const Banner = () => {
     <div className="bg-slate-900 md:h-[90vh] ">
       <div class="hero pb-16 ">
         <svg className="hidden lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1650 320"><path fill="#1e293b" fill-opacity="1" d="M0,320L720,32L1440,0L1440,0L720,0L0,0Z"></path></svg>
-        <div class="hero-content flex-col lg:flex-row lg:space-x-40 mt-40">
+        <div class="hero-content flex-col lg:flex-row lg:space-x-40 mt-40 ">
           <motion.img
             transition={bounceTransition}
             animate={{
               y: ["2%", "-2%"]
             }}
 
-            src="https://i.ibb.co/YZx3Stg/My-project-1.png" class="md:max-w-xl max-w-xs rounded-lg shadow-2xl" alt=""></motion.img>
+            src="https://i.ibb.co/YZx3Stg/My-project-1.png" class="md:max-w-2xl max-w-xs rounded-lg shadow-2xl" alt=""></motion.img>
           <div>
             <h1 class="text-5xl font-bold text-white">Best Platform to solve <br />competitive <span className="text-red-400">programming</span></h1>
             <p class="py-6 text-white">

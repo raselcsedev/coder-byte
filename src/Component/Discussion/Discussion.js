@@ -6,7 +6,8 @@ import auth from '../../firebase.init';
 import Chat from './Chat/Chat';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faRocket, faUpDownLeftRight } from '@fortawesome/free-solid-svg-icons'
-const socket = io.connect("http://localhost:5000/")
+
+const socket = io.connect("https://coder-access.herokuapp.com")
 
 const Discussion = () => {
     const [messages, setmessage] = useState("");

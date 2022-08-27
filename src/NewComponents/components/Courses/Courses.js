@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
+import SingleCourse from "./SingleCourse";
 
 const Courses = () => {
   const [datas, setdata] = useState([]);
@@ -15,8 +16,8 @@ const Courses = () => {
   const data = datas.slice(0, 9);
   return (
     <div>
-      <p className=" lg:mt-40 bg-slate-900 hidden lg:block">
-        <Link to="/"><span className="flex justify-end mt-2 mr-32 text-3xl text-white"><FontAwesomeIcon icon={faArrowUp} 
+      <p className=" lg:mt-40 pt-2 bg-slate-900 hidden lg:block ">
+        <Link to="/"><span className="flex animate-bounce  justify-end mt-2 mr-32 text-3xl text-white"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>
       </p>
       <div className="pt-16 pb-12 bg-slate-900">
@@ -26,25 +27,7 @@ const Courses = () => {
       <section className=" flex justify-center ">
         <div
          className=" grid grid-cols-2 lg:grid-cols-3  gap-8 lg:gap-12">
-          {data.map((data) => (
-            <>
-              <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              
-              class="card w-[100%] md:w-72 bg-base-100 shadow-2xl bg-slate-800">
-                <div class="card-body">
-                  <div>
-                    <img className="mx-auto" width="50px" height="50px" src={data.img} alt="" />
-                    <h2 class="flex justify-center card-title mt-4 text-white">{data.title}</h2>
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          ))}
+          {datas.map((data) =><SingleCourse key={data.id}  data={data}></SingleCourse>)}
         </div>
       </section>
 

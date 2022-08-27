@@ -63,7 +63,7 @@ const url = "http://localhost:3000/compareData.json" || 'https://coder-access.we
     return (
         <div className="lg:mb-32 mb-20 mt-16 lg:mt-56 md:max-w-[100vw] max-w-[95vw]  mx-auto">
              <div className="h-px mx-12 lg:mx-32 bg-black hidden lg:block"></div>
-           <p className="hidden lg:block">
+           <p className="hidden animate-bounce  lg:block">
           <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
           /></span></Link>
             </p>
