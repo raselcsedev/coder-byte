@@ -9,7 +9,7 @@ const AllCourses = () => {
     console.log(courses);
 
     return (
-        <div className='w-[80%] mx-auto py-10'>
+        <div className='w-[80vw] min-h-[80vh] mx-auto py-10'>
 
         <h1 className='text-4xl mb-8 font-semibold mt-20'>All Courses :</h1>
           <div className='divide-y divide-slate-100 '>

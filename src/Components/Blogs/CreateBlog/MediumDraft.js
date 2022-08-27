@@ -69,6 +69,8 @@ const MediumDraft = () => {
         createEditorState()
     );
     const mEditor = React.useRef(null);
+
+    
     const [user] = useAuthState(auth);
 
 
@@ -126,7 +128,7 @@ const MediumDraft = () => {
     };
 
     return (
-        <section>
+        <section className="ml-10">
 
             <form  onSubmit={handleSubmit(handleSubmitOnClick)}>
                 <div className="flex justify-between mb-10 mr-28">

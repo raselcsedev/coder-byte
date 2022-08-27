@@ -47,8 +47,8 @@ const Discussion = () => {
                                 <FontAwesomeIcon icon={faUpDownLeftRight} className="mr-auto" />
                                 Minimize </button>
 
-                            <div className='   text-center flex justify-center '>
-                                <div className=' bg-[#DCDCDC] discontainer py-10 pl-10'>
+                            <div className='   text-center flex justify-center  '>
+                                <div className=' bg-[#DCDCDC] discontainer py-10 pl-10 '>
                                     {chat.map(data => <>
                                         {
                                             data?.name === name ?
