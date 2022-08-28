@@ -2,7 +2,7 @@ import React from 'react';
 
 const Course = (props) => {
 
-    const { id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
+    const { _id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
 
 
 
@@ -79,7 +79,7 @@ const Course = (props) => {
                         </div>
 
                         <div className="flex-none w-full mt-2 font-normal mt-5">
-                            <a href={`/${id}`}> <button className='btn btn-xs border-none bg-[brown]'>Detail</button>
+                            <a href={`/${_id}`}> <button className='btn btn-xs border-none bg-[brown]'>Detail</button>
                             </a>
                         </div>
                     </dl>
