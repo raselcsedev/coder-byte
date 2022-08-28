@@ -48,7 +48,7 @@ const SecondaryTest = () => {
 
                 </div>
                 <div className='w-40 mx-auto'>
-                    <Link to='/congratulation-window'>
+                    <Link to={`/congratulation-window/${id}`}>
                         <button className='btn btn-success w-40 my-4 mx-auto'>Submit</button>
                     </Link>
                 </div>

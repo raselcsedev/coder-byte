@@ -10,6 +10,7 @@ const BlogSingle = ({blog}) => {
 
     return (
         <div>
+            <Link  to={`/blogs/blog-detail/${blog?._id}`}>
             <div>
                 <div className='flex mr-16 md:mr-0 mb-5 ml-10 md:ml-0 '>
                     <img loading='lazy' className='w-8 h-8 border rounded-full mr-2'
@@ -30,12 +31,13 @@ const BlogSingle = ({blog}) => {
                             {blog?.body.slice(0,200)}...
                         </p>
 
-                        <Link to={`/blogs/blog-detail/${blog?._id}`}> <button className='btn btn-xs bg-[brown]'>Detail</button>
+                        <Link to={`/blogs/blog-detail/${blog?._id}`}> <button className='btn btn-xs bg-[brown] my-5'>Detail</button>
                         </Link>
                     </div>
                 </article>
                 <div class="divider"></div>
             </div>
+            </Link>
         </div>
     );
 };

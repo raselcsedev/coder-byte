@@ -1,7 +1,7 @@
 
 import SingleTestimonial from './SingleTestimonial';
 import './AllTestimonials.css'
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import toast, { Toaster } from 'react-hot-toast';
@@ -9,9 +9,15 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../../Components/Shared/Loading/Loading';
 import { fetchUsers } from '../../features/Profiles/ProfileSlice';
+import { useState } from 'react';
 
 
 const AllTestimonials = () => {
+
+    const [review,setReview] =useState('')
+    const [user] = useAuthState(auth);
+
+    const email = user?.email
 
     const { isLoading, error, profiles } = useSelector(state => state?.profiles)
 
@@ -24,14 +30,14 @@ const AllTestimonials = () => {
         console.log('error', error);
     }, [])
 
+    const profile = profiles.find(item => email== item?.email)
 
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [user] = useAuthState(auth);
 
     const onSubmit = async (data) => {
 
-        const email = user?.email
-        await fetch(`http://localhost:5000/profiles/${email}`, {
+        setReview(data?.review)
+        await fetch(`https://coder-access.herokuapp.com/profiles/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -78,7 +84,18 @@ const AllTestimonials = () => {
 
             {
                     <div className="review grid grid-cols-4 ">
-                        <div>
+                        {
+                            review ? <div>
+                            <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
+                            <div className="myCarousel">
+                                <h3>{profile?.displayName}</h3>
+                                <h4>{profile?.profession}</h4>
+                                <p className="">
+                                    { review}
+                                </p>
+                            </div>
+                        </div>
+                            :<div>
                             <img src="https://imgdb.net/storage/uploads/42bac8baabb639efbe630d99575f6ff3c2a4cad6f1b86b4d992e97f705ceb56b.png" />
                             <div className="myCarousel">
                                 <h3>Shirley Fultz</h3>
@@ -89,6 +106,7 @@ const AllTestimonials = () => {
                                 </p>
                             </div>
                         </div>
+                        }
 
                         <div>
                             <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--nSI8V6RE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/81co8nilff5r9eer3xga.png" />
@@ -130,7 +148,7 @@ const AllTestimonials = () => {
             <div className='divide-y divide-slate-100 '>
                 <div className='review grid grid-cols-4 my-4'>
                 {
-                    profiles?.slice(0).reverse().map(profile =>
+                    profiles?.map(profile =>
                         profile?.review &&
                         <div>
                             <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
@@ -138,7 +156,7 @@ const AllTestimonials = () => {
                                 <h3>{profile?.displayName}</h3>
                                 <h4>{profile?.profession}</h4>
                                 <p className="">
-                                    {profile?.review}
+                                    { profile?.review}
                                 </p>
                             </div>
                         </div>)
