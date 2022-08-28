@@ -264,8 +264,9 @@ const Header = () => {
                                         <div className='space-y-2 pt-4'>
 
                                             <li><a className='btn btn-outline btn-xs text-[white]'>Settings</a></li>
-                                            <li><button onClick={logout} className='btn btn-xs'>Logout</button></li>
-
+                                            <Link to='/'>
+                                                <li><button onClick={logout} className='btn btn-xs'>Logout</button></li>
+                                            </Link>
                                         </div>
 
 

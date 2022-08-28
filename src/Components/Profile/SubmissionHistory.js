@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const SubmissionHistory = () => {
+    
     const [user] = useAuthState(auth);
     const email = user?.email
 
@@ -29,7 +30,7 @@ const SubmissionHistory = () => {
         <div className='text-white'>
 
             <h1 className=' font-semibold'>
-                {expectedData?.length ? `Total submissions : ${data?.length}` : "No submission history available"}
+                {expectedData?.length ? `Total submissions : ${expectedData?.length}` : "No submission history available"}
             </h1>
             {
                 <ol className='list-decimal'>  {
