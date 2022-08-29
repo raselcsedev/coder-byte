@@ -30,8 +30,8 @@ const SingleAlgo = ({ item }) => {
             <Link to={`/Topic/algo/editor/${item?._id}`}>
                 <li className='drop-shadow-lg w-[80%] mx-auto py-4 flex justify-around items-center border border-slate-600 my-1 hover:bg-slate-700 '>
                     <p className=' text-lg font-semibold'>{item?.title}</p>
-                    {expectedData ? <Link to={`/Topic/algo/editor/${item?._id}`}><button className=' '>{expectedData?.success ? <span className='btn btn-sm bg-[green]'>Already Solved</span> : <span className='btn btn-sm bg-[red]'>Unsolved Submission</span>}</button></Link>
-                        : <Link to={`/Topic/algo/editor/${item?._id}`}><button className='btn btn-sm btn-success btn-outline'>Solve it</button></Link>
+                    {expectedData ? <Link to={`/Topic/algo/editor/${item?._id}`}><button className=''>{expectedData?.success ? <span className='btn btn-sm bg-[green] flex  justify-end '>Already Solved</span> : <span className='btn btn-sm bg-[red] flex  justify-end'>Unsolved Submission</span>}</button></Link>
+                        : <Link to={`/Topic/algo/editor/${item?._id}`}><button className='btn btn-sm btn-success btn-outline flex  justify-end '>Solve it</button></Link>
                     }
                 </li>
             </Link>

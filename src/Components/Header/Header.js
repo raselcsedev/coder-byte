@@ -11,21 +11,13 @@ import './Header.css'
 const Header = () => {
 
     const [user] = useAuthState(auth);
-
-
-
     const email = user?.email
 
     const url = `https://coder-access.herokuapp.com/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)
-        // console.log('axios', (await data).data);
-
         return (await data).data
-
-        //also could be used[axios retun without destructuring]
-        // return data
     }
 
     let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
@@ -122,7 +114,7 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contests'>Emulate</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/courses'>Courses</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/blogs'>Blogs</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/all-blogs'>Blogs</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
 

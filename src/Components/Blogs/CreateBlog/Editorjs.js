@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import EditorJs from "@natterstefan/react-editor-js";
 
 import { EDITOR_JS_TOOLS } from "./BlogEditorConstants";
-import { blogData } from "./blogData";
 
 class Editorjs extends Component {
   

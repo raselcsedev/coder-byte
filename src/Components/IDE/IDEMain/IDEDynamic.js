@@ -318,7 +318,7 @@ console.log('testcase output', data?.testCaseOutput);
  
     if( !data?.testCaseOutput || !data?.testCaseOutput.length)
     {
-        return <p className="pt-20 font-bold text-3xl w-[20%] h-96 mx-auto text-[red] "> Invalid Test Cases !!!</p>
+        return <p className="pt-20 font-bold text-3xl w-[30%] h-96 mx-auto text-success bg-slate-800 h-[120vh] pt-40 w-[100vw] text-center "> Checking Test-cases Validity...</p>
     }
     console.log('output',  data?.testCaseOutput,'len',data?.testCaseOutput.length);
     console.log('output',  ['4','4'],'len',['4','4'].length);

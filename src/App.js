@@ -65,6 +65,7 @@ import BlogDetail from './Components/Blogs/BlogDetail';
 import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/ContestAlgo';
+import AllBlogs from './Components/Blogs/AllBlogs';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -90,7 +91,10 @@ function App() {
           <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
           <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
           <Route path='weeklypre/:id' element={<IDELanding></IDELanding>}></Route>
-          <Route path='all-testimonials' element={<AllTestimonials></AllTestimonials>}></Route>
+          <Route path='/all-testimonials' element={<AllTestimonials></AllTestimonials>}></Route>
+          <Route path='all-blogs' element={<AllBlogs></AllBlogs>}></Route>
+          <Route path='/blog-editor' element={<BlogEditor></BlogEditor>}></Route>
+          <Route path='/blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
 
           <Route path='/Topic' element={<Topic></Topic>}>
             <Route index element={<DataStructure></DataStructure>}></Route>
