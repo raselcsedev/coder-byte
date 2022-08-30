@@ -15,12 +15,14 @@ const SavedBlog = ({ savedBlogs, updateSaved}) => {
 
     let savedBlogsData = savedBlogs?.filter(blog => blog?.saved && blog?.user == user?.email)
 
+    let newUpdated =savedBlogs?.find(blog => blog?._id !=updateSaved?._id)
+
   if(updateSaved?.saved && updateSaved?.user==user?.email){
 
-    savedBlogsData =[...savedBlogs,updateSaved]
+    savedBlogsData =[...savedBlogsData,newUpdated]
   }
   else {
-     savedBlogsData = savedBlogs?.filter(blog => blog?._id !=updateSaved?._id)
+     savedBlogsData = savedBlogsData?.filter(blog => blog?._id !=updateSaved?._id)
 
   }
 

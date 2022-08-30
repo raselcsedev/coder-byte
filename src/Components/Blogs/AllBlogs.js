@@ -14,6 +14,7 @@ const AllBlogs = () => {
         setUpdateSaved(data)
     }
 
+
     const url = `http://localhost:5000/blogs`
 
     const fetcher = async () => {
@@ -41,6 +42,7 @@ const AllBlogs = () => {
 //         }
 //     }
 
+console.log('upadateSaved',updateSaved);
 
 
     return (

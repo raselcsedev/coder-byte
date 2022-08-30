@@ -1,9 +1,6 @@
 import React from 'react';
 import { set, useForm } from 'react-hook-form';
-import 'react-form-input-fields/dist/index.css'
 import { useState } from 'react';
-import './blog.css'
-import '@papyrs/stylo';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import ImageUploading from 'react-images-uploading';
@@ -118,7 +115,7 @@ const BlogEditor = () => {
 
         <SideBar className=''></SideBar>
 
-        <div className='col-span-8 pt-24 pb-10'>
+        <div className='col-span-8 pt-24 pb-10 px-5'>
 
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -201,7 +198,7 @@ const BlogEditor = () => {
                 </textarea>
               </div>
 
-              <p className={options ? ' absolute top-[45%] left-[-5%] cursor-pointer' : 'hidden'}>
+              <p className={ ' top-[45%] left-[10%] cursor-pointer' }>
                 {
                   showMore ?
                     <div className='flex space-x-3'>

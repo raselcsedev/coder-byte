@@ -56,7 +56,6 @@ import CongratulationWindow from './Components/GetCertificate/SingleCertificate/
 
 import Blogs from './Components/Blogs/Blogs';
 import Stories from './Components/Blogs/Stories';
-import WriteBlogs from './Components/Blogs/WriteBlogs';
 import Notifications from './Components/Blogs/Notifications';
 import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
@@ -115,7 +114,7 @@ function App() {
           <Route path='blogs' element={<Blogs></Blogs>}>
             <Route index element={<HomeBlogs></HomeBlogs>}></Route>
             <Route path='stories' element={<Stories></Stories>}></Route>
-            <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
+           
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
             <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
