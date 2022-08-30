@@ -1,11 +1,9 @@
 import React from 'react';
-import NestedComments from '../../Blogs/NestedComments/NestedComments';
 
 const LikeComments = () => {
     return (
         <div>
-            <div className='fixe bottom-[1%]  right-[40%]'>
-                <NestedComments></NestedComments>
+            <div className='fixe  bottom-[1%]  right-[40%]'>
 
                 <div className=' flex justify-center py-1 px-2 space-x-4 border border-[black] rounded-full bg-black text-white mx-auto'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

@@ -2,21 +2,23 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LikeComments from '../Shared/LikeComments/LikeComments';
 import SideBar from '../Shared/SideBar';
-import NestedComments from './NestedComments/NestedComments';
+import SavedBlog from './SavedBlogs/SavedBlog';
 
 const BlogDetail = () => {
 
     const { id } = useParams()
     const [user] = useAuthState(auth);
 
-    const url = `https://coder-access.herokuapp.com/blogs/${id}`
+    const url = `http://coder-access.herokuapp.com/blogs/${id}`
+    const url2 = `http://localhost:5000/blogs/${id}`
+
     const fetcher = async () => {
         const data = axios.get(url)
-        return (await data).data
+        return (await data)?.data
     }
 
     let { data: blog, isLoading } = useQuery(['blogs', id], () => fetcher())
@@ -77,6 +79,55 @@ const BlogDetail = () => {
     }
 
 
+    const fetchSaved = (data) => {
+
+
+        fetch(url2, {
+            
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'Access-control-Allow-Origin':"*",
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('res', result)
+
+            })
+    }
+
+    const [saved, setSaved] = useState(false)
+    const [unsaved, setUnsaved] = useState(true)
+
+    
+    if (isLoading) {
+        return <p>loading...</p>
+    }
+
+    const handleSaved = () => {
+        setSaved(true)
+        setUnsaved(false)
+        const data = { user: user?.email, saved: true }
+        if (blog && !isLoading){
+            fetchSaved(data)
+        }
+
+
+    }
+
+    const unsavedHandler = () => {
+        setSaved(false)
+        setUnsaved(true)
+        const data = { saved: false, user:null }
+        if (blog && !isLoading) {
+            fetchSaved(data)
+        }
+
+    }
+
+
     const HighlightedText = ({ text, from, to }) => {
 
         const [start, highlight, finish] = splitText(text, from, to);
@@ -89,41 +140,53 @@ const BlogDetail = () => {
             </p>
         );
     };
-    if (isLoading) {
-        return <p>loading...</p>
-    }
+  
 
     return (
         <div className='py-16 relative'>
 
             <div className='mx-auto  w-[100%]  grid grid-cols-12 '>
 
-                <SideBar className='col-span-1'></SideBar>
+                <SideBar></SideBar>
 
-                <div className='col-span-6'>
+                <div className='col-span-8 my-6 w-[90%]'>
                     <div>
 
-                        <div className='md:flex items-center'>
+                        <div className='md:flex justify-between'>
 
                             <div className='mr-20'>
                                 <p className='text-[gray]'>Published by </p>
 
                                 <div className='flex mr-16 md:mr-0 mb-5 '>
-                                    <img loading='lazy' className='w-8 h-8 border rounded-full mr-2'
-                                        src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220509120600/Learn-Data-Structures-and-Algorithms-Easily.gif'
-                                        alt="" />
+                                    <Link to='/profile'>
+                                        <img title='Go to profile' class="w-8 border border-black rounded-full mx-2" src={blog?.profilePhoto ? blog?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} alt="" />
+                                    </Link>
                                     <div className='space-x-1 '>
                                         <span className='font-semibold'>{blog?.blogger}</span>
                                         <span className='text-xs'>{'>'}Today </span>
                                     </div>
 
+
                                 </div>
                             </div>
+                            <div className=''>
+                                {
+                                    unsaved &&
+                                    <span title='Save it'>
+                                        <svg onClick={() => handleSaved()} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+                                        </svg>
+                                    </span>
+                                }
 
-                            <p className='mb-3 md:ml-5'>
-                                <p className='text-[gray]'>Tags</p>
-                                {/* <p className='text-[black]'>{course?.topic}</p> */}
-                            </p>
+                                {
+                                    saved && <span title='Unsave it'><svg onClick={() => unsavedHandler()} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 cursor-pointer tex-[brown]">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
+                                    </svg></span>
+                                }
+
+
+                            </div>
                         </div>
 
                         <div className='grid grid-cols-12 gap-5'>
@@ -133,7 +196,7 @@ const BlogDetail = () => {
                         <h1 className='text-xl md:text-4xl mb-8 font-semibold'>
                             {blog?.title}
                         </h1>
-                        <img loading='lazy' className='my-8 border-2 rounded w-[70%]' src={blog?.banner} alt="" />
+                        <img loading='lazy' className='my-8 border-2 rounded ' src={blog?.banner} alt="" />
 
                     </div>
                     <div className="my-4 ">
@@ -162,9 +225,10 @@ const BlogDetail = () => {
                     {/* <NestedComments></NestedComments> */}
 
                 </div>
+                {/* <div className='col-span-3'><SavedBlog></SavedBlog></div> */}
+
             </div>
 
-            <div className='col-span-4'>.... </div>
         </div>
     );
 };

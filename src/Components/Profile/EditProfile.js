@@ -21,7 +21,7 @@ const EditProfile = ({ updatedProfile }) => {
 
 
         const email = user?.email
-        await fetch(`http://localhost:5000/profiles/${email}`, {
+        await fetch(`https://coder-access.herokuapp.com/profiles/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

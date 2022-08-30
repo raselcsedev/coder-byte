@@ -7,13 +7,12 @@ import '@papyrs/stylo';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import ImageUploading from 'react-images-uploading';
-import HookDraft from './HookDraftjs';
-import Draftjs from './Draftjs';
-import { EDITOR_JS_TOOLS } from './BlogEditorConstants';
-import Editorjs from './Editorjs';
 import toast, { Toaster } from 'react-hot-toast';
 import SideBar from '../../Shared/SideBar';
 import SavedBlog from '../SavedBlogs/SavedBlog';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+
 
 
 const BlogEditor = () => {
@@ -44,6 +43,18 @@ const BlogEditor = () => {
   }
 
   const [user] = useAuthState(auth);
+  const email = user?.email
+
+  const url = `http://localhost:5000/profiles/${email}`
+
+  const fetcher = async () => {
+    const data = axios.get(url)
+    return (await data).data
+  }
+
+  let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
+
+
 
   const [coverPhoto, setCoverPhoto] = useState([]);
 
@@ -81,10 +92,10 @@ const BlogEditor = () => {
       .then(async result => {
         console.log('imgbbCover', result)
         const banner = result.url
-        const sendData = { blogger: user?.displayName, banner, title: data.title, body: data.body }
+        const sendData = { blogger: user?.displayName, banner, title: data.title, body: data.body, profilePhoto: profile?.profilePhoto }
         console.log('sendData', sendData);
 
-        await fetch(`https://coder-access.herokuapp.com/blogs`,
+        await fetch(`http://localhost:5000/blogs`,
           {
             method: 'POST',
             headers: {
@@ -97,6 +108,7 @@ const BlogEditor = () => {
 
     toast.success("Information Updated")
   }
+
 
 
   return (
@@ -251,8 +263,8 @@ const BlogEditor = () => {
 
         </div>
 
-        <div className='col-span-3'>
-          <SavedBlog></SavedBlog>
+        <div className='col-span-3 '>
+          {/* <SavedBlog></SavedBlog> */}
         </div>
       </div>
 

@@ -13,7 +13,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `https://coder-access.herokuapp.com/profiles/${email}`
+    const url = `http://localhost:5000/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)

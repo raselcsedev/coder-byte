@@ -47,7 +47,7 @@ const IDEDynamic = () => {
 const {id} =useParams()
 
 
-const url = `https://coder-access.herokuapp.com/TopicAlgo/${id}`
+const url = `http://localhost:5000/TopicAlgo/${id}`
 
 
 const fetcher = async () => {
@@ -302,7 +302,7 @@ console.log('testcase output', data?.testCaseOutput);
         submissionData ={data,success:true,user:user?.email}
         }
         submissionData={data,success:false,user:user?.email}
-        fetch(`https://coder-access.herokuapp.com/submissions/${id}`, {
+        fetch(`http://localhost:5000/submissions/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

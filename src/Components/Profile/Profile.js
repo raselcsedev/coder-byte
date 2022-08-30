@@ -28,7 +28,7 @@ const Profile = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `https://coder-access.herokuapp.com/profiles/${email}`
+    const url = `http://localhost:5000/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -61,7 +61,7 @@ const Profile = () => {
                 console.log('imgbbProfilePhoto', result.url)
 
                 const profilePhoto = result.url
-                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -93,7 +93,7 @@ const Profile = () => {
             .then(async result => {
                 console.log('imgbbCover', result)
                 const coverPhoto = result.url
-                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -385,6 +385,7 @@ const Profile = () => {
 
 
                     </div>
+                    
                     <div className='card border-slate-600 border bg-slate-800 p-4 divide divide-y my-4 space-y-4'>
                         <p className='text-white font-semibold'>Today's Project For You </p>
 
