@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 
 const DynamicTpicGetHook = () => {
     const [data,setData]=useState([]);
+    const url="http://localhost:5000/TopicAlgo"
     const AlgorithimGet=()=>{
-        fetch('http://localhost:5000/TopicAlgo')
+        fetch(url)
         .then(res=>res.json())
         .then(data=>setData(data))
     }
     const Databaseget=()=>{
-        fetch('http://localhost:5000/TopicDatabase')
+        fetch(url)
         .then(res=>res.json())
         .then(data=>setData(data))
     }
     const DSget=()=>{
-        fetch('http://localhost:5000/TopicDS')
+        fetch(url)
         .then(res=>res.json())
         .then(data=>setData(data))
     }
