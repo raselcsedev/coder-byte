@@ -2,20 +2,20 @@ import React from 'react';
 
 const Course = (props) => {
 
-    const { id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
+    const { _id,instructor,course_img ,instructor_img, title, description, duration, lecture_quantity, topic } = props.course
 
 
 
     return (
         <div>
-            <article className="flex my-3 flex-col md:flex-row md:items-start space-x-6 md:p-3">
-                <img loading='lazy' src={course_img} alt="" className="flex-none w-80  rounded-md bg-slate-100" />
+            <article className="flex my-3 flex-col md:flex-row md:items-start space-x-6">
+                <img loading='lazy' src={course_img} alt="" className="flex-none w-60 border-2  rounded-md bg-slate-100" />
                 <div className="min-w-0 relative flex-auto">
                     <h2 className="font-semibold text-slate-900 truncate pr-20">{title}</h2>
 
 
 
-                    <div className="flex-none w-full mt-2 font-normal">
+                    <div className="flex-none w-full  font-normal">
                         <dt className="sr-only">teacher</dt>
                         <dd className="text-slate-400"> Instructor : {instructor}</dd>
                     </div>
@@ -27,7 +27,6 @@ const Course = (props) => {
                             <p className='text-[gray]'>Guided by </p>
 
                             <p className='text-[brown]'>{instructor}</p>
-                            {/* <p className='text-[black]'> Scholar of Hadith & Fiqh</p> */}
 
                         </p>
 
@@ -51,7 +50,7 @@ const Course = (props) => {
                         <div className=' flex md:flex-col flex-row'>
                             <dt className="sr-only">Rating</dt>
                             <dd className="px-1.5 ring-1 ring-slate-200 rounded">
-                                Duration: {duration} hrs
+                                Duration: {duration} 
                             </dd>
                             <dd className="px-1.5 ring-1 ring-slate-200 rounded">
                                 Lectures: {lecture_quantity}
@@ -80,7 +79,7 @@ const Course = (props) => {
                         </div>
 
                         <div className="flex-none w-full mt-2 font-normal mt-5">
-                            <a href={`/${id}`}> <button className='btn btn-xs border-none bg-[brown]'>Detail</button>
+                            <a href={`/${_id}`}> <button className='btn btn-xs border-none bg-[brown]'>Detail</button>
                             </a>
                         </div>
                     </dl>

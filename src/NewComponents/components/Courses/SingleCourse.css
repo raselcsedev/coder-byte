@@ -1,0 +1,6 @@
+.after:hover  {
+    transition: transform .5s ease-in-out;
+    transform: rotateY(360deg);
+  
+    
+}

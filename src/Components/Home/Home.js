@@ -1,11 +1,13 @@
 import React from 'react';
-import CodeEditor from '../CodeEditor/CodeEditor';
 import Codevideo from '../CodeVideo/Codevideo';
 import FeaturedCompanies from '../FeaturedCompanies/FeaturedCompanies';
 import Languages from '../Languages/Languages';
 import Homepage from '../HomePage/HomePage';
 import DashbordMain from '../DashbordMain/DashbordMain'
-import Course from '../Courses/Course'
+import Courses from '../Courses/Courses';
+import BlogEditor from '../../Footer/CreateBlog/BlogEditor';
+
+
 
 const Home = () => {
     return (
@@ -15,8 +17,12 @@ const Home = () => {
             <Codevideo></Codevideo>
             <DashbordMain></DashbordMain>
             <Languages></Languages>
-            <Course></Course>
+            <Courses></Courses>
+           
+         {/* <BlogEditor></BlogEditor> */}
             <FeaturedCompanies></FeaturedCompanies>
+           
+
         </div>
     );
 };
