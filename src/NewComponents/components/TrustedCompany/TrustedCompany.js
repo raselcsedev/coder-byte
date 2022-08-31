@@ -22,7 +22,7 @@ const TrustedCompany = () => {
           /></span></Link>
             </p>
 
-      <div class="card w-100 border-2 bg-base-100 shadow-xl">
+      <div class="card w-100 border-2 bg-base-100 shadow-xl max-w-[90vw] mx-auto">
         <div class="card-body">
           <h2 class="card-title text-3xl font-semibold flex justify-center mb-3">Trusted By Amazing Companies</h2>
           <p className="text-xl text-gray-500 flex justify-center mb-8">Our customers have gotten offers from awesome companies.</p>

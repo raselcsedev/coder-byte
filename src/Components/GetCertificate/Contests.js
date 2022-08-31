@@ -85,7 +85,7 @@ const Contests = () => {
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2 mb-12">
         {archived.map((challange) => (
-          <ArchivedContest key={challange._id} challange={challange}></ArchivedContest>
+          <ArchivedContest  key={challange._id} challange={challange}></ArchivedContest>
         ))}
       </div>
     </div>

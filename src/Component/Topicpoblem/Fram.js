@@ -1,15 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faTerminal } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { PassingPrblm } from '../../App';
 
-const Fram = ({ data }) => {
-    const navigate=useNavigate();
-    const AproblemOpen = (id) => {
-        console.log(id)
-        navigate(`/weeklypre/${id}`)
-    }
+
+
+const Fram = ({ data}) => {
+
     return (
         <div>
             <div className='border py-20 p-5  flex justify-around mx-12 '>
@@ -21,7 +20,7 @@ const Fram = ({ data }) => {
                         <p>{data.type}</p>
                     </div>
                 </div>
-                <div onClick={() => { AproblemOpen(data.id) }} className="btn">Solve me </div>
+                <Link to={`editor/${data?._id}`}><button className="btn">Solve me </button></Link>
             </div>
         </div>
     );

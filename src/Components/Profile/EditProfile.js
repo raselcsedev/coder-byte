@@ -8,9 +8,6 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const EditProfile = ({ updatedProfile }) => {
     const [user] = useAuthState(auth);
-
-
-
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
@@ -18,13 +15,13 @@ const EditProfile = ({ updatedProfile }) => {
     const onSubmit = async (data) => {
 
         updatedProfile(data)
-        console.log('dis',data?.displayName);
+        console.log('dis', data?.displayName);
 
         await updateProfile({ displayName: data.name });
 
 
         const email = user?.email
-        await fetch(`http://localhost:5000/profiles/${email}`, {
+        await fetch(`https://coder-access.herokuapp.com/profiles/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -38,14 +35,12 @@ const EditProfile = ({ updatedProfile }) => {
 
 
     return (
-
-
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Toaster />
 
                 <div>
-                    <div className='text-[white]'>
+                    <div className='text-white'>
                         <h1 className='text-2xl font-semibold py-4'>Update Profile</h1>
                         <div class="hidden sm:block" aria-hidden="true">
                             <div class="py-5">
@@ -62,7 +57,7 @@ const EditProfile = ({ updatedProfile }) => {
                             <div class="mt-5 md:mt-0 md:col-span-2">
                                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                                     <div class="px-4 py-5 space-y-6 sm:p-6">
-                                       
+
                                         <div>
                                             <label for="about" class="block text-sm font-medium "> About </label>
                                             <textarea style={{ backgroundColor: ' #919cb1', border: '#6b7280' }}
@@ -133,8 +128,16 @@ const EditProfile = ({ updatedProfile }) => {
                                                 <label for="first-name" class="block text-sm font-medium ">Name</label>
                                                 <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="first-name" id="first-name"
                                                     autocomplete="given-name"
+                                                    value={user?.displayName} readOnly
                                                     class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                     {...register("displayName")} />
+                                            </div>
+                                            <div class="col-span-6 sm:col-span-5">
+                                                <label for="profession" class="block text-sm font-medium ">Profession</label>
+                                                <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="first-name" id="first-name"
+                                                  
+                                                    class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                                    {...register("profession")} />
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3">
@@ -146,7 +149,7 @@ const EditProfile = ({ updatedProfile }) => {
                                                     <option>USA</option>
                                                 </select>
                                             </div>
-                                    
+
                                             <div class="col-span-6 sm:col-span-6 lg:col-span-3">
                                                 <label for="city" class="block text-sm font-medium ">City</label>
                                                 <input  {...register("city")} style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="city" id="city" autocomplete="address-level2" class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
@@ -183,9 +186,6 @@ const EditProfile = ({ updatedProfile }) => {
 
             </form>
         </div>
-
-
-
     );
 };
 

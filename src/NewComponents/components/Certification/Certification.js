@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Certification = () => {
     return (
-        <div className='mt-12 lg:mt-2'>
+        <div className='mt-12 lg:mt-2 md:w-[80vw] w-[40vw] mx-auto'>
             <p className="hidden lg:block">
           <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
           /></span></Link>

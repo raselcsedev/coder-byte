@@ -8,13 +8,12 @@ import 'react-responsive-modal/styles.css';
 import './profile.css'
 import useCourses from '../Shared/useCourses';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-
-
+import Loading from '../Shared/Loading/Loading';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import SubmissionHistory from './SubmissionHistory';
 
 const Profile = () => {
-
-    const [user] = useAuthState(auth);
 
     const [courses, setCourses] = useCourses()
 
@@ -25,37 +24,31 @@ const Profile = () => {
 
         setProfileUpdates(data)
 
-        console.log('updated data', data);
+    }
+    const [user] = useAuthState(auth);
+    const email = user?.email
+
+    const url = `http://localhost:5000/profiles/${email}`
+
+    const fetcher = async () => {
+        const data = axios.get(url)
+        return (await data).data
     }
 
-    const [profile, setProfile] = useState({})
-
-    const email = user?.email
-    const url = `http://localhost:5000/profiles?email=${email}`
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setProfile(data[0])
-                console.log('profileInfo', data[0])
-
-            })
-
-    }, [])
-
+    let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
 
     const [profilePhoto, setProfilePhoto] = useState([]);
 
     const onChangeProfile = (data) => {
         setProfilePhoto(data)
-
         console.log('profilepic', data[0].file);
 
-        const imgAPIKey = '10cf9fb6967774dfe63805d01bba1ab7'
         const image = data[0].file
         const formData = new FormData()
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        formData.append("file", image)
+        formData.append("upload_preset", "ch77jcb5")
+        formData.append("cloud_name", "pavel-genuine")
+        const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
         fetch(url,
             {
                 method: "POST",
@@ -65,10 +58,10 @@ const Profile = () => {
             .then(res => res.json())
             .then(async result => {
                 console.log('imgbbPjrofile', result)
-                console.log('imgbbProfilePhoto', result.data.url)
+                console.log('imgbbProfilePhoto', result.url)
 
-                const profilePhoto = result.data.url
-                await fetch(`http://localhost:5000/profiles/${email}`,
+                const profilePhoto = result.url
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -82,16 +75,14 @@ const Profile = () => {
     const [coverPhoto, setCoverPhoto] = useState([]);
 
     const onChangeCover = (data) => {
-
         setCoverPhoto(data)
-
-        console.log('coverpic', data[0].file);
-
-        const imgAPIKey = '2cdd05bce545560e4148d963a8b857be'
         const image = data[0].file
+
         const formData = new FormData()
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imgAPIKey}`
+        formData.append("file", image)
+        formData.append("upload_preset", "ch77jcb5")
+        formData.append("cloud_name", "pavel-genuine")
+        const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
         fetch(url,
             {
                 method: "POST",
@@ -101,11 +92,8 @@ const Profile = () => {
             .then(res => res.json())
             .then(async result => {
                 console.log('imgbbCover', result)
-                console.log('imgbbCoverPhoto', result.data.url)
-
-                const coverPhoto = result.data.url
-
-                await fetch(`http://localhost:5000/profiles/${email}`,
+                const coverPhoto = result.url
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -140,9 +128,13 @@ const Profile = () => {
     }
 
     const [open, setOpen] = useState(false);
+    const [open2, setOpen2] = useState(false);
 
-    const { about, county, region, website, postalCode, city, } = profile
 
+    if (isLoading || !email) {
+        return <Loading></Loading>
+
+    }
 
     return (
         <div className=' bg-[#171B26] pt-20 '>
@@ -153,7 +145,7 @@ const Profile = () => {
 
                     <div style={{
                         zIndex: '0', backgroundColor: 'black', backgroundRepeat: 'no-repeat', backgroundAttachment: "",
-                        backgroundImage: `url(${profile?.coverPhoto ? profile?.coverPhoto :'https://amdmediccentar.rs/wp-content/plugins/uix-page-builder/includes/uixpbform/images/default-cover-4.jpg'})`
+                        backgroundImage: `url(${profile?.coverPhoto ? profile?.coverPhoto : 'https://amdmediccentar.rs/wp-content/plugins/uix-page-builder/includes/uixpbform/images/default-cover-4.jpg'})`
                     }} class='bg-cover border-slate-600 border border-b-0 md:w-[100%] md:mx-auto relative shadow overflow-hidden sm:rounded-t-lg' >
 
                         <div class="px-4 py-5 sm:px-6 h-[250px] md:h-[300px]" >
@@ -173,10 +165,12 @@ const Profile = () => {
                             }) => (
 
                                 <div className="upload__image-wrapper">
-                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg></p>
+                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </p>
 
                                     {
                                         imageList?.map((image, index) => (
@@ -256,7 +250,7 @@ const Profile = () => {
                         </Modal>
 
                         <div className='w-[98%]  mt-[-8%] md:mt-[-3%] overflow-x-auto'>
-                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-[white] text-lg leading-6 font-medium  rounded ">
+                            <p class=" ml-4 md:ml-5 md:mt-4 word-break md:text-2xl text-slate-200 text-lg leading-6 font-medium  rounded ">
                                 {profileUpdates?.displayName ? profileUpdates?.displayName : profile?.displayName}
                             </p>
 
@@ -270,6 +264,10 @@ const Profile = () => {
                                     <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
                                             {profileUpdates?.about ? profileUpdates?.about : profile?.about}
+
+                                        </dd>
+                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                            {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
 
                                         </dd>
                                     </div>
@@ -289,7 +287,7 @@ const Profile = () => {
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Website</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
-                                            <a>
+                                            <a target="_blank" href={profileUpdates?.website ? profileUpdates?.website : profile?.website} className="underline underline-offset-1  ">
                                                 {profileUpdates?.website ? profileUpdates?.website : profile?.website}
 
                                             </a>
@@ -306,7 +304,14 @@ const Profile = () => {
                                     </div>
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Problem-solving History</dt>
-                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a onClick={() => setOpen2(true)}  className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+                                      
+                                        <Modal classNames={{
+                                            overlay: 'customOverlay',
+                                            modal: 'customModal',
+                                        }} open={open2} onClose={() => setOpen2(false)}>
+                                            <SubmissionHistory></SubmissionHistory>
+                                        </Modal>
                                     </div>
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Achievements / Certifications</dt>
@@ -380,6 +385,7 @@ const Profile = () => {
 
 
                     </div>
+                    
                     <div className='card border-slate-600 border bg-slate-800 p-4 divide divide-y my-4 space-y-4'>
                         <p className='text-white font-semibold'>Today's Project For You </p>
 

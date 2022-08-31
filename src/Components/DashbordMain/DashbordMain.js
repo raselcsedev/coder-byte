@@ -13,18 +13,18 @@ const DashbordMain = () => {
         transition={{duration:1}}
          className="">
           <div className="rounded-lg  lg:w-6/6  border-solid border-4 p-5 lg:p-7 shadow-2xl ">
-            <p className="text-[#8e9494]">Lorem ipsum.</p>
+            <p className="text-[#8e9494]">PREPARATION KITS</p>
             <h1 className="font-bold text-3xl my-3">Interview preparation Kit</h1>
             <p className="text-[#757979]">
               {" "}
               <small>
                 {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae maxime ex et suscipit sit, non illum iste
-                similique?{" "}
+                Get interview ready for top companies by solving
+an interview preparation kit{" "}
               </small>
             </p>
             <Link to="/preparation">
-              <button className="btn my-2">Button</button>
+              <button className="btn my-2">Explore Kits</button>
             </Link>
           </div>
         </motion.section>
@@ -34,18 +34,17 @@ const DashbordMain = () => {
         transition={{duration:1}}
          className="">
           <div className="rounded-lg  lg:w-6/6  border-solid border-4 p-5 lg:p-7 shadow-2xl ">
-            <p className="text-[#8e9494]">Lorem ipsum.</p>
+            <p className="text-[#8e9494]">PREPARATION KITS</p>
             <h1 className="font-bold text-3xl my-3">Spacial preparation Kit </h1>
             <p className="text-[#757979]">
               {" "}
               <small>
                 {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae maxime ex et suscipit sit, non illum iste
-                similique?{" "}
+                 coderAccess offers a variety of skills, tracks and tutorials for you to learn and improve.{" "}
               </small>
             </p>
             <Link to="/preparation">
-              <button className="btn my-2">Button</button>
+              <button className="btn my-2">Explore Kits</button>
             </Link>
           </div>
         </motion.section>

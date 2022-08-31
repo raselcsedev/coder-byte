@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Preparation = () => {
     return (
-        <div className='lg:mt-32 mt-12'>
+        <div className='lg:mt-32 mt-12 md:w-[80vw] w-[40vw] mx-auto'>
                 <h2 className='text-3xl text-teal-600 text-center font-bold lg:mb-16 mb-8'>Your Preparation</h2>
             <div className='lg:flex items-center lg:space-x-72 justify-center'>
 

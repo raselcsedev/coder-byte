@@ -1,28 +1,36 @@
+import { Elements } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import Modal from 'react-responsive-modal';
 import { useParams } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import CheckoutForm from '../Payment/CheckoutForm';
+
 
 
 const EnrollCourse = (props) => {
 
+    const stripePromise = loadStripe('pk_test_51L2gBjKKjNuPS9hlOT7YCimVb59xeQmJYScDajYnOmeIzBL4XH4c2wi3iq6cVqBJOXaFbqNhMigRtVktMpniXm1w00VHtyE3HG');
 
     const { id } = useParams()
 
-    const [courses,setCourses] =useState([])
+    const [courses, setCourses] = useState([])
+    const [open, setOpen] = useState(false);
 
-    let url ='http://localhost:3000/courses.json' || 'https://coder-access.web.app/'
-   
-    useEffect(()=>{
+
+    let url = 'http://localhost:3000/courses.json' || 'https://coder-access.web.app/'
+
+    useEffect(() => {
         fetch(url)
-        .then(res=>res.json())
-        .then(data=>setCourses(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setCourses(data))
+    }, [])
 
 
 
 
     const course = courses?.find(item => id == item?.id)
 
-    console.log('cc',courses,course);
+    console.log('cc', courses, course);
 
     // if (!courses.length) {
     //     return <Loading></Loading>
@@ -32,7 +40,7 @@ const EnrollCourse = (props) => {
     return (
         <div class="bg-white">
             <div class="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-10 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
-               
+
                 <div class="">
                     <div className='card'>
                         <div class=" before inline-block  card-compact md:w-96 w-[100%]  bg-base-100 shadow-xl">
@@ -78,7 +86,7 @@ const EnrollCourse = (props) => {
                                         <path d="M7.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118L.98 9.483c-.784-.57-.381-1.81.587-1.81H5.03a1 1 0 00.95-.69L7.05 3.69z" />
                                     </svg>
                                 </div>
-                               
+
                             </div>
 
                         </div>
@@ -111,12 +119,29 @@ const EnrollCourse = (props) => {
                         <label class="label">
                             <span class="label-text">Course Title</span>
                         </label>
-                        <input type="text" placeholder="Course Title" class="input input-bordered" />
+                        <input type="text" placeholder="Course Title" class="input input-bordered mb-4" />
                     </div>
 
-                    <div class="form-control mt-6">
-                        <button class="btn bg-[brown]">Procced Payment</button>
-                    </div>
+                    {/* <div class="form-control mt-6">
+                        <button onClick={() => setOpen(true)} class="btn bg-[brown]">Procced Payment</button>
+                    </div> */}
+
+
+
+                    <label for="my-modal-4" class="btn modal-button bg-[brown] form-control">
+                        Procced Payment</label>
+
+                    <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+                    <label for="my-modal-4" class="modal cursor-pointer">
+                        <label class="modal-box relative" for="">
+                            <Elements stripe={stripePromise}>
+                                {/* {console.log(product)} */}
+                                <CheckoutForm id={id} product={course} />
+                            </Elements>
+                        </label>
+                    </label>
+
+
 
                 </div>
             </div>
