@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import DynamicTpicGetHook from '../../Component/COUSTOMHOOK/DynamicTpicGetHook';
-import CountDownContest from './CountDownContest';
+import DynamicTpicGetHook from '../../../Component/COUSTOMHOOK/DynamicTpicGetHook';
+import CountDownContest from '../CountDownContest';
 import SingleAlgo from './SingleAlgo';
-import CountDown from './SingleCertificate/SkillTestWindow/CountDown';
 
 const ContestAlgo = () => {
 

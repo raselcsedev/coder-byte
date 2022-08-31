@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
 import Header from './Components/Header/Header';
-import Contests from './Components/GetCertificate/Contests';
+import Contests from './Components/GetCertificate/Contest/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
 
 // new home page import
@@ -63,8 +63,9 @@ import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
 import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
-import ContestAlgo from './Components/GetCertificate/ContestAlgo';
+import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
+import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -126,6 +127,7 @@ function App() {
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
           <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
+          <Route path='/contest-landing-page' element={<ContestLandingPage></ContestLandingPage>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>

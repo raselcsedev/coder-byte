@@ -62,7 +62,7 @@ console.log('upadateSaved',updateSaved);
                         }
                     </div>
                 </div>
-                <div className='col-span-3'><SavedBlog savedBlogs={blogs} updateSaved={updateSaved}></SavedBlog></div>
+                <div className='col-span-3 mt-8'><SavedBlog savedBlogs={blogs} updateSaved={updateSaved}></SavedBlog></div>
             </div>
         </div>
     );
