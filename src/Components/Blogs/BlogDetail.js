@@ -6,6 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import LikeComments from '../Shared/LikeComments/LikeComments';
 import SideBar from '../Shared/SideBar';
+import BloggerOverview from './BloggerOverview';
 import SavedBlog from './SavedBlogs/SavedBlog';
 
 const BlogDetail = () => {
@@ -13,11 +14,11 @@ const BlogDetail = () => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
 
-    const url = `http://coder-access.herokuapp.com/blogs/${id}`
+    const url = `https://coder-access.herokuapp.com/blogs/${id}`
     const url2 = `http://localhost:5000/blogs/${id}`
 
     const fetcher = async () => {
-        const data = axios.get(url)
+        const data = axios.get(url2)
         return (await data)?.data
     }
 
@@ -25,9 +26,9 @@ const BlogDetail = () => {
 
 
     const splitText = (text, from, to) => [
-        text.slice(0, from),
-        text.slice(from, to),
-        text.slice(to)
+        text?.slice(0, from),
+        text?.slice(from, to),
+        text?.slice(to)
     ];
 
 
@@ -225,7 +226,7 @@ const BlogDetail = () => {
                     {/* <NestedComments></NestedComments> */}
 
                 </div>
-                {/* <div className='col-span-3'><SavedBlog></SavedBlog></div> */}
+                <div className='col-span-3'><BloggerOverview blogger={blog?.blogger}></BloggerOverview></div>
 
             </div>
 

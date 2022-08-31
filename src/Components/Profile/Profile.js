@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import ImageUploading from 'react-images-uploading';
 import EditProfile from './EditProfile';
 import { Modal } from 'react-responsive-modal';
@@ -12,6 +11,7 @@ import Loading from '../Shared/Loading/Loading';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import SubmissionHistory from './SubmissionHistory';
+import auth from '../../firebase.init';
 
 const Profile = () => {
 

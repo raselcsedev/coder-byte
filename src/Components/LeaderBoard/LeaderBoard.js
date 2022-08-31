@@ -6,106 +6,54 @@ import auth from '../../firebase.init';
 
 const LeaderBoard = () => {
 
-
-
-    const leaderboard = [
-        {
-            name: 'ccc',
-            submission: 5,
-            success: 2
-        }
-        ,
-        {
-            name: 'bbb',
-            submission: 3,
-            success: 1
-        }
-        ,
-
-        {
-            name: 'qqq',
-            submission: 2,
-            success: 1
-        }
-        ,
-        {
-            name: 'aaa',
-            submission: 1,
-            success: 1
-        }
-        ,
-        {
-            name: 'ppp',
-            submission: 5,
-            success: 0
-        }
-        ,
-        {
-            name: 'sss',
-            submission: 1,
-            success: 1
-        }
-        ,
-        {
-            name: 'vvv',
-            submission: 5,
-            success: 5
-        }
-        ,
-        {
-            name: 'www',
-            submission: 5,
-            success: 3
-        }
-        ,
-        {
-            name: 'yyy',
-            submission: 4,
-            success: 3
-        }
-        ,
-        {
-            name: 'xxx',
-            submission: 4,
-            success: 0
-        }
-    ]
-
-
-
-
-
-
-    // const [user] = useAuthState(auth);
-    // const email = user?.email
+    const [user] = useAuthState(auth);
+    const email = user?.email
 
     const url = `http://localhost:5000/submissions/`
 
 
-    // const fetcher = async () => {
-    //     const data = axios.get(url)
-    //     return (await data).data
-    // }
+    const fetcher = async () => {
+        const data = axios.get(url)
+        return (await data).data
+    }
 
-    // let { data, isLoading } = useQuery(["submissions", email], () => fetcher())
+    let { data, isLoading } = useQuery(["submissions"], () => fetcher())
 
-    // if (isLoading) {
-    //     return <p className='text-white'>loading...</p>
-    // }
 
+    if (isLoading) {
+        return <p className='text-white'>loading...</p>
+    }
+
+    const allUsers = []
+   
+    for (let i = 0; i < data?.length; i++) {
+        allUsers?.push(data[i]?.user)
+    }
+    const uniqueUsers =[...new Set(allUsers)]
+
+    const rankings = []
+    for (let i = 0; i < uniqueUsers?.length; i++) {
+       rankings.push({
+        user:uniqueUsers[i],
+        submission:data?.filter(item=>item.user==uniqueUsers[i])?.length,
+        success:data?.filter(item=>item.user==uniqueUsers[i] && item.success)?.length
+       })
+    }
+
+    console.log(rankings,'rankings');
 
     return (
         <ul className='text-center list-decimal'>
             {
                 <ul className='list-decimal'>
                     {
-                        leaderboard.sort((b,a ) => {
+                        rankings.sort((b, a) => {
 
                             if (a.success > b.success) {
                                 if (a.submission >= b.submission || a.submission < b.submission) {
                                     return 1
                                 }
-                                
+
                             }
                             else if (a.success < b.success) {
 
@@ -113,7 +61,7 @@ const LeaderBoard = () => {
                                     return -1
                                 }
                             }
-                            else if (a.success = b.success !==0) {
+                            else if (a.success = b.success !== 0) {
                                 if (a.submission > b.submission) {
                                     return 1
                                 }
@@ -121,7 +69,7 @@ const LeaderBoard = () => {
                                     return -1
                                 }
                             }
-                            else if (a.success = b.success==0) {
+                            else if (a.success = b.success == 0) {
                                 if (a.submission > b.submission) {
                                     return 1
                                 }
@@ -139,7 +87,7 @@ const LeaderBoard = () => {
                                 }
                             }
                         })
-                            .map((coder,index) =><li className='list-decimal'>{index+1}{"."}{" "}{coder.name}</li>)
+                            .map((coder, index) => <li className='list-decimal'>{index + 1}{"."}{" "}{coder.user}</li>)
 
                     }
                 </ul>

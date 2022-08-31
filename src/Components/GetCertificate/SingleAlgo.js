@@ -20,7 +20,6 @@ const SingleAlgo = ({ item }) => {
 
     let { data, isLoading } = useQuery(["submissions"], () => fetcher())
 
-
     const submittedData = data?.filter(submission => submission?.user == email)
     const expectedData = submittedData?.find(data => data?.data?.title == item?.title)
 
