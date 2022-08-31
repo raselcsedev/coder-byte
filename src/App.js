@@ -3,7 +3,8 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
-import CodeEditor from './Components/CodeEditor/CodeEditor';
+// import CodeEditor from './Components/CodeEditor/CodeEditor';
+// import CodeEditor from './Components/Blogs/CreateB
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Profile from './Components/Profile/Profile';
@@ -49,14 +50,14 @@ function App() {
 
               <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
               <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
-              <Route path='weeklypre/:id' element={<CodeEditor></CodeEditor>}></Route>
+              {/* <Route path='weeklypre/:id' element={<CodeEditor></CodeEditor>}></Route> */}
               <Route path='/Topic' element={<Topic></Topic>}>
 
                 <Route index element={<DataStructure></DataStructure>}></Route>
                 <Route path='Database' element={<Database></Database>}></Route>
                 <Route path='algo' element={<Algo></Algo>}></Route>
               </Route>
-              <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route>
+              {/* <Route path='/editor' element={<CodeEditor></CodeEditor>}></Route> */}
               <Route path='/profile' element={<Profile></Profile>}></Route>
               <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
               <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
@@ -65,7 +66,7 @@ function App() {
               {/* <Route path='/createproblem' element={<CreateProblem></CreateProblem>}></Route> */}
               {/* hello world  */}
             </Routes>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
           </QueryClientProvider>
           {/* <Footer2></Footer2> */}
         </div>
