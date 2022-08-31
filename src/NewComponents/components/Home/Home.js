@@ -1,5 +1,6 @@
 import React from 'react';
 import CertificatePDF from '../../../Components/GetCertificate/CertificatePDF';
+import LeaderBoard from '../../../Components/LeaderBoard/LeaderBoard';
 import Banner from '../Banner/Banner';
 import Certification from '../Certification/Certification';
 import Comparisons from '../Comparison/Comparisons';
@@ -18,7 +19,6 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Explore></Explore>
-            {/* <CertificatePDF></CertificatePDF> */}
             <Preparation></Preparation>
             <Comparisons></Comparisons>
             <Courses></Courses>
