@@ -16,23 +16,10 @@ const Algo = () => {
         AlgorithimGet()
     }, [])
 
-
-
-    const navigate = useNavigate();
-    const NumberOfPrblemChick = (Data) => {
-        // SetProblem(Data);
-        navigate('/editor');
-
-    }
-
-
-
-
-
     return (
         <div className='pt-20'>
             {
-                data?.map(data => <Fram NumberOfPrblemChick={NumberOfPrblemChick} data={data}></Fram>)
+                data?.map(data => <Fram data={data}></Fram>)
             }
 
         </div>

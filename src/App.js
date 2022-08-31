@@ -56,13 +56,15 @@ import CongratulationWindow from './Components/GetCertificate/SingleCertificate/
 
 import Blogs from './Components/Blogs/Blogs';
 import Stories from './Components/Blogs/Stories';
-import WriteBlogs from './Components/Blogs/WriteBlogs';
 import Notifications from './Components/Blogs/Notifications';
 import HomeBlogs from './Components/Blogs/HomeBlogs';
 import HelpCenter from './Components/Blogs/HelpCenter';
 import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
 import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
+import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
+import ContestAlgo from './Components/GetCertificate/ContestAlgo';
+import AllBlogs from './Components/Blogs/AllBlogs';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -88,50 +90,52 @@ function App() {
           <Route path='/preparation' element={<PreparationKit></PreparationKit>}></Route>
           <Route path='/weeklypre' element={<WeeklyPreparation></WeeklyPreparation>}></Route>
           <Route path='weeklypre/:id' element={<IDELanding></IDELanding>}></Route>
-          <Route path='all-testimonials' element={<AllTestimonials></AllTestimonials>}></Route>
+          <Route path='/all-testimonials' element={<AllTestimonials></AllTestimonials>}></Route>
+          <Route path='all-blogs' element={<AllBlogs></AllBlogs>}></Route>
+          <Route path='/blog-editor' element={<BlogEditor></BlogEditor>}></Route>
+          <Route path='/blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
 
           <Route path='/Topic' element={<Topic></Topic>}>
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
-            
+
           </Route>
 
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
-            <Route index element={<MyCourses></MyCourses> }></Route>
+            <Route index element={<MyCourses></MyCourses>}></Route>
             <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
             <Route path='all-users' element={<AllUsers></AllUsers>}></Route>
             <Route path='publish-Challenge' element={<CreateProblem></CreateProblem>}></Route>
             <Route path='all-skill-tests' element={<AllSkillTests></AllSkillTests>}></Route>
             <Route path='add-skill-test' element={<AddSkillTest></AddSkillTest>}></Route>
           </Route>
-          
 
-            <Route path='blogs' element={<Blogs></Blogs>}>
-            <Route index  element={<HomeBlogs></HomeBlogs>}></Route>
+          <Route path='blogs' element={<Blogs></Blogs>}>
+            <Route index element={<HomeBlogs></HomeBlogs>}></Route>
             <Route path='stories' element={<Stories></Stories>}></Route>
-            <Route path='writeblogs' element={<WriteBlogs></WriteBlogs>}></Route>
+           
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
-           
             <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
             <Route path='blog-editor' element={<BlogEditor></BlogEditor>}></Route>
-
-            </Route>
+          </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
+          <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
+          <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>
           <Route path='/start-test/:id' element={<StartTest></StartTest>}></Route>
           <Route path='/skill-test-window/:id' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/secondary-test/:id' element={<SecondaryTest></SecondaryTest>}></Route>
-          
+
 
           <Route path='/contests' element={<Contests></Contests>}></Route>
-          <Route path='/congratulation-window' element={<CongratulationWindow></CongratulationWindow>}></Route>
+          <Route path='/congratulation-window/:id' element={<CongratulationWindow></CongratulationWindow>}></Route>
           <Route path='/reviewprofile' element={<ReviewProfile></ReviewProfile>}></Route>
           <Route path='/taketest' element={<TakeTest></TakeTest>}></Route>
           <Route path='/testconfirmation' element={<CertificateConfirmPage></CertificateConfirmPage>}></Route>
@@ -147,16 +151,16 @@ function App() {
 
 
           <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/banner" element={<Banner></Banner>}></Route>
-        <Route path="/explores" element={<Explore></Explore>}></Route>
-        <Route path="/preparations" element={<Preparation></Preparation>}></Route>
-        <Route path="/certification" element={<Certification></Certification>}></Route>
-        <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
-        <Route path="/environment" element={<Environment></Environment>}></Route>
-        <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
+          <Route path="/banner" element={<Banner></Banner>}></Route>
+          <Route path="/explores" element={<Explore></Explore>}></Route>
+          <Route path="/preparations" element={<Preparation></Preparation>}></Route>
+          <Route path="/certification" element={<Certification></Certification>}></Route>
+          <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
+          <Route path="/environment" element={<Environment></Environment>}></Route>
+          <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
         </Routes>
-        
-        <Footer></Footer>
+
+        {/* <Footer></Footer> */}
       </QueryClientProvider>
 
 

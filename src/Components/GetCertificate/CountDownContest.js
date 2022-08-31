@@ -27,9 +27,9 @@ function MyTimer({ expiryTimestamp }) {
   );
 }
 
- const CountDown=()=> {
+ const CountDownContest=()=> {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 2700); 
+  time.setSeconds(time.getSeconds() + 600*12); 
   return (
     <div className='bg-black text-success w-[200px] mx-auto my-5 rounded-lg text-center border border-success'>
       <MyTimer className='bg-black text-white' expiryTimestamp={time} />
@@ -37,4 +37,4 @@ function MyTimer({ expiryTimestamp }) {
   );
 }
 
-export default CountDown;
+export default CountDownContest;

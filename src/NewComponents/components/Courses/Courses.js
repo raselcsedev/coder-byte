@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
+import SingleCourse from "./SingleCourse";
 
 const Courses = () => {
   const [datas, setdata] = useState([]);
@@ -13,10 +14,69 @@ const Courses = () => {
       .then((data) => setdata(data));
   }, []);
   const data = datas.slice(0, 9);
+
+const courses =[
+  {
+      id: 1,
+      img: "https://i.ibb.co/5hQCFby/database-6.png",
+      title: "DataBase",
+      msg:"Smash it"
+  },
+  {
+      id: 2,
+      img: "https://i.ibb.co/yqJsQcj/C-image.jpg",
+      title: "C++",
+      msg:"Grab it"
+  },
+  {
+      id: 3,
+      img: "https://i.ibb.co/5hQCFby/database-6.pnghttps://i.ibb.co/XtSbYmc/java.png",
+      title: "Java",
+      msg:"Achive it"
+  },
+  {
+      id: 4,
+      img: "https://i.ibb.co/xYnTyRs/python.gif",
+      title: "Python",
+      msg:"Drill it"
+  },
+  {
+      id: 5,
+      img: "https://i.ibb.co/1rg3Jpr/aws-1869025-1583149.webp",
+      title: "AWS",
+      msg:"Store it"
+  },
+  {
+      id: 6,
+      "img": "https://i.ibb.co/SQg67m4/image-15.png",
+      "title": "Javascript",
+      "msg":"Web it"
+  },
+  {
+      "id": 7,
+      "img": "https://i.ibb.co/S6TbNN1/png-transparent-sql-logo-illustration-microsoft-azure-sql-database-microsoft-sql-server-database-blu.png",
+      "title": "SQL",
+      "msg":"Home it"
+  },
+  {
+      "id": 8,
+      "img": "https://i.ibb.co/fS8XtpY/png-clipart-cosmos-db-document-oriented-database-microsoft-azure-nosql-microsoft-text-rectangle-thum.png",
+      "title": "NoSQL",
+      "msg":"Scale it"
+  },
+  {
+      "id": 9,
+      "img": "https://i.ibb.co/hF549wQ/download.jpg",
+      "title": "C#",
+      "msg":"Net it"
+  }
+ 
+]
+
   return (
     <div>
-      <p className=" lg:mt-40 bg-slate-900 hidden lg:block">
-        <Link to="/"><span className="flex justify-end mt-2 mr-32 text-3xl text-white"><FontAwesomeIcon icon={faArrowUp} 
+      <p className=" lg:mt-40 pt-2 bg-slate-900 hidden lg:block ">
+        <Link to="/"><span className="flex animate-bounce  justify-end mt-2 mr-32 text-3xl text-white"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>
       </p>
       <div className="pt-16 pb-12 bg-slate-900">
@@ -26,25 +86,7 @@ const Courses = () => {
       <section className=" flex justify-center ">
         <div
          className=" grid grid-cols-2 lg:grid-cols-3  gap-8 lg:gap-12">
-          {data.map((data) => (
-            <>
-              <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              
-              class="card w-[100%] md:w-72 bg-base-100 shadow-2xl bg-slate-800">
-                <div class="card-body">
-                  <div>
-                    <img className="mx-auto" width="50px" height="50px" src={data.img} alt="" />
-                    <h2 class="flex justify-center card-title mt-4 text-white">{data.title}</h2>
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          ))}
+          {datas.map((data) =><SingleCourse key={data.id}  data={data}></SingleCourse>)}
         </div>
       </section>
 

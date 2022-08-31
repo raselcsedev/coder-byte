@@ -15,45 +15,18 @@ import { useCallback } from "react";
 import { useRef } from "react";
 import Loading from "../../Shared/Loading/Loading";
 import { Modal } from 'react-responsive-modal';
+import { useParams } from "react-router-dom";
+import DynamicTpicGetHook from "../../../Component/COUSTOMHOOK/DynamicTpicGetHook";
+import { useQuery } from "@tanstack/react-query";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase.init";
 
 
-const codeDefault = `#include<stdio.h>
 
 
-int main()
-{
-  int n,d;
+const IDEDynamic = () => {
 
-  scanf("%d %d",&n,&d);
-
-  int num[n];
-
-  for (int i=0;i<n;i++)
-    {
-      scanf("%d",&num[i]);
-    }
-
-  for(int i=0;i<d;i++)
-    {
-      int j,temp = num[0];
-      for(j=0;j<n-1;j++)
-        {
-          num[j] = num[j+1];
-        }
-
-      num[j] = temp;
-    }
-  for (int i=0;i<n;i++)
-    {
-      printf("%d ",num[i]);
-    }
-  return 0;
-
-}
-`;
-
-const IDELanding = () => {
-  const [code, setCode] = useState(codeDefault);
+  const [code, setCode] = useState('');
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
@@ -71,9 +44,22 @@ const IDELanding = () => {
   };
 
 
+const {id} =useParams()
 
 
-  useEffect(() => {
+const url = `http://localhost:5000/TopicAlgo/${id}`
+
+
+const fetcher = async () => {
+    const data =  axios.get(url)
+console.log(data, data.data,'d');
+
+    return (await data).data
+}
+
+let { data, isLoading } = useQuery(["data",id], () => fetcher())
+
+useEffect(() => {
     if (enterPress && ctrlPress) {
       console.log("enterPress", enterPress);
       console.log("ctrlPress", ctrlPress);
@@ -104,11 +90,12 @@ const IDELanding = () => {
 
 
   // sample of test cases
-  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6','2 6 7 7','2 6 8 8','2 6 9 9','2 6 10 10','2 6 11 11','2 6 12 12','2 6 13 13','2 6 14 14','2 6 15 15','2 6 16 16','2 6 17 17','2 6 18 18']
-  const testCaseOutput = ['4 4', '5 5', '6 6','7 7','8 8','9 9','10 10','11 11','12 12','13 13','14 14','15 15','16 16','17 17','18 18']
+//   const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6','2 6 7 7','2 6 8 8','2 6 9 9','2 6 10 10','2 6 11 11','2 6 12 12','2 6 13 13','2 6 14 14','2 6 15 15','2 6 16 16','2 6 17 17','2 6 18 18']
+//   const testCaseOutput = ['4 4', '5 5', '6 6','7 7','8 8','9 9','10 10','11 11','12 12','13 13','14 14','15 15','16 16','17 17','18 18']
 
 
   const handleCompile = (customInput) => {
+
     setProcessing(true);
     const formData = {
       language_id: language.id,
@@ -217,7 +204,7 @@ const IDELanding = () => {
       // console.log('compilerAll[i]', uniqueComileOutput.current[i]);
       // console.log('testCaseOutput[j]', testCaseOutput[j]);
 
-      if (uniqueComileOutput.current[i] == testCaseOutput[j]) {
+      if (uniqueComileOutput.current[i] == data?.testCaseOutput[j]) {
         count++
         console.log('count++', count);
       }
@@ -227,21 +214,28 @@ const IDELanding = () => {
   loading.current = false
   console.log('load', loading.current);
   console.log('count lastly', count);
+  
+console.log('data',data);
+console.log('testcase output', data?.testCaseOutput);
 
   const timer = ms => new Promise(res => setTimeout(res, ms))
 
+  const [submission,setSubmission]=useState(false)
+
   const handleSubmit = () => {
+
+    setSubmission(true)
 
     console.log('submit');
 
-    for (let i = 0; i < testCaseInput.length; i++) {
+    for (let i = 0; i < data?.testCaseInput.length; i++) {
 
       // setOutputDetails(null);
 
       uniqueComileOutput.current=[]
       allCompilerOutputs.current = []
 
-      handleCompile(testCaseInput[i])
+      handleCompile(data?.testCaseInput[i])
 
 
       timer(3000)
@@ -300,6 +294,39 @@ const IDELanding = () => {
   },
     [])
 
+    const [user] =useAuthState(auth)
+
+    if(submission && !isLoading){
+        let submissionData;
+        if(data?.testCaseOutput?.length - count == 0){
+        submissionData ={data,success:true,user:user?.email}
+        }
+        submissionData={data,success:false,user:user?.email}
+        fetch(`http://localhost:5000/submissions/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(submissionData)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('res',result)
+
+            })
+    }
+ 
+    if( !data?.testCaseOutput || !data?.testCaseOutput.length)
+    {
+        return <p className="pt-20 font-bold text-3xl w-[30%] h-96 mx-auto text-success bg-slate-800 h-[120vh] pt-40 w-[100vw] text-center "> Checking Test-cases Validity...</p>
+    }
+    console.log('output',  data?.testCaseOutput,'len',data?.testCaseOutput.length);
+    console.log('output',  ['4','4'],'len',['4','4'].length);
+
+    if(isLoading){
+        return <p>loading...</p>
+    }
+
 
   return (
     <div className="pt-20 bg-slate-900">
@@ -308,29 +335,16 @@ const IDELanding = () => {
       <div className="grid grid-cols-7 ">
         <div className="md:col-span-2 col-span-7 px-8 h-[95vh] overflow-y-scroll divide divide-y">
           <div className="mt-6 mb-1">
-            <button className="btn btn-xs btn-success mr-2">beginner</button>
+            <button className="btn btn-xs btn-success mr-2">type:{data?.type}</button>
             <button className="btn btn-xs btn-primary">View Solution</button>
           </div>
 
           <div className="text-white py-5">
-            Given an array of integers, find the sum of its elements.
+           
 
-            For example, if the array arr=[1,2,3,4] ,1+2+3+4=10 , so return 10 .
+            <p className="font-semibold text-xl my-4">{data?.title}</p>
 
-            <p className="font-semibold text-xl my-4">Function Description</p>
-
-            Complete the simpleArraySum function in the editor below. It must return the sum of the array elements as an integer.
-
-            simpleArraySum has the following parameter(s):
-
-            ar: an array of integers
-            <p className="font-semibold text-xl my-4">Input Format</p>
-
-
-            The first line contains an integer, , denoting the size of the array.
-            The second line contains  space-separated integers representing the array's elements.
-
-
+          <p className="text-white">{data?.Problem}</p>
             <p className="font-semibold text-xl my-4">Constraints</p>
 
             <samp>0 {'<'} n, ar[i]{'<'}= 1000</samp>
@@ -340,18 +354,9 @@ const IDELanding = () => {
 
             <p className="font-semibold text-xl my-4">Sample Input</p>
             <p className="p-4 bg-slate-600">
-              6 <br />
-              1 2 3 4 10 11
+            {data?.example}
             </p>
-            <p className="font-semibold text-xl my-4">Sample Output</p>
-
-            <p className="p-4 bg-slate-600">
-              31
-            </p>
-            <p className="font-semibold text-xl my-4">Explanation</p>
-
-
-            We print the sum of the array's elements: 1+2+3+4+10+11=31
+           
           </div>
 
 
@@ -368,10 +373,10 @@ const IDELanding = () => {
             <div className="px-4 py-2">
               <button
                 onClick={() => handleCompile(customInput)}
-                disabled={!code}
+                
                 className={classnames(
                   "border-2 border-black z-10 rounded-md shadow-[5px_5px_0px_0px_rgba(0,0,0)]  hover:shadow transition duration-200  ",
-                  !code ? "opacity-50" : ""
+                  
                 )}
               >
                 {processing ? <button className=" md:block hidden font-bold btn "> Processing...</button> : <div className="flex justify-center items-center btn   btn-success "><svg className="" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -392,7 +397,7 @@ const IDELanding = () => {
 
               <div className="  md:w-[40vw] md:px-10 md:py-3 ">
                 <div>
-                  <p className=" text-info text-xl font-bold underline underline-offset-2">Test Cases Satisfied : {count}/{testCaseOutput.length}</p>
+                  <p className=" text-info text-xl font-bold underline underline-offset-2">Test Cases Satisfied : {count}/{data?.testCaseOutput.length}</p>
                   <br />
                 </div>
                 <ul className="list-decimal md:grid grid-cols-2">
@@ -400,7 +405,7 @@ const IDELanding = () => {
 
                     <ul className="list-decimal md:grid grid-cols-2 gap-2 w-[110%] md:w-[250%] mx-auto px-10">
                       {
-                        [...Array(testCaseOutput.length)].map((e, i) => <li className="text-info text-lg font-semibold"> <li className="flex" key={i}> Test Case : processing {svg} <br /> <br /></li></li>)}
+                        [...Array(data?.testCaseOutput.length)].map((e, i) => <li className="text-info text-lg font-semibold"> <li className="flex" key={i}> Test Case : processing {svg} <br /> <br /></li></li>)}
                     </ul>
                     :
                     <div>
@@ -411,7 +416,7 @@ const IDELanding = () => {
                           </svg><br /> <br /></li></li>)
                         }
                         {
-                          [...Array(testCaseOutput.length - count)].map((e, i) => <li className="text-[red] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Failed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          [...Array(data?.testCaseOutput.length - count)].map((e, i) => <li className="text-[red] text-lg font-semibold"> <li className="flex" key={i}> Test Case : Failed <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg><br /> <br /></li></li>)}
                       </ul>
@@ -419,7 +424,7 @@ const IDELanding = () => {
                   }
                 </ul>
                 {
-                  showElement ? <p className=" text-success text-xl font-bold">Please wait, We're working on your submission.</p> : <p className=" text-success text-xl font-bold">{testCaseOutput.length - count == 0 ? "Congratulation !!! You've smashed It ." : "Wish You better try next time! "}</p>
+                  showElement ? <p className=" text-success text-xl font-bold">Please wait, We're working on your submission.</p> : <p className=" text-success text-xl font-bold">{data?.testCaseOutput.length - count == 0 ? "Congratulation !!! You've smashed It ." : "Wish You better try next time! "}</p>
 
                 }
               </div>
@@ -444,7 +449,7 @@ const IDELanding = () => {
                 <OutputWindow outputDetails={outputDetails} />
                 <div className="">
                   <CustomInput
-                    input={testCaseInput}
+                    input={data?.testCaseInput}
                     customInput={customInput}
                     setCustomInput={setCustomInput}
                   />
@@ -464,4 +469,4 @@ const IDELanding = () => {
     </div>
   );
 };
-export default IDELanding;
+export default IDEDynamic;

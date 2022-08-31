@@ -13,7 +13,7 @@ const Details = () => {
 
 
 
-    const course = courses?.find(item => id == item?.id)
+    const course = courses?.find(item => id == item?._id)
 
     console.log(courses, course);
 

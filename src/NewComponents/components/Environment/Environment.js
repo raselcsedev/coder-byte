@@ -28,7 +28,7 @@ const Environment = () => {
             y: ["1%", "-1%"]
           }}
           
-          src={environment} class="max-w-xs md:max-w-sm rounded-lg shadow-2xl lg:ml-24 shadow-2xl shadow-blue-500/50" alt=""/>
+          src={environment} class="max-w-xs md:max-w-xl rounded-lg shadow-2xl lg:ml-24 shadow-2xl shadow-blue-500/50" alt=""/>
           <div className="max-w-[100vw]">
             <h1 class="text-3xl font-semibold">The Perfect Practice Environment.</h1>
             <p class="py-6">
