@@ -39,8 +39,8 @@ export default function CertificatePDF() {
         )}
       </Pdf>
 
-      <div ref={ref}>
-      <div className="border-2 border-[brown] w-[57.3%] mx-auto p-px">
+      <div >
+      <div className="border-2 border-[brown] w-[57.3%] mx-auto p-px" ref={ref}>
         <div className="border-2 border-[brown] h-[450px] text-center pb-8">
         <div className="">
         <h1 className="text-2xl font-extrabold mt-4 mb-2">
@@ -57,7 +57,7 @@ export default function CertificatePDF() {
               <h2 className="border-t-2">Date</h2>
           </div>
           <div>
-             <img className="w-24 h-8 ml-2 mb-2" src="https://www.clipartmax.com/png/middle/463-4630519_bill-gates-signature-png-download-bill-gates-signature-analysis.png" alt="" />
+             <h2 className="text-sm text-mono mb-2">Signature of CTO</h2>
               <h2 className="border-t-2">CTO, coderAccess</h2>
           </div>
         </div>
