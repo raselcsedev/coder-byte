@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-responsive-modal";
-import EditProfile from "../Profile/EditProfile";
+import EditProfile from "../../Profile/EditProfile";
 
 const Contest = ({ contest }) => {
   const { name, _id, date } = contest;

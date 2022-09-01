@@ -15,7 +15,7 @@ const AllBlogs = () => {
     }
 
 
-    const url = `http://localhost:5000/blogs`
+    const url = `https://coder-access.herokuapp.com/blogs`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -62,7 +62,7 @@ console.log('upadateSaved',updateSaved);
                         }
                     </div>
                 </div>
-                <div className='col-span-3'><SavedBlog savedBlogs={blogs} updateSaved={updateSaved}></SavedBlog></div>
+                <div className='col-span-3 mt-8'><SavedBlog savedBlogs={blogs} updateSaved={updateSaved}></SavedBlog></div>
             </div>
         </div>
     );

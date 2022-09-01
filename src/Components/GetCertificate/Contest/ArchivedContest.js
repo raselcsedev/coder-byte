@@ -10,7 +10,7 @@ const ArchivedContest = ({ challange }) => {
           <div className="lg:flex lg:items-center">
             <h2 class="card-title">{name}</h2>
             <p className="flex justify-end mr-4">{date} <span className="text-gray-400 ml-2">Ended</span></p>
-            <Link to='/contest-algo'>
+            <Link to='/contest-landing-page'>
               <button class="btn btn-outline btn-success">View Challanges</button>
             </Link>
           </div>

@@ -4,8 +4,13 @@ import "./App.css";
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
+<<<<<<< HEAD
 
 import Contests from './Components/GetCertificate/Contests';
+=======
+import Header from './Components/Header/Header';
+import Contests from './Components/GetCertificate/Contest/Contests';
+>>>>>>> 4fcda98049123416ee3810e16e11732674701676
 import GetCertified from './Components/GetCertificate/GetCertified';
 
 // new home page import
@@ -64,10 +69,16 @@ import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
 import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
-import ContestAlgo from './Components/GetCertificate/ContestAlgo';
+import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
+<<<<<<< HEAD
 import NestedComments from './Components/Shared/NestedComments';
 import Header from './NewComponents/Navbar/Header';
+=======
+import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
+import ContactUs from './NewComponents/ContactUs/ContactUs';
+import DiscussionForums from './Components/MyAllCourse/DiscussionForums/DiscussionForums';
+>>>>>>> 4fcda98049123416ee3810e16e11732674701676
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -129,6 +140,8 @@ function App() {
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
           <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
+          <Route path='/contest-landing-page' element={<ContestLandingPage></ContestLandingPage>}></Route>
+          <Route path='/discussion-forums' element={<DiscussionForums></DiscussionForums>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>
@@ -164,6 +177,7 @@ function App() {
           <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
           <Route path="/environment" element={<Environment></Environment>}></Route>
           <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
+          <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
         </Routes>
 
         {/* <Footer></Footer> */}
