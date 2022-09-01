@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import SubmissionHistory from './SubmissionHistory';
 import auth from '../../firebase.init';
+import GitHubApi from './GitHubApi';
 
 const Profile = () => {
 
@@ -271,7 +272,12 @@ const Profile = () => {
 
                                         </dd>
                                     </div>
+                                    <div className='py-4 px-4'>
+                                        <p className='text-white'>GitHub Profile : </p>
+                                        <GitHubApi></GitHubApi>
+                                    </div>
                                     <div className='px-4'>
+
                                         <p className='text-white my-2'>Badges :</p>
                                         <div className='flex '>
                                             <img className='w-14' src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" alt="" />

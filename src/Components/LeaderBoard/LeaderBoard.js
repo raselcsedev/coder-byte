@@ -25,27 +25,42 @@ const LeaderBoard = () => {
     }
 
     const allUsers = []
-   
+
     for (let i = 0; i < data?.length; i++) {
         allUsers?.push(data[i]?.user)
     }
-    const uniqueUsers =[...new Set(allUsers)]
+    const uniqueUsers = [...new Set(allUsers)]
 
     const rankings = []
     for (let i = 0; i < uniqueUsers?.length; i++) {
-       rankings.push({
-        user:uniqueUsers[i],
-        submission:data?.filter(item=>item.user==uniqueUsers[i])?.length,
-        success:data?.filter(item=>item.user==uniqueUsers[i] && item.success)?.length
-       })
+        const submittedData =data?.filter(item => item.user == uniqueUsers[i])
+        const successData=submittedData?.filter(item =>item.success)
+        console.log(submittedData,'submitted');
+        console.log(successData.length,'successData',uniqueUsers[i]);
+
+        const expected ={
+            user: uniqueUsers[i],
+            submission:submittedData?.length,
+            success:successData?.length
+        }
+        if (successData.length==0) {
+            expected.success=0
+            
+        }
+console.log('exp',expected);
+
+        rankings.push(expected)
+
     }
 
-    console.log(rankings,'rankings');
+    console.log(rankings, 'rankings');
+    console.log(data,'data');
 
     return (
-        <ul className='text-center list-decimal'>
+        <div className='text-success p-4'>
+            <h1 className='text-center text-lg font-semibold mb-8 underline underline-offset-2'>Contest Leader Board</h1>
             {
-                <ul className='list-decimal'>
+                <ul className='list-decimal '>
                     {
                         rankings.sort((b, a) => {
 
@@ -87,12 +102,16 @@ const LeaderBoard = () => {
                                 }
                             }
                         })
-                            .map((coder, index) => <li className='list-decimal'>{index + 1}{"."}{" "}{coder.user}</li>)
+                            .map((coder, index) => <li className='drop-shadow-lg w-[100%] mx-auto py-4 flex px-2 justify-between items-center border border-slate-600 my-1 hover:bg-slate-700 '>
+                                <span className=' text-lg font-semibold'>{index+1}. {coder?.user}</span>
+                                <><span className='btn btn-sm bg-[green]'>success: { coder?.success}</span> <span className='btn btn-sm bg-[red] '>submission: { coder?.submission}</span></>
+
+                            </li>)
 
                     }
                 </ul>
             }
-        </ul>
+        </div>
     );
 };
 

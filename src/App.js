@@ -1,9 +1,10 @@
 import React from 'react';
-import './App.css';
+import "./App.css";
+
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
-import Header from './Components/Header/Header';
+
 import Contests from './Components/GetCertificate/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
 
@@ -65,6 +66,8 @@ import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
+import NestedComments from './Components/Shared/NestedComments';
+import Header from './NewComponents/Navbar/Header';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -77,8 +80,8 @@ function App() {
     <div >
       <QueryClientProvider client={queryClient}>
 
-        <Header></Header>
-        {/* <Navbar></Navbar> */}
+       <Header></Header>
+      
 
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
@@ -145,6 +148,9 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
+
+
+          <Route path='/comments' element={<NestedComments></NestedComments>}></Route>
 
 
 
