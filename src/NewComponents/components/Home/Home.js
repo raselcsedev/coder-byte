@@ -1,5 +1,6 @@
 import React from 'react';
 import CertificatePDF from '../../../Components/GetCertificate/CertificatePDF';
+import ContactUs from '../../ContactUs/ContactUs';
 import Banner from '../Banner/Banner';
 import Certification from '../Certification/Certification';
 import Comparisons from '../Comparison/Comparisons';
@@ -26,6 +27,7 @@ const Home = () => {
             <TrustedCompany></TrustedCompany>
             <Testimonials></Testimonials>
             <Environment></Environment>
+            <ContactUs></ContactUs>
             <Global></Global>
             <ReadyMessage></ReadyMessage>
             <Footer></Footer>

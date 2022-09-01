@@ -13,7 +13,7 @@ export default class Testimonials extends Component {
       <div className="mt-16 lg:mt-40">
         <div className="h-px mx-12 lg:mx-32 bg-black hidden lg:block"></div>
         <p className="hidden lg:block">
-        <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
+        <Link to="/"><span className="flex justify-end mr-40 animate-bounce mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>
       </p>
         <h1 className="text-3xl text-center text-teal-600 font-bold">Thousands of Satisfied Coders</h1>

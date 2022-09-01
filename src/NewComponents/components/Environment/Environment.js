@@ -17,7 +17,7 @@ const Environment = () => {
     <div className="lg:mb-24 mb-8 ">
         <div className="h-px mx-12 lg:mx-32 bg-black lg:mt-32 hidden lg:block"></div>
         <p className="hidden lg:block">
-        <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
+        <Link to="/"><span className="flex justify-end animate-bounce mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>
       </p>
       <div class="hero">

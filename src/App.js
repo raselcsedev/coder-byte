@@ -66,6 +66,7 @@ import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
 import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
+import ContactUs from './NewComponents/ContactUs/ContactUs';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -160,6 +161,7 @@ function App() {
           <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
           <Route path="/environment" element={<Environment></Environment>}></Route>
           <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
+          <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
         </Routes>
 
         {/* <Footer></Footer> */}
