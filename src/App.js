@@ -67,6 +67,7 @@ import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
 import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
 import ContactUs from './NewComponents/ContactUs/ContactUs';
+import DiscussionForums from './Components/MyAllCourse/DiscussionForums/DiscussionForums';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -129,6 +130,7 @@ function App() {
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
           <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
           <Route path='/contest-landing-page' element={<ContestLandingPage></ContestLandingPage>}></Route>
+          <Route path='/discussion-forums' element={<DiscussionForums></DiscussionForums>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>
