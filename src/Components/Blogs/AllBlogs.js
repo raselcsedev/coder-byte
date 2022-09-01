@@ -15,7 +15,7 @@ const AllBlogs = () => {
     }
 
 
-    const url = `http://localhost:5000/blogs`
+    const url = `https://coder-access.herokuapp.com/blogs`
 
     const fetcher = async () => {
         const data = axios.get(url)

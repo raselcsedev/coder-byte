@@ -22,7 +22,7 @@ const DiscussionForums = () => {
 
   let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher());
   return (
-    <div className="pt-16">
+    <div className="pt-16 mb-12">
       <div className="lg:mx-12 mx-4 grid grid-cols-12">
         <div className="col-span-4 flex justify-center">
           <img
@@ -97,7 +97,7 @@ const DiscussionForums = () => {
       </div>
 
       <div className="lg:ml-48 ml-4  mt-4">
-        <div class="card w-3/5 bg-base-100 shadow-xl">
+        <div class="card w-3/5 bg-base-100 shadow-md">
           <div class="card-body">
             <div className="flex items-center">
               <img
@@ -136,6 +136,138 @@ const DiscussionForums = () => {
               Reply
             </button>
           </div>
+        </div>
+      </div>
+
+      <div className="lg:ml-48 ml-4 mt-20">
+        <h2 className="text-lg font-bold">Suggested Topics</h2>
+        <div className="w-4/5">
+        <div className="flex items-center mt-2 mb-2">
+            <div>
+                <p className="text-sm ml-2">Topic</p>
+            </div>
+            <div className="ml-auto mr-4">
+            <div className="flex items-center space-x-6">
+                <div>
+                    <p>Replies</p>
+                </div>
+                <div>
+                   <p>Views</p>
+                </div>
+                <div>
+                <p>Activity</p>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div className="border-2 border-black py-4 px-2">
+        <div className="flex items-center">
+            <div>
+                <p className="text-lg text-black">Jammming - this.state.searchResults is not rendering</p>
+                <div className="flex items-center space-x-4 mt-1">
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-blue-500"></div>
+              <p className="text-xs">React.js</p>
+            </div>
+          </Link>
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-gray-500"></div>
+              <p className="text-xs text-gray-600">general</p>
+            </div>
+          </Link>
+        </div>
+            </div>
+            <div className="ml-auto">
+            <div className="flex items-center space-x-12">
+                <div>
+                    <p>3</p>
+                </div>
+                <div>
+                   <p>295</p>
+                </div>
+                <div>
+                <p>Sep 21</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div className="border-2 border-black py-4 px-2 my-2">
+        <div className="flex items-center">
+            <div>
+                <p className="text-lg text-black">Ravenous Part 2 Compile Error</p>
+                <div className="flex items-center space-x-4 mt-1">
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-blue-500"></div>
+              <p className="text-xs">React.js</p>
+            </div>
+          </Link>
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-gray-500"></div>
+              <p className="text-xs text-gray-600">general</p>
+            </div>
+          </Link>
+        </div>
+            </div>
+            <div className="ml-auto">
+            <div className="flex items-center space-x-12">
+                <div>
+                    <p>1</p>
+                </div>
+                <div>
+                   <p>186</p>
+                </div>
+                <div>
+                <p>Aug 27</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div className="border-2 border-black py-4 px-2">
+        <div className="flex items-center">
+            <div>
+                <p className="text-lg text-black">Video Player nomenclature confusion</p>
+                <div className="flex items-center space-x-4 mt-1">
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-blue-500"></div>
+              <p className="text-xs">React.js</p>
+            </div>
+          </Link>
+          <Link to="/">
+            <div className="flex items-center space-x-2">
+              <div className="h-2 w-2 bg-gray-500"></div>
+              <p className="text-xs text-gray-600">general</p>
+            </div>
+          </Link>
+        </div>
+            </div>
+            <div className="ml-auto">
+            <div className="flex items-center space-x-12">
+                <div>
+                    <p>2</p>
+                </div>
+                <div>
+                   <p>246</p>
+                </div>
+                <div>
+                <p>Nov 17</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
         </div>
       </div>
     </div>
