@@ -147,7 +147,7 @@ const DiscussionForums = () => {
                 <p className="text-sm ml-2">Topic</p>
             </div>
             <div className="ml-auto mr-4">
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center lg:space-x-6 space-x-4">
                 <div>
                     <p>Replies</p>
                 </div>
@@ -181,7 +181,7 @@ const DiscussionForums = () => {
         </div>
             </div>
             <div className="ml-auto">
-            <div className="flex items-center space-x-12">
+            <div className="flex items-center lg:space-x-12 space-x-8">
                 <div>
                     <p>3</p>
                 </div>
@@ -217,7 +217,7 @@ const DiscussionForums = () => {
         </div>
             </div>
             <div className="ml-auto">
-            <div className="flex items-center space-x-12">
+            <div className="flex items-center lg:space-x-12 space-x-8">
                 <div>
                     <p>1</p>
                 </div>
@@ -253,7 +253,7 @@ const DiscussionForums = () => {
         </div>
             </div>
             <div className="ml-auto">
-            <div className="flex items-center space-x-12">
+            <div className="flex items-center lg:space-x-12 space-x-8">
                 <div>
                     <p>2</p>
                 </div>
