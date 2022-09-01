@@ -6,27 +6,35 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import './profile.css'
 import useCourses from '../Shared/useCourses';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading/Loading';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import SubmissionHistory from './SubmissionHistory';
 import auth from '../../firebase.init';
+import FetchData from './FetchData';
 
 const Profile = () => {
-
+    const [myitem,setmyitem]=useState([]);
     const [courses, setCourses] = useCourses()
-
     const [profileUpdates, setProfileUpdates] = useState()
-
-
-    const updatedProfile = (data) => {
-
-        setProfileUpdates(data)
-
-    }
+    const updatedProfile = (data) => {setProfileUpdates(data)}
     const [user] = useAuthState(auth);
     const email = user?.email
+    const {getAdditems,value }=FetchData();
+
+useEffect(()=>{
+    getAdditems();
+},[])
+console.log(value);
+const navigate= useNavigate();
+const jumpadditemview=()=>{
+    navigate(`/additemsview/${email}`);
+   
+}
+
+
+
 
     const url = `http://localhost:5000/profiles/${email}`
 
@@ -284,7 +292,7 @@ const Profile = () => {
 
                                     </div>
 
-                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Website</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
                                             <a target="_blank" href={profileUpdates?.website ? profileUpdates?.website : profile?.website} className="underline underline-offset-1  ">
@@ -294,14 +302,22 @@ const Profile = () => {
                                         </dd>
                                     </div>
 
-                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Email address</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">{user?.email}</dd>
                                     </div>
-                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Enrolled Course</dt>
                                         <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="/courses"><button className='btn btn-xs'>My Courses</button></a></dd>
                                     </div>
+{/* ------------start my add iteam section--------- */}
+                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="font-medium text-gray-200">Add Course :</dt>
+                                        <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="">{value.length}<button onClick={jumpadditemview} className='btn btn-xs ml-10'>view all</button></a></dd>
+                                    </div>
+                                    
+{/* ------------start my end iteam section--------- */}
+
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Problem-solving History</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a onClick={() => setOpen2(true)}  className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>

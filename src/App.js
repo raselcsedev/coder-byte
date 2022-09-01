@@ -65,6 +65,7 @@ import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
+import Additemsview from './Components/AddItems/Additemsview';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -99,9 +100,7 @@ function App() {
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
-
           </Route>
-
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<MyCourses></MyCourses>}></Route>
             <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
@@ -122,6 +121,7 @@ function App() {
           </Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
+          <Route path='/additemsview/:email' element={<Additemsview></Additemsview>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
@@ -145,8 +145,6 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
           <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
-
-
 
 
 

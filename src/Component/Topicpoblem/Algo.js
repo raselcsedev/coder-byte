@@ -6,11 +6,6 @@ import Fram from './Fram';
 
 const Algo = () => {
     
-    // const [ProblemData, SetProblem] = useContext(PassingPrblm)
-    // console.log("prblem= ", ProblemData);
-
-
-
     const { AlgorithimGet, data } = DynamicTpicGetHook()
     useEffect(() => {
         AlgorithimGet()
