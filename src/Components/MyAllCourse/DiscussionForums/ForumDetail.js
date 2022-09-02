@@ -43,7 +43,7 @@ const ForumDetail = () => {
                 <div className="col-span-4 flex justify-center">
                     <img
                         className="h-48 w-72 hidden lg:block"
-                        src="https://thumbs.dreamstime.com/b/question-answer-icon-comic-style-dialog-speech-bubble-cartoon-vector-illustration-white-isolated-background-forum-chat-225151967.jpg"
+                        src="https://i.ibb.co/k8Zc3ND/question-answer-icon-comic-style-dialog-speech-bubble-cartoon-vector-illustration-white-isolated-bac.jpg"
                         alt=""
                     />
 
