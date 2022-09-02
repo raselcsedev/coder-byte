@@ -4,7 +4,7 @@ import * as FaIcons from "react-icons/fa";
 
 const CourseMaterial = () => {
   return (
-    <div className="ml-12 mt-8 mb-12">
+    <div className="ml-12 pt-20 mb-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
             <h2 className="text-2xl font-semibold mb-6">Data Structure & Algorithm</h2>

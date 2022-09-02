@@ -74,6 +74,7 @@ import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandi
 import ContactUs from './NewComponents/ContactUs/ContactUs';
 import DiscussionForums from './Components/MyAllCourse/DiscussionForums/DiscussionForums';
 import ForumDetail from './Components/MyAllCourse/DiscussionForums/ForumDetail';
+import CourseMaterial from './Components/MyAllCourse/SingleCourse/CourseMaterial';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
@@ -130,6 +131,9 @@ function App() {
             <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
             <Route path='blog-editor' element={<BlogEditor></BlogEditor>}></Route>
           </Route>
+          
+
+          <Route path='/course-material' element={<CourseMaterial></CourseMaterial>}></Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>

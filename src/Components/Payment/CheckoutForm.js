@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { Link } from 'react-router-dom';
 
 const CheckoutForm = ({course}) => {
     const stripe = useStripe();
@@ -86,7 +87,7 @@ const CheckoutForm = ({course}) => {
             setCardError('');
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
-            setSuccess('Congrats! Your payment is completed.')
+            setSuccess('Congrats! Your payment is completed. Now start learning')
             
             const email =user.email
 
@@ -140,11 +141,12 @@ const CheckoutForm = ({course}) => {
                 cardError && <p className='text-red-500'>{cardError}</p>
             }
             {
-                success && <div className='text-green-500'>
+                success && <div className='text-[brown] font-semibold my-4 border bg-slate-200 p-2 rounded border-[brown] space-y-2'>
                     <p>{success}  </p>
-                    <p>Your transaction Id: <span className="text-red-500 font-bold">{transactionId}</span> </p>
+                    <p>Your transaction Id: <span className="text-primary font-bold">{transactionId}</span> </p>
                 </div>
             }
+            {success && <Link to={'/course-material'}><button className='btn btn-sm btn-primary mt-3'>Start Learning{'>>'}</button></Link>}
         </>
     );
 };
