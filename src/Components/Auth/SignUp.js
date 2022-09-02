@@ -46,7 +46,7 @@ const SignUp = () => {
             displayName: data.name,
         }
 
-        fetch('https://coder-access.herokuapp.com/profiles', {
+        fetch('http://localhost:5000/profiles', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -60,7 +60,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className='flex bg-[#050535] h-screen justify-center items-center'>
+        <div className='flex bg-[#050535] min-h-[100vh] py-20 justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-[#050535] text-2xl font-bold">Sign Up</h2>

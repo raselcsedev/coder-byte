@@ -4,13 +4,10 @@ import "./App.css";
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
-<<<<<<< HEAD
 
-import Contests from './Components/GetCertificate/Contests';
-=======
-import Header from './Components/Header/Header';
+// import Contests from './Components/GetCertificate/Contests';
+// import Header from './Components/Header/Header';
 import Contests from './Components/GetCertificate/Contest/Contests';
->>>>>>> 4fcda98049123416ee3810e16e11732674701676
 import GetCertified from './Components/GetCertificate/GetCertified';
 
 // new home page import
@@ -71,19 +68,18 @@ import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
-<<<<<<< HEAD
 import NestedComments from './Components/Shared/NestedComments';
 import Header from './NewComponents/Navbar/Header';
-=======
 import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
 import ContactUs from './NewComponents/ContactUs/ContactUs';
 import DiscussionForums from './Components/MyAllCourse/DiscussionForums/DiscussionForums';
->>>>>>> 4fcda98049123416ee3810e16e11732674701676
+import ForumDetail from './Components/MyAllCourse/DiscussionForums/ForumDetail';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 // import CreateProblem from './Component/CreateProblem/CreateProblem';
 // import Footer2 from './Footer/Footer2';
+
 const queryClient = new QueryClient()
 
 function App() {
@@ -142,6 +138,7 @@ function App() {
           <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
           <Route path='/contest-landing-page' element={<ContestLandingPage></ContestLandingPage>}></Route>
           <Route path='/discussion-forums' element={<DiscussionForums></DiscussionForums>}></Route>
+          <Route path='/discussion-forums/:id' element={<ForumDetail></ForumDetail>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>

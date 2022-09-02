@@ -1,4 +1,6 @@
 
+import { faReply } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { v4 as uuidv4 } from "uuid";
@@ -57,7 +59,7 @@ function NestedComments() {
   };
   const [user] = useAuthState(auth)
   return (
-    <div className="bg-white pt-10 px-6 space-y-2 min-h-[100vh]">
+    <div className="bg-white pt-10 px-6 space-y-2 pb-5 ">
       <header className="font-semibold text-xl mb-5">Response here</header>
       <div className="comments-container drop-shadow-lg border-t  bg-white p-4 rounded">
         <div>
@@ -110,7 +112,8 @@ const Comment = ({ comment, addComment }) => {
           justifyContent: "space-between",
         }}
       >
-        <div className="mb-3 mt-5" style={{ textAlign: "left" }}><p className="font-medium flex items-center"> <img className="w-6 h-6 rounded-full mr-2 border border-[brown]" src="https://i.stack.imgur.com/frlIf.png" alt="" /> {user?.displayName}</p>{commentText}</div>
+        <div className="my-5" style={{ textAlign: "left" }}><p className="font-medium flex items-center"> <img className="w-6 h-6 rounded-full mr-2 border border-[brown]" src="https://i.stack.imgur.com/frlIf.png" alt="" /> {user?.displayName}</p>
+        <p className="mt-2 ">{commentText}</p></div>
         &nbsp;
         {childCommments.length > 0 && (
           <button onClick={() => setShow((show) => !show)}>
@@ -127,19 +130,17 @@ const Comment = ({ comment, addComment }) => {
                 value={childComment}
                 onChange={(e) => setChildComment(e.target.value)} F
                 name="" id=""
-                cols="30" rows="4"
+                cols="25" rows="3"
               ></textarea>{" "}
-              <button className="btn btn-xs btn-outline" onClick={onAdd}>Submit</button>
+              <button className="btn btn-xs " onClick={onAdd}>Submit</button>
             </>
           ) : (
             <a className=""
               style={{ cursor: "pointer", fontSize: "0.7rem", color: "blue" }}
               onClick={() => setShowAddComponet(true)}
-            ><p className="flex  justify-center items-center btn btn-xs btn-success  w-[120px]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 mr-1 mb-1">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-          </svg>
-
-          Add a reply</p>
+            ><p className="flex   btn btn-xs btn-success spacce-x-2  w-[75px]">
+              <FontAwesomeIcon icon={faReply} />
+          <span className="ml-2">Reply</span></p>
             </a>
           )}
         </div>

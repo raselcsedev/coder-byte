@@ -1,11 +1,6 @@
 import React from 'react';
-import CertificatePDF from '../../../Components/GetCertificate/CertificatePDF';
-<<<<<<< HEAD
-import LeaderBoard from '../../../Components/LeaderBoard/LeaderBoard';
-import GitHubApi from '../../../Components/Profile/GitHubApi';
-=======
+import Languages from '../../../Components/Languages/Languages';
 import ContactUs from '../../ContactUs/ContactUs';
->>>>>>> 4fcda98049123416ee3810e16e11732674701676
 import Banner from '../Banner/Banner';
 import Certification from '../Certification/Certification';
 import Comparisons from '../Comparison/Comparisons';
@@ -24,14 +19,15 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Explore></Explore>
+           
+            <Environment></Environment>
+            <Languages></Languages>
             <Preparation></Preparation>
-            <Comparisons></Comparisons>
             <Courses></Courses>
             <Certification></Certification>
+            <Comparisons></Comparisons>
             <TrustedCompany></TrustedCompany>
             <Testimonials></Testimonials>
-            <Environment></Environment>
-            <ContactUs></ContactUs>
             <Global></Global>
             <ReadyMessage></ReadyMessage>
             <Footer></Footer>

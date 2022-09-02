@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const CheckoutForm = (props) => {
+const CheckoutForm = ({course}) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
@@ -11,8 +11,36 @@ const CheckoutForm = (props) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [user]=useAuthState(auth)
+     
 
-    const [user] = useAuthState(auth)
+    const totalPrice = 1000
+
+    useEffect(() => {
+        fetch('http://localhost:5000/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                // 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ totalPrice })
+           
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('dd',data);
+                if (data?.clientSecret) {
+                  
+                    console.log(data.clientSecret);
+
+                    setClientSecret(data.clientSecret);
+                    
+
+                }
+            });
+
+    }, [totalPrice])
+
 
 
     const handleSubmit = async (event) => {
@@ -32,15 +60,13 @@ const CheckoutForm = (props) => {
             type: 'card',
             card
         });
-
+         
         setCardError(error?.message || '')
         setSuccess('');
         setProcessing(true);
 
-        const email=user?.email
-
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-            email,
+            clientSecret,
             {
                 payment_method: {
                     card: card,
@@ -61,12 +87,32 @@ const CheckoutForm = (props) => {
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
             setSuccess('Congrats! Your payment is completed.')
+            
+            const email =user.email
 
+            const payment ={
+               course:course?._id,
+                paid:true,
+                transactionId: paymentIntent.id
+                
+            }
+            
+            fetch(`http://localhost:5000/courses/${course?._id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                    // 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                // body: JSON.stringify({product,payment,email})
+                body: JSON.stringify(payment)
+            }).then(res=>res.json())
+            .then(data => {
+                setProcessing(false);
+                console.log(data);
+            })
 
         }
     }
-
-
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -86,7 +132,7 @@ const CheckoutForm = (props) => {
                         },
                     }}
                 />
-                <button className='btn btn-primary btn-sm mt-4' type="submit" disabled={!stripe || success}>
+                <button className='btn btn-primary btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
                     Pay
                 </button>
             </form>

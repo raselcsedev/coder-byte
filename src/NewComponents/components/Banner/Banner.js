@@ -7,6 +7,7 @@ import './Banner.css';
 import Discussion from "../../../Component/Discussion/Discussion";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import VoiceAssistant from "../VoiceAssistant/VoiceAssistant";
 const Banner = () => {
   const bounceTransition = {
     y: {
@@ -48,7 +49,9 @@ const Banner = () => {
           </div>
         </div>
       </div>
+      <VoiceAssistant></VoiceAssistant>
       <Discussion></Discussion>
+
     </div>
   );
 };

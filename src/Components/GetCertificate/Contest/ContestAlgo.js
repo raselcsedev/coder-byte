@@ -1,16 +1,10 @@
-<<<<<<< HEAD:src/Components/GetCertificate/ContestAlgo.js
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
-import DynamicTpicGetHook from '../../Component/COUSTOMHOOK/DynamicTpicGetHook';
-import LeaderBoard from '../LeaderBoard/LeaderBoard';
-import CountDownContest from './CountDownContest';
-=======
-import React, { useEffect } from 'react';
 import DynamicTpicGetHook from '../../../Component/COUSTOMHOOK/DynamicTpicGetHook';
 import CountDownContest from '../CountDownContest';
->>>>>>> 4fcda98049123416ee3810e16e11732674701676:src/Components/GetCertificate/Contest/ContestAlgo.js
-import SingleAlgo from './SingleAlgo';
+import SingleAlgo from './SingleAlgo'
+import LeaderBoard from '../../LeaderBoard/LeaderBoard'
 
 const ContestAlgo = () => {
 
