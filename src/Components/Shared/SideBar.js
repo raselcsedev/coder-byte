@@ -29,9 +29,7 @@ const handleHighlight =()=>{
     setHighlight(true)
 }
 
-    if (isLoading) {
-        return <p>loading...</p>
-    }
+   
     return (
         <div className='border-r sticky left-[0%] top-[10%]  h-[90vh] w-[70%] pl-4'>
             <div className='flex flex-col space-y-[200%] '>

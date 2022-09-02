@@ -3,10 +3,10 @@ import React from 'react';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-const GitHubApi = () => {
+const GitHubApi = ({github}) => {
 const [userName, setUserName] =useState('pavel-genuine')
 
-    const url =`https://api.github.com/users/${userName}`
+    const url =`https://api.github.com/users/${github}`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -30,7 +30,7 @@ const [userName, setUserName] =useState('pavel-genuine')
             <p><span className='font-semibold'>Bio :</span>  {user?.bio}</p>
             <p><span className='font-semibold'>Total Repositories : </span>  {user?.public_repos}</p>
            <p><span className='font-semibold'> Followers : </span> {user?.followers}</p>
-           <p><span className='font-semibold'> Followers :</span> {user?.following}</p>
+           <p><span className='font-semibold'> Followings :</span> {user?.following}</p>
            
         </div>
         </div>

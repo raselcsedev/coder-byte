@@ -45,6 +45,7 @@
     "react-share": "^4.4.0",
     "react-timer-hook": "^3.0.5",
     "react-to-pdf": "^0.0.14",
+    "react-tooltip": "^4.2.21",
     "redux": "^4.2.0",
     "reselect": "^4.1.6",
     "socket.io-client": "^4.5.1",
