@@ -15,7 +15,7 @@ const BlogSingle = ({ blog, handleUpdateSaved }) => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
 
-    const url2 = `http://localhost:5000/blogs/${blog?._id}`
+    const url2 = `https://coder-access.herokuapp.com/blogs/${blog?._id}`
 
     // const fetcher = async () => {
     //     const data = axios.get(url2)

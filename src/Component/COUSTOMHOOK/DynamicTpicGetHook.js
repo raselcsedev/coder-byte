@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 const DynamicTpicGetHook = () => {
     const [data,setData]=useState([]);
     const AlgorithimGet=()=>{
-        fetch('http://localhost:5000/TopicAlgo')
+        fetch('https://coder-access.herokuapp.com/TopicAlgo')
         .then(res=>res.json())
         .then(data=>setData(data))
     }
     const Databaseget=()=>{
-        fetch('http://localhost:5000/TopicDatabase')
+        fetch('https://coder-access.herokuapp.com/TopicDatabase')
         .then(res=>res.json())
         .then(data=>setData(data))
     }
     const DSget=()=>{
-        fetch('http://localhost:5000/TopicDS')
+        fetch('https://coder-access.herokuapp.com/TopicDS')
         .then(res=>res.json())
         .then(data=>setData(data))
     }

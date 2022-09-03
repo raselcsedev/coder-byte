@@ -17,7 +17,7 @@ const DiscussionForums = () => {
 
   const { register, formState: { errors }, handleSubmit } = useForm();
 
-  const url = `http://localhost:5000/forum/`
+  const url = `https://coder-access.herokuapp.com/forum/`
 
 
   const today = new Date();

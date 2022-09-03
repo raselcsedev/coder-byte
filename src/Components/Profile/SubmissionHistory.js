@@ -10,7 +10,7 @@ const SubmissionHistory = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `http://localhost:5000/submissions/`
+    const url = `https://coder-access.herokuapp.com/submissions/`
 
 
     const fetcher = async () => {

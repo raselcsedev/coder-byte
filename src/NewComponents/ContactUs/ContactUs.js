@@ -15,8 +15,8 @@ const ContactUs = () => {
        ;
   }
   return (
-    <div className="mb-12">
-        <div className="h-px mx-12 lg:mx-32 bg-black lg:mt-40 hidden lg:block"></div>
+    <div className="pb-12">
+        <div className="h-px mx-12 lg:mx-32 bg-black hidden lg:block"></div>
         <p className="hidden lg:block">
         <Link to="/"><span className="flex justify-end animate-bounce mr-40 mt-2 lg:mb-4 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>

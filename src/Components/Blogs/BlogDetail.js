@@ -22,7 +22,7 @@ const BlogDetail = () => {
     const url2 = `http://localhost:5000/blogs/${id}`
 
     const fetcher = async () => {
-        const data = axios.get(url2)
+        const data = axios.get(url)
         return (await data)?.data
     }
 
@@ -87,7 +87,7 @@ const BlogDetail = () => {
     const fetchSaved = (data) => {
 
 
-        fetch(url2, {
+        fetch(url, {
 
             method: 'PUT',
             headers: {
