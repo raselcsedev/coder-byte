@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactUs from '../../NewComponents/ContactUs/ContactUs';
 
 const About = () => {
 
@@ -86,6 +87,7 @@ const About = () => {
                 </div>
 
             </div>
+            <ContactUs></ContactUs>
 
         </div>
     );

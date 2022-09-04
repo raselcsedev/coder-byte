@@ -13,6 +13,8 @@ import { useQuery } from '@tanstack/react-query';
 import SubmissionHistory from './SubmissionHistory';
 import auth from '../../firebase.init';
 import FetchData from './FetchData';
+import GitHubApi from './GitHubApi';
+// import ReactTooltip from 'react-tooltip';
 
 const Profile = () => {
     const [myitem,setmyitem]=useState([]);
@@ -137,6 +139,8 @@ const jumpadditemview=()=>{
 
     const [open, setOpen] = useState(false);
     const [open2, setOpen2] = useState(false);
+
+    const [show, setShow] = useState(false)
 
 
     if (isLoading || !email) {
@@ -268,18 +272,40 @@ const jumpadditemview=()=>{
 
                             <div class=" border-gray-200  ">
                                 <dl className='md:pt'>
+                                    <div className='grid grid-cols-5 relative'>
+                                        <div className='col-span-2'>
 
-                                    <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
-                                            {profileUpdates?.about ? profileUpdates?.about : profile?.about}
+                                            <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                                    {profileUpdates?.about ? profileUpdates?.about : profile?.about}
 
-                                        </dd>
-                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
-                                            {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
+                                                </dd>
+                                                <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                                    {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
 
-                                        </dd>
+                                                </dd>
+                                            </div>
+
+                                            <button onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}
+                                                data-tip data-for="gitTip">
+                                                <button className='text-white btn flex py-2 ml-3'>GitHub<img className='w-5 ml-2' src="https://i.ibb.co/bsQN30C/Git-Hub-Mark-Light-64px.png" alt="" /> </button>
+
+                                            </button>
+                                        </div>
+
+                                        <div className='col-span-1 absolute left-[20%]'>
+                                            {show &&
+
+                                                <GitHubApi  github={profileUpdates?.github? profileUpdates?.github : profile?.github} ></GitHubApi>
+
+                                            }
+                                        </div>
                                     </div>
+
+
+
                                     <div className='px-4'>
+
                                         <p className='text-white my-2'>Badges :</p>
                                         <div className='flex '>
                                             <img className='w-14' src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" alt="" />
@@ -320,8 +346,8 @@ const jumpadditemview=()=>{
 
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Problem-solving History</dt>
-                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a onClick={() => setOpen2(true)}  className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
-                                      
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a onClick={() => setOpen2(true)} className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+
                                         <Modal classNames={{
                                             overlay: 'customOverlay',
                                             modal: 'customModal',
@@ -401,7 +427,7 @@ const jumpadditemview=()=>{
 
 
                     </div>
-                    
+
                     <div className='card border-slate-600 border bg-slate-800 p-4 divide divide-y my-4 space-y-4'>
                         <p className='text-white font-semibold'>Today's Project For You </p>
 

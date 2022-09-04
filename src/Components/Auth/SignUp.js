@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider, useQuery, useMutation } from '@tansta
 const SignUp = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, gError] = useSignInWithGoogle(auth);
+    const [signInWithGithub, githubUser, githubLoading, gitError] = useSignInWithGithub(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
         createUserWithEmailAndPassword,
@@ -24,15 +25,15 @@ const SignUp = () => {
 
     let signInError;
 
-    if (loading || googleLoading || updating) {
+    if (loading || googleLoading || githubLoading || updating) {
         return <p>Loading...</p>
     }
 
-    if (error || gError || updateError) {
-        signInError = <p className='text-red-500'><small>{error?.message || gError?.message || updateError?.message}</small></p>
+    if (error || gError || gitError || updateError) {
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message || gitError?.message || updateError?.message}</small></p>
     }
 
-    if (user || googleUser) {
+    if (user || googleUser || githubUser) {
         navigate('/');
     }
 
@@ -45,7 +46,7 @@ const SignUp = () => {
             displayName: data.name,
         }
 
-        fetch('https://coder-access.herokuapp.com/profiles', {
+        fetch('http://localhost:5000/profiles', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -59,7 +60,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className='flex bg-[#050535] h-screen justify-center items-center'>
+        <div className='flex bg-[#050535] min-h-[100vh] py-20 justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="text-center text-[#050535] text-2xl font-bold">Sign Up</h2>
@@ -143,6 +144,10 @@ const SignUp = () => {
                         onClick={() => signInWithGoogle()}
                         className="btn  btn-outline btn-primary"
                     >Continue with Google</button>
+                    <button
+                        onClick={() => signInWithGithub()}
+                        className="btn  btn-outline btn-primary"
+                    >Continue with Github</button>
                 </div>
             </div>
         </div >

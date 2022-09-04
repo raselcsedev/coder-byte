@@ -1,10 +1,13 @@
 import React from 'react';
-import './App.css';
+import "./App.css";
+
 import { Route, Routes } from 'react-router-dom';
 import SignIn from './Components/Auth/SignIn';
 import SignUp from './Components/Auth/SignUp';
-import Header from './Components/Header/Header';
-import Contests from './Components/GetCertificate/Contests';
+
+// import Contests from './Components/GetCertificate/Contests';
+// import Header from './Components/Header/Header';
+import Contests from './Components/GetCertificate/Contest/Contests';
 import GetCertified from './Components/GetCertificate/GetCertified';
 
 // new home page import
@@ -63,14 +66,22 @@ import AllTestimonials from './Components/Testimonial/AllTestimonials';
 import BlogDetail from './Components/Blogs/BlogDetail';
 import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
-import ContestAlgo from './Components/GetCertificate/ContestAlgo';
+import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
 import Additemsview from './Components/AddItems/Additemsview';
+import NestedComments from './Components/Shared/NestedComments';
+import Header from './NewComponents/Navbar/Header';
+import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
+import ContactUs from './NewComponents/ContactUs/ContactUs';
+import DiscussionForums from './Components/MyAllCourse/DiscussionForums/DiscussionForums';
+import ForumDetail from './Components/MyAllCourse/DiscussionForums/ForumDetail';
+import CourseMaterial from './Components/MyAllCourse/SingleCourse/CourseMaterial';
 
 // import CourseDetail from './Components/CourseDetail/CourseDetail'
 // import EnrollCourse from './Components/EnrollCourse/EnrollCourse';
 // import CreateProblem from './Component/CreateProblem/CreateProblem';
 // import Footer2 from './Footer/Footer2';
+
 const queryClient = new QueryClient()
 
 function App() {
@@ -78,8 +89,8 @@ function App() {
     <div >
       <QueryClientProvider client={queryClient}>
 
-        <Header></Header>
-        {/* <Navbar></Navbar> */}
+       <Header></Header>
+      
 
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
@@ -119,6 +130,9 @@ function App() {
             <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
             <Route path='blog-editor' element={<BlogEditor></BlogEditor>}></Route>
           </Route>
+          
+
+          <Route path='/course-material' element={<CourseMaterial></CourseMaterial>}></Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
           <Route path='/additemsview/:email' element={<Additemsview></Additemsview>}></Route>
@@ -126,6 +140,9 @@ function App() {
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
           <Route path='/contest-algo' element={<ContestAlgo></ContestAlgo>}></Route>
+          <Route path='/contest-landing-page' element={<ContestLandingPage></ContestLandingPage>}></Route>
+          <Route path='/discussion-forums' element={<DiscussionForums></DiscussionForums>}></Route>
+          <Route path='/discussion-forums/:id' element={<ForumDetail></ForumDetail>}></Route>
 
           <Route path='/single-certificate/:id' element={<SingleCertificate></SingleCertificate>}></Route>
           <Route path='/participant-info/:id' element={<ParticipantInfo></ParticipantInfo>}></Route>
@@ -147,6 +164,9 @@ function App() {
           <Route path='/sign-in' element={<SignIn></SignIn>}></Route>
 
 
+          <Route path='/comments' element={<NestedComments></NestedComments>}></Route>
+
+
 
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/banner" element={<Banner></Banner>}></Route>
@@ -156,6 +176,7 @@ function App() {
           <Route path="/testimonials" element={<Testimonials></Testimonials>}></Route>
           <Route path="/environment" element={<Environment></Environment>}></Route>
           <Route path="/ready" element={<ReadyMessage></ReadyMessage>}></Route>
+          <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
         </Routes>
 
         {/* <Footer></Footer> */}

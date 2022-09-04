@@ -9,22 +9,22 @@ const Footer = () => {
 
           
 
-            <div className='flex justify-center items-center  max-w-[90vw]  space-x-2 lg:space-x-4 text-white pt-8 lg:pt-px'>
-                <Link to="/"><p>Contact Us</p></Link>
+            <div className='flex justify-center items-center  space-x-1 lg:space-x-4 text-white pt-8 lg:pt-px'>
+                <Link to="/contactus"><p>Contact Us</p></Link>
                 <p>{"|"}</p>
                 <Link to="/"><p>FAQ</p></Link>
                 <p>{"|"}</p>
                 <Link to="/"><p>Reviews</p></Link>
                 <p>{"|"}</p>
-                <Link to="/"><p>Blogs</p></Link>
+                <Link to="/all-blogs"><p>Blogs</p></Link>
                 <p>{"|"}</p>
-                <Link to="/"><p>Contests</p></Link>
+                <Link to="/contests"><p>Contests</p></Link>
                 <p>{"|"}</p>
                 <Link to="/"><p>Privacy Policy</p></Link>
             </div>
 
             <div>
-                <p className='text-center text-white text-lg mt-3'><small>copyright @ {year} coderAccess. All rights reserved.</small></p>
+                <p className='flex items-center justify-center text-white text-lg mt-3'><small>copyright @ {year} coderAccess. All rights reserved.</small></p>
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import Modal from 'react-responsive-modal';
 import { useParams } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from '../Payment/CheckoutForm';
+import useCourses from '../Shared/useCourses';
 
 
 
@@ -13,22 +14,12 @@ const EnrollCourse = (props) => {
 
     const { id } = useParams()
 
-    const [courses, setCourses] = useState([])
+
+    
     const [open, setOpen] = useState(false);
-
-
-    let url = 'http://localhost:3000/courses.json' || 'https://coder-access.web.app/'
-
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setCourses(data))
-    }, [])
-
-
-
-
-    const course = courses?.find(item => id == item?.id)
+    const [courses, setCourses] = useCourses
+    ()
+    const course = courses?.find(item => id == item?._id)
 
     console.log('cc', courses, course);
 
@@ -136,7 +127,7 @@ const EnrollCourse = (props) => {
                         <label class="modal-box relative" for="">
                             <Elements stripe={stripePromise}>
                                 {/* {console.log(product)} */}
-                                <CheckoutForm id={id} product={course} />
+                                <CheckoutForm  course={course} />
                             </Elements>
                         </label>
                     </label>

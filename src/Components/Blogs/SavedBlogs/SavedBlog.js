@@ -35,10 +35,9 @@ const SavedBlog = ({ savedBlogs, updateSaved}) => {
                     <input type="checkbox" />
                     <div className="collapse-title font-semibold  ">
 
-                        {savedBlogsData?.length ? <h1 className='text-md font-semibold'>What You've Saved to Read Later : {savedBlogsData?.length} </h1>
-                            :
+                     
                             <h1 className='text-md font-semibold'>What You've Saved to Read Later :</h1>
-                        }
+                       
                     </div>
                     <div className="collapse-content">
                         {

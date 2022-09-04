@@ -8,7 +8,7 @@ const Certification = () => {
     return (
         <div className='mt-12 lg:mt-2 md:w-[80vw] w-[40vw] mx-auto'>
             <p className="hidden lg:block">
-          <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
+          <Link to="/"><span className="flex justify-end animate-bounce mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
           /></span></Link>
             </p>
              <h2 className='text-3xl text-teal-600 text-center font-bold lg:mb-16 mb-8'>Certification</h2>
