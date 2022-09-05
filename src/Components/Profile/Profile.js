@@ -1,41 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
 import ImageUploading from 'react-images-uploading';
 import EditProfile from './EditProfile';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import './profile.css'
 import useCourses from '../Shared/useCourses';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loading from '../Shared/Loading/Loading';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import SubmissionHistory from './SubmissionHistory';
+import auth from '../../firebase.init';
+import FetchData from './FetchData';
+import GitHubApi from './GitHubApi';
+// import ReactTooltip from 'react-tooltip';
 
 const Profile = () => {
-
-    const [user] = useAuthState(auth);
-
+    const [myitem,setmyitem]=useState([]);
     const [courses, setCourses] = useCourses()
-
     const [profileUpdates, setProfileUpdates] = useState()
-
-
-    const updatedProfile = (data) => {
-
-        setProfileUpdates(data)
-
-    }
-
-
-
+    const updatedProfile = (data) => {setProfileUpdates(data)}
+    const [user] = useAuthState(auth);
     const email = user?.email
- 
+    const {getAdditems,value }=FetchData();
+
+useEffect(()=>{
+    getAdditems();
+},[])
+console.log(value);
+const navigate= useNavigate();
+const jumpadditemview=()=>{
+    navigate(`/additemsview/${email}`);
+   
+}
+
+
+
+
     const url = `https://coder-access.herokuapp.com/profiles/${email}`
 
-
     const fetcher = async () => {
-        const data =  axios.get(url)
+        const data = axios.get(url)
         return (await data).data
     }
 
@@ -51,9 +57,9 @@ const Profile = () => {
         const formData = new FormData()
         formData.append("file", image)
         formData.append("upload_preset", "ch77jcb5")
-        formData.append("cloud_name","pavel-genuine")
+        formData.append("cloud_name", "pavel-genuine")
         const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
-  fetch(url,
+        fetch(url,
             {
                 method: "POST",
                 body: formData
@@ -65,7 +71,7 @@ const Profile = () => {
                 console.log('imgbbProfilePhoto', result.url)
 
                 const profilePhoto = result.url
-                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -81,11 +87,11 @@ const Profile = () => {
     const onChangeCover = (data) => {
         setCoverPhoto(data)
         const image = data[0].file
- 
+
         const formData = new FormData()
         formData.append("file", image)
         formData.append("upload_preset", "ch77jcb5")
-        formData.append("cloud_name","pavel-genuine")
+        formData.append("cloud_name", "pavel-genuine")
         const url = `https://api.cloudinary.com/v1_1/pavel-genuine/image/upload`
         fetch(url,
             {
@@ -97,7 +103,7 @@ const Profile = () => {
             .then(async result => {
                 console.log('imgbbCover', result)
                 const coverPhoto = result.url
-                await fetch(`https://coder-access.herokuapp.com/profiles/${email}`,
+                await fetch(url,
                     {
                         method: 'PUT',
                         headers: {
@@ -132,8 +138,10 @@ const Profile = () => {
     }
 
     const [open, setOpen] = useState(false);
+    const [open2, setOpen2] = useState(false);
 
-    // console.log(email);
+    const [show, setShow] = useState(false)
+
 
     if (isLoading || !email) {
         return <Loading></Loading>
@@ -169,10 +177,12 @@ const Profile = () => {
                             }) => (
 
                                 <div className="upload__image-wrapper">
-                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg></p>
+                                    <p title='Change cover photo' onClick={onImageUpload} className='absolute top-[2%] right-[1%] md:top-[0%] md:right-[1%] btn btn-xs my-3'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </p>
 
                                     {
                                         imageList?.map((image, index) => (
@@ -262,18 +272,40 @@ const Profile = () => {
 
                             <div class=" border-gray-200  ">
                                 <dl className='md:pt'>
+                                    <div className='grid grid-cols-5 relative'>
+                                        <div className='col-span-2'>
 
-                                    <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
-                                            {profileUpdates?.about ? profileUpdates?.about : profile?.about}
+                                            <div class="bg-slate-800  py-4 px-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                                    {profileUpdates?.about ? profileUpdates?.about : profile?.about}
 
-                                        </dd>
-                                        <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
-                                            {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
+                                                </dd>
+                                                <dd class="  text-sm text-gray-300 sm:mt-0 sm:col-span-2">
+                                                    {profileUpdates?.profession ? profileUpdates?.profession : profile?.profession}
 
-                                        </dd>
+                                                </dd>
+                                            </div>
+
+                                            <button onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}
+                                                data-tip data-for="gitTip">
+                                                <button className='text-white btn flex py-2 ml-3'>GitHub<img className='w-5 ml-2' src="https://i.ibb.co/bsQN30C/Git-Hub-Mark-Light-64px.png" alt="" /> </button>
+
+                                            </button>
+                                        </div>
+
+                                        <div className='col-span-1 absolute left-[20%]'>
+                                            {show &&
+
+                                                <GitHubApi  github={profileUpdates?.github? profileUpdates?.github : profile?.github} ></GitHubApi>
+
+                                            }
+                                        </div>
                                     </div>
+
+
+
                                     <div className='px-4'>
+
                                         <p className='text-white my-2'>Badges :</p>
                                         <div className='flex '>
                                             <img className='w-14' src="https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png" alt="" />
@@ -286,7 +318,7 @@ const Profile = () => {
 
                                     </div>
 
-                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-200">Website</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">
                                             <a target="_blank" href={profileUpdates?.website ? profileUpdates?.website : profile?.website} className="underline underline-offset-1  ">
@@ -296,17 +328,32 @@ const Profile = () => {
                                         </dd>
                                     </div>
 
-                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Email address</dt>
                                         <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2">{user?.email}</dd>
                                     </div>
-                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Enrolled Course</dt>
                                         <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="/courses"><button className='btn btn-xs'>My Courses</button></a></dd>
                                     </div>
+{/* ------------start my add iteam section--------- */}
+                                    <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="font-medium text-gray-200">Add Course :</dt>
+                                        <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="">{value.length}<button onClick={jumpadditemview} className='btn btn-xs ml-10'>view all</button></a></dd>
+                                    </div>
+                                    
+{/* ------------start my end iteam section--------- */}
+
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Problem-solving History</dt>
-                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+                                        <dd class="mt-1 text-gray-300 sm:mt-0 sm:col-span-2"><a onClick={() => setOpen2(true)} className='text-indigo-600 hover:text-indigo-500 font-semibold text-lg mx-2 cursor-pointer'>Click to </a> See the history </dd>
+
+                                        <Modal classNames={{
+                                            overlay: 'customOverlay',
+                                            modal: 'customModal',
+                                        }} open={open2} onClose={() => setOpen2(false)}>
+                                            <SubmissionHistory></SubmissionHistory>
+                                        </Modal>
                                     </div>
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Achievements / Certifications</dt>
@@ -380,6 +427,7 @@ const Profile = () => {
 
 
                     </div>
+
                     <div className='card border-slate-600 border bg-slate-800 p-4 divide divide-y my-4 space-y-4'>
                         <p className='text-white font-semibold'>Today's Project For You </p>
 

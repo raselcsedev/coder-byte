@@ -1,10 +1,13 @@
 import React from 'react';
+import Languages from '../../../Components/Languages/Languages';
+import ContactUs from '../../ContactUs/ContactUs';
 import Banner from '../Banner/Banner';
 import Certification from '../Certification/Certification';
 import Comparisons from '../Comparison/Comparisons';
 import Courses from '../Courses/Courses';
 import Environment from '../Environment/Environment';
 import Explore from '../Exploring/Explore';
+import Footer from '../Footer/Footer';
 import Global from '../Global/Global';
 import Preparation from '../Preparation/Preparation';
 import ReadyMessage from '../ReadyMessage/ReadyMessage';
@@ -16,15 +19,18 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Explore></Explore>
+           
+            <Environment></Environment>
+            <Languages></Languages>
             <Preparation></Preparation>
-            <Comparisons></Comparisons>
             <Courses></Courses>
             <Certification></Certification>
+            <Comparisons></Comparisons>
             <TrustedCompany></TrustedCompany>
             <Testimonials></Testimonials>
-            <Environment></Environment>
             <Global></Global>
             <ReadyMessage></ReadyMessage>
+            <Footer></Footer>
         </div>
     );
 };

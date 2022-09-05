@@ -18,7 +18,7 @@ const TrustedCompany = () => {
     <div className="lg:mx-32 lg:mt-40 mt-20 mb-12">
       <div className="h-px bg-black hidden lg:block"></div>
            <p className="hidden lg:block">
-          <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
+          <Link to="/"><span className="flex justify-end animate-bounce mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
           /></span></Link>
             </p>
 

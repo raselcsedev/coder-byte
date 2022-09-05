@@ -21,7 +21,7 @@ const EditProfile = ({ updatedProfile }) => {
 
 
         const email = user?.email
-        await fetch(`http://localhost:5000/profiles/${email}`, {
+        await fetch(`https://coder-access.herokuapp.com/profiles/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -81,6 +81,19 @@ const EditProfile = ({ updatedProfile }) => {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="grid grid-cols-3 gap-6">
+                                            <div class="col-span-3 sm:col-span-3">
+                                                <label class="block text-sm font-medium "> GitHub User Name <span className='font-normal'>(just user name not url , like : 'pavel-genine')</span></label>
+                                                <div class="mt-1 flex rounded-md shadow-sm">
+
+                                                    <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }}
+                                                        type="text" class="p-2 focus:ring-primary focus:border-primary flex-1 block w-full  rounded-md sm:text-sm "
+                                                        placeholder="GitHub User Name "
+                                                        {...register("github")}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div>
                                             <label class="block text-sm font-medium"> Documment </label>
@@ -135,7 +148,7 @@ const EditProfile = ({ updatedProfile }) => {
                                             <div class="col-span-6 sm:col-span-5">
                                                 <label for="profession" class="block text-sm font-medium ">Profession</label>
                                                 <input style={{ backgroundColor: ' #919cb1', border: '#6b7280' }} type="text" name="first-name" id="first-name"
-                                                  
+
                                                     class="p-2 mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                                     {...register("profession")} />
                                             </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchUsers =createAsyncThunk("/profiles/fetchUsers",
 async()=>{
-    const res =  await axios.get("https://coder-access.herokuapp.com/profiles")
+    const res =  await axios.get("http://localhost:5000/profiles")
     
     console.log('thunk',res.data);
 

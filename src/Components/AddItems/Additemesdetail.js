@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Forum = () => {
+const Additemesdetail = (props) => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const Forum = () => {
     );
 };
 
-export default Forum;
+export default Additemesdetail;

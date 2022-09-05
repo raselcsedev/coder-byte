@@ -17,7 +17,7 @@ const Environment = () => {
     <div className="lg:mb-24 mb-8 ">
         <div className="h-px mx-12 lg:mx-32 bg-black lg:mt-32 hidden lg:block"></div>
         <p className="hidden lg:block">
-        <Link to="/"><span className="flex justify-end mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
+        <Link to="/"><span className="flex justify-end animate-bounce mr-40 mt-2 mb-8 lg:mb-16 text-3xl"><FontAwesomeIcon icon={faArrowUp} 
       /></span></Link>
       </p>
       <div class="hero">
@@ -28,7 +28,7 @@ const Environment = () => {
             y: ["1%", "-1%"]
           }}
           
-          src={environment} class="max-w-xs md:max-w-sm rounded-lg shadow-2xl lg:ml-24 shadow-2xl shadow-blue-500/50" alt=""/>
+          src={environment} class="max-w-xs md:max-w-xl rounded-lg shadow-2xl lg:ml-24 shadow-2xl shadow-blue-500/50" alt=""/>
           <div className="max-w-[100vw]">
             <h1 class="text-3xl font-semibold">The Perfect Practice Environment.</h1>
             <p class="py-6">

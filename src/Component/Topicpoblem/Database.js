@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import DynamicTpicGetHook from '../COUSTOMHOOK/DynamicTpicGetHook';
+import Fram from './Fram';
 
 const Database = () => {
+    const { Databaseget, data } = DynamicTpicGetHook()
+    useEffect(() => {
+        Databaseget()
+    }, [])
     return (
+       
         <div className='pt-20'>
-            <h1>Hello world database</h1>
-        </div>
+        {
+            data?.map(data => <Fram data={data}></Fram>)
+        }
+
+    </div>
     );
 };
 

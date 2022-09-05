@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 const Languages = () => {
     return (
         <div className=''>
-            <div className='pt-[2%] hidden lg:block h-[70vh] bg-[#171B26]'>
+            <div className='pt-[5%] hidden lg:block h-[80vh] bg-[#171B26]'>
                 <div className='w-[85%]'>
                     <div className='flex '>
                         <div className='md:flex justify-end'>

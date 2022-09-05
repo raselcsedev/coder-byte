@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactUs from '../../NewComponents/ContactUs/ContactUs';
 
 const About = () => {
 
@@ -66,26 +67,10 @@ const About = () => {
                     </p>
                 </div>
 
-                <div className='md:flex mb-5'>
-                    <img loading='lazy' className='w-60 border border-[brown]'
-                        src="https://learn.sapienceinstitute.org/wp-content/uploads/2022/01/ourosman-1.png"
-                        alt="" />
-                    <p className='m-5'>
-                        <p className='font-semibold text-[brown] mb-3'>Dr. Osman Latif</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ipsum quo voluptates repellat explicabo. Natus ut accusamus debitis, est, suscipit perspiciatis quidem incidunt velit iusto fugiat quam soluta nihil! Dolorem . lorem
-                    </p>
-                </div>
-                <div className='md:flex mb-5'>
-                    <img loading='lazy' className='w-60 border border-[brown]'
-                        src="https://assets-jpcust.jwpsrv.com/thumbnails/nwrs01hm-720.jpg"
-                        alt="" />
-                    <p className='m-5'>
-                        <p className='font-semibold text-[brown] mb-3'>Muhammad Hijab</p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ipsum quo voluptates repellat explicabo. Natus ut accusamus debitis, est, suscipit perspiciatis quidem incidunt velit iusto fugiat quam soluta nihil! Dolorem . lorem
-                    </p>
-                </div>
+                
 
             </div>
+            <ContactUs></ContactUs>
 
         </div>
     );

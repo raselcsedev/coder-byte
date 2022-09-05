@@ -31,8 +31,8 @@ function MyTimer({ expiryTimestamp }) {
   const time = new Date();
   time.setSeconds(time.getSeconds() + 2700); 
   return (
-    <div>
-      <MyTimer expiryTimestamp={time} />
+    <div className='bg-black text-success w-[200px] mx-auto my-5 rounded-lg text-center border border-success'>
+      <MyTimer className='bg-black text-white' expiryTimestamp={time} />
     </div>
   );
 }

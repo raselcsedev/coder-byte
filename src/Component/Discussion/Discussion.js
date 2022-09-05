@@ -6,7 +6,8 @@ import auth from '../../firebase.init';
 import Chat from './Chat/Chat';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faRocket, faUpDownLeftRight } from '@fortawesome/free-solid-svg-icons'
-const socket = io.connect("http://localhost:5000/")
+
+const socket = io.connect("https://coder-access.herokuapp.com/")
 
 const Discussion = () => {
     const [messages, setmessage] = useState("");
@@ -47,8 +48,8 @@ const Discussion = () => {
                                 <FontAwesomeIcon icon={faUpDownLeftRight} className="mr-auto" />
                                 Minimize </button>
 
-                            <div className='   text-center flex justify-center '>
-                                <div className=' bg-[#DCDCDC] discontainer py-10 pl-10'>
+                            <div className='   text-center flex justify-center  '>
+                                <div className=' bg-[#DCDCDC] discontainer py-10 pl-10 '>
                                     {chat.map(data => <>
                                         {
                                             data?.name === name ?

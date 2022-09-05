@@ -11,21 +11,13 @@ import './Header.css'
 const Header = () => {
 
     const [user] = useAuthState(auth);
-
-
-
     const email = user?.email
 
-    const url = `https://coder-access.herokuapp.com/profiles/${email}`
+    const url = `http://localhost:5000/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)
-        // console.log('axios', (await data).data);
-
         return (await data).data
-
-        //also could be used[axios retun without destructuring]
-        // return data
     }
 
     let { data: profile, isLoading } = useQuery(["profile", email], () => fetcher())
@@ -70,7 +62,7 @@ const Header = () => {
                             {
                                 profile?.profilePhoto ? <img src={profile?.profilePhoto} alt="" />
                                     :
-                                    <img src="http/i.stacs:/k.imgur.com/frlIf.png" />
+                                    <img src="https://i.stack.imgur.com/frlIf.png" />
                             }
                         </div>
                     </label>
@@ -122,7 +114,7 @@ const Header = () => {
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/contests'>Emulate</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/courses'>Courses</CustomLink>
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/explore'>IDE</CustomLink>
-            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/blogs'>Blogs</CustomLink>
+            <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='/all-blogs'>Blogs</CustomLink>
 
             <CustomLink class="btn-ghost hover:rounded md:p-3 md:m-5" to='about'> About Us</CustomLink>
 
@@ -164,7 +156,7 @@ const Header = () => {
                             <ul tabindex="0" id="menuContent" class=" menu border border-slate-600 bg-black text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
-                            <Link to='/' class="btn btn-ghost normal-case text-2xl y">coderAccess</Link>
+                            <Link to='/' class="btn btn-ghost normal-case text-2xl "> coder<span className="text-lime-500">A</span>ccess</Link>
 
                         </div>
                         {user && personalizeItems}
@@ -264,8 +256,9 @@ const Header = () => {
                                         <div className='space-y-2 pt-4'>
 
                                             <li><a className='btn btn-outline btn-xs text-[white]'>Settings</a></li>
-                                            <li><button onClick={logout} className='btn btn-xs'>Logout</button></li>
-
+                                            <Link to='/'>
+                                                <li><button onClick={logout} className='btn btn-xs'>Logout</button></li>
+                                            </Link>
                                         </div>
 
 
