@@ -104,8 +104,8 @@ const IDELanding = () => {
 
 
   // sample of test cases
-  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6','2 6 7 7','2 6 8 8','2 6 9 9','2 6 10 10','2 6 11 11','2 6 12 12','2 6 13 13','2 6 14 14','2 6 15 15','2 6 16 16','2 6 17 17','2 6 18 18']
-  const testCaseOutput = ['4 4', '5 5', '6 6','7 7','8 8','9 9','10 10','11 11','12 12','13 13','14 14','15 15','16 16','17 17','18 18']
+  const testCaseInput = ['2 6 4 4', '2 6 5 5', '2 6 6 6', '2 6 7 7', '2 6 8 8', '2 6 9 9', '2 6 10 10', '2 6 11 11', '2 6 12 12', '2 6 13 13', '2 6 14 14', '2 6 15 15', '2 6 16 16', '2 6 17 17', '2 6 18 18']
+  const testCaseOutput = ['4 4', '5 5', '6 6', '7 7', '8 8', '9 9', '10 10', '11 11', '12 12', '13 13', '14 14', '15 15', '16 16', '17 17', '18 18']
 
 
   const handleCompile = (customInput) => {
@@ -238,7 +238,7 @@ const IDELanding = () => {
 
       // setOutputDetails(null);
 
-      uniqueComileOutput.current=[]
+      uniqueComileOutput.current = []
       allCompilerOutputs.current = []
 
       handleCompile(testCaseInput[i])
@@ -431,7 +431,7 @@ const IDELanding = () => {
 
           <div className="grid grid-cols-10">
             <div className="md:col-span-7 col-span-10">
-              <CodeEditorWindow 
+              <CodeEditorWindow
                 code={code}
                 onChange={onChange}
                 language={language?.value}
@@ -449,12 +449,12 @@ const IDELanding = () => {
                     setCustomInput={setCustomInput}
                   />
                   <div className="p-2">
-                  {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+                    {outputDetails && <OutputDetails outputDetails={outputDetails} />}
 
-                </div>
+                  </div>
                 </div>
 
-                
+
 
               </div>
             </div>

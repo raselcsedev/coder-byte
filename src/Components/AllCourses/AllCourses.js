@@ -4,21 +4,21 @@ import useCourses from '../Shared/useCourses';
 
 const AllCourses = () => {
 
-    const [courses,setCourses] =useCourses()
-    
-    console.log(courses);
+  const [courses, setCourses] = useCourses()
 
-    return (
-        <div className='w-[80vw] min-h-[80vh] mx-auto py-10'>
+  console.log(courses);
 
-        <h1 className='text-4xl mb-8 font-semibold mt-20'>All Courses :</h1>
-          <div className='divide-y divide-slate-100 '>
-            {
-                courses.map(course=><Course key={course.id} course={course} ></Course>)
-            }
-        </div>
+  return (
+    <div className='w-[80vw] min-h-[80vh] mx-auto py-10'>
+
+      <h1 className='text-4xl mb-8 font-semibold mt-20'>All Courses :</h1>
+      <div className='divide-y divide-slate-100 '>
+        {
+          courses.map(course => <Course key={course.id} course={course} ></Course>)
+        }
       </div>
-    );
+    </div>
+  );
 };
 
 export default AllCourses;

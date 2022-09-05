@@ -68,6 +68,7 @@ import BlogEditor from './Components/Blogs/CreateBlog/BlogEditor';
 import IDEDynamic from './Components/IDE/IDEMain/IDEDynamic';
 import ContestAlgo from './Components/GetCertificate/Contest/ContestAlgo';
 import AllBlogs from './Components/Blogs/AllBlogs';
+import Additemsview from './Components/AddItems/Additemsview';
 import NestedComments from './Components/Shared/NestedComments';
 import Header from './NewComponents/Navbar/Header';
 import ContestLandingPage from './Components/GetCertificate/Contest/ContestLandingPage';
@@ -110,9 +111,7 @@ function App() {
             <Route index element={<DataStructure></DataStructure>}></Route>
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
-
           </Route>
-
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<MyCourses></MyCourses>}></Route>
             <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
@@ -136,6 +135,7 @@ function App() {
           <Route path='/course-material' element={<CourseMaterial></CourseMaterial>}></Route>
 
           <Route path='/getcertified' element={<GetCertified></GetCertified>}></Route>
+          <Route path='/additemsview/:email' element={<Additemsview></Additemsview>}></Route>
           <Route path='/allcertificate' element={<AllCertificate></AllCertificate>}></Route>
           <Route path='/skill-test-window' element={<SkillTestWindow></SkillTestWindow>}></Route>
           <Route path='/Topic/algo/editor/:id' element={<IDEDynamic></IDEDynamic>}></Route>
@@ -165,8 +165,6 @@ function App() {
 
 
           <Route path='/comments' element={<NestedComments></NestedComments>}></Route>
-
-
 
 
 
