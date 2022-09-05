@@ -20,8 +20,8 @@ const ContestLandingPage = () => {
             <h1 className="text-sm font-semibold">Develop your skills</h1>
             <div className="lg:mt-24 mt-8">
               <h2 className="text-4xl text-black font-semibold">
-                Celebrate Juneteenth <br />
-                2021 Coding Contest
+                coderAccess <br />
+                2022 Coding Contest
               </h2>
               <div className="flex items-center space-x-8 my-6">
                 <div>
@@ -70,9 +70,7 @@ const ContestLandingPage = () => {
                   Try Sample Test
                 </button>
               </Link>
-              <Link to="/">
-                <button class="py-2 px-5 border rounded shadow-xl border-2 font-bold mt-5 mb-5">Leaderboard</button>
-              </Link>
+ 
             </div>
           </div>
 
@@ -182,7 +180,7 @@ const ContestLandingPage = () => {
               <input
                 className="px-6 py-2 rounded bg-green-600 max-w-lg font-semibold text-white mt-5 mb-4"
                 type="submit"
-                value="Submit Registration"
+                value="Let's start"
               />
             </form>
           </div>
@@ -222,11 +220,7 @@ const ContestLandingPage = () => {
             </p>
 
             <div className="flex items-center space-x-6 mt-4">
-              <Link to="/">
-                <button class="py-2 px-5 border rounded border-green-600 text-white bg-green-600 font-bold mt-5 mb-5">
-                  View Leaderboard
-                </button>
-              </Link>
+             
               <Link to="/explore">
                 <button class="py-2 px-5 border rounded border-green-600 text-green-600 font-bold mt-5 mb-5">
                   Try Sample Test

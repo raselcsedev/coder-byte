@@ -80,8 +80,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.1.6"
-  },
-  "options": {
-    "port": 3000
   }
 }

@@ -21,7 +21,7 @@ const ForumDetail = () => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
 
-    const url = `http://localhost:5000/forum/`
+    const url = `https://coder-access.herokuapp.com/forum/`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -43,7 +43,7 @@ const ForumDetail = () => {
                 <div className="col-span-4 flex justify-center">
                     <img
                         className="h-48 w-72 hidden lg:block"
-                        src="https://thumbs.dreamstime.com/b/question-answer-icon-comic-style-dialog-speech-bubble-cartoon-vector-illustration-white-isolated-background-forum-chat-225151967.jpg"
+                        src="https://i.ibb.co/k8Zc3ND/question-answer-icon-comic-style-dialog-speech-bubble-cartoon-vector-illustration-white-isolated-bac.jpg"
                         alt=""
                     />
 
@@ -72,7 +72,7 @@ const ForumDetail = () => {
                 <div className="col-span-4 flex justify-center">
 
 
-                    {!showComment &&
+                    {
                         <img
                             className="h-48 w-72 hidden lg:block"
                             src="https://previews.123rf.com/images/feelisgood/feelisgood1709/feelisgood170900838/85757474-flat-speech-bubble-icon-chat-room-sign-forum-internet-button-quick-and-easy-recolorable-shape-isolat.jpg"
