@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import FetchData from '../Profile/FetchData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,12 +8,14 @@ const Additemsview = () => {
     const paras = useParams();
     const email = paras?.email;
 
+    console.log(paras, 'paras');
+
     // const { getAdditems, value } = FetchData();
     const [value, setvalue] = useState([]);
     useEffect(() => {
         // getAdditems();
         console.log(email);
-        const url = `http://localhost:5000/additemsview/${email}`
+        const url = `https://coder-access.herokuapp.com/additemsview/${email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setvalue(data))
@@ -33,7 +35,7 @@ const Additemsview = () => {
         let proccess = window.confirm("Are you sure ?");
         if (proccess) {
             const id = data._id;
-            const url = `http://localhost:5000/additemsview/${id}`;
+            const url = `https://coder-access.herokuapp.com/additemsview/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
@@ -42,7 +44,7 @@ const Additemsview = () => {
 
             const newValue = value.filter(data => data._id !== id)
             setvalue(newValue);
-        toast.info("Successfully delete items") 
+            toast.info("Successfully delete items")
         }
 
     }
@@ -95,10 +97,10 @@ const Additemsview = () => {
                                             {svg}
                                             {svg}
                                         </div>
-                                        <div className="flex-none w-full mt-2 font-normal mt-5">
+                                        <div className="flex-none w-full mt-2 font-normal mt-5 space-x-2">
 
                                             <button onClick={() => Deleteitems(data)} className='btn btn-xs border-none bg-[#000000]'>Delete</button>
-                                            <button className='btn btn-xs border-none bg-[#000000]'>payment</button>
+                                            <Link to={`/enroll/${data?.course?._id}`}><button className='btn btn-xs border-none bg-[#000000]'>payment</button></Link>
                                         </div>
                                     </dl>
                                 </div>
@@ -110,7 +112,7 @@ const Additemsview = () => {
                     </>)}
 
             </div>
-        <ToastContainer />
+            <ToastContainer />
         </>
 
 

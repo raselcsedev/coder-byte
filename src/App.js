@@ -89,8 +89,8 @@ function App() {
     <div >
       <QueryClientProvider client={queryClient}>
 
-       <Header></Header>
-      
+        <Header></Header>
+
 
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
@@ -112,6 +112,7 @@ function App() {
             <Route path='Database' element={<Database></Database>}></Route>
             <Route path='algo' element={<Algo></Algo>}></Route>
           </Route>
+
           <Route path='dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<MyCourses></MyCourses>}></Route>
             <Route path='addcourse' element={<AddCourse></AddCourse>}></Route>
@@ -124,13 +125,13 @@ function App() {
           <Route path='blogs' element={<Blogs></Blogs>}>
             <Route index element={<HomeBlogs></HomeBlogs>}></Route>
             <Route path='stories' element={<Stories></Stories>}></Route>
-           
+
             <Route path='notifications' element={<Notifications></Notifications>}></Route>
             <Route path='helpcenter' element={<HelpCenter></HelpCenter>}></Route>
             <Route path='blog-detail/:id' element={<BlogDetail></BlogDetail>}></Route>
             <Route path='blog-editor' element={<BlogEditor></BlogEditor>}></Route>
           </Route>
-          
+
 
           <Route path='/course-material' element={<CourseMaterial></CourseMaterial>}></Route>
 

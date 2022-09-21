@@ -8,6 +8,7 @@ import Loading from '../Shared/Loading/Loading';
 import useCourses from '../Shared/useCourses';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const Details = () => {
 
@@ -22,40 +23,39 @@ const Details = () => {
         return <Loading></Loading>
     }
 
-    const checking= (course)=>
-    {
-        const id =course?._id;
+    const checking = (course) => {
+        const id = course?._id;
         // const email =email;
-        const data={id,email,course}
+        const data = { id, email, course }
         console.log(data)
         fetch("http://localhost:5000/check",
-        {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify(data)
-        })
-        .then(res=>res.json())
-        .then(data=>{console.log(data.message)
-        if(data?.message)
-        {
-            toast.success("Successfully added course ... ")
-        }
-        else{
-            toast.error("Course already added ");
-        }
-        setTimeout(()=>{
-            toast.info("Check profile -> all course ");
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+                if (data?.message) {
+                    toast.success("Successfully added course ... ")
+                }
+                else {
+                    toast.error("Course already added ");
+                }
+                setTimeout(() => {
+                    toast.info("Check profile -> all course ");
 
-        },1000);
-        
-    });
+                }, 1000);
 
-        
+            });
+
+
     }
- 
+
 
 
     return (
@@ -115,25 +115,21 @@ const Details = () => {
             </div>
 
             <div className='mt-20   '>
-                <p className=' divide divide-y border md:w-[300%] border-t-white p-5 '>
-                    <section className='flex'>
-                        <div onClick={() => checking(course)} className="btn mr-10">Add course</div>
-                        <a href={`/enroll/${course?.id}`}>
-                            <button className='btn bg-[grey] text-[white] border-none  hover:bg-[brown] '>Enroll Now</button>
-                        </a>
+                <div className=' divide divide-y border md:w-[300%] border-t-white p-5 '>
+                    <section className='flex mb-4'>
+                        <button onClick={() => checking(course)} className="btn btn-sm">Add course</button>
+
                     </section>
+                    <Link to={`/enroll/${course?.id}`}>
+                        <button className='btn btn-sm bg-[grey] border-none  hover:bg-[brown] '>Enroll Now</button>
+                    </Link>
 
                     <p className='my-7 font-semibold text-lg'>Enrolled Student : 2k +</p>
                     <p className='my-7 font-semibold text-lg'>Lectures : {course?.lecture_quantity}</p>
                     <p className='my-7 font-semibold text-lg'>Duration : {course?.duration} hrs</p>
                     <p className='my-7 font-semibold text-lg'>Weeky Live Sessions</p>
-                <a href={`/enroll/${course?._id}`}><button className='btn bg-[grey] text-[white] border-none  hover:bg-[brown] '>Enroll Now</button></a>
-           
-           <p className='my-7 font-semibold text-lg'>Enrolled Student : 2k +</p>
-           <p className='my-7 font-semibold text-lg'>Lectures : {course?.lecture_quantity}</p>
-           <p className='my-7 font-semibold text-lg'>Duration : {course?.duration} hrs</p>
-           <p className='my-7 font-semibold text-lg'>Weeky Live Sessions</p>
-                </p>
+
+                </div>
             </div>
 
 

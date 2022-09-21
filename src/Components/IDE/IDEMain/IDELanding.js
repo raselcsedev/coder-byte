@@ -16,7 +16,6 @@ import { useRef } from "react";
 import Loading from "../../Shared/Loading/Loading";
 import { Modal } from 'react-responsive-modal';
 
-
 const codeDefault = `#include<stdio.h>
 
 

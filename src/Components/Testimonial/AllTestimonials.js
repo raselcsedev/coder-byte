@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const AllTestimonials = () => {
 
-    const [review,setReview] =useState('')
+    const [review, setReview] = useState('')
     const [user] = useAuthState(auth);
 
     const email = user?.email
@@ -30,7 +30,7 @@ const AllTestimonials = () => {
         console.log('error', error);
     }, [])
 
-    const profile = profiles.find(item => email== item?.email)
+    const profile = profiles.find(item => email == item?.email)
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -83,86 +83,86 @@ const AllTestimonials = () => {
             </div>
 
             {
-                    <div className="review grid grid-cols-4 ">
-                        {
-                            review ? <div>
+                <div className="review grid grid-cols-4 ">
+                    {
+                        review ? <div>
                             <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
                             <div className="myCarousel">
                                 <h3>{profile?.displayName}</h3>
                                 <h4>{profile?.profession}</h4>
                                 <p className="">
-                                    { review}
+                                    {review}
                                 </p>
                             </div>
                         </div>
-                            :<div>
-                            <img src="https://imgdb.net/storage/uploads/42bac8baabb639efbe630d99575f6ff3c2a4cad6f1b86b4d992e97f705ceb56b.png" />
-                            <div className="myCarousel">
-                                <h3>Shirley Fultz</h3>
-                                <h4>React Dev</h4>
-                                <p className="">
-                                    It's freeing to be able to catch up on customized news and not be
-                                    distracted by a social media element on the same site
-                                </p>
+                            : <div>
+                                <img src="https://imgdb.net/storage/uploads/42bac8baabb639efbe630d99575f6ff3c2a4cad6f1b86b4d992e97f705ceb56b.png" />
+                                <div className="myCarousel">
+                                    <h3>Shirley Fultz</h3>
+                                    <h4>React Dev</h4>
+                                    <p className="">
+                                        It's freeing to be able to catch up on customized news and not be
+                                        distracted by a social media element on the same site
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        }
+                    }
 
-                        <div>
-                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--nSI8V6RE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/81co8nilff5r9eer3xga.png" />
-                            <div className="myCarousel">
-                                <h3>Daniel Keystone</h3>
-                                <h4>DevOps</h4>
-                                <p>
-                                    The simple and intuitive design makes it easy for me use. I highly
-                                    recommend Fetch to my peers.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div>
-                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--gRFMHqWs--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/1xwiaya5i7wweic3pz96.png" />
-                            <div className="myCarousel">
-                                <h3>Jhon Thomas</h3>
-                                <h4>Flutter Dev</h4>
-                                <p>
-                                    I enjoy catching up with Fetch on my laptop, or on my phone when
-                                    I'm on the go!
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                            <div className="myCarousel">
-                                <h3>Theo Sorel</h3>
-                                <h4>ML Engineer</h4>
-                                <p>
-                                    I enjoy catching up with Fetch on my laptop, or on my phone when
-                                    I'm on the go!
-                                </p>
-                            </div>
+                    <div>
+                        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--nSI8V6RE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/81co8nilff5r9eer3xga.png" />
+                        <div className="myCarousel">
+                            <h3>Daniel Keystone</h3>
+                            <h4>DevOps</h4>
+                            <p>
+                                The simple and intuitive design makes it easy for me use. I highly
+                                recommend Fetch to my peers.
+                            </p>
                         </div>
                     </div>
-                }
+
+                    <div>
+                        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--gRFMHqWs--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/1xwiaya5i7wweic3pz96.png" />
+                        <div className="myCarousel">
+                            <h3>Jhon Thomas</h3>
+                            <h4>Flutter Dev</h4>
+                            <p>
+                                I enjoy catching up with Fetch on my laptop, or on my phone when
+                                I'm on the go!
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                        <div className="myCarousel">
+                            <h3>Theo Sorel</h3>
+                            <h4>ML Engineer</h4>
+                            <p>
+                                I enjoy catching up with Fetch on my laptop, or on my phone when
+                                I'm on the go!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
 
             <div className='divide-y divide-slate-100 '>
                 <div className='review grid grid-cols-4 my-4'>
-                {
-                    profiles?.map(profile =>
-                        profile?.review &&
-                        <div>
-                            <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
-                            <div className="myCarousel">
-                                <h3>{profile?.displayName}</h3>
-                                <h4>{profile?.profession}</h4>
-                                <p className="">
-                                    { profile?.review}
-                                </p>
-                            </div>
-                        </div>)
-                }
+                    {
+                        profiles?.map(profile =>
+                            profile?.review &&
+                            <div>
+                                <img src={profile?.profilePhoto ? profile?.profilePhoto : "https://i.stack.imgur.com/frlIf.png"} />
+                                <div className="myCarousel">
+                                    <h3>{profile?.displayName}</h3>
+                                    <h4>{profile?.profession}</h4>
+                                    <p className="">
+                                        {profile?.review}
+                                    </p>
+                                </div>
+                            </div>)
+                    }
                 </div>
-              
+
             </div>
         </div>
     );

@@ -22,7 +22,7 @@ const getNewComment = (commentValue, isRootNode = false, parentNodeId) => {
 const initialState = {};
 
 function NestedComments() {
-  const [comments, setComments] = useState(initialState);
+const [comments, setComments] = useState(initialState);
   const [rootComment, setRootComment] = useState("");
   const addComment = (parentId, newCommentText) => {
     let newComment = null;
