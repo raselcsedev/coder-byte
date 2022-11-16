@@ -4,7 +4,7 @@ import { setConstantValue } from 'typescript';
 import auth from '../../firebase.init';
 
 const FetchData = () => {
-    const url = "http://localhost:5000/getaddcard";
+    const url = "https://coder-access-backend.onrender.com/getaddcard";
     const [user] = useAuthState(auth);
     const email = user?.email;
     const [value, setvalue] = useState([]);

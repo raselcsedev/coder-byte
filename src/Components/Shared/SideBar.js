@@ -4,7 +4,7 @@ import auth from '../../firebase.init';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import CustomLink from '../Header/CustomLink';
+
 import { useState } from 'react';
 
 const SideBar = () => {
@@ -12,7 +12,7 @@ const SideBar = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `http://localhost:5000/profiles/${email}`
+    const url = `https://coder-access-backend.onrender.com/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)

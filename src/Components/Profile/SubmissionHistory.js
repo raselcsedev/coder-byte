@@ -10,7 +10,7 @@ const SubmissionHistory = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `https://coder-access.herokuapp.com/submissions/`
+    const url = `hhttps://coder-access-backend.onrender.com/submissions/`
 
 
     const fetcher = async () => {

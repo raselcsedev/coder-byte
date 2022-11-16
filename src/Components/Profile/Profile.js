@@ -17,28 +17,28 @@ import GitHubApi from './GitHubApi';
 // import ReactTooltip from 'react-tooltip';
 
 const Profile = () => {
-    const [myitem,setmyitem]=useState([]);
+    const [myitem, setmyitem] = useState([]);
     const [courses, setCourses] = useCourses()
     const [profileUpdates, setProfileUpdates] = useState()
-    const updatedProfile = (data) => {setProfileUpdates(data)}
+    const updatedProfile = (data) => { setProfileUpdates(data) }
     const [user] = useAuthState(auth);
     const email = user?.email
-    const {getAdditems,value }=FetchData();
+    const { getAdditems, value } = FetchData();
 
-useEffect(()=>{
-    getAdditems();
-},[])
-console.log(value);
-const navigate= useNavigate();
-const jumpadditemview=()=>{
-    navigate(`/additemsview/${email}`);
-   
-}
+    useEffect(() => {
+        getAdditems();
+    }, [])
+    console.log(value);
+    const navigate = useNavigate();
+    const jumpadditemview = () => {
+        navigate(`/additemsview/${email}`);
 
-
+    }
 
 
-    const url = `https://coder-access.herokuapp.com/profiles/${email}`
+
+
+    const url = `https://coder-access-backend.onrender.com/profiles/${email}`
 
     const fetcher = async () => {
         const data = axios.get(url)
@@ -141,6 +141,7 @@ const jumpadditemview=()=>{
     const [open2, setOpen2] = useState(false);
 
     const [show, setShow] = useState(false)
+    
 
 
     if (isLoading || !email) {
@@ -296,7 +297,7 @@ const jumpadditemview=()=>{
                                         <div className='col-span-1 absolute left-[20%]'>
                                             {show &&
 
-                                                <GitHubApi  github={profileUpdates?.github? profileUpdates?.github : profile?.github} ></GitHubApi>
+                                                <GitHubApi github={profileUpdates?.github ? profileUpdates?.github : profile?.github} ></GitHubApi>
 
                                             }
                                         </div>
@@ -336,13 +337,13 @@ const jumpadditemview=()=>{
                                         <dt class="font-medium text-gray-200">Enrolled Course</dt>
                                         <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="/courses"><button className='btn btn-xs'>My Courses</button></a></dd>
                                     </div>
-{/* ------------start my add iteam section--------- */}
+                                    {/* ------------start my add iteam section--------- */}
                                     <div class="bg-[#171B26] px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Add Course :</dt>
                                         <dd class="mt-1  text-gray-200 sm:mt-0 sm:col-span-2"><a href="">{value.length}<button onClick={jumpadditemview} className='btn btn-xs ml-10'>view all</button></a></dd>
                                     </div>
-                                    
-{/* ------------start my end iteam section--------- */}
+
+                                    {/* ------------start my end iteam section--------- */}
 
                                     <div class="bg-slate-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="font-medium text-gray-200">Problem-solving History</dt>

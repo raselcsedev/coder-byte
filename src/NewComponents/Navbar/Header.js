@@ -140,7 +140,7 @@ const Header = () => {
                     <div class="lg:navbar-start hidden md:block">
 
 
-                        <Link to='/' class="btn btn-ghost normal-case text-2xl "> coder<span className="text-lime-500">A</span>ccess</Link>
+                        <Link to='/' class="btn btn-ghost normal-case text-xl "> coder<span className="text-lime-500">A</span>ccess</Link>
                     </div>
 
 
@@ -157,7 +157,7 @@ const Header = () => {
                             <ul tabindex="0" id="menuContent" class=" menu border border-slate-600 bg-black text-[white]  bg-opacity-60 menu menu-compact dropdown-content mt-3 p-4 shadow  rounded-box w-52">
                                 {menuItems}
                             </ul>
-                            <Link to='/' class="btn btn-ghost normal-case text-2xl "> coder<span className="text-lime-500">A</span>ccess</Link>
+                            <Link to='/' class="btn btn-ghost normal-case text-xl "> coder<span className="text-lime-500">A</span>ccess</Link>
 
                         </div>
                         {user && personalizeItems}

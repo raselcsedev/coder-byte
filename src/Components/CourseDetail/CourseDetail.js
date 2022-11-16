@@ -17,6 +17,7 @@ const Details = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
     const [courses, setCourses] = useCourses();
+    
     const course = courses?.find(item => id === item?._id);
 
     if (!courses.length) {

@@ -17,7 +17,7 @@ const DiscussionForums = () => {
 
   const { register, formState: { errors }, handleSubmit } = useForm();
 
-  const url = `https://coder-access.herokuapp.com/forum/`
+  const url = `https://coder-access-backend.onrender.com/forum/`
 
 
   const today = new Date();

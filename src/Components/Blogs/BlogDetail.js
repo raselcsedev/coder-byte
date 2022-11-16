@@ -10,7 +10,7 @@ import NestedComments from '../Shared/NestedComments';
 import SideBar from '../Shared/SideBar';
 import BloggerOverview from './BloggerOverview';
 import { FacebookShareButton, FacebookIcon, LinkedinShareButton, LinkedinIcon, TwitterIcon, TwitterShareButton } from 'react-share'
-
+import SpeechNarrator from 'speech-synthesizer-react'
 
 const BlogDetail = () => {
 
@@ -18,16 +18,17 @@ const BlogDetail = () => {
     const [user] = useAuthState(auth);
 
 
-    const url = `https://coder-access.herokuapp.com/blogs/${id}`
-    const url2 = `http://localhost:5000/blogs/${id}`
+    const url = `https://coder-access-backend.onrender.com/blogs/${id}`
+   
 
     const fetcher = async () => {
         const data = axios.get(url)
+        
         return (await data)?.data
     }
 
     let { data: blog, isLoading } = useQuery(['blogs', id], () => fetcher())
-
+console.log(blog,'blog');
 
     const splitText = (text, from, to) => [
         text?.slice(0, from),
@@ -239,32 +240,12 @@ const BlogDetail = () => {
                         <h1 className='text-xl md:text-4xl mb-8 font-semibold'>
                             {blog?.title}
                         </h1>
-                        <img loading='lazy' className='my-8 border-2 rounded ' src={blog?.banner} alt="" />
+                        <img loading='lazy' className='border-2 rounded ' src={blog?.data?.banner} alt="" />
 
                     </div>
-                    <div className="my-4 ">
-
-                        {
-                            listen && <button onClick={() => { handlePause(); pauseHandler() }} className="border-2 bg-black border-black hover:bg-slate-700 rounded-full w-28 h-10 flex items-center  space-x-1 py-3 pl-3 pr-2 text-white"> <span className='font-semibold '>Paush</span>
-
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </button>
-                        }
-                        {
-                            pause && <button onClick={() => { handleListen(); handlePlay() }} className="border-2 border-black bg-black hover:bg-slate-700 rounded-full w-28 h-10 flex items-center  px-3 space-x-2 py-3 text-white"> <span className='font-semibold '>Listen</span>
-
-                                <img className='w-8' src="https://i.ibb.co/vVVrLcZ/listen-on-google-podcasts-icon.png" alt="" />
-                            </button>
-                        }
-
-
-                    </div>
-
-                    <HighlightedText text={blog?.body} {...highlightSection} />
-                
-
+                   
+                    <SpeechNarrator text={blog?.data?.body}></SpeechNarrator>
+                    
                     <div className='fixed  bottom-[1%]  right-[40%]'>
                     
                         <div className=' flex justify-center py-1 px-2 space-x-4 border border-[black] rounded-full bg-black text-white mx-auto '>
@@ -289,11 +270,6 @@ const BlogDetail = () => {
 
                         </div>
                     </div>
-
-
-
-
-
 
 
 

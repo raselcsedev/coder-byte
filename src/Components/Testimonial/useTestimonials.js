@@ -5,7 +5,7 @@ const useTestimonials = () => {
     const [testimonials,setTestimonials] =useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/profiles')
+        fetch('https://coder-access-backend.onrender.com/profiles')
         .then(res=>res.json())
         .then(data=>{setTestimonials(data?.review)
         console.log('data',data)

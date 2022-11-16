@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 
 const DynamicTpicGetHook = () => {
         const [data, setData] = useState([]);
-        const url = "http://localhost:5000/TopicAlgo"
+        const url = "https://coder-access-backend.onrender.com/TopicAlgo"
         const AlgorithimGet = () => {
-                fetch('https://coder-access.herokuapp.com/TopicAlgo')
+                fetch('https://coder-access-backend.onrender.com/TopicAlgo')
                         .then(res => res.json())
                         .then(data => setData(data))
         }
         const Databaseget = () => {
-                fetch('https://coder-access.herokuapp.com/TopicDatabase')
+                fetch('https://coder-access-backend.onrender.com/TopicDatabase')
                         .then(res => res.json())
                         .then(data => setData(data))
         }
         const DSget = () => {
-                fetch('https://coder-access.herokuapp.com/TopicDS')
+                fetch('https://coder-access-backend.onrender.com/TopicDS')
                         .then(res => res.json())
                         .then(data => setData(data))
         }
