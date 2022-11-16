@@ -22,7 +22,7 @@ const Home = () => {
       <Explore></Explore>
 
       <Environment></Environment>
-      <Languages></Languages>
+ 
       <Preparation></Preparation>
       <Courses></Courses>
       <Certification></Certification>

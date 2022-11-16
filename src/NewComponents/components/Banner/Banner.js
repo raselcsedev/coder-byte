@@ -49,8 +49,8 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      {/* <VoiceAssistant></VoiceAssistant> */}
-      <Discussion></Discussion>
+      <VoiceAssistant></VoiceAssistant>
+      {/* <Discussion></Discussion> */}
 
     </div>
   );

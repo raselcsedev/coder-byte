@@ -19,9 +19,9 @@ const EnrollCourse = (props) => {
     const [open, setOpen] = useState(false);
     const [courses, setCourses] = useCourses
     ()
-    const course = courses?.find(item => id == item?._id)
+    const course = courses?.find(item => id == item?.id)
 
-    console.log('cc', courses, course);
+    console.log('cc', courses, course,id);
 
     // if (!courses.length) {
     //     return <Loading></Loading>

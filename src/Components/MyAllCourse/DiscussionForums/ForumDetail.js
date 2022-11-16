@@ -21,7 +21,7 @@ const ForumDetail = () => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
 
-    const url = `https://coder-access.herokuapp.com/forum/`
+    const url = `https://coder-access-backend.onrender.com/forum/`
 
     const fetcher = async () => {
         const data = axios.get(url)

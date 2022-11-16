@@ -16,7 +16,7 @@ const AllBlogs = () => {
     }
 
 
-    const url = `https://coder-access.herokuapp.com/blogs`
+    const url = `https://coder-access-backend.onrender.com/blogs`
 
     const fetcher = async () => {
         const data = axios.get(url)

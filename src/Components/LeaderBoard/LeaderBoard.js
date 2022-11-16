@@ -9,7 +9,7 @@ const LeaderBoard = () => {
     const [user] = useAuthState(auth);
     const email = user?.email
 
-    const url = `http://localhost:5000/submissions/`
+    const url = `https://coder-access-backend.onrender.com/submissions/`
 
 
     const fetcher = async () => {

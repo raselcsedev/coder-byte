@@ -10,7 +10,7 @@ const BloggerOverview = ({ blogger }) => {
 
     // const [user] = useAuthState(auth)
 
-    const url = `http://localhost:5000/blogs`
+    const url = `https://coder-access-backend.onrender.com/blogs`
 
     const fetcher = async () => {
         const data = axios.get(url)
